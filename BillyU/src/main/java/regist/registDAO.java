@@ -31,7 +31,7 @@ private static Connection conn;
 		}
 	}
 	
-	public boolean insertSaleProduct(Capstone_productDTO dto){
+	public boolean insertSaleProduct(registDTO dto){
 		String query = "insert into product (nickname, catnum, title, proinfo, procondition, traway, tratype, salprice) values (?, ?, ?, ?, ?, ?, ?, ?);";
 		boolean check = false;			
 		try{
@@ -56,7 +56,7 @@ private static Connection conn;
 	}
 	
 	//����� ��ǰ�� �Ÿ������� '�뿩'�� ���
-	public boolean insertRentProduct(Capstone_productDTO dto){
+	public boolean insertRentProduct(registDTO dto){
 		String query = "insert into product (nickname, catnum, title, proinfo, procondition, traway, tratype, renprice, deposit, renday) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		boolean check = false;		//insert�� �����ߴ��� Ȯ���ϱ����� boolean
 		try{
@@ -82,30 +82,9 @@ private static Connection conn;
 		return check;
 	}
 	
-	//insert image
-	public boolean insertImage(Capstone_productDTO dto, int pronum){
-		//String query = "insert into product (nickname, catnum, title, proinfo, procondition, traway, tratype, salprice) values (?, ?, ?, ?, ?, ?, ?, ?);";
-		String query = "insert into image (pronum, path,path2,path3,path4) value (?, 'img/"+ '?' +"','img/"+ '?' +"','img/"+ '?' +"','img/"+ '?' +"')";
-		boolean check = false;			//insert�� �����ߴ��� Ȯ���ϱ����� boolean
-		try{
-			//stament�� �ƴ� preparedStatemint�� ������ values�� ?�� ����ؼ� �ؿ��� �������� �ϳ��ϳ� �־��ֱ� ���ؼ�!!!!
-			PreparedStatement pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, pronum);
-			pstmt.setString(2, dto.getImg());
-			pstmt.setString(3, dto.getImg2());
-			pstmt.setString(4, dto.getImg3());
-			pstmt.setString(5, dto.getImg4());
-			
-			pstmt.executeUpdate();			//UPDATE, DELETE �� ����� ���� �� ���
-			check = true;
-			pstmt.close();
-		}catch(SQLException ex){
-			System.out.println("SQL insertSaleProduct ���� : " + ex.getLocalizedMessage());
-		}	
-		return check;
-	}
 	
-	//select�� �̹� ���� pronum�� ��ȯ�Ѵ�
+	
+	/*//select�� �̹� ���� pronum�� ��ȯ�Ѵ�
 		public int selectPronum(){
 			String query = "SELECT * FROM product ORDER BY pronum DESC LIMIT 1";
 			int pronum = 0 ; 
@@ -121,7 +100,7 @@ private static Connection conn;
 				System.out.println("SQL selectCatnum ���� : " + ex.getLocalizedMessage());
 			}	
 			return pronum;
-		}
+		}*/
 	
 	
 	//�Է¹��� small(�Һз�)�� catnum ã���ִ� �Լ�
@@ -187,6 +166,88 @@ private static Connection conn;
 		}	
 		return al;
 	}
+	
+	
+	//insert image
+		public boolean insertImage(registDTO dto, int pronum){
+			
+			String query = "insert into image values (?, ?, ?, ?, ?);";
+			boolean check = false;			
+			try{
+				
+				PreparedStatement pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, pronum);
+				pstmt.setString(2, "resources/img/"+dto.getImg());
+				pstmt.setString(3, "resources/img/"+dto.getImg2());
+				pstmt.setString(4, "resources/img/"+dto.getImg3());
+				pstmt.setString(5, "resources/img/"+dto.getImg4());
+				
+				pstmt.executeUpdate();			//UPDATE, DELETE 占쏙옙 占쏙옙占쏙옙占� 占쏙옙占쏙옙 占쏙옙 占쏙옙占�
+				check = true;
+				pstmt.close();
+			}catch(SQLException ex){
+				System.out.println("SQL insertImage 占쏙옙占쏙옙 : " + ex.getLocalizedMessage());
+			}	
+			return check;
+		}
+		public boolean updateImage(registDTO dto, int pronum){
+			
+			String query = "update product set img='?' where pronum = ? ;";
+			boolean check = false;
+			try {
+				PreparedStatement pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, pronum);
+				pstmt.setString(2, "resources/img/"+dto.getImg());
+				
+				pstmt.executeUpdate();			//UPDATE, DELETE 占쏙옙 占쏙옙占쏙옙占� 占쏙옙占쏙옙 占쏙옙 占쏙옙占�
+				check = true;
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return check;
+			
+		}
+			public int selectPronum(){
+				String query = "SELECT * FROM product";
+				int pronum = 0 ; 
+				try{
+					Statement stmt = conn.createStatement();		
+					ResultSet rs = stmt.executeQuery(query);		
+					rs.last();
+					pronum = Integer.parseInt(rs.getString("pronum"));
+					
+					stmt.close();
+				}catch(SQLException ex){
+					System.out.println("SQL selectCatnum 占쏙옙占쏙옙 : " + ex.getLocalizedMessage());
+				}	
+				return pronum;
+			}
+	
+			public ArrayList<String> selectImage(){
+				String query = "SELECT * FROM image";
+				ArrayList<String> al = new ArrayList<String>();
+				try{
+					Statement stmt = conn.createStatement();		//占쏙옙占쌘울옙 sql占쏙옙占쏙옙 sql 占쏙옙占쏙옙占신놂옙占� 占쌍댐옙 statement占쏙옙占쏙옙
+					ResultSet rs = stmt.executeQuery(query);		//select占쏙옙 占쏙옙占쏙옙
+					
+					rs.last();
+
+					al.add(rs.getString("img"));
+					al.add(rs.getString("img2"));
+					al.add(rs.getString("img3"));
+					al.add(rs.getString("img4"));
+
+					
+					
+					stmt.close();
+				}catch(SQLException ex){
+					System.out.println("SQL selectCatnum 占쏙옙占쏙옙 : " + ex.getLocalizedMessage());
+				}	
+				return al;
+			}
+	
 	//connection �� ��������� �ݾ��ֱ� !
 	public void close(){
 		try{

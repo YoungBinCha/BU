@@ -1,6 +1,7 @@
 package regist;
 
-public class registDTO {
+public class registDTO2 {
+
 	/*상품 공통 변수*/
 	private String nickname;
 	private int catnum;

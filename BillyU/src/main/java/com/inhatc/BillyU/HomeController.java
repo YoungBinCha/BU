@@ -27,6 +27,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import product.proDAO;
 import product.proDTO;
 import regist.registDAO;
+import regist.registDTO;
 
 /**
  * Handles requests for the application home page.
@@ -172,7 +173,8 @@ public class HomeController {
 		int deposit = Integer.parseInt(deposit_s);
 		int renday = Integer.parseInt(renday_s);
 		
-		Capstone_productDTO dto = new Capstone_productDTO();
+		//Capstone_productDTO dto = new Capstone_productDTO();
+		registDTO dto = new registDTO();
 		//proDTO dto = new proDTO(pronum, nickname, catnum, title, proinfo, procondition, traway, tratype, renprice, renday, deposit, salprice, img, curtime)
 		HttpSession ses = req.getSession();
 		String nickname = (String)ses.getAttribute("id");
@@ -237,15 +239,17 @@ public class HomeController {
 		String file4 = (String) files.nextElement();
 		img4 = multi.getOriginalFileName(file4);
 		
-		com.openmarket2.Capstone_productDAO dao = new com.openmarket2.Capstone_productDAO();
-		com.openmarket2.Capstone_productDTO dto = new com.openmarket2.Capstone_productDTO();
-		
+		//com.openmarket2.Capstone_productDAO dao = new com.openmarket2.Capstone_productDAO();
+		registDAO dao = new registDAO();
+		//com.openmarket2.Capstone_productDTO dto = new com.openmarket2.Capstone_productDTO();
+		registDTO dto = new registDTO();
 		dto.setImg(img);
 		dto.setImg2(img2);
 		dto.setImg3(img3);
 		dto.setImg4(img4);
 		
 		int pronum = dao.selectPronum();
+		
 		dao.insertImage(dto, pronum);
 		dao.updateImage(dto, pronum);
 //		RequestDispatcher view = req.getRequestDispatcher("K_view.jsp");
