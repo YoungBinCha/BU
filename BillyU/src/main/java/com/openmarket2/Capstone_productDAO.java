@@ -19,12 +19,12 @@ private static Connection conn;
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 		}catch(ClassNotFoundException ex){
-			System.out.println("占쏙옙占쏙옙譴占쏙옙占� 찾占쏙옙 占쏙옙 占쏙옙占쏙옙占싹댐옙.");
+			System.out.println("JDBD load fail");
 		}
 		try{
-			conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/billyu","root","1234");
+			conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/billyu?useUnicode=true&characterEncoding=euckr","root","1234");
 		}catch(SQLException ex){
-			System.out.println("SQL 占쏙옙占쏙옙(Connection) : " + ex.getLocalizedMessage());
+			System.out.println("SQL fail(Connection) : " + ex.getLocalizedMessage());
 		}
 	}
 	
@@ -34,9 +34,9 @@ private static Connection conn;
 	public boolean insertImage(Capstone_productDTO dto, int pronum){
 		
 		String query = "insert into image values (?, ?, ?, ?, ?);";
-		boolean check = false;			//insert占쏙옙 占쏙옙占쏙옙占쌩댐옙占쏙옙 확占쏙옙占싹깍옙占쏙옙占쏙옙 boolean
+		boolean check = false;			
 		try{
-			//stament占쏙옙 占싣댐옙 preparedStatemint占쏙옙 占쏙옙占쏙옙占쏙옙 values占쏙옙 ?占쏙옙 占쏙옙占쏙옙漫占� 占쌔울옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占싹놂옙占싹놂옙 占쌍억옙占쌍깍옙 占쏙옙占쌔쇽옙!!!!
+			
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, pronum);
 			pstmt.setString(2, "resources/img/"+dto.getImg());

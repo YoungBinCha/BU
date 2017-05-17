@@ -20,18 +20,18 @@ private static Connection conn;
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 		}catch(ClassNotFoundException ex){
-			System.out.println("����̹��� ã�� �� �����ϴ�.");
+			System.out.println("JDBD load fail");
 		}
 		try{
 			conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/billyu?useUnicode=true&characterEncoding=euckr","root","1234");
 		}catch(SQLException ex){
-			System.out.println("SQL ����(Connection) : " + ex.getLocalizedMessage());
+			System.out.println("SQL fail(Connection) : " + ex.getLocalizedMessage());
 		}
 	}
 	
 	public boolean insertSaleProduct(Capstone_productDTO dto){
 		String query = "insert into product (nickname, catnum, title, proinfo, procondition, traway, tratype, salprice) values (?, ?, ?, ?, ?, ?, ?, ?);";
-		boolean check = false;			//insert�� �����ߴ��� Ȯ���ϱ����� boolean
+		boolean check = false;			
 		try{
 			
 			PreparedStatement pstmt = conn.prepareStatement(query);

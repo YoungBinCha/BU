@@ -128,10 +128,10 @@ public class HomeController {
 	public String Y_Sale(){
 		return "/Y_Sale";
 	}
-	//�긽�뭹 �꽭遺��궗�빆 �벑濡� Mapping �썑�뿉 �긽�뭹 �궗吏� �벑濡� �럹�씠吏�濡� �씠�룞
+	//상품등록정보 입력 Mapping
 	@RequestMapping(value = "/regist.do")
 	public String registdo(HttpServletRequest req, Model model){
-		//DB �븳湲� 源⑥쭚 諛⑹� 紐낅졊�뼱
+		//DB 한글깨짐 방지 
 		try {
 			req.setCharacterEncoding("euc-kr");
 		} catch (UnsupportedEncodingException e) {
@@ -200,10 +200,19 @@ public class HomeController {
 	public String K_addImg(){
 		return "K_addImg";
 	}
-	//�긽�뭹 �궗吏� �벑濡� Mapping �썑�뿉 MyPage濡� �씠�룞
+	//상품사진등록 Mapping
 	@RequestMapping(value = "/regist.ro")
 	public String registro(HttpServletRequest req, Model model) throws IOException{
-		String savePath = "C:/WebSoft/eclipse/eclipse/workspace/SpringBillyU/BillyU/src/main/webapp/resources/img";
+		
+		//DB 한글깨짐 방지 
+		try {
+			req.setCharacterEncoding("euc-kr");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String savePath = "C:/Bro/BillyU/src/main/webapp/resources/img";
 		
 		int sizeLimit = 10 * 1024 * 1024; 
 		String img = "";
