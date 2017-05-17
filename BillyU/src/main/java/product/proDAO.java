@@ -3,7 +3,7 @@ package product;
 import java.sql.*;
 import java.util.*;
 
-import com.openmarket.Capstone_productDTO;
+import regist.registDTO;
 
 public class proDAO {
 
@@ -122,7 +122,7 @@ public class proDAO {
 	 */
 	
 	//판매상품 등록할 때 사용하는 메소드
-	public boolean insertSaleProduct(Capstone_productDTO dto){
+	public boolean insertSaleProduct(registDTO dto){
 		
 		connect();
 		String query = "insert into product (nickname, catnum, title, proinfo, procondition, traway, tratype, salprice) values (?, ?, ?, ?, ?, ?, ?, ?);";		
@@ -149,7 +149,7 @@ public class proDAO {
 	}
 	
 	//대여상품 등록할 때 사용하는 메소드
-	public boolean insertRentProduct(Capstone_productDTO dto){
+	public boolean insertRentProduct(registDTO dto){
 		
 		connect();
 		String query = "insert into product (nickname, catnum, title, proinfo, procondition, traway, tratype, renprice, deposit, renday) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -179,7 +179,7 @@ public class proDAO {
 	}
 	
 	//이미지 테이블 채우는 메소드
-	public boolean insertImage(Capstone_productDTO dto, int pronum){
+	public boolean insertImage(registDTO dto, int pronum){
 		connect();
 		//String query = "insert into product (nickname, catnum, title, proinfo, procondition, traway, tratype, salprice) values (?, ?, ?, ?, ?, ?, ?, ?);";
 		String query = "insert into image (pronum, path,path2,path3,path4) value (?, 'img/"+ '?' +"','img/"+ '?' +"','img/"+ '?' +"','img/"+ '?' +"')";

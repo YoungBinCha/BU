@@ -35,13 +35,13 @@
 	if(session.getAttribute("id") == null){response.sendRedirect("Y_Login");}
 	int y_pronum = Integer.parseInt(request.getParameter("pronum"));
 	%>
-	<jsp:useBean id="sel" class="com.openmarket.Capstone_productDAO"></jsp:useBean>
+	<jsp:useBean id="sel" class="regist.registDAO"></jsp:useBean>
 	<%
 		ArrayList<String> al = sel.selectProduct(y_pronum);
 		String type = al.get(4);
 		
 	%>
-	<jsp:useBean id="se" class="com.openmarket2.Capstone_productDAO"></jsp:useBean>
+	<jsp:useBean id="se" class="regist.registDAO"></jsp:useBean>
 	<%
 		ArrayList<String> al2 = se.selectImage();
 		String mimg = ""+al2.get(0);

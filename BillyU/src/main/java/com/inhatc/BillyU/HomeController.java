@@ -19,8 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.openmarket.Capstone_productDAO;
-import com.openmarket.Capstone_productDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -143,8 +141,7 @@ public class HomeController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//Capstone_productDAO dao = new Capstone_productDAO();
-		//proDAO dao = new proDAO();
+
 		registDAO dao = new registDAO();
 		String category = req.getParameter("category"); 
 		int catnum = dao.selectCatnum(category); 
@@ -173,9 +170,7 @@ public class HomeController {
 		int deposit = Integer.parseInt(deposit_s);
 		int renday = Integer.parseInt(renday_s);
 		
-		//Capstone_productDTO dto = new Capstone_productDTO();
 		registDTO dto = new registDTO();
-		//proDTO dto = new proDTO(pronum, nickname, catnum, title, proinfo, procondition, traway, tratype, renprice, renday, deposit, salprice, img, curtime)
 		HttpSession ses = req.getSession();
 		String nickname = (String)ses.getAttribute("id");
 		
@@ -239,9 +234,7 @@ public class HomeController {
 		String file4 = (String) files.nextElement();
 		img4 = multi.getOriginalFileName(file4);
 		
-		//com.openmarket2.Capstone_productDAO dao = new com.openmarket2.Capstone_productDAO();
 		registDAO dao = new registDAO();
-		//com.openmarket2.Capstone_productDTO dto = new com.openmarket2.Capstone_productDTO();
 		registDTO dto = new registDTO();
 		dto.setImg(img);
 		dto.setImg2(img2);
