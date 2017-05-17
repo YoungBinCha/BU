@@ -64,10 +64,12 @@
 							<div class="form-group">
 								<label for="category">카테고리:</label> <select class="form-control"
 									id="category" name="category">
-									<jsp:useBean id="sel"
-										class="com.openmarket.Capstone_productDAO"></jsp:useBean>
+									 <%-- <jsp:useBean id="sel"
+										class="com.openmarket.Capstone_productDAO"></jsp:useBean>  --%>
+										 <jsp:useBean id="select"
+										class="regist.registDAO"></jsp:useBean> 
 									<%
-										ArrayList<String> al = sel.selectCategory();
+										ArrayList<String> al = select.selectCategory();
 										for (int i = 0; i < al.size(); i++) {
 									%>
 									<option><%=al.get(i)%></option>

@@ -24,6 +24,10 @@ import com.openmarket.Capstone_productDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import product.proDAO;
+import product.proDTO;
+import regist.registDAO;
+
 /**
  * Handles requests for the application home page.
  */
@@ -138,8 +142,9 @@ public class HomeController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Capstone_productDAO dao = new Capstone_productDAO();
-		
+		//Capstone_productDAO dao = new Capstone_productDAO();
+		//proDAO dao = new proDAO();
+		registDAO dao = new registDAO();
 		String category = req.getParameter("category"); 
 		int catnum = dao.selectCatnum(category); 
 		String title = req.getParameter("title");
@@ -168,7 +173,7 @@ public class HomeController {
 		int renday = Integer.parseInt(renday_s);
 		
 		Capstone_productDTO dto = new Capstone_productDTO();
-		
+		//proDTO dto = new proDTO(pronum, nickname, catnum, title, proinfo, procondition, traway, tratype, renprice, renday, deposit, salprice, img, curtime)
 		HttpSession ses = req.getSession();
 		String nickname = (String)ses.getAttribute("id");
 		
