@@ -472,8 +472,8 @@
 <div style="width:100%;height:100%">
 
 <select name="category" class="Y_NavSelect">
-<option value="not">선택</option>
-<option value="대여">대여</option>
+<option value="제목">제목</option>
+<option value="공여자">공여자</option>
 <option value="판매">판매</option>
 <option value="나눔">나눔</option>
 </select>
@@ -502,7 +502,7 @@
 </div>
 <div class="collapse navbar-collapse" id="myNavbar">
 <ul class="nav navbar-nav navbar-right">
-<li><a id="Y_NavContent_Right" href="Y_Chat_Form"><span class="glyphicon glyphicon-shopping-cart"></span>관심상품</a></li>
+<li><a id="Y_NavContent_Right" href="Y_Jang"><span class="glyphicon glyphicon-shopping-cart"></span>관심상품</a></li>
 <li><a id="Y_NavContent_Right" href="Y_MyPage"><span class="glyphicon glyphicon-user"></span>마이페이지</a></li>
 <li><a id="Y_NavContent_Right" href="Y_Login"><span class="glyphicon glyphicon-log-in"></span>
           <%
@@ -584,30 +584,30 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a href="Y_Main">
                        BillyU
                     </a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-home"></i> 여기에</a>
+                    <a href="Y_Login"><i class="fa fa-fw fa-home"></i> 로그인</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-folder"></i> 어떤</a>
+                    <a href="Y_JoinForm"><i class="fa fa-fw fa-folder"></i> 회원가입</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-file-o"></i> 메뉴가</a>
+                    <a href="Y_MyPage"><i class="fa fa-fw fa-file-o"></i> 마이페이지</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-cog"></i> 들어갈지</a>
+                    <a href="K_product"><i class="fa fa-fw fa-cog"></i> 상품등록</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-bank"></i> 아직</a>
+                    <a href="Y_Jang"><i class="fa fa-fw fa-bank"></i> 찜바구니</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-dropbox"></i> 정하지</a>
+                    <a href="Y_Introduce"><i class="fa fa-fw fa-dropbox"></i> 사이트소개</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-twitter"></i> 못했다</a>
+                    <a href="Y_Information"><i class="fa fa-fw fa-twitter"></i> 게시판</a>
                 </li>
             </ul>
         </nav>

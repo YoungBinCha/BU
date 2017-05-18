@@ -143,6 +143,18 @@ public class HomeController {
 	public String Y_Delete_MyJang(){
 		return "Y_Delete_MyJang";
 	}
+	@RequestMapping(value = "/Y_Jang")
+	public String Y_Jang(){
+		return "Y_Jang";
+	}
+	@RequestMapping(value = "/Y_Introduce")
+	public String Y_Introduce(){
+		return "Y_Introduce";
+	}
+	@RequestMapping(value = "/Y_Information")
+	public String Y_Information(){
+		return "Y_Information";
+	}
 	//상품등록정보 입력 Mapping
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
 	public String registdo(HttpServletRequest req, Model model){
