@@ -215,25 +215,25 @@ public class registDAO {
 		return image;
 	}
 
-	public ArrayList<String> selectImage() {
-		String query = "SELECT * FROM image";
-		ArrayList<String> al = new ArrayList<String>();
+	public ArrayList<String> selectImage(int pronum) {
+		String query = "SELECT * FROM image where pronum = "+pronum+";";
+		ArrayList<String> arrayListImage = new ArrayList<String>();
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 
-			rs.last();
+			rs.next();
 
-			al.add(rs.getString("img"));
-			al.add(rs.getString("img2"));
-			al.add(rs.getString("img3"));
-			al.add(rs.getString("img4"));
+			arrayListImage.add(rs.getString("img"));
+			arrayListImage.add(rs.getString("img2"));
+			arrayListImage.add(rs.getString("img3"));
+			arrayListImage.add(rs.getString("img4"));
 
 			stmt.close();
 		} catch (SQLException ex) {
 			System.out.println("SQL selectImage() 오류 : " + ex.getLocalizedMessage());
 		}
-		return al;
+		return arrayListImage;
 	}
 
 	public void close() {
