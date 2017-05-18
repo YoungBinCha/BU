@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*" %>
+    pageEncoding="UTF-8" import="java.util.*" import="java.sql.*" %>
     <%@ page import="rent.rentDAO" %>
     <%@ page import="rent.rentDTO" %>
     <%@ page import="sale.saleDAO" %>
     <%@ page import="sale.saleDTO" %>
     <jsp:useBean id="rent" class="rent.rentDAO" />
     <jsp:useBean id="sale" class="sale.saleDAO" />
-    
+    <%request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,12 +26,13 @@
       <tr>
         <th>상품번호</th>
         <th>대여번호</th>
-        <th>신청자</th>
+        <th>수여자</th>
         <th>거래방식</th>
-        <th>대여시작날짜</th>
-        <th>몇일동안</th>
+        <th>시작일</th>
+        <th>대여기간</th>
         <th>메세지</th>
-        <th>총금액</th>
+        <th>총액</th>
+        <th>날짜</th>
         <th> </th>
       </tr>
     </thead>
@@ -53,6 +54,7 @@
 		int rentday = dto.getRentday();
 		String message = dto.getMessage();
 		int total = dto.getTotal();
+		Timestamp curtime = dto.getCurtime();
 		
 %>
     <tr>
@@ -61,9 +63,10 @@
         <td style="width:8%"><%=guest %></td>
         <td style="width:10%"><%=way %></td>
         <td style="width:10%"><%=startdate %>부터</td>
-        <td style="width:10%"><%=rentday %>일동안</td>
+        <td style="width:10%"><%=rentday %>일 동안</td>
         <td style="width:40%"><%=message %></td>
         <td style="width:10%"><%=total %>원</td>
+        <td style="width:10%"><%=curtime %></td>
         <td style="width:10%">답변</td>
     </tr>
     <%} %>
@@ -78,10 +81,11 @@
       <tr>
         <th>상품번호</th>
         <th>판매번호</th>
-        <th>신청자</th>
+        <th>수여자</th>
         <th>거래방식</th>
         <th>메세지</th>
-        <th>총금액</th>
+        <th>총액</th>
+        <th>날짜</th>
         <th> </th>
       </tr>
     </thead>
@@ -98,6 +102,7 @@
 		String way = dto.getWay();
 		String message = dto.getMessage();
 		int total = dto.getTotal();
+		Timestamp curtime = dto.getCurtime();
 %>
     <tr>
         <td style="width:8%"><%=pronum %></td>
@@ -106,13 +111,14 @@
         <td style="width:10%"><%=way %></td>
         <td style="width:40%"><%=message %></td>
         <td style="width:10%"><%=total %>원</td>
+        <td style="width:10%"><%=curtime %></td>
         <td style="width:10%">답변</td>
     </tr>
     <%} %>
     </tbody>
   </table>
   <br />
-    <h2>내가 신청한 메세지에 대한 답변</h2>
+    <h2>답변 메세지</h2>
 </div>
 
 </body>

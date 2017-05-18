@@ -1,13 +1,17 @@
+<%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="product.proDAO" %>
 <%@ page import="product.proDTO" %>
+<%@ page import="jang.jangDAO" %>
+<%@ page import="jang.jangDTO" %>
 <%@ page import="java.util.*" %>
 <jsp:useBean id="product_list" class="product.proDAO" />
+<jsp:useBean id="jang" class="jang.jangDAO" />
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -61,7 +65,7 @@ height:100%;
 <div id="wrapper">
 <center>
 <div style="width:1000px">
-<h2 id="Y_result" style="float:left;display:inline-block;">내가 올린 상품</h2>
+<h2 id="Y_result" style="float:left;display:inline-block;">내가 찜한 상품</h2>
 <div style="background:#428bca;width:20px;height:20px;display:inline-block;float:right"> </div><p style="display:inline-block;float:right">대여</p>
 <div style="background:#ebcccc;width:20px;height:20px;display:inline-block;float:right"> </div><p style="display:inline-block;float:right">판매</p>
 </div>
@@ -69,12 +73,20 @@ height:100%;
 
 <div class="panel-group posts" style="clear:both">
 <%
-	ArrayList<proDTO> pro_mylist = product_list.MyPage(session.getAttribute("id"));
+	ArrayList<proDTO> select_product = new ArrayList<proDTO>();
+	ArrayList<Integer> pronumber = new ArrayList<Integer>();
 	String Y_Category="";
 	String cate_name="";
-	
-	for(int i=0;i<pro_mylist.size();i++){
-		proDTO dto = pro_mylist.get(i);
+	ArrayList<jangDTO> jang_mylist = jang.select_jang(session.getAttribute("id"));
+	for(int i=0;i<jang_mylist.size();i++){
+		jangDTO dto = jang_mylist.get(i);
+		int pronum = dto.getPronum();
+		pronumber.add(pronum);
+		select_product = product_list.MyJang(pronumber.get(i));
+	}
+	for(int j=0;j<pronumber.size();j++)
+	{
+		proDTO dto = select_product.get(j);
 		int pronum = dto.getPronum();
 		String img = dto.getImg();
 		String title = dto.getTitle();
@@ -85,6 +97,7 @@ height:100%;
 		int salprice = dto.getSalprice();
 		int catnum = dto.getCatnum();
 		String proinfo = dto.getProinfo();
+		Timestamp curtime = dto.getCurtime();
 		
 		if(catnum<200 && catnum>100){
 			Y_Category="cate1";
@@ -140,7 +153,7 @@ height:100%;
 		{
 			%>
 	<div class="panel panel-primary <%=Y_Category%> post">
-      <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=pronum %>)</span><span style="text-align:center;">대여상품(<%=cate_name %>)</span><span style="float:right"><a style="color:white" href="Y_Delete_MyProduct?pronum=<%=pronum%>">X</a></span></div>
+      <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=pronum %>)</span><span style="text-align:center;">대여상품(<%=cate_name %>)</span><span style="float:right"><a style="color:white" href="Y_Delete_MyJang?pronum=<%=pronum%>">X</a></span></div>
       <div class="panel-body">
       <div class="col-xs-3 col-md-3"><a href="K_view?pronum=<%=pronum %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
       <div class="col-xs-6 col-md-3"><a href="K_view?pronum=<%=pronum %>"><%=title %></a></div>
@@ -153,7 +166,7 @@ height:100%;
 		}else{
 			%>
 	<div class="panel panel-danger <%=Y_Category%> post">
-      <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=pronum %>)</span><span style="text-align:center;">판매상품(<%=cate_name %>)</span><span style="float:right"><a style="color:white" href="Y_Delete_MyProduct?pronum=<%=pronum%>">X</a></span></div>
+      <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=pronum %>)</span><span style="text-align:center;">판매상품(<%=cate_name %>)</span><span style="float:right"><a style="color:white" href="Y_Delete_MyJang?pronum=<%=pronum%>">X</a></span></div>
       <div class="panel-body">
       <div class="col-xs-3 col-md-3"><a href="K_view?pronum=<%=pronum %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
       <div class="col-xs-6 col-md-3"><a href="K_view?pronum=<%=pronum %>"><%=title %></a></div>

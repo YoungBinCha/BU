@@ -54,6 +54,7 @@ response.sendRedirect("Y_Login");}
     <a id="#section2" class="btn btn-primary">나에게 온 메일</a>
     <a id="#section3" class="btn btn-primary">신청대기 중인 상품</a>
     <a id="#section4" class="btn btn-primary">개인정보 수정</a>
+    <a id="#section5" class="btn btn-primary">찜바구니</a>
   </div>
 </div>
 
@@ -101,6 +102,14 @@ $('.nav-pills a:nth-child(4)').click(function(){
 	$.ajax({
 		type : "POST",
 		url : "./Y_MyPerson",
+		success : WhenSuccess,
+		error : WhenError
+	});
+});
+$('.nav-pills a:nth-child(5)').click(function(){
+	$.ajax({
+		type : "POST",
+		url : "./Y_MyJang",
 		success : WhenSuccess,
 		error : WhenError
 	});

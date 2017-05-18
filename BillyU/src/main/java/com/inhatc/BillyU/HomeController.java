@@ -129,7 +129,19 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/Y_Sale")
 	public String Y_Sale(){
-		return "/Y_Sale";
+		return "Y_Sale";
+	}
+	@RequestMapping(value = "/Y_Submit_Jang")
+	public String Y_Submit_Jang(){
+		return "Y_Submit_Jang";
+	}
+	@RequestMapping(value = "/Y_MyJang")
+	public String Y_MyJang(){
+		return "Y_MyJang";
+	}
+	@RequestMapping(value = "/Y_Delete_MyJang")
+	public String Y_Delete_MyJang(){
+		return "Y_Delete_MyJang";
 	}
 	//상품등록정보 입력 Mapping
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)

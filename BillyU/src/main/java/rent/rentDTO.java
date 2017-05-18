@@ -1,5 +1,7 @@
 package rent;
 
+import java.sql.Timestamp;
+
 public class rentDTO {
 
 	private int rentnum;
@@ -11,8 +13,9 @@ public class rentDTO {
 	private int rentday;
 	private String message;
 	private int total;
+	Timestamp curtime;
 	
-	public rentDTO(int rentnum,String hoster,String guest,int pronum,String way,int startdate,int rentday,String message,int total){
+	public rentDTO(int rentnum,String hoster,String guest,int pronum,String way,int startdate,int rentday,String message,int total,Timestamp curtime){
 		this.rentnum = rentnum;
 		this.hoster = hoster;
 		this.guest = guest;
@@ -22,8 +25,25 @@ public class rentDTO {
 		this.rentday = rentday;
 		this.message = message;
 		this.total = total;
+		this.curtime = curtime;
 	}
 	
+	
+	public Timestamp getCurtime() {
+		return curtime;
+	}
+
+
+	public void setCurtime(Timestamp curtime) {
+		this.curtime = curtime;
+	}
+
+
+	public void setHoster(String hoster) {
+		this.hoster = hoster;
+	}
+
+
 	public int getRentnum() {
 		return rentnum;
 	}

@@ -21,15 +21,6 @@ int startdate=Integer.parseInt(request.getParameter("startdate"));
 int rentday=Integer.parseInt(request.getParameter("ren"));
 int total=Integer.parseInt(request.getParameter("total"));
 
-out.println(guest+"<br />");
-out.println(pronum+"<br />");
-out.println(way+"<br />");
-out.println(message+"<br />");
-out.println(startdate+"<br />");
-out.println(rentday+"<br />");
-out.println(total+"<br />");
-
-
 rent.insert_rent(guest, pronum, message, way, startdate, rentday, total);
 response.sendRedirect("Y_Rent?pronum="+pronum+"");
 %>

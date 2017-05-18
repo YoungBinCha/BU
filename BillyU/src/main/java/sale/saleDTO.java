@@ -1,5 +1,7 @@
 package sale;
 
+import java.sql.Timestamp;
+
 public class saleDTO {
 
 	private int salenum;
@@ -9,8 +11,9 @@ public class saleDTO {
 	private String way;
 	private String message;
 	private int total;
+	Timestamp curtime;
 	
-	public saleDTO(int salenum,String hoster,String guest,int pronum,String way,String message,int total){
+	public saleDTO(int salenum,String hoster,String guest,int pronum,String way,String message,int total,Timestamp curtime){
 		this.salenum = salenum;
 		this.hoster = hoster;
 		this.guest = guest;
@@ -18,8 +21,17 @@ public class saleDTO {
 		this.way = way;
 		this.message = message;
 		this.total = total;
+		this.curtime = curtime;
 	}
 	
+	public Timestamp getCurtime() {
+		return curtime;
+	}
+
+	public void setCurtime(Timestamp curtime) {
+		this.curtime = curtime;
+	}
+
 	public int getSalenum() {
 		return salenum;
 	}
