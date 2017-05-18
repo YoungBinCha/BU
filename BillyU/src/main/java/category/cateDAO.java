@@ -70,7 +70,7 @@ public class cateDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{disconnect();}
-		
+		 
 		return small_list;
 	}
 	
