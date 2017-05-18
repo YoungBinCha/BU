@@ -153,7 +153,7 @@ public class registDAO {
 			pstmt.setString(2, "resources/img/" + dto.getImg());
 			pstmt.setString(3, "resources/img/" + dto.getImg4());
 			pstmt.setString(4, "resources/img/" + dto.getImg3());
-			pstmt.setString(5, "resources/img/" + dto.getImg2());
+			pstmt.setString(5, "resources/img/" + dto.getImg2()); 
 
 			pstmt.executeUpdate();
 			check = true;

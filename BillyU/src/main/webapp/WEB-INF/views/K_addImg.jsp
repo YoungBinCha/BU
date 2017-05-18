@@ -11,7 +11,7 @@
 	width: 400px; 
 	height: 300px;  */
 
-}
+} 
 h3{
 	text-align: center;
 }
