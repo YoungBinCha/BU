@@ -24,6 +24,27 @@ public class registDTO {
 	private String img3;
 	private String img4;
 	
+	public registDTO(String nickname, int catnum, String title, String proinfo, String procondition, String tratype, String traway, int salprice, int renprice, int deposit, int renday){
+		this.nickname = nickname;
+		this.catnum = catnum;
+		this.title = title;
+		this.proinfo = proinfo;
+		this.procondition = procondition;
+		this.tratype = tratype;
+		this.traway = traway;
+		this.salprice = salprice;
+		this.renprice = renprice;
+		this.deposit = deposit;
+		this.renday = renday;
+	}
+	
+	public registDTO(String img, String img2, String img3, String img4){
+		this.img = img;
+		this.img2 = img2;
+		this.img3 = img3;
+		this.img4 = img4;
+	}
+	
 	
 	public String getImg() {
 		return img;

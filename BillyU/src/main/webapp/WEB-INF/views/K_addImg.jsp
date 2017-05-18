@@ -41,7 +41,10 @@
 			<div class="col-lg-3">
 			</div>
 			<div class="col-lg-6">
-				<form action="regist.ro" enctype="multipart/form-data" method="post">
+				<!-- enntype 이 encode 타입 말하는데 기본값은 application/x-www-form-urlencoded 이고 이건 전송하기전에 인코딩을 하는 형식
+					하지만 multipart / form-data 방식은 인코드 하지 않아 , 업로드 할 때 필요한 형식
+				-->
+				<form action="regist.ro" enctype="multipart/form-data" method="post">	
 					<h1>상품 이미지 입력</h1>
 					<!-- 큰틀 -->
 					<input type="file" name="upfile" id="image" style="display: none;">

@@ -40,11 +40,10 @@
 		ArrayList<String> al = sel.selectProduct(y_pronum);
 		String type = al.get(4);
 		
-	%>
-	<jsp:useBean id="se" class="regist.registDAO"></jsp:useBean>
-	<%
-		ArrayList<String> al2 = se.selectImage();
+
+		ArrayList<String> al2 = sel.selectImage();
 		String mimg = ""+al2.get(0);
+		String img = sel.receiveImage(y_pronum);
 	%>
 	<br />
 	<div class="container">
@@ -63,7 +62,7 @@
 		<br>
 		<div class="row">
 			<div class="col-lg-7">
-				<img class="img-responsive" src="<%= mimg %>" alt="Chania" width="600"
+				<img class="img-responsive" src="<%= img %>" alt="Chania" width="600"
 					height="400">	
 			</div>
 			<div class="col-lg-4">

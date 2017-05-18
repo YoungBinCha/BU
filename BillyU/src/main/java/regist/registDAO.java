@@ -48,7 +48,7 @@ public class registDAO {
 			check = true;
 			pstmt.close();
 		} catch (SQLException ex) {
-			System.out.println("SQL insertSaleProduct ���� : " + ex.getLocalizedMessage());
+			System.out.println("SQL insertSaleProduct() 오류  : " + ex.getLocalizedMessage());
 		}
 		return check;
 	}
@@ -74,7 +74,7 @@ public class registDAO {
 			check = true;
 			pstmt.close();
 		} catch (SQLException ex) {
-			System.out.println("SQL insertRentProduct ���� : " + ex.getLocalizedMessage());
+			System.out.println("SQL insertRentProduct() 오류 : " + ex.getLocalizedMessage());
 		}
 		return check;
 	}
@@ -85,13 +85,13 @@ public class registDAO {
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-
+			
 			rs.next();
 			catnum = Integer.parseInt(rs.getString("catnum"));
 
 			stmt.close();
 		} catch (SQLException ex) {
-			System.out.println("SQL selectCatnum ���� : " + ex.getLocalizedMessage());
+			System.out.println("SQL selectCatnum() 오류 : " + ex.getLocalizedMessage());
 		}
 		return catnum;
 	}
@@ -109,7 +109,7 @@ public class registDAO {
 
 			stmt.close();
 		} catch (SQLException ex) {
-			System.out.println("SQL select ���� : " + ex.getLocalizedMessage());
+			System.out.println("SQL selectCategory() 오류 : " + ex.getLocalizedMessage());
 		}
 		return big;
 	}
@@ -136,7 +136,7 @@ public class registDAO {
 
 			stmt.close();
 		} catch (SQLException ex) {
-			System.out.println("SQL selectCatnum ���� : " + ex.getLocalizedMessage());
+			System.out.println("SQL selectProduct() 오류 : " + ex.getLocalizedMessage());
 		}
 		return al;
 	}
@@ -159,26 +159,25 @@ public class registDAO {
 			check = true;
 			pstmt.close();
 		} catch (SQLException ex) {
-			System.out.println("SQL insertImage 占쏙옙占쏙옙 : " + ex.getLocalizedMessage());
+			System.out.println("SQL insertImage insertImge() 오류 : " + ex.getLocalizedMessage());
 		}
 		return check;
 	}
 
 	public boolean updateImage(registDTO dto, int pronum) {
-
-		String query = "update product set img='?' where pronum = ? ;";
+		String address = "resources/img/" + dto.getImg();
+		
+		String query = "update product set img='"+address+"' where pronum = "+pronum+" ;";
 		boolean check = false;
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, pronum);
-			pstmt.setString(2, "resources/img/" + dto.getImg());
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(query);
 
-			pstmt.executeUpdate();
 			check = true;
-			pstmt.close();
+			stmt.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("SQL updateImage() 오류 : " + e.getLocalizedMessage());
 		}
 		return check;
 
@@ -195,9 +194,25 @@ public class registDAO {
 
 			stmt.close();
 		} catch (SQLException ex) {
-			System.out.println("SQL selectCatnum 占쏙옙占쏙옙 : " + ex.getLocalizedMessage());
+			System.out.println("SQL selectPronum() 오류 : " + ex.getLocalizedMessage());
 		}
 		return pronum;
+	}
+	
+	public String receiveImage(int pronum){
+		String query = "SELECT img FROM product where pronum = "+pronum+" ;";
+		String image = "";
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			rs.next();
+			image = rs.getString("img");
+
+			stmt.close();
+		} catch (SQLException ex) {
+			System.out.println("SQL selectPronum() 오류 : " + ex.getLocalizedMessage());
+		}
+		return image;
 	}
 
 	public ArrayList<String> selectImage() {
@@ -216,7 +231,7 @@ public class registDAO {
 
 			stmt.close();
 		} catch (SQLException ex) {
-			System.out.println("SQL selectCatnum 占쏙옙占쏙옙 : " + ex.getLocalizedMessage());
+			System.out.println("SQL selectImage() 오류 : " + ex.getLocalizedMessage());
 		}
 		return al;
 	}

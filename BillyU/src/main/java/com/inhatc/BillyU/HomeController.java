@@ -170,11 +170,12 @@ public class HomeController {
 		int deposit = Integer.parseInt(deposit_s);
 		int renday = Integer.parseInt(renday_s);
 		
-		registDTO dto = new registDTO();
 		HttpSession ses = req.getSession();
 		String nickname = (String)ses.getAttribute("id");
 		
-		dto.setNickname(nickname); 
+		registDTO dto = new registDTO(nickname, catnum, title, productinfo, productcondition, tratype, traway, salprice, renprice, deposit, renday);
+
+		/*dto.setNickname(nickname); 
 		dto.setCatnum(catnum);
 		dto.setTitle(title);
 		dto.setProinfo(productinfo);
@@ -186,7 +187,7 @@ public class HomeController {
 
 		dto.setRenprice(renprice);
 		dto.setDeposit(deposit);
-		dto.setRenday(renday);
+		dto.setRenday(renday);*/
 		
 		if (dto.getTratype().equals("대여")) {
 			dao.insertRentProduct(dto); 
@@ -235,11 +236,11 @@ public class HomeController {
 		img4 = multi.getOriginalFileName(file4);
 		
 		registDAO dao = new registDAO();
-		registDTO dto = new registDTO();
-		dto.setImg(img);
+		registDTO dto = new registDTO(img, img2, img3, img4);
+		/*dto.setImg(img);
 		dto.setImg2(img2);
 		dto.setImg3(img3);
-		dto.setImg4(img4);
+		dto.setImg4(img4);*/
 		
 		int pronum = dao.selectPronum();
 		

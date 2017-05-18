@@ -18,8 +18,6 @@ public class proDTO {
 	int salprice;
 	String img;
 	Timestamp curtime;
-	
-	
 
 	public proDTO(int pronum,String nickname,int catnum,String title,String proinfo,String procondition,String traway,String tratype,int renprice,int renday,int deposit,int salprice,String img,Timestamp curtime){
 		this.pronum = pronum;
