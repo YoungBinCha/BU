@@ -74,4 +74,20 @@ public class cateDAO {
 		return small_list;
 	}
 	
+	public String receiveSmall(int catnum){
+		String small = "";
+		try{
+			connect();
+			String sql = "select small from category where catnum = "+catnum+";";
+			rs = stmt.executeQuery(sql);
+			rs.next();
+			small = rs.getString("small");
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
+		
+		return small;
+	}
+	
 }

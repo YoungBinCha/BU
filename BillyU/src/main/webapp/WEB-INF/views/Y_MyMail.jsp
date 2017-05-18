@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.util.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*" %>
     <%@ page import="rent.rentDAO" %>
     <%@ page import="rent.rentDTO" %>
     <%@ page import="sale.saleDAO" %>
@@ -10,7 +10,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <title>������ �¸���</title>
+  <title>나에게 온메일</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,20 +18,20 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h2>���� �ø� ��ǰ�� ���� �޼���</h2>
+<h2>내가 올린 상품에 대한 메세지</h2>
 <div class="container">          
-<h3>�뿩</h3>  
+<h3>대여</h3>  
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>��ǰ��ȣ</th>
-        <th>�뿩��ȣ</th>
-        <th>��û��</th>
-        <th>�ŷ����</th>
-        <th>�뿩���۳�¥</th>
-        <th>���ϵ���</th>
-        <th>�޼���</th>
-        <th>�ѱݾ�</th>
+        <th>상품번호</th>
+        <th>대여번호</th>
+        <th>신청자</th>
+        <th>거래방식</th>
+        <th>대여시작날짜</th>
+        <th>몇일동안</th>
+        <th>메세지</th>
+        <th>총금액</th>
         <th> </th>
       </tr>
     </thead>
@@ -60,11 +60,11 @@
         <td style="width:8%"><%=rentnum %></td>
         <td style="width:8%"><%=guest %></td>
         <td style="width:10%"><%=way %></td>
-        <td style="width:10%"><%=startdate %>����</td>
-        <td style="width:10%"><%=rentday %>�ϵ���</td>
+        <td style="width:10%"><%=startdate %>부터</td>
+        <td style="width:10%"><%=rentday %>일동안</td>
         <td style="width:40%"><%=message %></td>
-        <td style="width:10%"><%=total %>��</td>
-        <td style="width:10%">�亯</td>
+        <td style="width:10%"><%=total %>원</td>
+        <td style="width:10%">답변</td>
     </tr>
     <%} %>
     </tbody>
@@ -72,16 +72,16 @@
   <br />
 </div>
 <div class="container">          
-<h3>�Ǹ�</h3>  
+<h3>판매</h3>  
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>��ǰ��ȣ</th>
-        <th>�ǸŹ�ȣ</th>
-        <th>��û��</th>
-        <th>�ŷ����</th>
-        <th>�޼���</th>
-        <th>�ѱݾ�</th>
+        <th>상품번호</th>
+        <th>판매번호</th>
+        <th>신청자</th>
+        <th>거래방식</th>
+        <th>메세지</th>
+        <th>총금액</th>
         <th> </th>
       </tr>
     </thead>
@@ -105,14 +105,14 @@
         <td style="width:8%"><%=guest %></td>
         <td style="width:10%"><%=way %></td>
         <td style="width:40%"><%=message %></td>
-        <td style="width:10%"><%=total %>��</td>
-        <td style="width:10%">�亯</td>
+        <td style="width:10%"><%=total %>원</td>
+        <td style="width:10%">답변</td>
     </tr>
     <%} %>
     </tbody>
   </table>
   <br />
-    <h2>���� ��û�� �޼����� ���� �亯</h2>
+    <h2>내가 신청한 메세지에 대한 답변</h2>
 </div>
 
 </body>

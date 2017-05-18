@@ -132,11 +132,11 @@ public class HomeController {
 		return "/Y_Sale";
 	}
 	//상품등록정보 입력 Mapping
-	@RequestMapping(value = "/regist.do")
+	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
 	public String registdo(HttpServletRequest req, Model model){
 		//DB 한글깨짐 방지 
 		try {
-			req.setCharacterEncoding("euc-kr");
+			req.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -175,20 +175,6 @@ public class HomeController {
 		
 		registDTO dto = new registDTO(nickname, catnum, title, productinfo, productcondition, tratype, traway, salprice, renprice, deposit, renday);
 
-		/*dto.setNickname(nickname); 
-		dto.setCatnum(catnum);
-		dto.setTitle(title);
-		dto.setProinfo(productinfo);
-		dto.setProcondition(productcondition);
-		dto.setTraway(traway);
-		dto.setSalprice(salprice);
-
-		dto.setTratype(tratype);
-
-		dto.setRenprice(renprice);
-		dto.setDeposit(deposit);
-		dto.setRenday(renday);*/
-		
 		if (dto.getTratype().equals("대여")) {
 			dao.insertRentProduct(dto); 
 		} else if (dto.getTratype().equals("판매")) {
@@ -204,12 +190,12 @@ public class HomeController {
 		return "K_addImg";
 	}
 	//상품사진등록 Mapping
-	@RequestMapping(value = "/regist.ro")
+	@RequestMapping(value = "/regist.ro", method = RequestMethod.POST)
 	public String registro(HttpServletRequest req, Model model) throws IOException{
 		
 		//DB 한글깨짐 방지 
 		try {
-			req.setCharacterEncoding("euc-kr");
+			req.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -237,10 +223,6 @@ public class HomeController {
 		
 		registDAO dao = new registDAO();
 		registDTO dto = new registDTO(img, img2, img3, img4);
-		/*dto.setImg(img);
-		dto.setImg2(img2);
-		dto.setImg3(img3);
-		dto.setImg4(img4);*/
 		
 		int pronum = dao.selectPronum();
 		
