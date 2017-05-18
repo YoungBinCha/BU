@@ -1,11 +1,11 @@
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%request.setCharacterEncoding("euc-kr"); %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
 <!-- Latest compiled and minified CSS -->
@@ -30,17 +30,17 @@
 			//$(".submit").toggle();
 		});
 
-		//´ë¿© ¹öÆ° ´©¸£¸é tratypeÀÇ value°ªÀÌ rent·Î
+		//ëŒ€ì—¬ ë²„íŠ¼ ëˆ„ë¥´ë©´ tratypeì˜ valueê°’ì´ rentë¡œ
 		$('.re').click(function() {
-			$('.tratype').val("´ë¿©");
+			$('.tratype').val("ëŒ€ì—¬");
 		});
-		//ÆÇ¸Å ¹öÆ° ´©¸£¸é tratypeÀÇ value°ªÀÌ sale·Î ,,
+		//íŒë§¤ ë²„íŠ¼ ëˆ„ë¥´ë©´ tratypeì˜ valueê°’ì´ saleë¡œ ,,
 		$('.sa').click(function() {
-			$('.tratype').val("ÆÇ¸Å");
+			$('.tratype').val("íŒë§¤");
 		});
 
 		$('.input').click(function() {
-			$(this).toggleText('´ÙÀ½', 'ÀÌÀü');
+			$(this).toggleText('ë‹¤ìŒ', 'ì´ì „');
 		});
 	});
 </script>
@@ -53,16 +53,16 @@
 			<div class="col-lg-3"></div>
 			<div class="col-lg-6">
 				<div class="K_productRegist">
-					<h2>»óÇ° Á¤º¸ ÀÔ·Â</h2>
+					<h2>ìƒí’ˆ ì •ë³´ ì…ë ¥</h2>
 					<form action="regist.do" method="post">
 						<div class="product">
 							<div class="form-group">
-								<label for="title">Á¦¸ñ : </label> <input type="text"
+								<label for="title">ì œëª© : </label> <input type="text"
 									class="form-control" id="title" name="title"
 									placeholder="Enter title">
 							</div>
 							<div class="form-group">
-								<label for="category">Ä«Å×°í¸®:</label> <select class="form-control"
+								<label for="category">ì¹´í…Œê³ ë¦¬:</label> <select class="form-control"
 									id="category" name="category">
 									 <%-- <jsp:useBean id="sel"
 										class="com.openmarket.Capstone_productDAO"></jsp:useBean>  --%>
@@ -79,84 +79,84 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="procondition">»óÇ°»óÅÂ :</label> <label
+								<label for="procondition">ìƒí’ˆìƒíƒœ :</label> <label
 									class="radio-inline"> <input type="radio"
-									name="procondition" value="s±Ş">S±Ş
+									name="procondition" value="sê¸‰">Sê¸‰
 								</label> <label class="radio-inline"> <input type="radio"
-									name="procondition" value="a±Ş">A±Ş
+									name="procondition" value="aê¸‰">Aê¸‰
 								</label> <label class="radio-inline"> <input type="radio"
-									name="procondition" value="b±Ş">B±Ş
+									name="procondition" value="bê¸‰">Bê¸‰
 								</label>
 							</div>
 							<div class="form-group">
-								<!--  ÀÌ°Ç text°¡ ¾Æ´Ï¶ó ´Ù¸¥ Çü½ÄÀ¸·Î¹Ş´Â°Ç ¾î¶³±î? -->
-								<label for="proinfo">»óÇ°¼³¸í</label>
+								<!--  ì´ê±´ textê°€ ì•„ë‹ˆë¼ ë‹¤ë¥¸ í˜•ì‹ìœ¼ë¡œë°›ëŠ”ê±´ ì–´ë–¨ê¹Œ? -->
+								<label for="proinfo">ìƒí’ˆì„¤ëª…</label>
 								<textarea class="form-control" rows="5" id="proinfo"
 									placeholder="Input info" name="productinfo"></textarea>
 							</div>
 
 						</div>
-						<!-- ¿©±âºÎÅÏ ´ë¿© Á¤º¸ ÀÔ·Â -->
+						<!-- ì—¬ê¸°ë¶€í„´ ëŒ€ì—¬ ì •ë³´ ì…ë ¥ -->
 						<div class="K_trade">
 							<ul class="nav nav-tabs">
-								<li class="active"><a data-toggle="tab" href="#rent">´ë¿©</a></li>
-								<li><a data-toggle="tab" href="#sale">ÆÇ¸Å</a></li>
+								<li class="active"><a data-toggle="tab" href="#rent">ëŒ€ì—¬</a></li>
+								<li><a data-toggle="tab" href="#sale">íŒë§¤</a></li>
 							</ul>
 
 							<div class="tab-content">
 								<div class="form-group">
-									<input class="tratype" type="hidden" name="tratype" value="´ë¿©" />
+									<input class="tratype" type="hidden" name="tratype" value="ëŒ€ì—¬" />
 								</div>
 								<div id="rent" class="re tab-pane fade in active">
-									<h3>´ë¿©</h3>
+									<h3>ëŒ€ì—¬</h3>
 
 									<div class="form-group">
-										<label for="renprice">´ë¿©±İ¾× : </label> <input type="text"
+										<label for="renprice">ëŒ€ì—¬ê¸ˆì•¡ : </label> <input type="text"
 											class="form-control" id="renprice" name="renprice"
 											placeholder="Enter rentalFee">
 									</div>
 									<div class="form-group">
-										<label for="deposit">º¸Áõ±İ :</label> <input type="text"
+										<label for="deposit">ë³´ì¦ê¸ˆ :</label> <input type="text"
 											class="form-control" id="deposit" name="deposit"
 											placeholder="Enter deposit">
 									</div>
 									<div class="form-group">
-										<label for="renday">´ë¿©°¡´ÉÀÏ¼ö :</label> <input type="text"
+										<label for="renday">ëŒ€ì—¬ê°€ëŠ¥ì¼ìˆ˜ :</label> <input type="text"
 											class="form-control" id="renday" name="renday"
 											placeholder="Enter renday">
 									</div>
 									<div class="form-group">
-										<label for="traway">°Å·¡¹æ¹ı : </label> <label
+										<label for="traway">ê±°ë˜ë°©ë²• : </label> <label
 											class="radio-inline"> <input type="radio"
-											name="traway" value="ÅÃ¹è">ÅÃ¹è
+											name="traway" value="íƒë°°">íƒë°°
 										</label> <label class="radio-inline"> <input type="radio"
-											name="traway" value="Á÷°Å·¡">Á÷°Å·¡
+											name="traway" value="ì§ê±°ë˜">ì§ê±°ë˜
 										</label>
 									</div>
 									<button type="submit" class="submit btn btn-default btn-block">Submit</button>
 								</div>
 								<div id="sale" class="sa tab-pane fade">
-									<h3>ÆÇ¸Å</h3>
+									<h3>íŒë§¤</h3>
 									<div class="form-group">
-										<label for="salprice">ÆÇ¸Å±İ¾× : </label> <input type="text"
+										<label for="salprice">íŒë§¤ê¸ˆì•¡ : </label> <input type="text"
 											class="form-control" id="salprice" name="salprice"
 											placeholder="Enter salprice">
 									</div>
 									<div class="form-group">
-										<label for="traway">°Å·¡¹æ¹ı : </label> <label
+										<label for="traway">ê±°ë˜ë°©ë²• : </label> <label
 											class="radio-inline"> <input type="radio"
-											name="traway" value="ÅÃ¹è">ÅÃ¹è
+											name="traway" value="íƒë°°">íƒë°°
 										</label> <label class="radio-inline"> <input type="radio"
-											name="traway" value="Á÷°Å·¡">Á÷°Å·¡
+											name="traway" value="ì§ê±°ë˜">ì§ê±°ë˜
 										</label>
 									</div>
-									<button type="submit" class="submit btn btn-default btn-block" >µî·ÏÇÏ±â</button>
+									<button type="submit" class="submit btn btn-default btn-block" >ë“±ë¡í•˜ê¸°</button>
 								</div>
 							</div>
-							<!-- °Å·¡ Çü½ÄÀ» 'ÆÇ¸Å'¸¦ ¼±ÅÃÇßÀ» ¶§ -->		
+							<!-- ê±°ë˜ í˜•ì‹ì„ 'íŒë§¤'ë¥¼ ì„ íƒí–ˆì„ ë•Œ -->		
 						</div>
 					</form>
-					<button type="button" class="input btn btn-primary btn-block">´ÙÀ½</button>
+					<button type="button" class="input btn btn-primary btn-block">ë‹¤ìŒ</button>
 				</div>
 				
 			</div>

@@ -1,17 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
 #image-preview{
-	display:none;
+	/* display:none;
 	width: 400px; 
-	height: 300px; 
+	height: 300px;  */
 
 }
+h3{
+	text-align: center;
+}
+
+#page-content-wrapper{
+	padding: 0px;
+}
+
 #J_image_box{
 	width: 400px; 
 	height: 150px; 
@@ -38,126 +46,152 @@
 	<br />
 	<div class="container-fluid" style="text-align: center;" >
 		<div class="row">
-			<div class="col-lg-3">
-			</div>
-			<div class="col-lg-6">
-				<!-- enntype ÀÌ encode Å¸ÀÔ ¸»ÇÏ´Âµ¥ ±âº»°ªÀº application/x-www-form-urlencoded ÀÌ°í ÀÌ°Ç Àü¼ÛÇÏ±âÀü¿¡ ÀÎÄÚµùÀ» ÇÏ´Â Çü½Ä
-					ÇÏÁö¸¸ multipart / form-data ¹æ½ÄÀº ÀÎÄÚµå ÇÏÁö ¾Ê¾Æ , ¾÷·Îµå ÇÒ ¶§ ÇÊ¿äÇÑ Çü½Ä
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
+				<!-- enntype ì´ encode íƒ€ì… ë§í•˜ëŠ”ë° ê¸°ë³¸ê°’ì€ application/x-www-form-urlencoded ì´ê³  ì´ê±´ ì „ì†¡í•˜ê¸°ì „ì— ì¸ì½”ë”©ì„ í•˜ëŠ” í˜•ì‹
+					í•˜ì§€ë§Œ multipart / form-data ë°©ì‹ì€ ì¸ì½”ë“œ í•˜ì§€ ì•Šì•„ , ì—…ë¡œë“œ í•  ë•Œ í•„ìš”í•œ í˜•ì‹
 				-->
 				<form action="regist.ro" enctype="multipart/form-data" method="post">	
-					<h1>»óÇ° ÀÌ¹ÌÁö ÀÔ·Â</h1>
-					<!-- Å«Æ² -->
+					<h1>ìƒí’ˆ ì´ë¯¸ì§€ ì…ë ¥</h1>
+					<!-- í°í‹€ -->
 					<input type="file" name="upfile" id="image" style="display: none;">
        				<input type="file" name="upfile2" id="image2" style="display: none;">
         			<input type="file" name="upfile3" id="image3" style="display: none;">
         			<input type="file" name="upfile4" id="image4" style="display: none;">
     				<div id="image_preview" >
-        				<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 400px; height: 300px;" border="0" onclick="document.all.upfile.click(); ">
-        				<br>
-        				<div id="J_image_box" style="display: none;">
+    					<div class="row">
+    						<div class="col-lg-9">
+    							<h3>ë©”ì¸ì‚¬ì§„</h3>
+    							<div class="row">
+    								<div class="col-lg-12">
+    									<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 80%; height: 450px;" border="0" onclick="document.all.upfile.click(); ">
+    								</div>
+    							</div>
+    						</div>
+    						 <div class="col-lg-3">
+    						 	<h3>ì„œë¸Œì‚¬ì§„</h3>
+    						 	<div class="row">
+    						 		<div class="col-lg-12">
+    						 			<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100%; height: 150px;" border="0" onclick="document.all.upfile2.click(); ">
+    						 		</div>
+    						 	</div>
+    						 	<div class="row">
+    						 		<div class="col-lg-12">
+    						 			<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100%; height: 150px;" border="0" onclick="document.all.upfile3.click(); ">
+    						 		</div>
+    						 	</div>
+    						 	<div class="row">
+    						 		<div class="col-lg-12">
+    						 			<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100%; height: 150px;" border="0" onclick="document.all.upfile4.click(); ">
+    						 		</div>
+    						 	</div>
+    						</div>
+    					</div>
+    				        				
+    				        				<!-- <br>
+    				        				<div id="J_image_box" style="display: none;">
     						<div class= "row">
     							<div class="col-lg-4">
     								<div id="J_image_2" style=" width: 100px; height: 100px; float: left;">
-    									<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100px; height: 100px;" border="0" onclick="document.all.upfile2.click(); ">
+    									
     								</div>
     							</div>
     							<div class="col-lg-4">
     								<div id="J_image_3" style=" width: 100px; height: 100px; float: left; ">
-    									<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100px; height: 100px;" border="0" onclick="document.all.upfile3.click(); ">
+    									
     								</div>
     							</div>
     							<div class="col-lg-4">
     								<div id="J_image_4" style=" width: 100px; height: 100px; float: left; ">
-    									<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100px; height: 100px;" border="0" onclick="document.all.upfile4.click(); ">
+    									
     								</div>
     							</div>
     						</div>
-    					</div>
+    					</div> -->
     				</div>
     				</br>
-    				<input type="submit" class="btn btn-primary" value="µî·Ï" style="width: 400px;" onclick="test()">
+    				<input type="submit" class="btn btn-primary" value="ë“±ë¡" style="width: 400px;" onclick="test()">
 				</form>
 			</div>
-			<div class="col-lg-3">
-			</div>
+			<div class="col-lg-1"></div>
 		</div>
 	</div>
 </body>
 <script type="text/javascript">
 $('#image').on('change', function() {
     
-    ext = $(this).val().split('.').pop().toLowerCase(); //È®ÀåÀÚ
+    ext = $(this).val().split('.').pop().toLowerCase(); //í™•ì¥ì
     
-    //¹è¿­¿¡ ÃßÃâÇÑ È®ÀåÀÚ°¡ Á¸ÀçÇÏ´ÂÁö Ã¼Å©
+    //ë°°ì—´ì— ì¶”ì¶œí•œ í™•ì¥ìê°€ ì¡´ì¬í•˜ëŠ”ì§€ ì²´í¬
     if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-        resetFormElement($(this)); //Æû ÃÊ±âÈ­
-        window.alert('ÀÌ¹ÌÁö ÆÄÀÏÀÌ ¾Æ´Õ´Ï´Ù! (gif, png, jpg, jpeg ¸¸ ¾÷·Îµå °¡´É)');
+        resetFormElement($(this)); //í¼ ì´ˆê¸°í™”
+        window.alert('ì´ë¯¸ì§€ íŒŒì¼ì´ ì•„ë‹™ë‹ˆë‹¤! (gif, png, jpg, jpeg ë§Œ ì—…ë¡œë“œ ê°€ëŠ¥)');
     } else {
         file = $('#image').prop("files")[0];
         blobURL = window.URL.createObjectURL(file);
         $('#image_preview img').attr('src', blobURL);
-        $('#image_preview').slideDown(); //¾÷·ÎµåÇÑ ÀÌ¹ÌÁö ¹Ì¸®º¸±â 
-        $(this).slideUp(); //ÆÄÀÏ ¾ç½Ä °¨Ãã
+        $('#image_preview').slideDown(); //ì—…ë¡œë“œí•œ ì´ë¯¸ì§€ ë¯¸ë¦¬ë³´ê¸° 
+        $(this).slideUp(); //íŒŒì¼ ì–‘ì‹ ê°ì¶¤
     }
 });
 
 $('#image2').on('change', function() {
     
-    ext = $(this).val().split('.').pop().toLowerCase(); //È®ÀåÀÚ
+    ext = $(this).val().split('.').pop().toLowerCase(); //í™•ì¥ì
     
-    //¹è¿­¿¡ ÃßÃâÇÑ È®ÀåÀÚ°¡ Á¸ÀçÇÏ´ÂÁö Ã¼Å©
+    //ë°°ì—´ì— ì¶”ì¶œí•œ í™•ì¥ìê°€ ì¡´ì¬í•˜ëŠ”ì§€ ì²´í¬
     if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-        resetFormElement($(this)); //Æû ÃÊ±âÈ­
-        window.alert('ÀÌ¹ÌÁö ÆÄÀÏÀÌ ¾Æ´Õ´Ï´Ù! (gif, png, jpg, jpeg ¸¸ ¾÷·Îµå °¡´É)');
+        resetFormElement($(this)); //í¼ ì´ˆê¸°í™”
+        window.alert('ì´ë¯¸ì§€ íŒŒì¼ì´ ì•„ë‹™ë‹ˆë‹¤! (gif, png, jpg, jpeg ë§Œ ì—…ë¡œë“œ ê°€ëŠ¥)');
     } else {
         file = $('#image2').prop("files")[0];
         blobURL = window.URL.createObjectURL(file);
         $('#J_image_2 img').attr('src', blobURL);
-        $('#J_image_2').slideDown(); //¾÷·ÎµåÇÑ ÀÌ¹ÌÁö ¹Ì¸®º¸±â 
-        $(this).slideUp(); //ÆÄÀÏ ¾ç½Ä °¨Ãã
+        $('#J_image_2').slideDown(); //ì—…ë¡œë“œí•œ ì´ë¯¸ì§€ ë¯¸ë¦¬ë³´ê¸° 
+        $(this).slideUp(); //íŒŒì¼ ì–‘ì‹ ê°ì¶¤
     }
 });
 
 $('#image3').on('change', function() {
     
-    ext = $(this).val().split('.').pop().toLowerCase(); //È®ÀåÀÚ
+    ext = $(this).val().split('.').pop().toLowerCase(); //í™•ì¥ì
     
-    //¹è¿­¿¡ ÃßÃâÇÑ È®ÀåÀÚ°¡ Á¸ÀçÇÏ´ÂÁö Ã¼Å©
+    //ë°°ì—´ì— ì¶”ì¶œí•œ í™•ì¥ìê°€ ì¡´ì¬í•˜ëŠ”ì§€ ì²´í¬
     if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-        resetFormElement($(this)); //Æû ÃÊ±âÈ­
-        window.alert('ÀÌ¹ÌÁö ÆÄÀÏÀÌ ¾Æ´Õ´Ï´Ù! (gif, png, jpg, jpeg ¸¸ ¾÷·Îµå °¡´É)');
+        resetFormElement($(this)); //í¼ ì´ˆê¸°í™”
+        window.alert('ì´ë¯¸ì§€ íŒŒì¼ì´ ì•„ë‹™ë‹ˆë‹¤! (gif, png, jpg, jpeg ë§Œ ì—…ë¡œë“œ ê°€ëŠ¥)');
     } else {
         file = $('#image3').prop("files")[0];
         blobURL = window.URL.createObjectURL(file);
         $('#J_image_3 img').attr('src', blobURL);
-        $('#J_image_3').slideDown(); //¾÷·ÎµåÇÑ ÀÌ¹ÌÁö ¹Ì¸®º¸±â 
-        $(this).slideUp(); //ÆÄÀÏ ¾ç½Ä °¨Ãã
+        $('#J_image_3').slideDown(); //ì—…ë¡œë“œí•œ ì´ë¯¸ì§€ ë¯¸ë¦¬ë³´ê¸° 
+        $(this).slideUp(); //íŒŒì¼ ì–‘ì‹ ê°ì¶¤
     }
 });
 
 $('#image4').on('change', function() {
     
-    ext = $(this).val().split('.').pop().toLowerCase(); //È®ÀåÀÚ
+    ext = $(this).val().split('.').pop().toLowerCase(); //í™•ì¥ì
     
-    //¹è¿­¿¡ ÃßÃâÇÑ È®ÀåÀÚ°¡ Á¸ÀçÇÏ´ÂÁö Ã¼Å©
+    //ë°°ì—´ì— ì¶”ì¶œí•œ í™•ì¥ìê°€ ì¡´ì¬í•˜ëŠ”ì§€ ì²´í¬
     if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-        resetFormElement($(this)); //Æû ÃÊ±âÈ­
-        window.alert('ÀÌ¹ÌÁö ÆÄÀÏÀÌ ¾Æ´Õ´Ï´Ù! (gif, png, jpg, jpeg ¸¸ ¾÷·Îµå °¡´É)');
+        resetFormElement($(this)); //í¼ ì´ˆê¸°í™”
+        window.alert('ì´ë¯¸ì§€ íŒŒì¼ì´ ì•„ë‹™ë‹ˆë‹¤! (gif, png, jpg, jpeg ë§Œ ì—…ë¡œë“œ ê°€ëŠ¥)');
     } else {
         file = $('#image4').prop("files")[0];
         blobURL = window.URL.createObjectURL(file);
         $('#J_image_4 img').attr('src', blobURL);
-        $('#J_image_4').slideDown(); //¾÷·ÎµåÇÑ ÀÌ¹ÌÁö ¹Ì¸®º¸±â 
-        $(this).slideUp(); //ÆÄÀÏ ¾ç½Ä °¨Ãã
+        $('#J_image_4').slideDown(); //ì—…ë¡œë“œí•œ ì´ë¯¸ì§€ ë¯¸ë¦¬ë³´ê¸° 
+        $(this).slideUp(); //íŒŒì¼ ì–‘ì‹ ê°ì¶¤
     }
 });
 
 
 $('#image_preview a').bind('click', function() {
-    resetFormElement($('#image')); //Àü´ŞÇÑ ¾ç½Ä ÃÊ±âÈ­
-    $('#image').slideDown(); //ÆÄÀÏ ¾ç½Ä º¸¿©ÁÜ
-    $(this).parent().slideUp(); //¹Ì¸® º¸±â ¿µ¿ª °¨Ãã
-    return false; //±âº» ÀÌº¥Æ® ¸·À½
+    resetFormElement($('#image')); //ì „ë‹¬í•œ ì–‘ì‹ ì´ˆê¸°í™”
+    $('#image').slideDown(); //íŒŒì¼ ì–‘ì‹ ë³´ì—¬ì¤Œ
+    $(this).parent().slideUp(); //ë¯¸ë¦¬ ë³´ê¸° ì˜ì—­ ê°ì¶¤
+    return false; //ê¸°ë³¸ ì´ë²¤íŠ¸ ë§‰ìŒ
 });
     
 function resetFormElement(e) {

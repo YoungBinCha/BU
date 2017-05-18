@@ -1,11 +1,13 @@
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-	<%request.setCharacterEncoding("euc-kr"); %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>viewPage</title>
@@ -49,13 +51,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
-				<mark>Ä«Å×°í¸®</mark><h3><%= al.get(9) %></h3>
+				<mark>Ä«ï¿½×°ï¿½</mark><h3><%= al.get(9) %></h3>
 			</div>
 			<div class="col-lg-3">
-				<mark>°Å·¡Çü½Ä</mark><h3><%= type %></h3>
+				<mark>ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½</mark><h3><%= type %></h3>
 			</div>
 			<div class="col-lg-6">
-				<mark>Á¦¸ñ</mark><h3><%= al.get(0) %></h3>
+				<mark>ï¿½ï¿½ï¿½ï¿½</mark><h3><%= al.get(0) %></h3>
 			</div>
 		</div>
 		<br>
@@ -67,7 +69,7 @@
 			</div>
 			<div class="col-lg-4">
 			<%
-			if(type.equals("´ë¿©")){
+			if(type.equals("ï¿½ë¿©")){
 			%>
 				<div class="panel panel-default panel-rent" data-spy="affix"
 					data-offset-top="360">
@@ -76,10 +78,10 @@
 						int renprice = Integer.parseInt(al.get(5));
 						int deposit = Integer.parseInt(al.get(7));
 					%>
-						<h1 class="text-center" id="title_cost"><%= (renprice+deposit) +"¿ø" %></h1>
+						<h1 class="text-center" id="title_cost"><%= (renprice+deposit) +"ï¿½ï¿½" %></h1>
 						<br>
 						<p class="text-center">
-							<small> ´ë¿©ºñ <%= renprice %>(1ÁÖ) + º¸Áõ±Ý <%=deposit %> </small>
+							<small> ï¿½ë¿©ï¿½ï¿½ <%= renprice %>(1ï¿½ï¿½) + ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <%=deposit %> </small>
 						</p>
 					</div>
 					<div class="panel-body">
@@ -90,70 +92,70 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>
-										<th>¿ä¼Ò</th>
-										<th>³»¿ë</th>
+										<th>ï¿½ï¿½ï¿½</th>
+										<th>ï¿½ï¿½ï¿½ï¿½</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td><label for="fee">´ë¿©·á : </label></td>
-										<td><input type="hidden" id="rent_cost" value="<%= al.get(5) %>" /><%= al.get(5) %><small>/1ÁÖ</small></td>
+										<td><label for="fee">ï¿½ë¿©ï¿½ï¿½ : </label></td>
+										<td><input type="hidden" id="rent_cost" value="<%= al.get(5) %>" /><%= al.get(5) %><small>/1ï¿½ï¿½</small></td>
 									</tr>
 									<tr>
-										<td><label for="deposit">º¸Áõ±Ý : </label></td>
+										<td><label for="deposit">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : </label></td>
 										<td><input type="hidden" id="bo_cost" value="<%= al.get(7) %>" /><%= al.get(7) %></td>
 									</tr>
 									<tr>
-										<td><label for="possibleDay">´ë¿©°¡´É ÀÏ¼ö : </label></td>
+										<td><label for="possibleDay">ï¿½ë¿©ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½ : </label></td>
 										<td><%= al.get(6) %></td>
 									</tr>
 									<tr>
-										<td><label for="possibleDay">´ë¿©½ÃÀÛ ³¯Â¥ : </label></td>
+										<td><label for="possibleDay">ï¿½ë¿©ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ : </label></td>
 										<td><input type="text" name="startdate" placeholder="ex)20170516" /></td>
 									</tr>
 									<tr>
-										<td><label for="possibleDay">½ÅÃ»ÇÒ ÀÏ¼ö : </label></td>
+										<td><label for="possibleDay">ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½Ï¼ï¿½ : </label></td>
 										<td><input type="number" step="1" id="ren" name="ren"/></td>
 									</tr>
 									<tr>
-										<td><label for="possibleDay">ÃÑ ¾× : </label></td>
-										<td><span id="total_money">0¿ø</span></td>
+										<td><label for="possibleDay">ï¿½ï¿½ ï¿½ï¿½ : </label></td>
+										<td><span id="total_money">0ï¿½ï¿½</span></td>
 										<input type="hidden" id="hidden_total" name="total" />
 									</tr>
 									<tr>
-										<td><label for="tradeWay">°Å·¡¹æ½Ä : </label></td>
+										<td><label for="tradeWay">ï¿½Å·ï¿½ï¿½ï¿½ï¿½ : </label></td>
 										<td>
 
 										<label class="radio-inline"><input
-												type="radio" name="wayRadio" value="Á÷°Å·¡">Á÷°Å·¡</label>
+												type="radio" name="wayRadio" value="ï¿½ï¿½ï¿½Å·ï¿½">ï¿½ï¿½ï¿½Å·ï¿½</label>
 
 										<label
-											class="radio-inline"><input type="radio" value="ÅÃ¹è"
-												name="wayRadio">ÅÃ¹è</label>
+											class="radio-inline"><input type="radio" value="ï¿½Ã¹ï¿½"
+												name="wayRadio">ï¿½Ã¹ï¿½</label>
 												</td>
 									</tr>
 									<tr>
-										<td><label for="possibleDay">¸Þ¼¼Áö : </label></td>
+										<td><label for="possibleDay">ï¿½Þ¼ï¿½ï¿½ï¿½ : </label></td>
 										<td><textarea name="message" cols="21" rows="5"></textarea></td>
 									</tr>
 								</tbody>
 							</table>
 							
-							<input type="submit" class="btn btn-primary btn-lg btn-block" value="½ÅÃ»ÇÏ±â">
+							<input type="submit" class="btn btn-primary btn-lg btn-block" value="ï¿½ï¿½Ã»ï¿½Ï±ï¿½">
 							</form>
 							<form action="Y_Submit_Jang" method="POST"> 
-							<input type="submit" class="btn btn-default btn-lg btn-block" value="ÂòÇÏ±â">
+							<input type="submit" class="btn btn-default btn-lg btn-block" value="ï¿½ï¿½ï¿½Ï±ï¿½">
 							<input type="hidden" name="pronum" value="<%=y_pronum %>" />
 							<input type="hidden" name="apple" value="<%=session.getAttribute("id")%>">
 							</form>
 						</div>
 						
-						<!-- form ¹® ³¡ -->
+						<!-- form ï¿½ï¿½ ï¿½ï¿½ -->
 
 					</div>
 				</div>
 			<%
-		}else if(type.equals("ÆÇ¸Å")){
+		}else if(type.equals("ï¿½Ç¸ï¿½")){
 			%>
 				<div class="panel panel-default panel-sale" data-spy="affix"
 					data-offset-top="360">
@@ -161,10 +163,10 @@
 					<%
 						int salprice = Integer.parseInt(al.get(8));
 					%>
-						<h1 class="text-center"><%= (salprice) +"¿ø" %></h1>
+						<h1 class="text-center"><%= (salprice) +"ï¿½ï¿½" %></h1>
 						<br>
 						<p class="text-center">
-							<small> ÆÇ¸Å±Ý¾× <%= salprice %></small>
+							<small> ï¿½Ç¸Å±Ý¾ï¿½ <%= salprice %></small>
 						</p>
 					</div>
 					<div class="panel-body">
@@ -178,49 +180,49 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>
-										<th>¿ä¼Ò</th>
-										<th>³»¿ë</th>
+										<th>ï¿½ï¿½ï¿½</th>
+										<th>ï¿½ï¿½ï¿½ï¿½</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td><label for="fee">ÆÇ¸Å±Ý¾× : </label></td>
+										<td><label for="fee">ï¿½Ç¸Å±Ý¾ï¿½ : </label></td>
 										<td> <%= al.get(8) %></td>
 									</tr>
 									<tr>
-										<td><label for="possibleDay">¸Þ¼¼Áö : </label></td>
+										<td><label for="possibleDay">ï¿½Þ¼ï¿½ï¿½ï¿½ : </label></td>
 										<td><textarea name="message" cols="21" rows="5"></textarea></td>
 									</tr>
 									<tr>
-										<td><label for="tradeWay">°Å·¡¹æ½Ä : </label></td>
+										<td><label for="tradeWay">ï¿½Å·ï¿½ï¿½ï¿½ï¿½ : </label></td>
 										<td>
 
 										<label class="radio-inline"><input
-												type="radio" name="wayRadio" value="Á÷°Å·¡">Á÷°Å·¡</label>
+												type="radio" name="wayRadio" value="ï¿½ï¿½ï¿½Å·ï¿½">ï¿½ï¿½ï¿½Å·ï¿½</label>
 
 										<label
 											class="radio-inline"><input type="radio"
-												name="wayRadio" value="ÅÃ¹è">ÅÃ¹è</label>
+												name="wayRadio" value="ï¿½Ã¹ï¿½">ï¿½Ã¹ï¿½</label>
 												</td>
 									</tr>
 								</tbody>
 							</table>
-							<input type="submit" class="btn btn-primary btn-lg btn-block" value="½ÅÃ»ÇÏ±â"> 
+							<input type="submit" class="btn btn-primary btn-lg btn-block" value="ï¿½ï¿½Ã»ï¿½Ï±ï¿½"> 
 							</form>
 							<form action="Y_Submit_Jang" method="POST"> 
-							<input type="submit" class="btn btn-default btn-lg btn-block" value="ÂòÇÏ±â">
+							<input type="submit" class="btn btn-default btn-lg btn-block" value="ï¿½ï¿½ï¿½Ï±ï¿½">
 							<input type="hidden" name="pronum" value="<%=y_pronum %>" />
 							<input type="hidden" name="apple" value="<%=session.getAttribute("id")%>">
 							</form>
 						</div>
-						<!-- form ¹® ³¡ -->
+						<!-- form ï¿½ï¿½ ï¿½ï¿½ -->
 
 					</div>
 				</div>
 			<%
 		}%>
 				
-				<!-- ÆÇ¸ÅÆÐ³Î -->
+				<!-- ï¿½Ç¸ï¿½ï¿½Ð³ï¿½ -->
 				
 			</div>
 		</div>
@@ -232,21 +234,21 @@
 			<div class="col-lg-7">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h1>»ó¼¼³»¿ª</h1>
+						<h1>ï¿½ó¼¼³ï¿½ï¿½ï¿½</h1>
 						<table class="table">
 							<thead>
 								<tr>
-									<th>¿ä¼Ò</th>
-									<th>³»¿ë</th>
+									<th>ï¿½ï¿½ï¿½</th>
+									<th>ï¿½ï¿½ï¿½ï¿½</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>¹°Ç°»óÅÂ :</td>
+									<td>ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ :</td>
 									<td><%= al.get(2) %></td>
 								</tr>
 								<tr>
-									<td>»óÇ°¼³¸í :</td>
+									<td>ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ :</td>
 									<td><%= al.get(1) %></td>
 								</tr>
 							</tbody>
@@ -271,8 +273,8 @@
 		var total =  Math.floor(Number(to*(rent/7)+bo));
 		
 		$('#hidden_total').val(total);
-		$('#total_money').text(total+'¿ø');
-		$('#title_cost').html(total+'¿ø');
+		$('#total_money').text(total+'ï¿½ï¿½');
+		$('#title_cost').html(total+'ï¿½ï¿½');
 	});
 	</script>
 </body>

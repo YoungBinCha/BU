@@ -23,7 +23,7 @@ public class registDAO {
 		}
 		try {
 			conn = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/billyu?useUnicode=true&characterEncoding=euckr", "root", "1234");
+					"jdbc:mysql://localhost:3306/billyu?useUnicode=true&characterEncoding=utf8", "root", "1234");
 		} catch (SQLException ex) {
 			System.out.println("SQL fail(Connection) : " + ex.getLocalizedMessage());
 		}

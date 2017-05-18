@@ -9,7 +9,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <title>´ë±âÁßÀÎ »óÇ°</title>
+  <title>ëŒ€ê¸°ì¤‘ì¸ ìƒí’ˆ</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,19 +18,19 @@
 </head>
 <body>
 <div class="container">
-        <h2>´ë¿©</h2>
+        <h2>ï¿½ë¿©</h2>
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>»óÇ°¹øÈ£</th>
-        <th>´ë¿©¹øÈ£</th>
-        <th>°ø¿©ÀÚ</th>
-        <th>°Å·¡¹æ½Ä</th>
-        <th>´ë¿©½ÃÀÛ³¯Â¥</th>
-        <th>¸îÀÏµ¿¾È</th>
-        <th>¸Þ¼¼Áö</th>
-        <th>ÃÑ±Ý¾×</th>
-        <th>³¯Â¥</th>
+        <th>ï¿½ï¿½Ç°ï¿½ï¿½È£</th>
+        <th>ï¿½ë¿©ï¿½ï¿½È£</th>
+        <th>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</th>
+        <th>ï¿½Å·ï¿½ï¿½ï¿½ï¿½</th>
+        <th>ï¿½ë¿©ï¿½ï¿½ï¿½Û³ï¿½Â¥</th>
+        <th>ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½</th>
+        <th>ï¿½Þ¼ï¿½ï¿½ï¿½</th>
+        <th>ï¿½Ñ±Ý¾ï¿½</th>
+        <th>ï¿½ï¿½Â¥</th>
       </tr>
     </thead>
     <tbody>
@@ -58,10 +58,10 @@
         <td style="width:8%"><%=rentnum %></td>
         <td style="width:8%"><%=hoster %></td>
         <td style="width:10%"><%=way %></td>
-        <td style="width:10%"><%=startdate %>ºÎÅÍ</td>
-        <td style="width:10%"><%=rentday %>ÀÏµ¿¾È</td>
+        <td style="width:10%"><%=startdate %>ï¿½ï¿½ï¿½ï¿½</td>
+        <td style="width:10%"><%=rentday %>ï¿½Ïµï¿½ï¿½ï¿½</td>
         <td style="width:40%"><%=message %></td>
-        <td style="width:12%"><%=total %>¿ø</td>
+        <td style="width:12%"><%=total %>ï¿½ï¿½</td>
         <td style="width:8%"><%=curtime %></td>
     </tr>
     <%} %>
@@ -72,17 +72,17 @@
 
 
 <div class="container">
-        <h2>ÆÇ¸Å</h2>
+        <h2>ï¿½Ç¸ï¿½</h2>
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>»óÇ°¹øÈ£</th>
-        <th>ÆÇ¸Å¹øÈ£</th>
-        <th>°ø¿©ÀÚ</th>
-        <th>°Å·¡¹æ½Ä</th>
-        <th>¸Þ¼¼Áö</th>
-        <th>ÃÑ±Ý¾×</th>
-        <th>³¯Â¥</th>
+        <th>ï¿½ï¿½Ç°ï¿½ï¿½È£</th>
+        <th>ï¿½Ç¸Å¹ï¿½È£</th>
+        <th>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</th>
+        <th>ï¿½Å·ï¿½ï¿½ï¿½ï¿½</th>
+        <th>ï¿½Þ¼ï¿½ï¿½ï¿½</th>
+        <th>ï¿½Ñ±Ý¾ï¿½</th>
+        <th>ï¿½ï¿½Â¥</th>
       </tr>
     </thead>
     <tbody>
@@ -108,7 +108,7 @@
         <td style="width:8%"><%=hoster %></td>
         <td style="width:10%"><%=way %></td>
         <td style="width:40%"><%=message %></td>
-        <td style="width:12%"><%=total %>¿ø</td>
+        <td style="width:12%"><%=total %>ï¿½ï¿½</td>
         <td style="width:8%"><%=curtime %></td>
     </tr>
     <%} %>
