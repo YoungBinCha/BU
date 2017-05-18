@@ -51,13 +51,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
-				<mark>ī�װ�</mark><h3><%= al.get(9) %></h3>
+				<mark>카테고리</mark><h3><%= al.get(9) %></h3>
 			</div>
 			<div class="col-lg-3">
-				<mark>�ŷ�����</mark><h3><%= type %></h3>
+				<mark>거래형식</mark><h3><%= type %></h3>
 			</div>
 			<div class="col-lg-6">
-				<mark>����</mark><h3><%= al.get(0) %></h3>
+				<mark>제목</mark><h3><%= al.get(0) %></h3>
 			</div>
 		</div>
 		<br>
@@ -69,7 +69,7 @@
 			</div>
 			<div class="col-lg-4">
 			<%
-			if(type.equals("�뿩")){
+			if(type.equals("대여")){
 			%>
 				<div class="panel panel-default panel-rent" data-spy="affix"
 					data-offset-top="360">
@@ -78,10 +78,10 @@
 						int renprice = Integer.parseInt(al.get(5));
 						int deposit = Integer.parseInt(al.get(7));
 					%>
-						<h1 class="text-center" id="title_cost"><%= (renprice+deposit) +"��" %></h1>
+						<h1 class="text-center" id="title_cost"><%= (renprice+deposit) +"원" %></h1>
 						<br>
 						<p class="text-center">
-							<small> �뿩�� <%= renprice %>(1��) + ������ <%=deposit %> </small>
+							<small> 대여비 <%= renprice %>(1주) + 보증금 <%=deposit %> </small>
 						</p>
 					</div>
 					<div class="panel-body">
@@ -92,61 +92,61 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>
-										<th>���</th>
-										<th>����</th>
+										<th>요소</th>
+										<th>내용</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td><label for="fee">�뿩�� : </label></td>
-										<td><input type="hidden" id="rent_cost" value="<%= al.get(5) %>" /><%= al.get(5) %><small>/1��</small></td>
+										<td><label for="fee">보증금 : </label></td>
+										<td><input type="hidden" id="rent_cost" value="<%= al.get(5) %>" /><%= al.get(5) %><small>/1주</small></td>
 									</tr>
 									<tr>
-										<td><label for="deposit">������ : </label></td>
+										<td><label for="deposit">대여료 : </label></td>
 										<td><input type="hidden" id="bo_cost" value="<%= al.get(7) %>" /><%= al.get(7) %></td>
 									</tr>
 									<tr>
-										<td><label for="possibleDay">�뿩���� �ϼ� : </label></td>
+										<td><label for="possibleDay">대여가능 일수 : </label></td>
 										<td><%= al.get(6) %></td>
 									</tr>
 									<tr>
-										<td><label for="possibleDay">�뿩���� ��¥ : </label></td>
+										<td><label for="possibleDay">대여시작 날짜 : </label></td>
 										<td><input type="text" name="startdate" placeholder="ex)20170516" /></td>
 									</tr>
 									<tr>
-										<td><label for="possibleDay">��û�� �ϼ� : </label></td>
+										<td><label for="possibleDay">신청할 일수 : </label></td>
 										<td><input type="number" step="1" id="ren" name="ren"/></td>
 									</tr>
 									<tr>
-										<td><label for="possibleDay">�� �� : </label></td>
-										<td><span id="total_money">0��</span></td>
+										<td><label for="possibleDay">총 액 : </label></td>
+										<td><span id="total_money">0원</span></td>
 										<input type="hidden" id="hidden_total" name="total" />
 									</tr>
 									<tr>
-										<td><label for="tradeWay">�ŷ���� : </label></td>
+										<td><label for="tradeWay">거래방식: </label></td>
 										<td>
 
 										<label class="radio-inline"><input
-												type="radio" name="wayRadio" value="���ŷ�">���ŷ�</label>
+												type="radio" name="wayRadio" value="직거래">직거래</label>
 
 										<label
-											class="radio-inline"><input type="radio" value="�ù�"
-												name="wayRadio">�ù�</label>
+											class="radio-inline"><input type="radio" value="택배"
+												name="wayRadio">택배</label>
 												</td>
 									</tr>
 									<tr>
-										<td><label for="possibleDay">�޼��� : </label></td>
+										<td><label for="possibleDay">메세지 : </label></td>
 										<td><textarea name="message" cols="21" rows="5"></textarea></td>
 									</tr>
 								</tbody>
 							</table>
 							
-							<input type="submit" class="btn btn-primary btn-lg btn-block" value="��û�ϱ�">
+							<input type="submit" class="btn btn-primary btn-lg btn-block" value="신청하기">
 							</form>
 							<form action="Y_Submit_Jang" method="POST"> 
-							<input type="submit" class="btn btn-default btn-lg btn-block" value="���ϱ�">
 							<input type="hidden" name="pronum" value="<%=y_pronum %>" />
 							<input type="hidden" name="apple" value="<%=session.getAttribute("id")%>">
+							<input type="submit" class="btn btn-default btn-lg btn-block" value="찜하기" >
 							</form>
 						</div>
 						
@@ -155,7 +155,7 @@
 					</div>
 				</div>
 			<%
-		}else if(type.equals("�Ǹ�")){
+		}else if(type.equals("판매")){
 			%>
 				<div class="panel panel-default panel-sale" data-spy="affix"
 					data-offset-top="360">
@@ -163,10 +163,10 @@
 					<%
 						int salprice = Integer.parseInt(al.get(8));
 					%>
-						<h1 class="text-center"><%= (salprice) +"��" %></h1>
+						<h1 class="text-center"><%= (salprice) +"원" %></h1>
 						<br>
 						<p class="text-center">
-							<small> �Ǹűݾ� <%= salprice %></small>
+							<small> 판매금액 <%= salprice %></small>
 						</p>
 					</div>
 					<div class="panel-body">
@@ -180,49 +180,49 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>
-										<th>���</th>
-										<th>����</th>
+										<th>요소</th>
+										<th>내용</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td><label for="fee">�Ǹűݾ� : </label></td>
+										<td><label for="fee">판매금액 : </label></td>
 										<td> <%= al.get(8) %></td>
 									</tr>
 									<tr>
-										<td><label for="possibleDay">�޼��� : </label></td>
+										<td><label for="possibleDay">메세지 : </label></td>
 										<td><textarea name="message" cols="21" rows="5"></textarea></td>
 									</tr>
 									<tr>
-										<td><label for="tradeWay">�ŷ���� : </label></td>
+										<td><label for="tradeWay">거래방식 : </label></td>
 										<td>
 
 										<label class="radio-inline"><input
-												type="radio" name="wayRadio" value="���ŷ�">���ŷ�</label>
+												type="radio" name="wayRadio" value="직거래">직거래</label>
 
 										<label
 											class="radio-inline"><input type="radio"
-												name="wayRadio" value="�ù�">�ù�</label>
+												name="wayRadio" value="택배">택배</label>
 												</td>
 									</tr>
 								</tbody>
 							</table>
-							<input type="submit" class="btn btn-primary btn-lg btn-block" value="��û�ϱ�"> 
+							<input type="submit" class="btn btn-primary btn-lg btn-block" value="신청하기"> 
 							</form>
 							<form action="Y_Submit_Jang" method="POST"> 
-							<input type="submit" class="btn btn-default btn-lg btn-block" value="���ϱ�">
+							<input type="submit" class="btn btn-default btn-lg btn-block" value="찜하기">
 							<input type="hidden" name="pronum" value="<%=y_pronum %>" />
 							<input type="hidden" name="apple" value="<%=session.getAttribute("id")%>">
 							</form>
 						</div>
-						<!-- form �� �� -->
+						<!-- form 문 끝-->
 
 					</div>
 				</div>
 			<%
 		}%>
 				
-				<!-- �Ǹ��г� -->
+				<!-- 판매패널 -->
 				
 			</div>
 		</div>
@@ -234,21 +234,21 @@
 			<div class="col-lg-7">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h1>�󼼳���</h1>
+						<h1>상세내역</h1>
 						<table class="table">
 							<thead>
 								<tr>
-									<th>���</th>
-									<th>����</th>
+									<th>요소</th>
+									<th>내용</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>��ǰ���� :</td>
+									<td>물품상태 :</td>
 									<td><%= al.get(2) %></td>
 								</tr>
 								<tr>
-									<td>��ǰ���� :</td>
+									<td>상품설명 :</td>
 									<td><%= al.get(1) %></td>
 								</tr>
 							</tbody>
@@ -273,8 +273,8 @@
 		var total =  Math.floor(Number(to*(rent/7)+bo));
 		
 		$('#hidden_total').val(total);
-		$('#total_money').text(total+'��');
-		$('#title_cost').html(total+'��');
+		$('#total_money').text(total+'원');
+		$('#title_cost').html(total+'원');
 	});
 	</script>
 </body>
