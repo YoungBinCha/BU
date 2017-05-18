@@ -118,7 +118,7 @@ public class rentDAO {
 
 				dto = new rentDTO(rentnum, hoster, guest, pronum, way, startdate, rentday, message, total);
 				rent_list2.add(dto);  
-			}
+			}  
 			
 		}catch(Exception e){
 			e.printStackTrace();
