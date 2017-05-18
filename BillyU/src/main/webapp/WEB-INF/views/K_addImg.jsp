@@ -7,11 +7,19 @@
 <title>Insert title here</title>
 <style>
 #image-preview{
-	display:none;
+	/* display:none;
 	width: 400px; 
-	height: 300px; 
+	height: 300px;  */
 
 }
+h3{
+	text-align: center;
+}
+
+#page-content-wrapper{
+	padding: 0px;
+}
+
 #J_image_box{
 	width: 400px; 
 	height: 150px; 
@@ -38,9 +46,8 @@
 	<br />
 	<div class="container-fluid" style="text-align: center;" >
 		<div class="row">
-			<div class="col-lg-3">
-			</div>
-			<div class="col-lg-6">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
 				<!-- enntype 이 encode 타입 말하는데 기본값은 application/x-www-form-urlencoded 이고 이건 전송하기전에 인코딩을 하는 형식
 					하지만 multipart / form-data 방식은 인코드 하지 않아 , 업로드 할 때 필요한 형식
 				-->
@@ -52,34 +59,61 @@
         			<input type="file" name="upfile3" id="image3" style="display: none;">
         			<input type="file" name="upfile4" id="image4" style="display: none;">
     				<div id="image_preview" >
-        				<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 400px; height: 300px;" border="0" onclick="document.all.upfile.click(); ">
-        				<br>
-        				<div id="J_image_box" style="display: none;">
+    					<div class="row">
+    						<div class="col-lg-9">
+    							<h3>메인사진</h3>
+    							<div class="row">
+    								<div class="col-lg-12">
+    									<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 80%; height: 450px;" border="0" onclick="document.all.upfile.click(); ">
+    								</div>
+    							</div>
+    						</div>
+    						 <div class="col-lg-3">
+    						 	<h3>서브사진</h3>
+    						 	<div class="row">
+    						 		<div class="col-lg-12">
+    						 			<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100%; height: 150px;" border="0" onclick="document.all.upfile2.click(); ">
+    						 		</div>
+    						 	</div>
+    						 	<div class="row">
+    						 		<div class="col-lg-12">
+    						 			<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100%; height: 150px;" border="0" onclick="document.all.upfile3.click(); ">
+    						 		</div>
+    						 	</div>
+    						 	<div class="row">
+    						 		<div class="col-lg-12">
+    						 			<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100%; height: 150px;" border="0" onclick="document.all.upfile4.click(); ">
+    						 		</div>
+    						 	</div>
+    						</div>
+    					</div>
+    				        				
+    				        				<!-- <br>
+    				        				<div id="J_image_box" style="display: none;">
     						<div class= "row">
     							<div class="col-lg-4">
     								<div id="J_image_2" style=" width: 100px; height: 100px; float: left;">
-    									<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100px; height: 100px;" border="0" onclick="document.all.upfile2.click(); ">
+    									
     								</div>
     							</div>
     							<div class="col-lg-4">
     								<div id="J_image_3" style=" width: 100px; height: 100px; float: left; ">
-    									<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100px; height: 100px;" border="0" onclick="document.all.upfile3.click(); ">
+    									
     								</div>
     							</div>
     							<div class="col-lg-4">
     								<div id="J_image_4" style=" width: 100px; height: 100px; float: left; ">
-    									<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100px; height: 100px;" border="0" onclick="document.all.upfile4.click(); ">
+    									
     								</div>
     							</div>
     						</div>
-    					</div>
+    					</div> -->
     				</div>
     				</br>
     				<input type="submit" class="btn btn-primary" value="등록" style="width: 400px;" onclick="test()">
 				</form>
 			</div>
-			<div class="col-lg-3">
-			</div>
+			<div class="col-lg-1"></div>
 		</div>
 	</div>
 </body>
