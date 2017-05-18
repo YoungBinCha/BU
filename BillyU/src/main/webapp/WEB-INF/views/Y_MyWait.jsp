@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.util.*" %>
+    pageEncoding="EUC-KR" import="java.util.*" import="java.sql.*" %>
     <%@ page import="rent.rentDAO" %>
     <%@ page import="rent.rentDTO" %>
     <%@ page import="sale.saleDAO" %>
@@ -30,6 +30,7 @@
         <th>몇일동안</th>
         <th>메세지</th>
         <th>총금액</th>
+        <th>날짜</th>
       </tr>
     </thead>
     <tbody>
@@ -50,7 +51,7 @@
 		int rentday = dto.getRentday();
 		String message = dto.getMessage();
 		int total = dto.getTotal();
-		
+		Timestamp curtime = dto.getCurtime();
 %>
     <tr>
         <td style="width:8%"><%=pronum %></td>
@@ -61,6 +62,7 @@
         <td style="width:10%"><%=rentday %>일동안</td>
         <td style="width:40%"><%=message %></td>
         <td style="width:12%"><%=total %>원</td>
+        <td style="width:8%"><%=curtime %></td>
     </tr>
     <%} %>
     </tbody>
@@ -80,6 +82,7 @@
         <th>거래방식</th>
         <th>메세지</th>
         <th>총금액</th>
+        <th>날짜</th>
       </tr>
     </thead>
     <tbody>
@@ -97,7 +100,7 @@
 		String way = dto.getWay();
 		String message = dto.getMessage();
 		int total = dto.getTotal();
-		
+		Timestamp curtime = dto.getCurtime();
 %>
     <tr>
         <td style="width:8%"><%=pronum %></td>
@@ -106,6 +109,7 @@
         <td style="width:10%"><%=way %></td>
         <td style="width:40%"><%=message %></td>
         <td style="width:12%"><%=total %>원</td>
+        <td style="width:8%"><%=curtime %></td>
     </tr>
     <%} %>
     </tbody>

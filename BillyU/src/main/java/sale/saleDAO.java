@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import rent.rentDTO;
@@ -88,8 +89,9 @@ public class saleDAO {
 				String way = rs.getString("way");
 				String message = rs.getString("message");
 				int total = rs.getInt("total");
+				Timestamp curtime = rs.getTimestamp("curtime");
 
-				dto = new saleDTO(salenum, hoster, guest, pronum, way, message, total);
+				dto = new saleDTO(salenum, hoster, guest, pronum, way, message, total,curtime);
 				sale_list.add(dto);
 			}
 			
@@ -114,8 +116,9 @@ public class saleDAO {
 				String way = rs.getString("way");
 				String message = rs.getString("message");
 				int total = rs.getInt("total");
+				Timestamp curtime = rs.getTimestamp("curtime");
 
-				dto = new saleDTO(salenum, hoster, guest, pronum, way, message, total);
+				dto = new saleDTO(salenum, hoster, guest, pronum, way, message, total,curtime);
 				sale_list2.add(dto);
 			}
 			

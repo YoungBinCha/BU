@@ -17,7 +17,7 @@ public class proDAO {
 	
 	ArrayList<proDTO> pro_list = new ArrayList<proDTO>();
 	ArrayList<proDTO> pro_mylist = new ArrayList<proDTO>();
-	
+	ArrayList<proDTO> jang_mylist = new ArrayList<proDTO>();
 	
 	public proDAO(){
 		try{Class.forName("com.mysql.jdbc.Driver");}
@@ -106,6 +106,40 @@ public class proDAO {
 		
 		return pro_mylist;
 	}
+	
+	public ArrayList<proDTO> MyJang(int pro){
+		try{
+			connect();
+			String sql = "select * from product where pronum='"+pro+"'";
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				int pronum = rs.getInt("pronum");
+				String nickname = rs.getString("nickname");
+				int catnum = rs.getInt("catnum");
+				String title = rs.getString("title");
+				String proinfo = rs.getString("proinfo");
+				String procondition = rs.getString("procondition");
+				String traway = rs.getString("traway");
+				String tratype = rs.getString("tratype");
+				int renprice = rs.getInt("renprice");
+				int renday = rs.getInt("renday");
+				int deposit = rs.getInt("deposit");
+				int salprice = rs.getInt("salprice");
+				String img = rs.getString("img");
+				Timestamp curtime = rs.getTimestamp("curtime");
+
+				dto = new proDTO(pronum,nickname,catnum,title,proinfo,procondition,traway,tratype,renprice,renday,deposit,salprice,img,curtime);
+				jang_mylist.add(dto);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
+		
+		return jang_mylist;
+	}
+	
 	public void delete_product(String pronum){
 		try {
 			connect();
@@ -115,7 +149,6 @@ public class proDAO {
 			e.printStackTrace();
 		}
 	}
-	
 	
 	/*
 	 * 여기부터 상품등록할 때 사용하는 메소드 -- Capstone_prodctDAO에서 온 것들

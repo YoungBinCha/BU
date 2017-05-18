@@ -9,20 +9,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:useBean id="rent" class="rent.rentDAO" />
+<jsp:useBean id="jang" class="jang.jangDAO" />
 <%
 Object apple = request.getParameter("apple");
 String guest = apple.toString();
 
 int pronum = Integer.parseInt(request.getParameter("pronum"));
-String way = request.getParameter("wayRadio");
-String message = request.getParameter("message");
-int startdate=Integer.parseInt(request.getParameter("startdate"));
-int rentday=Integer.parseInt(request.getParameter("ren"));
-int total=Integer.parseInt(request.getParameter("total"));
 
-rent.insert_rent(guest, pronum, message, way, startdate, rentday, total);
-response.sendRedirect("Y_Rent?pronum="+pronum+"");
+jang.insert_jang(guest, pronum);
+response.sendRedirect("Y_MyPage");
 %>
 </body>
 </html>

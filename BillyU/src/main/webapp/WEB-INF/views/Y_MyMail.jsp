@@ -1,3 +1,4 @@
+<%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR" import="java.util.*" %>
     <%@ page import="rent.rentDAO" %>
@@ -53,6 +54,7 @@
 		int rentday = dto.getRentday();
 		String message = dto.getMessage();
 		int total = dto.getTotal();
+		Timestamp curtime = dto.getCurtime();
 		
 %>
     <tr>
@@ -64,6 +66,7 @@
         <td style="width:10%"><%=rentday %>일동안</td>
         <td style="width:40%"><%=message %></td>
         <td style="width:10%"><%=total %>원</td>
+        <td style="width:10%"><%=curtime %></td>
         <td style="width:10%">답변</td>
     </tr>
     <%} %>
@@ -98,6 +101,7 @@
 		String way = dto.getWay();
 		String message = dto.getMessage();
 		int total = dto.getTotal();
+		Timestamp curtime = dto.getCurtime();
 %>
     <tr>
         <td style="width:8%"><%=pronum %></td>
@@ -106,6 +110,7 @@
         <td style="width:10%"><%=way %></td>
         <td style="width:40%"><%=message %></td>
         <td style="width:10%"><%=total %>원</td>
+        <td style="width:10%"><%=curtime %></td>
         <td style="width:10%">답변</td>
     </tr>
     <%} %>

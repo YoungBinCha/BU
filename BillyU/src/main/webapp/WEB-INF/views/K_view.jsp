@@ -139,10 +139,15 @@
 								</tbody>
 							</table>
 							
-							<input type="submit" class="btn btn-primary btn-lg btn-block" value="신청하기"> 
+							<input type="submit" class="btn btn-primary btn-lg btn-block" value="신청하기">
+							</form>
+							<form action="Y_Submit_Jang" method="POST"> 
 							<input type="submit" class="btn btn-default btn-lg btn-block" value="찜하기">
+							<input type="hidden" name="pronum" value="<%=y_pronum %>" />
+							<input type="hidden" name="apple" value="<%=session.getAttribute("id")%>">
+							</form>
 						</div>
-						</form>
+						
 						<!-- form 문 끝 -->
 
 					</div>
@@ -201,7 +206,11 @@
 								</tbody>
 							</table>
 							<input type="submit" class="btn btn-primary btn-lg btn-block" value="신청하기"> 
+							</form>
+							<form action="Y_Submit_Jang" method="POST"> 
 							<input type="submit" class="btn btn-default btn-lg btn-block" value="찜하기">
+							<input type="hidden" name="pronum" value="<%=y_pronum %>" />
+							<input type="hidden" name="apple" value="<%=session.getAttribute("id")%>">
 							</form>
 						</div>
 						<!-- form 문 끝 -->
