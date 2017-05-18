@@ -48,7 +48,7 @@
 		String categorySmall = category.receiveSmall(Integer.parseInt(al.get(9)));
 	%>
 	<br />
-	<div class="container">
+	<div class="container"> 
 		<div class="row">
 			<div class="col-lg-3">
 				<mark>카테고리</mark><h3><%= categorySmall %></h3>
