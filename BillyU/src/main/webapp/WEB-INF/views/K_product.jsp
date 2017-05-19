@@ -53,7 +53,7 @@
 			<div class="col-lg-3"></div>
 			<div class="col-lg-6">
 				<div class="K_productRegist">
-					<h2>상품 정보 입력</h2>
+					<center><h1>상품 정보 입력</h1></center><br />
 					<form action="regist.do" method="post">
 						<div class="product">
 							<div class="form-group">
@@ -62,7 +62,7 @@
 									placeholder="Enter title">
 							</div>
 							<div class="form-group">
-								<label for="category">카테고리:</label> <select class="form-control"
+								<label for="category">대분류:</label> <select class="form-control"
 									id="category" name="category">
 									 <%-- <jsp:useBean id="sel"
 										class="com.openmarket.Capstone_productDAO"></jsp:useBean>  --%>
@@ -77,6 +77,30 @@
 										}
 									%>
 								</select>
+								<br />
+								<label for="category">소분류:</label>
+								 <select class="form-control" id="category2" name="category">
+									<option value="">대분류를 선택해주세요</option>
+								</select>
+								<script>
+								$('#category').change(function(){
+									$.ajax({
+										type : "POST",
+										url : "./Y_ReturnCategory",
+										data : {cate : $('#category').val()},
+										success : WhenSuccess,
+										error : WhenError
+									});
+								});
+								function WhenSuccess(resdata){
+									$('#category2').html(resdata);
+								}
+
+								function WhenError(){
+									alert('error');
+								}
+								
+								</script>
 							</div>
 							<div class="form-group">
 								<label for="procondition">상품상태 :</label> <label
@@ -165,5 +189,8 @@
 		</div>
 	</div>
 	</div>
+	<br />
+	<br />
+	<br />
 </body>
 </html>

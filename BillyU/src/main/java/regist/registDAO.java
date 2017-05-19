@@ -97,14 +97,14 @@ public class registDAO {
 	}
 
 	public ArrayList<String> selectCategory() {
-		String query = "SELECT DISTINCT small FROM category"; // DISTINCT 중복 제거
+		String query = "SELECT DISTINCT big FROM category"; // DISTINCT 중복 제거
 		ArrayList<String> big = new ArrayList<String>();
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
-				big.add(rs.getString("small"));
+				big.add(rs.getString("big"));
 			}
 
 			stmt.close();
@@ -113,6 +113,25 @@ public class registDAO {
 		}
 		return big;
 	}
+	
+	public ArrayList<String> selectCategory2(String cate) {
+		String query = "SELECT  small FROM category where big='"+cate+"'"; // DISTINCT 중복 제거
+		ArrayList<String> small = new ArrayList<String>();
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+				small.add(rs.getString("small"));
+			}
+
+			stmt.close();
+		} catch (SQLException ex) {
+			System.out.println("SQL selectCategory() 오류 : " + ex.getLocalizedMessage());
+		}
+		return small;
+	}
+	
 
 	public ArrayList<String> selectProduct(int pronum) {
 		String query = "SELECT * FROM product where pronum=" + pronum + "";
