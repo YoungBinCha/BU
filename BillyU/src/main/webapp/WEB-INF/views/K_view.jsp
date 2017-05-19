@@ -37,10 +37,13 @@
 	if(session.getAttribute("id") == null){response.sendRedirect("Y_Login");}
 	int y_pronum = Integer.parseInt(request.getParameter("pronum"));
 	%>
+	<jsp:useBean id="category" class="category.cateDAO"></jsp:useBean>
 	<jsp:useBean id="sel" class="regist.registDAO"></jsp:useBean>
 	<%
 		ArrayList<String> al = sel.selectProduct(y_pronum);
 		String type = al.get(4);
+		
+		String categorySmall = category.receiveSmall(Integer.parseInt(al.get(9)));
 		//img 한개일 때 사용하던 코드
 		String img = sel.receiveImage(y_pronum);
 		//img 여러개 일 때 사용하는 코드
@@ -51,7 +54,7 @@
 		<div class="row">
 			<div class="col-lg-3">
 				<mark>카테고리</mark>
-				<h3><%= al.get(9) %></h3>
+				<h3><%= categorySmall %></h3>
 			</div>
 			<div class="col-lg-3">
 				<mark>거래형식</mark>
