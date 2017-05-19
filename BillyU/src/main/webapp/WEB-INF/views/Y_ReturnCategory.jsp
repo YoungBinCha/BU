@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" import="java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,7 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="Y_NavBar.jsp" />
-<center><h1>게시판</h1></center>
+<jsp:useBean id="category" class="regist.registDAO" />
+<%
+	String cate = request.getParameter("cate");
+
+	ArrayList<String> al = category.selectCategory2(cate);
+	for (int i = 0; i < al.size(); i++) {
+	%>
+	<option><%=al.get(i)%></option>
+	<%
+	}
+%>
 </body>
 </html>

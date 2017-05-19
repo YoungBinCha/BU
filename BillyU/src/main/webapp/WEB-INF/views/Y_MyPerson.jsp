@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-Person
+<a href="#">닉네임 변경</a>
+<br />
+<a href="#">계정 삭제</a>
 </body>
 </html>
