@@ -200,7 +200,7 @@ public class HomeController {
 		
 		HttpSession ses = req.getSession();
 		String nickname = (String)ses.getAttribute("id");
-	
+		ses.setAttribute("checkId", nickname);
 		registDTO dto = new registDTO(nickname, catnum, title, productinfo, productcondition, tratype, traway, salprice, renprice, deposit, renday);
 
 		if (dto.getTratype().equals("대여")) {
@@ -254,8 +254,17 @@ public class HomeController {
 		
 		int pronum = dao.selectPronum();
 		
-		dao.insertImage(dto, pronum);
-		dao.updateImage(dto, pronum);
+		HttpSession ses = req.getSession();
+		String id = (String)ses.getAttribute("id");
+		String checkId = (String)ses.getAttribute("checkId");
+		
+		if(id.equals(checkId)){
+			dao.insertImage(dto, pronum);
+			dao.updateImage(dto, pronum);
+		}else{
+			System.out.println("로그인한 id와 상품등록한 id가 다릅니다.");
+		}
+		
 //		RequestDispatcher view = req.getRequestDispatcher("K_view.jsp");
 //		view.forward(req, resp);
 		
