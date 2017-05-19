@@ -75,43 +75,50 @@
 				<!-- Indicators -->
 				<ol class="carousel-indicators">
 				<% 
-					int i = 0;
-				do{
-					if(i == 0){
-					%>
-						<li data-target="#myCarousel" data-slide-to="<%= i %>" class="active"></li>
-					<%
-					}else{
+				for(int i = 0 ; i<arrayListImg.size(); i++){
+					if(!arrayListImg.get(i).equals("resources/img/null")){
+						if(i == 0 ){
+							%>
+								<li data-target="#myCarousel" data-slide-to="<%= i %>" class="active"></li>
+							<%
+						}else{
+							%>
+							<li data-target="#myCarousel" data-slide-to="<%= i %>"></li>
+							<%
+						}
 						%>
-						<li data-target="#myCarousel" data-slide-to="<%= i %>"></li>
+							
 						<%
 					}
-				}while(!arrayListImg.get(++i).equals("resources/img/null")); %>
-
+				}
+				%>
 				</ol>
 
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner">
-				
 				<% 
-					int j = 0;
-				do{
-					String imageSrc = arrayListImg.get(j);
-					if(j == 0){
-					%>
-						<div class="item active">
-						<img src="<%= imageSrc %>" alt="사진없음" style="width: 100%;">
-						</div>
-					<%
-					}else{
+				for(int i = 0 ; i<arrayListImg.size(); i++){
+					if(!arrayListImg.get(i).equals("resources/img/null")){
+						String imageSrc = arrayListImg.get(i);
+						if(i == 0){
+							%>
+								<div class="item active">
+								<img src="<%= imageSrc %>" alt="사진없음" style="width: 100%;">
+								</div>
+							<%
+						}else{
+							%>
+								<div class="item">
+								<img src="<%= imageSrc %>" alt="사진없음" style="width: 100%;">
+								</div>
+							<%
+						}
 						%>
-						<div class="item">
-						<img src="<%= imageSrc %>" alt="사진없음" style="width: 100%;">
-						</div>
+							
 						<%
 					}
-				}while(!arrayListImg.get(++j).equals("resources/img/null")); %>
-				
+				}
+				%>		
 				</div>
 
 				<!-- Left and right controls -->
