@@ -200,7 +200,7 @@ public class HomeController {
 		
 		HttpSession ses = req.getSession();
 		String nickname = (String)ses.getAttribute("id");
-		
+	
 		registDTO dto = new registDTO(nickname, catnum, title, productinfo, productcondition, tratype, traway, salprice, renprice, deposit, renday);
 
 		if (dto.getTratype().equals("대여")) {

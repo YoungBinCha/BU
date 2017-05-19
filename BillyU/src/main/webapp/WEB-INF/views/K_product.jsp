@@ -27,7 +27,7 @@
 		$(".input").click(function() {
 			$(".product").toggle();
 			$(".K_trade").toggle(500);
-			//$(".submit").toggle();
+			$(this).html($(this).html() == '다음' ? '이전' : '다음');
 		});
 
 		//대여 버튼 누르면 tratype의 value값이 rent로
@@ -37,10 +37,6 @@
 		//판매 버튼 누르면 tratype의 value값이 sale로 ,,
 		$('.sa').click(function() {
 			$('.tratype').val("판매");
-		});
-
-		$('.input').click(function() {
-			$(this).toggleText('다음', '이전');
 		});
 	});
 </script>
