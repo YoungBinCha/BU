@@ -29,6 +29,21 @@
 	top: 0;
 	width: 360px;
 }
+
+#myCarousel{
+	width: 100% !important;		/*!important를 붙이면 어떤 선택자 우선순위를 무시하고 적용된다. */
+	height: 500px !important;
+}
+	.carousel-inner > .item > img,
+	.carousel-inner > .item > a > img {
+      width: 100% !important;
+      height: 500px !important;
+      margin: auto !important;
+  }
+  	/*nav바와 뷰페이지 사이 간격 줄이기*/
+	#page-content-wrapper{
+		padding-top: 20px !important;
+	}
 </style>
 </head>
 <body>
@@ -67,7 +82,7 @@
 		</div>
 		<br> <br>
 		<div class="row">
-			<div class="col-lg-7">
+			<div class="col-lg-8">
 				<%-- <img class="img-responsive" src="<%= img %>" alt="Chania"
 					width="600" height="400"> --%>
 			

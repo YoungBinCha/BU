@@ -11,7 +11,11 @@
 	width: 400px; 
 	height: 300px;  */
 
-} 
+}
+/*nav바와 사진등록 간격 줄이기*/
+#page-content-wrapper{
+		padding-top: 20px !important;
+	} 
 h3{
 	text-align: center;
 }

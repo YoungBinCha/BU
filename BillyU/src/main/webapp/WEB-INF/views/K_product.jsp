@@ -40,6 +40,12 @@
 		});
 	});
 </script>
+<style type="text/css">
+/*nav바와 상품등록 간격 줄이기*/
+#page-content-wrapper{
+		padding-top: 20px !important;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="Y_NavBar.jsp"></jsp:include>
