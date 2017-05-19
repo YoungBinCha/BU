@@ -63,7 +63,7 @@
 							</div>
 							<div class="form-group">
 								<label for="category">대분류:</label> <select class="form-control"
-									id="category" name="category">
+									id="category">
 									 <%-- <jsp:useBean id="sel"
 										class="com.openmarket.Capstone_productDAO"></jsp:useBean>  --%>
 										 <jsp:useBean id="select"
