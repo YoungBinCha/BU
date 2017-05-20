@@ -26,7 +26,6 @@
   clear: both;
   overflow: hidden;
 }
-
 .button {
   border: 2px solid #D8D8D8;
   border-radius: 40px;
