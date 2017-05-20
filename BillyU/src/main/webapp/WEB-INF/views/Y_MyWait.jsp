@@ -88,7 +88,7 @@
     </thead>
     <tbody>
 <%
-
+	
 
 	ArrayList<saleDTO> sale_list = sale.sale_list2(nickname);
 	

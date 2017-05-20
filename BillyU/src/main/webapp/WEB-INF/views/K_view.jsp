@@ -41,10 +41,14 @@
 
 </head>
 <body>
+	<%
+	if(session.getAttribute("id") == null){
+		response.sendRedirect("Y_Login");
+	}
+	%>
 	<jsp:include page="Y_NavBar.jsp"></jsp:include>
 	<%
-	if(session.getAttribute("id") == null){response.sendRedirect("Y_Login");}
-	int y_pronum = Integer.parseInt(request.getParameter("pronum"));
+		int y_pronum = Integer.parseInt(request.getParameter("pronum"));
 	%>
 	<jsp:useBean id="category" class="category.cateDAO"></jsp:useBean>
 	<jsp:useBean id="sel" class="regist.registDAO"></jsp:useBean>
@@ -205,10 +209,27 @@
 										</tr>
 										<tr>
 											<td><label for="tradeWay">거래방식: </label></td>
-											<td><label class="radio-inline"><input
-													type="radio" name="wayRadio" value="직거래">직거래</label> <label
-												class="radio-inline"><input type="radio" value="택배"
-													name="wayRadio">택배</label></td>
+											<td>
+											<!--   -->
+											<%
+												String traway = al.get(3);
+												String[] arrayTraway = traway.split(",");
+												
+												for(int i = 0 ; i< arrayTraway.length; i++){
+													if(arrayTraway[i].equals("직거래")){
+														%>
+															<label class="radio-inline"><input
+															type="radio" name="wayRadio" value="직거래">직거래</label>
+														<%
+													}else if(arrayTraway[i].equals("택배")){
+														%>
+														<label class="radio-inline"><input type="radio" value="택배"
+														name="wayRadio">택배</label>
+														<%
+													}
+												}
+											%>
+											</td>
 										</tr>
 										<tr>
 											<td><label for="possibleDay">메세지 : </label></td>
@@ -275,10 +296,31 @@
 									</tr>
 									<tr>
 										<td><label for="tradeWay">거래방식 : </label></td>
-										<td><label class="radio-inline"><input
+										<!-- <td><label class="radio-inline"><input
 												type="radio" name="wayRadio" value="직거래">직거래</label> <label
 											class="radio-inline"><input type="radio"
-												name="wayRadio" value="택배">택배</label></td>
+												name="wayRadio" value="택배">택배</label></td> -->
+										<td>
+											<!--   -->
+											<%
+												String traway = al.get(3);
+												String[] arrayTraway = traway.split(",");
+												
+												for(int i = 0 ; i< arrayTraway.length; i++){
+													if(arrayTraway[i].equals("직거래")){
+														%>
+															<label class="radio-inline"><input
+															type="radio" name="wayRadio" value="직거래">직거래</label>
+														<%
+													}else if(arrayTraway[i].equals("택배")){
+														%>
+														<label class="radio-inline"><input type="radio" value="택배"
+														name="wayRadio">택배</label>
+														<%
+													}
+												}
+											%>
+											</td>
 									</tr>
 								</tbody>
 							</table>

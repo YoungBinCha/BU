@@ -40,7 +40,17 @@ public class registDAO {
 			pstmt.setString(3, dto.getTitle());
 			pstmt.setString(4, dto.getProinfo());
 			pstmt.setString(5, dto.getProcondition());
-			pstmt.setString(6, dto.getTraway());
+			//
+			String traway = "";
+			for(int i = 0 ; i<dto.getTraway().length ; i++){
+				traway+=dto.getTraway()[i];
+				if(i==0)
+					traway+=",";
+			}
+			
+			pstmt.setString(6, traway);
+			
+			//
 			pstmt.setString(7, dto.getTratype());
 			pstmt.setInt(8, dto.getSalprice());
 
@@ -64,7 +74,17 @@ public class registDAO {
 			pstmt.setString(3, dto.getTitle());
 			pstmt.setString(4, dto.getProinfo());
 			pstmt.setString(5, dto.getProcondition());
-			pstmt.setString(6, dto.getTraway());
+			//
+			String traway = "";
+			for(int i = 0 ; i<dto.getTraway().length ; i++){
+				traway+=dto.getTraway()[i];
+				if(i==0)
+					traway+=",";
+			}
+			
+			pstmt.setString(6, traway);
+			
+			//
 			pstmt.setString(7, dto.getTratype());
 			pstmt.setInt(8, dto.getRenprice());
 			pstmt.setInt(9, dto.getDeposit());

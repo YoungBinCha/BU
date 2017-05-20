@@ -153,9 +153,9 @@
 									</div>
 									<div class="form-group">
 										<label for="traway">거래방법 : </label> <label
-											class="radio-inline"> <input type="radio"
+											class="checkbox-inline"> <input type="checkbox"
 											name="traway" value="택배">택배
-										</label> <label class="radio-inline"> <input type="radio"
+										</label> <label class="checkbox-inline"> <input type="checkbox"
 											name="traway" value="직거래">직거래
 										</label>
 									</div>
@@ -170,9 +170,9 @@
 									</div>
 									<div class="form-group">
 										<label for="traway">거래방법 : </label> <label
-											class="radio-inline"> <input type="radio"
+											class="checkbox-inline"> <input type="checkbox"
 											name="traway" value="택배">택배
-										</label> <label class="radio-inline"> <input type="radio"
+										</label> <label class="checkbox-inline"> <input type="checkbox"
 											name="traway" value="직거래">직거래
 										</label>
 									</div>

@@ -176,8 +176,12 @@ public class HomeController {
 		String title = req.getParameter("title");
 		String productinfo = req.getParameter("productinfo");
 		String productcondition = req.getParameter("procondition");
-		String tratype = req.getParameter("tratype");
-		String traway = req.getParameter("traway");
+		String tratype = req.getParameter("tratype");			//판매냐 대여냐
+		
+	//	String traway = req.getParameter("traway");				//직거래냐 택배냐
+		
+		String[] traway = req.getParameterValues("traway");
+		
 		String salprice_s = req.getParameter("salprice");
 		String renprice_s = req.getParameter("renprice");
 		String deposit_s = req.getParameter("deposit");
@@ -201,6 +205,7 @@ public class HomeController {
 		HttpSession ses = req.getSession();
 		String nickname = (String)ses.getAttribute("id");
 		ses.setAttribute("checkId", nickname);
+		
 		registDTO dto = new registDTO(nickname, catnum, title, productinfo, productcondition, tratype, traway, salprice, renprice, deposit, renday);
 
 		if (dto.getTratype().equals("대여")) {

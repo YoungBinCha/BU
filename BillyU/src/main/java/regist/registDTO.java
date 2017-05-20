@@ -1,30 +1,33 @@
 package regist;
 
 public class registDTO {
-	/*»óÇ° °øÅë º¯¼ö*/
+	/*ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½*/
 	private String nickname;
 	private int catnum;
 	private String title;
 	private String proinfo;
 	private String procondition;
 	private String tratype;
-	private String traway;
+
 	
-	/*ÆÇ¸Å º¯¼ö*/
+	//private String traway;
+	private String[] traway;
+	
+	/*ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½*/
 	private int salprice;
 	
-	/*´ë¿© º¯¼ö*/
+	/*ï¿½ë¿© ï¿½ï¿½ï¿½ï¿½*/
 	private int renprice;
 	private int deposit;
-	private int renday;				//ÀÌ°Ç ³ªÁß¿¡ º¯¼ö Å¸ÀÔ ¹Ù²ã¾ßµÇ date ³ª ÀÌ·±°É·Î!!!!
+	private int renday;				//ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½Ù²ï¿½ßµï¿½ date ï¿½ï¿½ ï¿½Ì·ï¿½ï¿½É·ï¿½!!!!
 	
-	/*ÀÌ¹ÌÁö º¯¼ö*/
+	/*ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½*/
 	private String img;
 	private String img2;
 	private String img3;
 	private String img4;
 	
-	public registDTO(String nickname, int catnum, String title, String proinfo, String procondition, String tratype, String traway, int salprice, int renprice, int deposit, int renday){
+	public registDTO(String nickname, int catnum, String title, String proinfo, String procondition, String tratype, String[] traway, int salprice, int renprice, int deposit, int renday){
 		this.nickname = nickname;
 		this.catnum = catnum;
 		this.title = title;
@@ -100,10 +103,10 @@ public class registDTO {
 	public void setTratype(String tratype) {
 		this.tratype = tratype;
 	}
-	public String getTraway() {
+	public String[] getTraway() {
 		return traway;
 	}
-	public void setTraway(String traway) {
+	public void setTraway(String[] traway) {
 		this.traway = traway;
 	}
 	public String getProinfo() {
