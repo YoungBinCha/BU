@@ -1,6 +1,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<!-- 밑에서 css파일 적용위함! -->
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
+
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -30,21 +33,12 @@
 	width: 360px;
 }
 
-#myCarousel{
-	width: 100% !important;		/*!important를 붙이면 어떤 선택자 우선순위를 무시하고 적용된다. */
-	height: 500px !important;
-}
-	.carousel-inner > .item > img,
-	.carousel-inner > .item > a > img {
-      width: 100% !important;
-      height: 500px !important;
-      margin: auto !important;
-  }
-  	/*nav바와 뷰페이지 사이 간격 줄이기*/
-	#page-content-wrapper{
-		padding-top: 20px !important;
-	}
 </style>
+
+<!-- resources/css 밑에있는 cssFile 사용하기 위한 코드-->
+<spring:url value="/resources/css/cssFile.css" var="mainCss" />
+<link href="${mainCss}" rel="stylesheet">
+
 </head>
 <body>
 	<jsp:include page="Y_NavBar.jsp"></jsp:include>
