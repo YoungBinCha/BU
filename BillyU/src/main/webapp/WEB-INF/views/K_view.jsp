@@ -166,7 +166,7 @@
 						</p>
 					</div>
 					<div class="panel-body">
-						<form action="Y_Submit_Product" method="post">
+						<form id="form" action="Y_Submit_Product" method="post">
 							<input type="hidden" name="pronum" value="<%=y_pronum %>" /> <input
 								type="hidden" name="apple"
 								value="<%=session.getAttribute("id")%>">
@@ -195,12 +195,12 @@
 										</tr>
 										<tr>
 											<td><label for="possibleDay">대여시작 날짜 : </label></td>
-											<td><input type="text" name="startdate"
+											<td><input id="start" type="text" name="startdate"
 												placeholder="ex)20170516" /></td>
 										</tr>
 										<tr>
 											<td><label for="possibleDay">신청할 일수 : </label></td>
-											<td><input type="number" step="1" id="ren" name="ren" /></td>
+											<td><input type="text" id="ren" name="ren" onkeyPress="if ((event.keyCode<48) || (event.keyCode>57)) event.returnValue=false;" /></td>
 										</tr>
 										<tr>
 											<td><label for="possibleDay">총 액 : </label></td>
@@ -219,12 +219,12 @@
 													if(arrayTraway[i].equals("직거래")){
 														%>
 															<label class="radio-inline"><input
-															type="radio" name="wayRadio" value="직거래">직거래</label>
+															checked type="radio" name="wayRadio" value="직거래">직거래</label>
 														<%
 													}else if(arrayTraway[i].equals("택배")){
 														%>
 														<label class="radio-inline"><input type="radio" value="택배"
-														name="wayRadio">택배</label>
+														checked name="wayRadio">택배</label>
 														<%
 													}
 												}
@@ -233,7 +233,7 @@
 										</tr>
 										<tr>
 											<td><label for="possibleDay">메세지 : </label></td>
-											<td><textarea name="message" cols="21" rows="5"></textarea></td>
+											<td><textarea id="message" name="message" cols="21" rows="5"></textarea></td>
 										</tr>
 									</tbody>
 								</table>
@@ -271,7 +271,7 @@
 				</div>
 				<div class="panel-body">
 					<div class="form-group">
-						<form action="Y_Submit_Sale" method="POST">
+						<form id="form" action="Y_Submit_Sale" method="POST">
 							<input type="hidden" name="pronum" value="<%=y_pronum %>" /> <input
 								type="hidden" name="apple"
 								value="<%=session.getAttribute("id")%>"> <input
@@ -292,7 +292,7 @@
 									</tr>
 									<tr>
 										<td><label for="possibleDay">메세지 : </label></td>
-										<td><textarea name="message" cols="21" rows="5"></textarea></td>
+										<td><textarea id="message" name="message" cols="21" rows="5"></textarea></td>
 									</tr>
 									<tr>
 										<td><label for="tradeWay">거래방식 : </label></td>
@@ -310,12 +310,12 @@
 													if(arrayTraway[i].equals("직거래")){
 														%>
 															<label class="radio-inline"><input
-															type="radio" name="wayRadio" value="직거래">직거래</label>
+															type="radio" checked name="wayRadio" value="직거래">직거래</label>
 														<%
 													}else if(arrayTraway[i].equals("택배")){
 														%>
 														<label class="radio-inline"><input type="radio" value="택배"
-														name="wayRadio">택배</label>
+														checked name="wayRadio">택배</label>
 														<%
 													}
 												}
@@ -384,7 +384,7 @@
 		<p>This space belong to space for FOOTER.</p>
 	</div>
 	<script type="text/javascript">
-	$('#ren').blur(function(){
+	$('#ren').keyup(function(){
 		var to = Number($('#ren').val());
 		var rent =  Number($('#rent_cost').val());
 		var bo =  Number($('#bo_cost').val());
@@ -394,6 +394,34 @@
 		$('#total_money').text(total+'원');
 		$('#title_cost').html(total+'원');
 	});
+	
+	$('#form').submit(function(){
+		if($('#message').val().length == 0){
+			alert('비어있음');
+			$('#message').focus();
+			return false;
+		}
+		if($('#message').val().length > 100){
+			alert('100글자 이하로 작성해 주세요');
+			$('#message').focus();
+			return false;
+		}
+		if($('#start').val().length == 0){
+			alert('비어있음');
+			$('#start').focus();
+			return false;
+		}
+		if($('#rentday').val().length == 0){
+			alert('비어있음');
+			$('#ren').focus();
+			return false;
+		}
+		
+		else{
+			return true;
+		}
+	})
+	
 	</script>
 </body>
 </html>

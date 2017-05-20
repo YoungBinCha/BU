@@ -89,19 +89,4 @@ public class cateDAO {
 		
 		return small;
 	}
-	
-	public int receivecat(String small){
-		try{
-			connect();
-			String sql = "select * from category where small = '"+small+"'";
-			rs = stmt.executeQuery(sql);
-			while(rs.next()){
-			cat = rs.getInt("catnum");
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{disconnect();}
-		
-		return cat;
-	}
 }

@@ -90,11 +90,9 @@ height:150px;
 	}else if(cate.equals("공여자")){
 		list = product_list.Select_Nicknamae(search);
 	}else if(cate.equals("소분류")){
-		int check = category_list.receivecat(search);
-		list = product_list.Select_Catnum(check);
+		list = product_list.Select_Catnum(search);
 	}else if(cate.equals("all")){
-		int check = category_list.receivecat(search);
-		list = product_list.Select_Catnum(check);
+		list = product_list.Select_Catnum(search);
 	}
 	
 	String Y_Category="";

@@ -253,10 +253,10 @@ public class proDAO {
 		return search_list3;
 	}
 	
-	public ArrayList<proDTO> Select_Catnum(int cat){
+	public ArrayList<proDTO> Select_Catnum(String small){
 		try{
 			connect();
-			String sql = "select * from product where catnum = "+cat+"";
+			String sql = "select * from product p,category c where p.catnum = c.catnum and c.small='"+small+"'";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
