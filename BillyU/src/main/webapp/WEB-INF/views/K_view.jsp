@@ -1,6 +1,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<!-- 밑에서 css파일 적용위함! -->
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
+
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -29,7 +32,13 @@
 	top: 0;
 	width: 360px;
 }
+
 </style>
+
+<!-- resources/css 밑에있는 cssFile 사용하기 위한 코드-->
+<spring:url value="/resources/css/cssFile.css" var="mainCss" />
+<link href="${mainCss}" rel="stylesheet">
+
 </head>
 <body>
 	<jsp:include page="Y_NavBar.jsp"></jsp:include>
@@ -67,7 +76,7 @@
 		</div>
 		<br> <br>
 		<div class="row">
-			<div class="col-lg-7">
+			<div class="col-lg-8">
 				<%-- <img class="img-responsive" src="<%= img %>" alt="Chania"
 					width="600" height="400"> --%>
 			

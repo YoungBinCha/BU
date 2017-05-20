@@ -27,7 +27,7 @@
 		$(".input").click(function() {
 			$(".product").toggle();
 			$(".K_trade").toggle(500);
-			//$(".submit").toggle();
+			$(this).html($(this).html() == '다음' ? '이전' : '다음');
 		});
 
 		//대여 버튼 누르면 tratype의 value값이 rent로
@@ -38,12 +38,14 @@
 		$('.sa').click(function() {
 			$('.tratype').val("판매");
 		});
-
-		$('.input').click(function() {
-			$(this).toggleText('다음', '이전');
-		});
 	});
 </script>
+<style type="text/css">
+/*nav바와 상품등록 간격 줄이기*/
+#page-content-wrapper{
+		padding-top: 20px !important;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="Y_NavBar.jsp"></jsp:include>
