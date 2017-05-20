@@ -51,8 +51,8 @@
   text-align: center;
 }
 .img-rounded{
-width:100%;
-height:100%;
+width:200px;
+height:150px;
 }
 
 </style>
@@ -60,10 +60,10 @@ height:100%;
 <body>
 <div id="wrapper">
 <center>
-<div style="width:1000px">
+<div style="width:1000px" class="way">
 <h2 id="Y_result" style="float:left;display:inline-block;">내가 올린 상품</h2>
-<div style="background:#428bca;width:20px;height:20px;display:inline-block;float:right"> </div><p style="display:inline-block;float:right">대여</p>
-<div style="background:#ebcccc;width:20px;height:20px;display:inline-block;float:right"> </div><p style="display:inline-block;float:right">판매</p>
+<div style="background:#428bca;width:20px;height:20px;display:inline-block;float:right"> </div><a id="rent" style="display:inline-block;float:right">대여</a>
+<div style="background:#ebcccc;width:20px;height:20px;display:inline-block;float:right"> </div><a id="sale" style="display:inline-block;float:right">판매</a>
 </div>
 </center>
 
@@ -139,7 +139,7 @@ height:100%;
 		if(tratype.equals("대여"))
 		{
 			%>
-	<div class="panel panel-primary <%=Y_Category%> post">
+	<div class="panel panel-primary <%=Y_Category%> post rent">
       <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=pronum %>)</span><span style="text-align:center;">대여상품(<%=cate_name %>)</span><span style="float:right"><a style="color:white" href="Y_Delete_MyProduct?pronum=<%=pronum%>">X</a></span></div>
       <div class="panel-body">
       <div class="col-xs-3 col-md-3"><a href="K_view?pronum=<%=pronum %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
@@ -152,7 +152,7 @@ height:100%;
 			<%
 		}else{
 			%>
-	<div class="panel panel-danger <%=Y_Category%> post">
+	<div class="panel panel-danger <%=Y_Category%> post sale">
       <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=pronum %>)</span><span style="text-align:center;">판매상품(<%=cate_name %>)</span><span style="float:right"><a style="color:white" href="Y_Delete_MyProduct?pronum=<%=pronum%>">X</a></span></div>
       <div class="panel-body">
       <div class="col-xs-3 col-md-3"><a href="K_view?pronum=<%=pronum %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
@@ -170,5 +170,16 @@ height:100%;
   </div>
 </div>
 <br />
+<script>
+$('.way a').click(function(){
+	var getid=this.id;
+	var getcurrent=$('.posts .'+getid);
+	var na = $(this).attr('value');
+	$('#Y_result').text('판매/대여');
+	  
+    $('.post').not( getcurrent ).hide(500);
+    getcurrent.show(500);
+})
+</script>
 </body>
 </html>

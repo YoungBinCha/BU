@@ -30,9 +30,12 @@
   	width:100%;
   	height:100%;
   }
-.container{
+.nav-pills a{
 	display:inline;
-	width:300px;
+	width:100px;
+	height:65px;
+	font-size:20pt;
+	font-family: "맑은고딕";
 }
 #here{
 width:100%;
@@ -46,18 +49,17 @@ if(session.getAttribute("id") == null){
 response.sendRedirect("Y_Login");}
 %>  
 <jsp:include page="Y_NavBar.jsp" />
-<br />
-<br />
+
 <div class="container">
   <div class="btn-group btn-group-justified nav-pills">
     <a id="#section1" class="btn btn-primary">내가 올린 상품</a>
     <a id="#section2" class="btn btn-primary">나에게 온 메일</a>
     <a id="#section3" class="btn btn-primary">신청대기 중인 상품</a>
     <a id="#section4" class="btn btn-primary">개인정보 수정</a>
-    <a id="#section5" class="btn btn-primary">찜바구니</a>
   </div>
 </div>
-
+<br />
+<br />
 <div class="All_wrap">
 <center>
 <div id="product-container">
@@ -102,14 +104,6 @@ $('.nav-pills a:nth-child(4)').click(function(){
 	$.ajax({
 		type : "POST",
 		url : "./Y_MyPerson",
-		success : WhenSuccess,
-		error : WhenError
-	});
-});
-$('.nav-pills a:nth-child(5)').click(function(){
-	$.ajax({
-		type : "POST",
-		url : "./Y_MyJang",
 		success : WhenSuccess,
 		error : WhenError
 	});

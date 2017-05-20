@@ -15,9 +15,9 @@ Object apple = request.getParameter("apple");
 String guest = apple.toString();
 
 int pronum = Integer.parseInt(request.getParameter("pronum"));
-
+ 
 jang.insert_jang(guest, pronum);
-response.sendRedirect("Y_MyPage");
+response.sendRedirect("Y_Jang");
 %>
 </body>
 </html>

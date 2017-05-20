@@ -12,6 +12,10 @@
 	height: 300px;  */
 
 }
+/*nav바와 사진등록 간격 줄이기*/
+#page-content-wrapper{
+		padding-top: 20px !important;
+	} 
 h3{
 	text-align: center;
 }
@@ -58,12 +62,12 @@ h3{
        				<input type="file" name="upfile2" id="image2" style="display: none;">
         			<input type="file" name="upfile3" id="image3" style="display: none;">
         			<input type="file" name="upfile4" id="image4" style="display: none;">
-    				<div id="image_preview" >
+    				
     					<div class="row">
     						<div class="col-lg-9">
     							<h3>메인사진</h3>
     							<div class="row">
-    								<div class="col-lg-12">
+    								<div class="col-lg-12" id="image_preview">
     									<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 80%; height: 450px;" border="0" onclick="document.all.upfile.click(); ">
     								</div>
     							</div>
@@ -71,17 +75,17 @@ h3{
     						 <div class="col-lg-3">
     						 	<h3>서브사진</h3>
     						 	<div class="row">
-    						 		<div class="col-lg-12">
+    						 		<div class="col-lg-12" id="J_image_2">
     						 			<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100%; height: 150px;" border="0" onclick="document.all.upfile2.click(); ">
     						 		</div>
     						 	</div>
     						 	<div class="row">
-    						 		<div class="col-lg-12">
+    						 		<div class="col-lg-12" id="J_image_3">
     						 			<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100%; height: 150px;" border="0" onclick="document.all.upfile3.click(); ">
     						 		</div>
     						 	</div>
     						 	<div class="row">
-    						 		<div class="col-lg-12">
+    						 		<div class="col-lg-12" id="J_image_4">
     						 			<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100%; height: 150px;" border="0" onclick="document.all.upfile4.click(); ">
     						 		</div>
     						 	</div>
@@ -108,7 +112,7 @@ h3{
     							</div>
     						</div>
     					</div> -->
-    				</div>
+    				
     				</br>
     				<input type="submit" class="btn btn-primary" value="등록" style="width: 400px;" onclick="test()">
 				</form>
@@ -118,6 +122,7 @@ h3{
 	</div>
 </body>
 <script type="text/javascript">
+
 $('#image').on('change', function() {
     
     ext = $(this).val().split('.').pop().toLowerCase(); //확장자

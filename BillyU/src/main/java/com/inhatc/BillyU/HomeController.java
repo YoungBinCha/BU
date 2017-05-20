@@ -143,6 +143,22 @@ public class HomeController {
 	public String Y_Delete_MyJang(){
 		return "Y_Delete_MyJang";
 	}
+	@RequestMapping(value = "/Y_Jang")
+	public String Y_Jang(){
+		return "Y_Jang";
+	}
+	@RequestMapping(value = "/Y_Introduce")
+	public String Y_Introduce(){
+		return "Y_Introduce";
+	}
+	@RequestMapping(value = "/Y_Information")
+	public String Y_Information(){
+		return "Y_Information";
+	}
+	@RequestMapping(value = "/Y_ReturnCategory")
+	public String Y_ReturnCategory(){
+		return "Y_ReturnCategory";
+	}
 	//상품등록정보 입력 Mapping
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
 	public String registdo(HttpServletRequest req, Model model){
@@ -160,8 +176,12 @@ public class HomeController {
 		String title = req.getParameter("title");
 		String productinfo = req.getParameter("productinfo");
 		String productcondition = req.getParameter("procondition");
-		String tratype = req.getParameter("tratype");
-		String traway = req.getParameter("traway");
+		String tratype = req.getParameter("tratype");			//판매냐 대여냐
+		
+	//	String traway = req.getParameter("traway");				//직거래냐 택배냐
+		
+		String[] traway = req.getParameterValues("traway");
+		
 		String salprice_s = req.getParameter("salprice");
 		String renprice_s = req.getParameter("renprice");
 		String deposit_s = req.getParameter("deposit");
@@ -184,6 +204,7 @@ public class HomeController {
 		
 		HttpSession ses = req.getSession();
 		String nickname = (String)ses.getAttribute("id");
+		ses.setAttribute("checkId", nickname);
 		
 		registDTO dto = new registDTO(nickname, catnum, title, productinfo, productcondition, tratype, traway, salprice, renprice, deposit, renday);
 
@@ -238,8 +259,17 @@ public class HomeController {
 		
 		int pronum = dao.selectPronum();
 		
-		dao.insertImage(dto, pronum);
-		dao.updateImage(dto, pronum);
+		HttpSession ses = req.getSession();
+		String id = (String)ses.getAttribute("id");
+		String checkId = (String)ses.getAttribute("checkId");
+		
+		if(id.equals(checkId)){
+			dao.insertImage(dto, pronum);
+			dao.updateImage(dto, pronum);
+		}else{
+			System.out.println("로그인한 id와 상품등록한 id가 다릅니다.");
+		}
+		
 //		RequestDispatcher view = req.getRequestDispatcher("K_view.jsp");
 //		view.forward(req, resp);
 		

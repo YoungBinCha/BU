@@ -40,7 +40,17 @@ public class registDAO {
 			pstmt.setString(3, dto.getTitle());
 			pstmt.setString(4, dto.getProinfo());
 			pstmt.setString(5, dto.getProcondition());
-			pstmt.setString(6, dto.getTraway());
+			//
+			String traway = "";
+			for(int i = 0 ; i<dto.getTraway().length ; i++){
+				traway+=dto.getTraway()[i];
+				if(i==0)
+					traway+=",";
+			}
+			
+			pstmt.setString(6, traway);
+			
+			//
 			pstmt.setString(7, dto.getTratype());
 			pstmt.setInt(8, dto.getSalprice());
 
@@ -64,7 +74,17 @@ public class registDAO {
 			pstmt.setString(3, dto.getTitle());
 			pstmt.setString(4, dto.getProinfo());
 			pstmt.setString(5, dto.getProcondition());
-			pstmt.setString(6, dto.getTraway());
+			//
+			String traway = "";
+			for(int i = 0 ; i<dto.getTraway().length ; i++){
+				traway+=dto.getTraway()[i];
+				if(i==0)
+					traway+=",";
+			}
+			
+			pstmt.setString(6, traway);
+			
+			//
 			pstmt.setString(7, dto.getTratype());
 			pstmt.setInt(8, dto.getRenprice());
 			pstmt.setInt(9, dto.getDeposit());
@@ -97,14 +117,14 @@ public class registDAO {
 	}
 
 	public ArrayList<String> selectCategory() {
-		String query = "SELECT DISTINCT small FROM category"; // DISTINCT 중복 제거
+		String query = "SELECT DISTINCT big FROM category"; // DISTINCT 중복 제거
 		ArrayList<String> big = new ArrayList<String>();
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
-				big.add(rs.getString("small"));
+				big.add(rs.getString("big"));
 			}
 
 			stmt.close();
@@ -113,6 +133,25 @@ public class registDAO {
 		}
 		return big;
 	}
+	
+	public ArrayList<String> selectCategory2(String cate) {
+		String query = "SELECT  small FROM category where big='"+cate+"'"; // DISTINCT 중복 제거
+		ArrayList<String> small = new ArrayList<String>();
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+				small.add(rs.getString("small"));
+			}
+
+			stmt.close();
+		} catch (SQLException ex) {
+			System.out.println("SQL selectCategory() 오류 : " + ex.getLocalizedMessage());
+		}
+		return small;
+	}
+	
 
 	public ArrayList<String> selectProduct(int pronum) {
 		String query = "SELECT * FROM product where pronum=" + pronum + "";
@@ -151,9 +190,9 @@ public class registDAO {
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, pronum);
 			pstmt.setString(2, "resources/img/" + dto.getImg());
-			pstmt.setString(3, "resources/img/" + dto.getImg2());
+			pstmt.setString(3, "resources/img/" + dto.getImg4());
 			pstmt.setString(4, "resources/img/" + dto.getImg3());
-			pstmt.setString(5, "resources/img/" + dto.getImg4());
+			pstmt.setString(5, "resources/img/" + dto.getImg2()); 
 
 			pstmt.executeUpdate();
 			check = true;
@@ -215,25 +254,25 @@ public class registDAO {
 		return image;
 	}
 
-	public ArrayList<String> selectImage() {
-		String query = "SELECT * FROM image";
-		ArrayList<String> al = new ArrayList<String>();
+	public ArrayList<String> selectImage(int pronum) {
+		String query = "SELECT * FROM image where pronum = "+pronum+";";
+		ArrayList<String> arrayListImage = new ArrayList<String>();
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 
-			rs.last();
+			rs.next();
 
-			al.add(rs.getString("img"));
-			al.add(rs.getString("img2"));
-			al.add(rs.getString("img3"));
-			al.add(rs.getString("img4"));
+			arrayListImage.add(rs.getString("img"));
+			arrayListImage.add(rs.getString("img2"));
+			arrayListImage.add(rs.getString("img3"));
+			arrayListImage.add(rs.getString("img4"));
 
 			stmt.close();
 		} catch (SQLException ex) {
 			System.out.println("SQL selectImage() 오류 : " + ex.getLocalizedMessage());
 		}
-		return al;
+		return arrayListImage;
 	}
 
 	public void close() {

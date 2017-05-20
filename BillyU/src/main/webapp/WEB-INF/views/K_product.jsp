@@ -27,7 +27,7 @@
 		$(".input").click(function() {
 			$(".product").toggle();
 			$(".K_trade").toggle(500);
-			//$(".submit").toggle();
+			$(this).html($(this).html() == '다음' ? '이전' : '다음');
 		});
 
 		//대여 버튼 누르면 tratype의 value값이 rent로
@@ -38,12 +38,14 @@
 		$('.sa').click(function() {
 			$('.tratype').val("판매");
 		});
-
-		$('.input').click(function() {
-			$(this).toggleText('다음', '이전');
-		});
 	});
 </script>
+<style type="text/css">
+/*nav바와 상품등록 간격 줄이기*/
+#page-content-wrapper{
+		padding-top: 20px !important;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="Y_NavBar.jsp"></jsp:include>
@@ -53,7 +55,7 @@
 			<div class="col-lg-3"></div>
 			<div class="col-lg-6">
 				<div class="K_productRegist">
-					<h2>상품 정보 입력</h2>
+					<center><h1>상품 정보 입력</h1></center><br />
 					<form action="regist.do" method="post">
 						<div class="product">
 							<div class="form-group">
@@ -62,8 +64,8 @@
 									placeholder="Enter title">
 							</div>
 							<div class="form-group">
-								<label for="category">카테고리:</label> <select class="form-control"
-									id="category" name="category">
+								<label for="category">대분류:</label> <select class="form-control"
+									id="category">
 									 <%-- <jsp:useBean id="sel"
 										class="com.openmarket.Capstone_productDAO"></jsp:useBean>  --%>
 										 <jsp:useBean id="select"
@@ -77,6 +79,30 @@
 										}
 									%>
 								</select>
+								<br />
+								<label for="category">소분류:</label>
+								 <select class="form-control" id="category2" name="category">
+									<option value="">대분류를 선택해주세요</option>
+								</select>
+								<script>
+								$('#category').change(function(){
+									$.ajax({
+										type : "POST",
+										url : "./Y_ReturnCategory",
+										data : {cate : $('#category').val()},
+										success : WhenSuccess,
+										error : WhenError
+									});
+								});
+								function WhenSuccess(resdata){
+									$('#category2').html(resdata);
+								}
+
+								function WhenError(){
+									alert('error');
+								}
+								
+								</script>
 							</div>
 							<div class="form-group">
 								<label for="procondition">상품상태 :</label> <label
@@ -127,9 +153,9 @@
 									</div>
 									<div class="form-group">
 										<label for="traway">거래방법 : </label> <label
-											class="radio-inline"> <input type="radio"
+											class="checkbox-inline"> <input type="checkbox"
 											name="traway" value="택배">택배
-										</label> <label class="radio-inline"> <input type="radio"
+										</label> <label class="checkbox-inline"> <input type="checkbox"
 											name="traway" value="직거래">직거래
 										</label>
 									</div>
@@ -144,9 +170,9 @@
 									</div>
 									<div class="form-group">
 										<label for="traway">거래방법 : </label> <label
-											class="radio-inline"> <input type="radio"
+											class="checkbox-inline"> <input type="checkbox"
 											name="traway" value="택배">택배
-										</label> <label class="radio-inline"> <input type="radio"
+										</label> <label class="checkbox-inline"> <input type="checkbox"
 											name="traway" value="직거래">직거래
 										</label>
 									</div>
@@ -165,5 +191,8 @@
 		</div>
 	</div>
 	</div>
+	<br />
+	<br />
+	<br />
 </body>
 </html>

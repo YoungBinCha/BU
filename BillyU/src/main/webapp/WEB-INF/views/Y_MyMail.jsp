@@ -58,7 +58,7 @@
 		
 %>
     <tr>
-        <td style="width:8%"><%=pronum %></td>
+        <td style="width:8%"><a href="K_view?pronum=<%=pronum %>"><%=pronum %></a></td>
         <td style="width:8%"><%=rentnum %></td>
         <td style="width:8%"><%=guest %></td>
         <td style="width:10%"><%=way %></td>
@@ -105,7 +105,7 @@
 		Timestamp curtime = dto.getCurtime();
 %>
     <tr>
-        <td style="width:8%"><%=pronum %></td>
+        <td style="width:8%"><a href="K_view?pronum=<%=pronum %>"><%=pronum %></a></td>
         <td style="width:8%"><%=salenum %></td>
         <td style="width:8%"><%=guest %></td>
         <td style="width:10%"><%=way %></td>
