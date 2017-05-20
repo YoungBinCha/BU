@@ -167,7 +167,6 @@ body {
 .login-btn:hover:after, .login-btn:focus:after, .login-btn:active:after {
   border-left-color: orange;
 }
-
 </style>
 </head>
 <body>

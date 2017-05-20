@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- 로그인창 팝업 뛰우기 위함 -->
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <style>
 @media screen and (max-width: 1200px) {
   .Y_NavSearch {
