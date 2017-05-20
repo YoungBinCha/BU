@@ -159,6 +159,10 @@ public class HomeController {
 	public String Y_ReturnCategory(){
 		return "Y_ReturnCategory";
 	}
+	@RequestMapping(value = "/Y_Search_Result")
+	public String Y_Search_Result(){
+		return "Y_Search_Result";
+	}
 	//상품등록정보 입력 Mapping
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
 	public String registdo(HttpServletRequest req, Model model){

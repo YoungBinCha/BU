@@ -13,7 +13,11 @@ public class cateDTO {
 	public cateDTO(String big){
 		this.big = big;
 	}
-	
+	public cateDTO(String big,String small){
+		this.big = big;
+		this.small = small;
+		
+	}
 	public int getCatnum() {
 		return catnum;
 	}

@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>대한민국 No2 중고거래</title>
+<title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -62,32 +62,13 @@ height:150px;
 </head>
 <body>
 <jsp:include page="Y_NavBar.jsp" />
-<!-- 사이트 설명 시작 -->
-<center>
-<div id="intro_billyu" style="width:90%;height:300px;border:1px solid black;">
-<h1>사이트 설명</h1>
-</div>
-</center>
-<br />
-<!-- 사이트 설명 끝 -->
 <div id="wrapper">
-<div class="toggles">
-<button class="button" value="전체보기" id="showall">전체보기</button> 
-<%
-	ArrayList<cateDTO> big_list = category_list.big_list();
-	for(int i=0;i<big_list.size();i++){
-		cateDTO dto = big_list.get(i);
-		String big = dto.getBig();
-
-		%>
-		<button class="button" value="<%=big %>" id="cate<%=i+1%>"><%=big %></button>
-		<%
-	}
-%>
-</div>
 <center>
+<%
+	String search = request.getParameter("search");
+%>
 <div style="width:1000px" class="way">
-<h2 id="Y_result" style="float:left;display:inline-block;">최근등록상품</h2>
+<h2 id="Y_result" style="float:left;display:inline-block;">"<%=search %>" 검색결과</h2>
 <div style="background:#428bca;width:20px;height:20px;display:inline-block;float:right"> </div><a value="대여" id="rent" style="display:inline-block;float:right">대여</a>
 <div style="background:#ebcccc;width:20px;height:20px;display:inline-block;float:right"> </div><a value="판매" id="sale" style="display:inline-block;float:right">판매</a>
 </div>
@@ -95,12 +76,32 @@ height:150px;
 
 <div class="panel-group posts" style="clear:both">
 <%
-	ArrayList<proDTO> pro_list = product_list.pro_list();
+	
+	String cate = request.getParameter("category");
+	int product_number;
+	ArrayList<proDTO> list = new ArrayList<proDTO>();
+		
+	
+	if(cate.equals("제목")){
+		list = product_list.Select_Title(search);
+	}else if(cate.equals("상품번호")){
+		product_number=Integer.parseInt(search);
+		list = product_list.Select_Pronum(product_number);
+	}else if(cate.equals("공여자")){
+		list = product_list.Select_Nicknamae(search);
+	}else if(cate.equals("소분류")){
+		int check = category_list.receivecat(search);
+		list = product_list.Select_Catnum(check);
+	}else if(cate.equals("all")){
+		int check = category_list.receivecat(search);
+		list = product_list.Select_Catnum(check);
+	}
+	
 	String Y_Category="";
 	String cate_name="";
 	
-	for(int i=0;i<pro_list.size();i++){
-		proDTO dto = pro_list.get(i);
+	for(int i=0;i<list.size();i++){
+		proDTO dto = list.get(i);
 		int pronum = dto.getPronum();
 		String img = dto.getImg();
 		String title = dto.getTitle();
@@ -216,7 +217,6 @@ $(document).ready(function() {
     	var getid=this.id;
     	var getcurrent=$('.posts .'+getid);
     	var na = $(this).attr('value');
-    	$('#Y_result').text('판매/대여');
     	  
         $('.post').not( getcurrent ).hide(500);
         getcurrent.show(500);
