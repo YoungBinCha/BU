@@ -7,6 +7,7 @@
 <jsp:useBean id="category_list" class="category.cateDAO" />
 <%@ page import="category.cateDTO" %>
 <%@ page import="category.cateDAO" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,17 +55,16 @@
   text-align: center;
 }
 .img-rounded{
-width:100%;
-height:100%;
+width:200px;
+height:150px;
 }
 
 </style>
 </head>
 <body>
 <jsp:include page="Y_NavBar.jsp" />
-<br />
+<div style="width:100%;height:300px;background-color:black"></div>
 <div id="wrapper">
-
 <div class="toggles">
 <button class="button" value="전체보기" id="showall">전체보기</button> 
 <%
@@ -80,10 +80,10 @@ height:100%;
 %>
 </div>
 <center>
-<div style="width:1000px">
+<div style="width:1000px" class="way">
 <h2 id="Y_result" style="float:left;display:inline-block;">최근등록상품</h2>
-<div style="background:#428bca;width:20px;height:20px;display:inline-block;float:right"> </div><p style="display:inline-block;float:right">대여</p>
-<div style="background:#ebcccc;width:20px;height:20px;display:inline-block;float:right"> </div><p style="display:inline-block;float:right">판매</p>
+<div style="background:#428bca;width:20px;height:20px;display:inline-block;float:right"> </div><a value="대여" id="rent" style="display:inline-block;float:right">대여</a>
+<div style="background:#ebcccc;width:20px;height:20px;display:inline-block;float:right"> </div><a value="판매" id="sale" style="display:inline-block;float:right">판매</a>
 </div>
 </center>
 
@@ -160,7 +160,7 @@ height:100%;
 		if(tratype.equals("대여"))
 		{
 			%>
-	<div class="panel panel-primary <%=Y_Category%> post">
+	<div class="panel panel-primary <%=Y_Category%> post rent">
       <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=pronum %>)</span><span style="text-align:center;">대여상품(<%=cate_name %>)</span><span style="float:right;color:white"><%=curtime %></span></div>
       <div class="panel-body">
       <div class="col-xs-3 col-md-3"><a href="K_view?pronum=<%=pronum %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
@@ -173,7 +173,7 @@ height:100%;
 			<%
 		}else{
 			%>
-	<div class="panel panel-danger <%=Y_Category%> post">
+	<div class="panel panel-danger <%=Y_Category%> post sale">
       <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=pronum %>)</span><span style="text-align:center;">판매상품(<%=cate_name %>)</span><span style="float:right;color:white"><%=curtime %></span></div>
       <div class="panel-body">
       <div class="col-xs-3 col-md-3"><a href="K_view?pronum=<%=pronum %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
@@ -205,6 +205,16 @@ $(document).ready(function() {
     $('#showall').click(function() {
         $('.post').show(500);
     });
+    
+    $('.way a').click(function(){
+    	var getid=this.id;
+    	var getcurrent=$('.posts .'+getid);
+    	var na = $(this).attr('value');
+    	$('#Y_result').text('판매/대여');
+    	  
+        $('.post').not( getcurrent ).hide(500);
+        getcurrent.show(500);
+    })
 }); 
 
     </script>
