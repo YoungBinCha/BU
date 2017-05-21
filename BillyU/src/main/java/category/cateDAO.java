@@ -10,6 +10,7 @@ public class cateDAO {
 	cateDTO dto;
 	ArrayList<cateDTO> big_list = new ArrayList<cateDTO>();
 	ArrayList<cateDTO> small_list = new ArrayList<cateDTO>();
+	int cat;
 	
 	public cateDAO(){
 		try{Class.forName("com.mysql.jdbc.Driver");}
@@ -55,15 +56,14 @@ public class cateDAO {
 	public ArrayList<cateDTO> small_list(){
 		try{
 			connect();
-			String sql = "select small from category";
+			String sql = "select * from category";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int catnum = rs.getInt("catnum");
 				String big = rs.getString("big");
 				String small = rs.getString("small");
 				
-				dto = new cateDTO(catnum,big,small);
+				dto = new cateDTO(big,small);
 				small_list.add(dto);
 			}
 			
@@ -89,5 +89,4 @@ public class cateDAO {
 		
 		return small;
 	}
-	
 }

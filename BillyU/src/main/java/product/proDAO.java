@@ -18,6 +18,10 @@ public class proDAO {
 	ArrayList<proDTO> pro_list = new ArrayList<proDTO>();
 	ArrayList<proDTO> pro_mylist = new ArrayList<proDTO>();
 	ArrayList<proDTO> jang_mylist = new ArrayList<proDTO>();
+	ArrayList<proDTO> search_list = new ArrayList<proDTO>();
+	ArrayList<proDTO> search_list2 = new ArrayList<proDTO>();
+	ArrayList<proDTO> search_list3 = new ArrayList<proDTO>();
+	ArrayList<proDTO> search_all_cate = new ArrayList<proDTO>();
 	
 	public proDAO(){
 		try{Class.forName("com.mysql.jdbc.Driver");}
@@ -150,6 +154,137 @@ public class proDAO {
 		}
 	}
 	
+	public ArrayList<proDTO> Select_Title(String search){
+		try{
+			connect();
+			String sql = "select * from product where title like '%"+search+"%'";
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				int pronum = rs.getInt("pronum");
+				String nickname = rs.getString("nickname");
+				int catnum = rs.getInt("catnum");
+				String title = rs.getString("title");
+				String proinfo = rs.getString("proinfo");
+				String procondition = rs.getString("procondition");
+				String traway = rs.getString("traway");
+				String tratype = rs.getString("tratype");
+				int renprice = rs.getInt("renprice");
+				int renday = rs.getInt("renday");
+				int deposit = rs.getInt("deposit");
+				int salprice = rs.getInt("salprice");
+				String img = rs.getString("img");
+				Timestamp curtime = rs.getTimestamp("curtime");
+
+				dto = new proDTO(pronum,nickname,catnum,title,proinfo,procondition,traway,tratype,renprice,renday,deposit,salprice,img,curtime);
+				search_list.add(dto);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
+		
+		return search_list;
+	}
+	
+	public ArrayList<proDTO> Select_Pronum(int product_number){
+		try{
+			connect();
+			String sql = "select * from product where pronum = '"+product_number+"'";
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				int pronum = rs.getInt("pronum");
+				String nickname = rs.getString("nickname");
+				int catnum = rs.getInt("catnum");
+				String title = rs.getString("title");
+				String proinfo = rs.getString("proinfo");
+				String procondition = rs.getString("procondition");
+				String traway = rs.getString("traway");
+				String tratype = rs.getString("tratype");
+				int renprice = rs.getInt("renprice");
+				int renday = rs.getInt("renday");
+				int deposit = rs.getInt("deposit");
+				int salprice = rs.getInt("salprice");
+				String img = rs.getString("img");
+				Timestamp curtime = rs.getTimestamp("curtime");
+
+				dto = new proDTO(pronum,nickname,catnum,title,proinfo,procondition,traway,tratype,renprice,renday,deposit,salprice,img,curtime);
+				search_list2.add(dto);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
+		
+		return search_list2;
+	}
+	
+	public ArrayList<proDTO> Select_Nicknamae(String nick){
+		try{
+			connect();
+			String sql = "select * from product where nickname = '"+nick+"'";
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				int pronum = rs.getInt("pronum");
+				String nickname = rs.getString("nickname");
+				int catnum = rs.getInt("catnum");
+				String title = rs.getString("title");
+				String proinfo = rs.getString("proinfo");
+				String procondition = rs.getString("procondition");
+				String traway = rs.getString("traway");
+				String tratype = rs.getString("tratype");
+				int renprice = rs.getInt("renprice");
+				int renday = rs.getInt("renday");
+				int deposit = rs.getInt("deposit");
+				int salprice = rs.getInt("salprice");
+				String img = rs.getString("img");
+				Timestamp curtime = rs.getTimestamp("curtime");
+
+				dto = new proDTO(pronum,nickname,catnum,title,proinfo,procondition,traway,tratype,renprice,renday,deposit,salprice,img,curtime);
+				search_list3.add(dto);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
+		
+		return search_list3;
+	}
+	
+	public ArrayList<proDTO> Select_Catnum(String small){
+		try{
+			connect();
+			String sql = "select * from product p,category c where p.catnum = c.catnum and c.small='"+small+"'";
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				int pronum = rs.getInt("pronum");
+				String nickname = rs.getString("nickname");
+				int catnum = rs.getInt("catnum");
+				String title = rs.getString("title");
+				String proinfo = rs.getString("proinfo");
+				String procondition = rs.getString("procondition");
+				String traway = rs.getString("traway");
+				String tratype = rs.getString("tratype");
+				int renprice = rs.getInt("renprice");
+				int renday = rs.getInt("renday");
+				int deposit = rs.getInt("deposit");
+				int salprice = rs.getInt("salprice");
+				String img = rs.getString("img");
+				Timestamp curtime = rs.getTimestamp("curtime");
+
+				dto = new proDTO(pronum,nickname,catnum,title,proinfo,procondition,traway,tratype,renprice,renday,deposit,salprice,img,curtime);
+				search_all_cate.add(dto);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
+		
+		return search_all_cate;
+	}
 	/*
 	 * 여기부터 상품등록할 때 사용하는 메소드 -- Capstone_prodctDAO에서 온 것들
 	 */

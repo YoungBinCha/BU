@@ -46,13 +46,14 @@ background-color:#f3f3f3;
 <tr class="Y_Nav_TopMenu">
 <%
 	ArrayList<cateDTO> big_list = DAO.big_list();
+	ArrayList<cateDTO> small_list = DAO.small_list();
 	
 	for(int i=0;i<big_list.size();i++){
 		cateDTO dto = big_list.get(i);
 		String big = dto.getBig();
 		
-		
 	}
+
 %>
 
 <th>의류</th><th>잡화</th><th>유아동</th><th>식품</th>
@@ -60,7 +61,7 @@ background-color:#f3f3f3;
 </tr>
 
 <tr class="Y_Nav_Menu_Content">
-<td><a href="K_View.jsp">여성의류</a></td>
+<td><a href="#">여성의류</a></td>
 <td><a href="#">신발</a></td>
 <td><a href="#">기저귀</a></td>
 <td><a href="#">신선식품</a></td>
@@ -85,7 +86,7 @@ background-color:#f3f3f3;
 <td><a href="#">언더웨어</a></td>
 <td><a href="#">유아동신발</a></td>
 <td><a href="#">육아용품</a></td>
-<td><a href="#">건강식품</a></td>
+<td><a href="#">커피/음료</a></td>
 <td><a href="#">여성용품</a></td>
 <td><a href="#">조명/인테리어</a></td>
 <td><a href="#">운동용품</a></td>
@@ -95,8 +96,8 @@ background-color:#f3f3f3;
 <tr class="Y_Nav_Menu_Content">
 <td><a href="#">유아동의류</a></td>
 <td><a href="#">쥬얼리/시계</a></td>
-<td><a href="#">브랜드 아동패션</a></td>
-<td><a href="#">커피음료</a></td>
+<td><a href="#">브랜드아동패션</a></td>
+<td class="Y_rowspan" rowspan="3"></td>
 <td><a href="#">바디/헤어</a></td>
 <td><a href="#">생활용품</a></td>
 <td class="Y_rowspan" rowspan="3"></td>
@@ -108,13 +109,12 @@ background-color:#f3f3f3;
 <td><a href="#">화장품/향수</a></td>
 <td class="Y_rowspan" rowspan="2"></td>
 <td class="Y_rowspan" rowspan="2"></td>
-<td class="Y_rowspan" rowspan="2"></td>
 <td><a href="#">주방용품</a></td>
 <td class="Y_rowspan" rowspan="2"></td>
 </tr>
 
 <tr class="Y_Nav_Menu_Content">
-<td></td>
+<td class="Y_rowspan"></td>
 <td><a href="#">꽃/이벤트</a></td>
 </tr>
 
@@ -186,7 +186,12 @@ background-color:#f3f3f3;
 <tr class="Y_Nav_Menu_Content">
 <td><a href="#">등산</a></td>
 </tr>
-
+<script>
+$('a').click(function(){
+	var th = $(this).text();
+	$('a').attr('href','Y_Search_Result?category=all&search='+th+'');
+})
+</script>
 </table>
 </div>
 </div>

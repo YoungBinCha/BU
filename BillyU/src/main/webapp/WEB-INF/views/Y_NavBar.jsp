@@ -466,7 +466,7 @@
 </td>
 <td class="Y_NavBlank"> </td>
 
-<form action="a.jsp" method="post">
+<form action="Y_Search_Result" method="post">
 <td class="Y_NavSearch">
   <input class="Y_SearchBar" type="text" name="search" placeholder="검색어를 입력해 주세요.">
 </td>
@@ -475,9 +475,9 @@
 
 <select name="category" class="Y_NavSelect">
 <option value="제목">제목</option>
+<option value="상품번호">상품번호</option>
 <option value="공여자">공여자</option>
-<option value="판매">판매</option>
-<option value="나눔">나눔</option>
+<option value="소분류">소분류</option>
 </select>
 
 <input type="submit" value="검색" class="Y_SearchButton" />

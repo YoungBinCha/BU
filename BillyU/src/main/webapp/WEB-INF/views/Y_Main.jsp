@@ -7,11 +7,12 @@
 <jsp:useBean id="category_list" class="category.cateDAO" />
 <%@ page import="category.cateDTO" %>
 <%@ page import="category.cateDAO" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>대한민국 No2 중고거래</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -25,7 +26,6 @@
   clear: both;
   overflow: hidden;
 }
-
 .button {
   border: 2px solid #D8D8D8;
   border-radius: 40px;
@@ -62,7 +62,14 @@ height:150px;
 </head>
 <body>
 <jsp:include page="Y_NavBar.jsp" />
-<div style="width:100%;height:300px;background-color:black"></div>
+<!-- 사이트 설명 시작 -->
+<center>
+<div id="intro_billyu" style="width:90%;height:300px;border:1px solid black;">
+<h1>사이트 설명</h1>
+</div>
+</center>
+<br />
+<!-- 사이트 설명 끝 -->
 <div id="wrapper">
 <div class="toggles">
 <button class="button" value="전체보기" id="showall">전체보기</button> 

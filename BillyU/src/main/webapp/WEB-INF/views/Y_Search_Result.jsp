@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.sql.*" %>
 <%@ page import="product.proDAO" %>
 <%@ page import="product.proDTO" %>
 <%@ page import="java.util.*" %>
 <jsp:useBean id="product_list" class="product.proDAO" />
+<jsp:useBean id="category_list" class="category.cateDAO" />
+<%@ page import="category.cateDTO" %>
+<%@ page import="category.cateDAO" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +26,6 @@
   clear: both;
   overflow: hidden;
 }
-
 .button {
   border: 2px solid #D8D8D8;
   border-radius: 40px;
@@ -58,23 +61,45 @@ height:150px;
 </style>
 </head>
 <body>
+<jsp:include page="Y_NavBar.jsp" />
 <div id="wrapper">
 <center>
+<%
+	String search = request.getParameter("search");
+%>
 <div style="width:1000px" class="way">
-<h2 id="Y_result" style="float:left;display:inline-block;">내가 올린 상품</h2>
-<div style="background:#428bca;width:20px;height:20px;display:inline-block;float:right"> </div><a id="rent" style="display:inline-block;float:right">대여</a>
-<div style="background:#ebcccc;width:20px;height:20px;display:inline-block;float:right"> </div><a id="sale" style="display:inline-block;float:right">판매</a>
+<h2 id="Y_result" style="float:left;display:inline-block;">"<%=search %>" 검색결과</h2>
+<div style="background:#428bca;width:20px;height:20px;display:inline-block;float:right"> </div><a value="대여" id="rent" style="display:inline-block;float:right">대여</a>
+<div style="background:#ebcccc;width:20px;height:20px;display:inline-block;float:right"> </div><a value="판매" id="sale" style="display:inline-block;float:right">판매</a>
 </div>
 </center>
 
 <div class="panel-group posts" style="clear:both">
 <%
-	ArrayList<proDTO> pro_mylist = product_list.MyPage(session.getAttribute("id"));
+	
+	String cate = request.getParameter("category");
+	int product_number;
+	ArrayList<proDTO> list = new ArrayList<proDTO>();
+		
+	
+	if(cate.equals("제목")){
+		list = product_list.Select_Title(search);
+	}else if(cate.equals("상품번호")){
+		product_number=Integer.parseInt(search);
+		list = product_list.Select_Pronum(product_number);
+	}else if(cate.equals("공여자")){
+		list = product_list.Select_Nicknamae(search);
+	}else if(cate.equals("소분류")){
+		list = product_list.Select_Catnum(search);
+	}else if(cate.equals("all")){
+		list = product_list.Select_Catnum(search);
+	}
+	
 	String Y_Category="";
 	String cate_name="";
 	
-	for(int i=0;i<pro_mylist.size();i++){
-		proDTO dto = pro_mylist.get(i);
+	for(int i=0;i<list.size();i++){
+		proDTO dto = list.get(i);
 		int pronum = dto.getPronum();
 		String img = dto.getImg();
 		String title = dto.getTitle();
@@ -85,6 +110,7 @@ height:150px;
 		int salprice = dto.getSalprice();
 		int catnum = dto.getCatnum();
 		String proinfo = dto.getProinfo();
+		Timestamp curtime = dto.getCurtime();
 		
 		if(catnum<200 && catnum>100){
 			Y_Category="cate1";
@@ -140,7 +166,7 @@ height:150px;
 		{
 			%>
 	<div class="panel panel-primary <%=Y_Category%> post rent">
-      <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=pronum %>)</span><span style="text-align:center;">대여상품(<%=cate_name %>)</span><span style="float:right"><a style="color:white" href="Y_Delete_MyProduct?pronum=<%=pronum%>">X</a></span></div>
+      <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=pronum %>)</span><span style="text-align:center;">대여상품(<%=cate_name %>)</span><span style="float:right;color:white"><%=curtime %></span></div>
       <div class="panel-body">
       <div class="col-xs-3 col-md-3"><a href="K_view?pronum=<%=pronum %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
       <div class="col-xs-6 col-md-3"><a href="K_view?pronum=<%=pronum %>"><%=title %></a></div>
@@ -153,7 +179,7 @@ height:150px;
 		}else{
 			%>
 	<div class="panel panel-danger <%=Y_Category%> post sale">
-      <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=pronum %>)</span><span style="text-align:center;">판매상품(<%=cate_name %>)</span><span style="float:right"><a style="color:white" href="Y_Delete_MyProduct?pronum=<%=pronum%>">X</a></span></div>
+      <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=pronum %>)</span><span style="text-align:center;">판매상품(<%=cate_name %>)</span><span style="float:right;color:white"><%=curtime %></span></div>
       <div class="panel-body">
       <div class="col-xs-3 col-md-3"><a href="K_view?pronum=<%=pronum %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
       <div class="col-xs-6 col-md-3"><a href="K_view?pronum=<%=pronum %>"><%=title %></a></div>
@@ -171,15 +197,30 @@ height:150px;
 </div>
 <br />
 <script>
-$('.way a').click(function(){
-	var getid=this.id;
-	var getcurrent=$('.posts .'+getid);
-	var na = $(this).attr('value');
-	$('#Y_result').text('판매/대여');
-	  
-    $('.post').not( getcurrent ).hide(500);
-    getcurrent.show(500);
-})
-</script>
+$(document).ready(function() {
+    $('.toggles button').click(function(){
+      var get_id = this.id;
+      var get_current = $('.posts .' + get_id);
+      var name = $(this).attr('value');
+      $('#Y_result').text('"'+name+'"'+" 검색결과");
+  
+        $('.post').not( get_current ).hide(500);
+        get_current.show(500);
+    });
+    $('#showall').click(function() {
+        $('.post').show(500);
+    });
+    
+    $('.way a').click(function(){
+    	var getid=this.id;
+    	var getcurrent=$('.posts .'+getid);
+    	var na = $(this).attr('value');
+    	  
+        $('.post').not( getcurrent ).hide(500);
+        getcurrent.show(500);
+    })
+}); 
+
+    </script>
 </body>
 </html>
