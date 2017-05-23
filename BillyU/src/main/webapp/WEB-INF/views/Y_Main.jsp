@@ -64,7 +64,7 @@ height:150px;
 <jsp:include page="Y_NavBar.jsp" />
 <!-- 사이트 설명 시작 -->
 <center>
-<div class="container" style="height:300px;">
+<div class="container" style="height:600px;">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -76,15 +76,15 @@ height:150px;
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <img src="resources/img/arin.jpg" alt="Los Angeles" style="height:300px;width:100%;">
+        <img src="resources/img/arin.jpg" alt="Los Angeles" style="height:600px;width:100%;">
       </div>
 
       <div class="item">
-        <img src="resources/img/bird.jpg" alt="Chicago" style="height:300px;width:100%;">
+        <img src="resources/img/bird.jpg" alt="Chicago" style="height:600px;width:100%;">
       </div>
     
       <div class="item">
-        <img src="resources/img/flower.jpg" alt="New york" style="height:300px;width:100%;">
+        <img src="resources/img/flower.jpg" alt="New york" style="height:600px;width:100%;">
       </div>
     </div>
 

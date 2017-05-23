@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+
+import product.proDTO;
 
 
 public class mypage_replyDAO {
@@ -14,6 +18,8 @@ public class mypage_replyDAO {
 	Statement stmt = null;
 	ResultSet rs = null;
 	mypage_replyDTO dto;
+	ArrayList<mypage_replyDTO> reply_list = new ArrayList<mypage_replyDTO>();
+	ArrayList<mypage_replyDTO> reply_list2 = new ArrayList<mypage_replyDTO>();
 	
 	public mypage_replyDAO(){
 		try{Class.forName("com.mysql.jdbc.Driver");}
@@ -45,5 +51,53 @@ public class mypage_replyDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{disconnect();}
+	}
+	
+	public ArrayList<mypage_replyDTO> reply_list(String host){
+		try{
+			connect();
+			String sql = "select * from mypage_reply where guest='"+host+"' order by curtime desc";
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				int pronum = rs.getInt("pronum");
+				String hoster = rs.getString("hoster");
+				String guest = rs.getString("guest");
+				String message = rs.getString("message");
+				Timestamp curtime = rs.getTimestamp("curtime");
+
+				dto = new mypage_replyDTO(hoster, guest, message, curtime, pronum);
+				reply_list.add(dto);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
+		
+		return reply_list;
+	}
+	
+	public ArrayList<mypage_replyDTO> reply_list2(String host){
+		try{
+			connect();
+			String sql = "select * from mypage_reply where hoster='"+host+"' order by curtime desc";
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				int pronum = rs.getInt("pronum");
+				String hoster = rs.getString("hoster");
+				String guest = rs.getString("guest");
+				String message = rs.getString("message");
+				Timestamp curtime = rs.getTimestamp("curtime");
+
+				dto = new mypage_replyDTO(hoster, guest, message, curtime, pronum);
+				reply_list2.add(dto);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
+		
+		return reply_list2;
 	}
 }

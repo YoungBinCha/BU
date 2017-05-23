@@ -53,8 +53,8 @@ response.sendRedirect("Y_Login");}
 <div class="container">
   <div class="btn-group btn-group-justified nav-pills">
     <a id="#section1" class="btn btn-primary">내가 올린 상품</a>
-    <a id="#section2" class="btn btn-primary">나에게 온 메일</a>
-    <a id="#section3" class="btn btn-primary">신청대기 중인 상품</a>
+    <a id="#section2" class="btn btn-primary">나에게 온 메세지</a>
+    <a id="#section3" class="btn btn-primary">내가 보낸 메세지</a>
     <a id="#section4" class="btn btn-primary">개인정보 수정</a>
   </div>
 </div>

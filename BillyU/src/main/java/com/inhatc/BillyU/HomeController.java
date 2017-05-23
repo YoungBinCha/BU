@@ -2,6 +2,7 @@ package com.inhatc.BillyU;
 
 import java.io.IOException;
 
+
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.util.Date;
@@ -31,6 +32,8 @@ import regist.registDTO;
 import user.userDAO;
 import mypage_reply.mypage_replyDTO;
 import mypage_reply.mypage_replyDAO;
+import rent.rentDAO;
+import sale.saleDAO;
 
 
 /**
@@ -200,6 +203,22 @@ public class HomeController {
 		userDAO.delete_user(nickname);
 		session.invalidate();
 		return "Y_Main";
+	}
+	@RequestMapping(value = "/Y_Delete_toMail")
+	public String Y_Delete_toMail(HttpServletRequest request,HttpSession session,HttpServletResponse response){
+		rentDAO rentDAO = new rentDAO();
+		saleDAO saleDAO = new saleDAO();
+		String rent = request.getParameter("rentnum");
+		String sale = request.getParameter("salenum");
+		if(rent != null){
+			int rentnum = Integer.parseInt(rent);
+			rentDAO.delete_rent(rentnum);
+		}
+		if(sale != null){
+			int salenum = Integer.parseInt(sale);
+			saleDAO.delete_sale(salenum);
+		}
+		return "Y_MyPage";
 	}
 	//상품등록정보 입력 Mapping
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
