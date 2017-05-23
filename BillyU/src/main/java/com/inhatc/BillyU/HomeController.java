@@ -1,6 +1,7 @@
 package com.inhatc.BillyU;
 
 import java.io.IOException;
+
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.Locale;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -26,6 +28,9 @@ import product.proDAO;
 import product.proDTO;
 import regist.registDAO;
 import regist.registDTO;
+import mypage_reply.mypage_replyDTO;
+import mypage_reply.mypage_replyDAO;
+
 
 /**
  * Handles requests for the application home page.
@@ -162,6 +167,24 @@ public class HomeController {
 	@RequestMapping(value = "/Y_Search_Result")
 	public String Y_Search_Result(){
 		return "Y_Search_Result";
+	}
+	
+	@RequestMapping(value = "/Y_Reply",method = RequestMethod.POST)
+	public String Y_Reply(HttpServletRequest request,HttpSession session,Model model,HttpServletResponse response){
+		mypage_replyDAO replyDAO = new mypage_replyDAO();
+		Object host = session.getAttribute("id");
+		String hoster = host.toString();
+		String guest = request.getParameter("guest");
+		String message = request.getParameter("content");
+		String pro = request.getParameter("pronum");
+		int pronum = Integer.parseInt(pro);
+		replyDAO.insert_reply(pronum,hoster, guest, message);
+		try {
+			response.sendRedirect("Y_Main");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "Y_Main";
 	}
 	//상품등록정보 입력 Mapping
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)

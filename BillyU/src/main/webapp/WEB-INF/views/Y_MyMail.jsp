@@ -67,7 +67,9 @@
         <td style="width:40%"><%=message %></td>
         <td style="width:10%"><%=total %>원</td>
         <td style="width:10%"><%=curtime %></td>
-        <td style="width:10%">답변</td>
+        <td style="width:10%">
+        <button style="width:80px;text-align:center" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">답변</button>
+        </td>
     </tr>
     <%} %>
     </tbody>
@@ -112,14 +114,35 @@
         <td style="width:40%"><%=message %></td>
         <td style="width:10%"><%=total %>원</td>
         <td style="width:10%"><%=curtime %></td>
-        <td style="width:10%">답변</td>
+        <td style="width:10%">
+        <a id="reple" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">답변</a>
+        <form action="Y_Reply" method="post" id="myform" style="display:none">
+          <textarea name="content" id="" cols="30" rows="10"></textarea>
+          <input type="hidden" name="guest" value="<%=guest%>"/>
+          <input type="hidden" name="pronum" value="<%=pronum%>"/>
+          <input type="submit" value="전송"/>
+        </form>
+        </td>
     </tr>
+    
     <%} %>
     </tbody>
   </table>
   <br />
     <h2>답변 메세지</h2>
 </div>
-
+  <!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog"><div class="modal-dialog modal-lg"><div class="modal-content">
+<div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">메세지</h4></div>
+        <div class="modal-body">
+          <form action="Y_Reply" method="post">
+          <textarea name="content" id="" cols="30" rows="10"></textarea>
+          <input type="text" name="guest" value="<%=11%>"/>
+          <input type="text" name="pronum" value="<%=11%>"/>
+          <input type="submit" value="전송"/>
+          </form>
+        </div>
+<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+</div></div></div>
 </body>
 </html>
