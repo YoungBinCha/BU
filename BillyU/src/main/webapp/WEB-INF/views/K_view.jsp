@@ -180,12 +180,12 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td><label for="fee">보증금 : </label></td>
+											<td><label for="fee">대여료 : </label></td>
 											<td><input type="hidden" id="rent_cost"
 												value="<%= al.get(5) %>" /><%= al.get(5) %><small>/1주</small></td>
 										</tr>
 										<tr>
-											<td><label for="deposit">대여료 : </label></td>
+											<td><label for="deposit">보증금 : </label></td>
 											<td><input type="hidden" id="bo_cost"
 												value="<%= al.get(7) %>" /><%= al.get(7) %></td>
 										</tr>

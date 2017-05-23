@@ -70,10 +70,12 @@
 										class="com.openmarket.Capstone_productDAO"></jsp:useBean>  --%>
 										 <jsp:useBean id="select"
 										class="regist.registDAO"></jsp:useBean> 
+										<option>대분류를 선택해 주세요</option>
 									<%
 										ArrayList<String> al = select.selectCategory();
 										for (int i = 0; i < al.size(); i++) {
 									%>
+									
 									<option><%=al.get(i)%></option>
 									<%
 										}

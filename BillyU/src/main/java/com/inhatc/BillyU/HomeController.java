@@ -28,6 +28,7 @@ import product.proDAO;
 import product.proDTO;
 import regist.registDAO;
 import regist.registDTO;
+import user.userDAO;
 import mypage_reply.mypage_replyDTO;
 import mypage_reply.mypage_replyDAO;
 
@@ -184,6 +185,20 @@ public class HomeController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return "Y_Main";
+	}
+	@RequestMapping(value = "/Y_Logout")
+	public String Y_Logout(HttpSession session){
+		session.invalidate();
+		return "Y_Main";
+	}
+	@RequestMapping(value = "/Y_Delete_User")
+	public String Y_Delete_User(HttpServletRequest request,HttpSession session,HttpServletResponse response){
+		userDAO userDAO = new userDAO();
+		Object user = session.getAttribute("id");
+		String nickname = user.toString();
+		userDAO.delete_user(nickname);
+		session.invalidate();
 		return "Y_Main";
 	}
 	//상품등록정보 입력 Mapping

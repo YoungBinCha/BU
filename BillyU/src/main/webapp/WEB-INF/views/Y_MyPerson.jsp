@@ -9,6 +9,6 @@
 <body>
 <a href="#">닉네임 변경</a>
 <br />
-<a href="#">계정 삭제</a>
+<a href="Y_Delete_User">계정 삭제</a>
 </body>
 </html>
