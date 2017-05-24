@@ -195,7 +195,7 @@
 										</tr>
 										<tr>
 											<td><label for="possibleDay">대여시작 날짜 : </label></td>
-											<td><input id="start" type="text" name="startdate"
+											<td><input id="start" type="date" name="startdate"
 												placeholder="ex)20170516" /></td>
 										</tr>
 										<tr>

@@ -34,10 +34,10 @@ public class rentDAO {
 		if(conn != null){try{conn.close();}catch(Exception e){e.printStackTrace();}}
 	}
 	
-	public void insert_rent(String guest,int pronum,String message,String way,int startdate,int rentday,int total){
+	public void insert_rent(String guest,int pronum,String message,String way,String startdate,int rentday,int total){
 		connect();
 		try{
-			String sql="insert into rent(guest,pronum,message,way,startdate,rentday,total) values('"+guest+"',"+pronum+",'"+message+"','"+way+"',"+startdate+","+rentday+","+total+")";
+			String sql="insert into rent(guest,pronum,message,way,startdate,rentday,total) values('"+guest+"',"+pronum+",'"+message+"','"+way+"','"+startdate+"',"+rentday+","+total+")";
 			stmt.executeUpdate(sql);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -83,7 +83,7 @@ public class rentDAO {
 				String guest = rs.getString("guest");
 				int pronum = rs.getInt("pronum");
 				String way = rs.getString("way");
-				int startdate = rs.getInt("startdate");
+				String startdate = rs.getString("startdate");
 				int rentday = rs.getInt("rentday");
 				String message = rs.getString("message");
 				int total = rs.getInt("total");
@@ -112,7 +112,7 @@ public class rentDAO {
 				String guest = rs.getString("guest");
 				int pronum = rs.getInt("pronum");
 				String way = rs.getString("way");
-				int startdate = rs.getInt("startdate");
+				String startdate = rs.getString("startdate");
 				int rentday = rs.getInt("rentday");
 				String message = rs.getString("message");
 				int total = rs.getInt("total");

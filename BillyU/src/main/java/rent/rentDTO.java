@@ -9,13 +9,13 @@ public class rentDTO {
 	private String guest;
 	private int pronum;
 	private String way;
-	private int startdate;
+	private String startdate;
 	private int rentday;
 	private String message;
 	private int total;
 	Timestamp curtime;
 	
-	public rentDTO(int rentnum,String hoster,String guest,int pronum,String way,int startdate,int rentday,String message,int total,Timestamp curtime){
+	public rentDTO(int rentnum,String hoster,String guest,int pronum,String way,String startdate,int rentday,String message,int total,Timestamp curtime){
 		this.rentnum = rentnum;
 		this.hoster = hoster;
 		this.guest = guest;
@@ -79,10 +79,10 @@ public class rentDTO {
 	public void setWay(String way) {
 		this.way = way;
 	}
-	public int getStartdate() {
+	public String getStartdate() {
 		return startdate;
 	}
-	public void setStartdate(int startdate) {
+	public void setStartdate(String startdate) {
 		this.startdate = startdate;
 	}
 	public int getRentday() {

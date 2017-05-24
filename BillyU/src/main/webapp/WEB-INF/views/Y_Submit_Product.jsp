@@ -17,7 +17,7 @@ String guest = apple.toString();
 int pronum = Integer.parseInt(request.getParameter("pronum"));
 String way = request.getParameter("wayRadio");
 String message = request.getParameter("message");
-int startdate=Integer.parseInt(request.getParameter("startdate"));
+String startdate=request.getParameter("startdate");
 int rentday=Integer.parseInt(request.getParameter("ren"));
 int total=Integer.parseInt(request.getParameter("total"));
 

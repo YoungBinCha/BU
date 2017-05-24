@@ -53,7 +53,7 @@
 		String guest = dto.getGuest();
 		int pronum = dto.getPronum();
 		String way = dto.getWay();
-		int startdate = dto.getStartdate();
+		String startdate = dto.getStartdate();
 		int rentday = dto.getRentday();
 		String message = dto.getMessage();
 		int total = dto.getTotal();
