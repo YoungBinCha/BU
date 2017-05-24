@@ -4,8 +4,11 @@
     <%@ page import="rent.rentDTO" %>
     <%@ page import="sale.saleDAO" %>
     <%@ page import="sale.saleDTO" %>
+    <%@ page import="mypage_reply.mypage_replyDAO" %>
+    <%@ page import="mypage_reply.mypage_replyDTO" %>
     <jsp:useBean id="rent" class="rent.rentDAO" />
     <jsp:useBean id="sale" class="sale.saleDAO" />
+    <jsp:useBean id="reply" class="mypage_reply.mypage_replyDAO" />
 <%request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,6 +21,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<center><h2>내가 상대방에게 보낸 메세지</h2></center>
 <div class="container">
         <h2>대여</h2>
   <table class="table table-striped">
@@ -32,6 +36,7 @@
         <th>메세지</th>
         <th>총액</th>
         <th>날짜</th>
+        <th> </th>
       </tr>
     </thead>
     <tbody>
@@ -64,6 +69,7 @@
         <td style="width:40%"><%=message %></td>
         <td style="width:12%"><%=total %>원</td>
         <td style="width:8%"><%=curtime %></td>
+        <td><a href="Y_Delete_toMail?rentnum=<%=rentnum%>">X</a></td>
     </tr>
     <%} %>
     </tbody>
@@ -84,6 +90,7 @@
         <th>메세지</th>
         <th>총액</th>
         <th>날짜</th>
+        <th> </th>
       </tr>
     </thead>
     <tbody>
@@ -111,11 +118,66 @@
         <td style="width:40%"><%=message %></td>
         <td style="width:12%"><%=total %>원</td>
         <td style="width:8%"><%=curtime %></td>
+        <td><a href="Y_Delete_toMail?salenum=<%=salenum%>">X</a></td>
     </tr>
     <%} %>
     </tbody>
   </table>
-
 </div>
+
+  <div class="container">          
+	<h3>답변 메세지</h3>  
+  	<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>상품번호</th>
+        <th>받는사람</th>
+        <th>보낸사람</th>
+        <th>메세지</th>
+        <th>날짜</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+    <%
+	ArrayList<mypage_replyDTO> reply_list = reply.reply_list2(nickname);
+	
+	for(int i=0;i<reply_list.size();i++){
+		mypage_replyDTO dto = reply_list.get(i);
+		int pronum = dto.getPronum();
+		String hoster = dto.getHoster();
+		String guest = dto.getGuest();
+		String message = dto.getMessage();
+		Timestamp curtime = dto.getCurtime();
+%>
+    <tr id="tr">
+        <td style="width:8%"><a href="K_view?pronum=<%=pronum %>"><%=pronum %></a></td>
+        <td style="width:8%"><%=hoster %></td>
+        <td style="width:8%"><%=guest %></td>
+        <td style="width:40%"><%=message %></td>
+        <td style="width:10%"><%=curtime %></td>
+        <td style="width:10%"><p id="reply">답변</p>
+        <div id="hidden_reply">
+        <form action="Y_Reply" method="post">
+        <textarea name="content" id="" cols="30" rows="10"></textarea>
+        <input type="hidden" name="guest" value="<%=guest %>"/>
+        <input type="hidden" name="pronum" value="<%=pronum %>"/>
+        <input type="submit" value="보내기" />
+        </form>
+        </div>
+        </td>
+        <td><a href="Y_Delete_toMail">X</a></td>
+    </tr>
+    
+    <%} %>
+    </tbody>
+  </table>
+  </div>
 </body>
+<script>
+$('#tr #hidden_reply').hide();
+$('#reply').click(function(){
+	$('#tr #hidden_reply').toggle();
+});
+</script>
 </html>

@@ -99,7 +99,7 @@ public class rentDAO {
 		
 		return rent_list;
 	}
-	//À§´Â hoster ¾Æ·¡´Â guest
+	//ï¿½ï¿½ï¿½ï¿½ hoster ï¿½Æ·ï¿½ï¿½ï¿½ guest
 	public ArrayList<rentDTO> rent_list2(String nickname){
 		try{
 			connect();
@@ -127,5 +127,14 @@ public class rentDAO {
 		}finally{disconnect();}
 		
 		return rent_list2;
+	}
+	public void delete_rent(int rentnum){
+		connect();
+		try{
+			String sql="delete from rent where rentnum="+rentnum+"";
+			stmt.executeUpdate(sql);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
 	}
 }

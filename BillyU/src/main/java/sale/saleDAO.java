@@ -129,4 +129,14 @@ public class saleDAO {
 		return sale_list2;
 	}
 	
+	public void delete_sale(int salenum){
+		connect();
+		try{
+			String sql="delete from sale where salenum="+salenum+"";
+			stmt.executeUpdate(sql);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
+	}
+	
 }

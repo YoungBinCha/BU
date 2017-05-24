@@ -64,8 +64,40 @@ height:150px;
 <jsp:include page="Y_NavBar.jsp" />
 <!-- 사이트 설명 시작 -->
 <center>
-<div id="intro_billyu" style="width:90%;height:300px;border:1px solid black;">
-<h1>사이트 설명</h1>
+<div class="container" style="height:600px;">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="resources/img/arin.jpg" alt="Los Angeles" style="height:600px;width:100%;">
+      </div>
+
+      <div class="item">
+        <img src="resources/img/bird.jpg" alt="Chicago" style="height:600px;width:100%;">
+      </div>
+    
+      <div class="item">
+        <img src="resources/img/flower.jpg" alt="New york" style="height:600px;width:100%;">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 </div>
 </center>
 <br />

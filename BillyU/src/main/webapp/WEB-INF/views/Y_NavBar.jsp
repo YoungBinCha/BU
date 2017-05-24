@@ -9,7 +9,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 <!-- 로그인창 팝업 뛰우기 위함 -->
+
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <style>
 @media screen and (max-width: 1200px) {
@@ -506,7 +508,8 @@
 <ul class="nav navbar-nav navbar-right">
 <li><a id="Y_NavContent_Right" href="Y_Jang"><span class="glyphicon glyphicon-shopping-cart"></span>관심상품</a></li>
 <li><a id="Y_NavContent_Right" href="Y_MyPage"><span class="glyphicon glyphicon-user"></span>마이페이지</a></li>
-<li><a id="Y_NavContent_Right" href="Y_Login"><span class="glyphicon glyphicon-log-in"></span>
+<li><a id="Y_NavContent_Right" data-toggle="modal" data-target="#myModal">
+         <span class="glyphicon glyphicon-log-in"></span>
           <%
           if(session.getAttribute("id") != null){
         	  out.println("로그아웃");
@@ -591,7 +594,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Y_Login"><i class="fa fa-fw fa-home"></i> 로그인</a>
+                    <a data-toggle="modal" data-target="#myModal"><i class="fa fa-fw fa-home"></i> 로그인</a>
                 </li>
                 <li>
                     <a href="Y_JoinForm"><i class="fa fa-fw fa-folder"></i> 회원가입</a>
@@ -655,5 +658,56 @@ $(document).ready(function () {
 	  });  
 	});
 </script>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog"><div class="modal-dialog modal-sm"><div class="modal-content">
+<div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><center><h4 class="modal-title">카카오톡 로그인</h4></center></div>
+        <center>
+        <div class="modal-body">
+          <form action="Y_Login_OK" id="login" method="post">
+			<a id="kakao-login-btn"></a><p>
+			<a href="Y_Logout">로그아웃</a>
+			<input type="hidden" name="login" id="check" />
+			</form>
+        </div>
+        </center>
+        <!-- 카카오톡 로그인 버튼 -->
+<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">취소</button></div>
+</div></div></div>
 </body>
+<script type='text/javascript'>
+  //<![CDATA[
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('1d1cd1a86fd52a7561f2eb46bdb10615');
+    // 카카오 로그인 버튼을 생성합니다.
+    Kakao.Auth.createLoginButton({
+      container: '#kakao-login-btn',
+      success: function(authObj) {
+        // 로그인 성공시, API를 호출합니다.
+        Kakao.API.request({
+          url: '/v1/user/me',
+          success: function(res) {
+            //alert(JSON.stringify(res));
+            var id = res.id;
+            //alert(id);
+            $('#check').val(id);
+            $('#login').submit();
+            
+            //alert(res.properties["profile_image"]);
+            //alert(res.properties["nickname"]);
+			
+          },
+          fail: function(error) {
+            alert(JSON.stringify(error));
+          }
+        });
+      },
+      fail: function(err) {
+        alert(JSON.stringify(err));
+      }
+    });
+  
+  $(document).ready(function(){
+	  
+  });
+</script>
 </html>

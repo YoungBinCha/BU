@@ -1,6 +1,8 @@
 package com.inhatc.BillyU;
 
 import java.io.IOException;
+
+
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.util.Date;
@@ -10,6 +12,7 @@ import java.util.Locale;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -26,6 +29,12 @@ import product.proDAO;
 import product.proDTO;
 import regist.registDAO;
 import regist.registDTO;
+import user.userDAO;
+import mypage_reply.mypage_replyDTO;
+import mypage_reply.mypage_replyDAO;
+import rent.rentDAO;
+import sale.saleDAO;
+
 
 /**
  * Handles requests for the application home page.
@@ -162,6 +171,54 @@ public class HomeController {
 	@RequestMapping(value = "/Y_Search_Result")
 	public String Y_Search_Result(){
 		return "Y_Search_Result";
+	}
+	
+	@RequestMapping(value = "/Y_Reply",method = RequestMethod.POST)
+	public String Y_Reply(HttpServletRequest request,HttpSession session,Model model,HttpServletResponse response){
+		mypage_replyDAO replyDAO = new mypage_replyDAO();
+		Object host = session.getAttribute("id");
+		String hoster = host.toString();
+		String guest = request.getParameter("guest");
+		String message = request.getParameter("content");
+		String pro = request.getParameter("pronum");
+		int pronum = Integer.parseInt(pro);
+		replyDAO.insert_reply(pronum,hoster, guest, message);
+		try {
+			response.sendRedirect("Y_Main");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "Y_Main";
+	}
+	@RequestMapping(value = "/Y_Logout")
+	public String Y_Logout(HttpSession session){
+		session.invalidate();
+		return "Y_Main";
+	}
+	@RequestMapping(value = "/Y_Delete_User")
+	public String Y_Delete_User(HttpServletRequest request,HttpSession session,HttpServletResponse response){
+		userDAO userDAO = new userDAO();
+		Object user = session.getAttribute("id");
+		String nickname = user.toString();
+		userDAO.delete_user(nickname);
+		session.invalidate();
+		return "Y_Main";
+	}
+	@RequestMapping(value = "/Y_Delete_toMail")
+	public String Y_Delete_toMail(HttpServletRequest request,HttpSession session,HttpServletResponse response){
+		rentDAO rentDAO = new rentDAO();
+		saleDAO saleDAO = new saleDAO();
+		String rent = request.getParameter("rentnum");
+		String sale = request.getParameter("salenum");
+		if(rent != null){
+			int rentnum = Integer.parseInt(rent);
+			rentDAO.delete_rent(rentnum);
+		}
+		if(sale != null){
+			int salenum = Integer.parseInt(sale);
+			saleDAO.delete_sale(salenum);
+		}
+		return "Y_MyPage";
 	}
 	//상품등록정보 입력 Mapping
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
