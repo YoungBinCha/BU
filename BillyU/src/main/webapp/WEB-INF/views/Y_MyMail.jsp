@@ -170,8 +170,8 @@
 %>
     <tr id="tr">
         <td style="width:8%"><a href="K_view?pronum=<%=pronum %>"><%=pronum %></a></td>
-        <td style="width:8%"><%=hoster %></td>
         <td style="width:8%"><%=guest %></td>
+        <td style="width:8%"><%=hoster %></td>
         <td style="width:40%"><%=message %></td>
         <td style="width:10%"><%=curtime %></td>
         <td style="width:10%"><p id="reply">답변</p>

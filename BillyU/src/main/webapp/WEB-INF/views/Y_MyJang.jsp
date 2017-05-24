@@ -55,8 +55,8 @@
   text-align: center;
 }
 .img-rounded{
-width:100%;
-height:100%;
+width:200px;
+height:150px;
 }
 
 </style>
