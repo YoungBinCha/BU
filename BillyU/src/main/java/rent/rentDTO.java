@@ -4,27 +4,25 @@ import java.sql.Timestamp;
 
 public class rentDTO {
 
-	private int rentnum;
-	private String hoster;
-	private String guest;
-	private int pronum;
-	private String way;
+	private int rentnumber;
+	private String producthost;
+	private String productguest;
+	private int productnumber;
 	private int startdate;
-	private int rentday;
+	private int enddate;
 	private String message;
-	private int total;
+	private int totalprice;
 	Timestamp curtime;
 	
-	public rentDTO(int rentnum,String hoster,String guest,int pronum,String way,int startdate,int rentday,String message,int total,Timestamp curtime){
-		this.rentnum = rentnum;
-		this.hoster = hoster;
-		this.guest = guest;
-		this.pronum = pronum;
-		this.way = way;
+	public rentDTO(int rentnumber,String producthost,String productguest,int productnumber,int startdate,int enddate,String message,int totalprice,Timestamp curtime){
+		this.rentnumber = rentnumber;
+		this.producthost = producthost;
+		this.productguest = productguest;
+		this.productnumber = productnumber;
 		this.startdate = startdate;
-		this.rentday = rentday;
+		this.enddate = enddate;
 		this.message = message;
-		this.total = total;
+		this.totalprice = totalprice;
 		this.curtime = curtime;
 	}
 	
@@ -39,45 +37,39 @@ public class rentDTO {
 	}
 
 
-	public void setHoster(String hoster) {
-		this.hoster = hoster;
+	public void setproducthost(String producthost) {
+		this.producthost = producthost;
 	}
 
 
-	public int getRentnum() {
-		return rentnum;
+	public int getrentnumber() {
+		return rentnumber;
 	}
-	public void setRentnum(int rentnum) {
-		this.rentnum = rentnum;
+	public void setrentnumber(int rentnumber) {
+		this.rentnumber = rentnumber;
 	}
 	
-	public String getHoster() {
-		return hoster;
+	public String getproducthost() {
+		return producthost;
 	}
 
-	public void setHost(String hoster) {
-		this.hoster = hoster;
+	public void setHost(String producthost) {
+		this.producthost = producthost;
 	}
 
-	public String getGuest() {
-		return guest;
+	public String getproductguest() {
+		return productguest;
 	}
 
-	public void setGuest(String guest) {
-		this.guest = guest;
+	public void setproductguest(String productguest) {
+		this.productguest = productguest;
 	}
 
-	public int getPronum() {
-		return pronum;
+	public int getproductnumber() {
+		return productnumber;
 	}
-	public void setPronum(int pronum) {
-		this.pronum = pronum;
-	}
-	public String getWay() {
-		return way;
-	}
-	public void setWay(String way) {
-		this.way = way;
+	public void setproductnumber(int productnumber) {
+		this.productnumber = productnumber;
 	}
 	public int getStartdate() {
 		return startdate;
@@ -85,11 +77,11 @@ public class rentDTO {
 	public void setStartdate(int startdate) {
 		this.startdate = startdate;
 	}
-	public int getRentday() {
-		return rentday;
+	public int getenddate() {
+		return enddate;
 	}
-	public void setRentday(int rentday) {
-		this.rentday = rentday;
+	public void setenddate(int enddate) {
+		this.enddate = enddate;
 	}
 	public String getMessage() {
 		return message;
@@ -97,11 +89,11 @@ public class rentDTO {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public int getTotal() {
-		return total;
+	public int gettotalprice() {
+		return totalprice;
 	}
-	public void setTotal(int total) {
-		this.total = total;
+	public void settotalprice(int totalprice) {
+		this.totalprice = totalprice;
 	}
 	
 	

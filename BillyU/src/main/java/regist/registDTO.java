@@ -1,59 +1,50 @@
 package regist;
 
 public class registDTO {
-	/*��ǰ ���� ����*/
+	
 	private String nickname;
-	private int catnum;
+	private int categorynumber;
 	private String title;
-	private String proinfo;
-	private String procondition;
-	private String tratype;
+	private String productinformation;
+	private String location;
+	private String productstate;
 
+
+	private int rentprice;
+	private int rentdeposite;
+	private int rentunit;			
 	
-	//private String traway;
-	private String[] traway;
 	
-	/*�Ǹ� ����*/
-	private int salprice;
-	
-	/*�뿩 ����*/
-	private int renprice;
-	private int deposit;
-	private int renday;				//�̰� ���߿� ���� Ÿ�� �ٲ�ߵ� date �� �̷��ɷ�!!!!
-	
-	/*�̹��� ����*/
-	private String img;
+	private String img1;
 	private String img2;
 	private String img3;
 	private String img4;
 	
-	public registDTO(String nickname, int catnum, String title, String proinfo, String procondition, String tratype, String[] traway, int salprice, int renprice, int deposit, int renday){
+	public registDTO(String nickname, int categorynumber, String title, String productinformation, String location, String productstate, int rentprice, int rentdeposite, int rentunit){
 		this.nickname = nickname;
-		this.catnum = catnum;
+		this.categorynumber = categorynumber;
 		this.title = title;
-		this.proinfo = proinfo;
-		this.procondition = procondition;
-		this.tratype = tratype;
-		this.traway = traway;
-		this.salprice = salprice;
-		this.renprice = renprice;
-		this.deposit = deposit;
-		this.renday = renday;
+		this.productinformation = productinformation;
+		this.location = location;
+		this.productstate = productstate;
+		this.rentprice = rentprice;
+		this.rentdeposite = rentdeposite;
+		this.rentunit = rentunit;
 	}
 	
-	public registDTO(String img, String img2, String img3, String img4){
-		this.img = img;
+	public registDTO(String img1, String img2, String img3, String img4){
+		this.img1 = img1;
 		this.img2 = img2;
 		this.img3 = img3;
 		this.img4 = img4;
 	}
 	
 	
-	public String getImg() {
-		return img;
+	public String getImg1() {
+		return img1;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setImg(String img1) {
+		this.img1 = img1;
 	}
 	public String getImg2() {
 		return img2;
@@ -73,59 +64,47 @@ public class registDTO {
 	public void setImg4(String img4) {
 		this.img4 = img4;
 	}
-	public int getRenprice() {
-		return renprice;
+	public int getrentprice() {
+		return rentprice;
 	}
-	public void setRenprice(int renprice) {
-		this.renprice = renprice;
+	public void setrentprice(int rentprice) {
+		this.rentprice = rentprice;
 	}
-	public int getDeposit() {
-		return deposit;
+	public int getrentdeposite() {
+		return rentdeposite;
 	}
-	public void setDeposit(int deposit) {
-		this.deposit = deposit;
+	public void setrentdeposite(int rentdeposite) {
+		this.rentdeposite = rentdeposite;
 	}
-	public int getRenday() {
-		return renday;
+	public int getrentunit() {
+		return rentunit;
 	}
-	public void setRenday(int renday) {
-		this.renday = renday;
+	public void setrentunit(int rentunit) {
+		this.rentunit = rentunit;
 	}
-	public int getCatnum() {
-		return catnum;
+	public int getcategorynumber() {
+		return categorynumber;
 	}
-	public void setCatnum(int catnum) {
-		this.catnum = catnum;
+	public void setcategorynumber(int categorynumber) {
+		this.categorynumber = categorynumber;
 	}
-	public String getTratype() {
-		return tratype;
+	public String getproductstate() {
+		return productstate;
 	}
-	public void setTratype(String tratype) {
-		this.tratype = tratype;
+	public void setproductstate(String productstate) {
+		this.productstate = productstate;
 	}
-	public String[] getTraway() {
-		return traway;
+	public String getproductinformation() {
+		return productinformation;
 	}
-	public void setTraway(String[] traway) {
-		this.traway = traway;
+	public void setproductinformation(String productinformation) {
+		this.productinformation = productinformation;
 	}
-	public String getProinfo() {
-		return proinfo;
+	public String getlocation() {
+		return location;
 	}
-	public void setProinfo(String proinfo) {
-		this.proinfo = proinfo;
-	}
-	public String getProcondition() {
-		return procondition;
-	}
-	public void setProcondition(String procondition) {
-		this.procondition = procondition;
-	}
-	public int getSalprice() {
-		return salprice;
-	}
-	public void setSalprice(int salprice) {
-		this.salprice = salprice;
+	public void setlocation(String location) {
+		this.location = location;
 	}
 	public String getNickname() {
 		return nickname;

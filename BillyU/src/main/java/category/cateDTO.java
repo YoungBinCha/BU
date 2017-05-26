@@ -1,40 +1,40 @@
 package category;
 
 public class cateDTO {
-	int catnum;
-	String big;
-	String small;
+	int categorynumber;
+	String categorybig;
+	String categorysmall;
 	
-	public cateDTO(int catnum,String big,String small){
-		this.catnum = catnum;
-		this.big = big;
-		this.small = small;
+	public cateDTO(int categorynumber,String categorybig,String categorysmall){
+		this.categorynumber = categorynumber;
+		this.categorybig = categorybig;
+		this.categorysmall = categorysmall;
 	}
-	public cateDTO(String big){
-		this.big = big;
+	public cateDTO(String categorybig){
+		this.categorybig = categorybig;
 	}
-	public cateDTO(String big,String small){
-		this.big = big;
-		this.small = small;
+	public cateDTO(String categorybig,String categorysmall){
+		this.categorybig = categorybig;
+		this.categorysmall = categorysmall;
 		
 	}
-	public int getCatnum() {
-		return catnum;
+	public int getcategorynumber() {
+		return categorynumber;
 	}
-	public void setCatnum(int catnum) {
-		this.catnum = catnum;
+	public void setcategorynumber(int categorynumber) {
+		this.categorynumber = categorynumber;
 	}
-	public String getBig() {
-		return big;
+	public String getcategorybig() {
+		return categorybig;
 	}
-	public void setBig(String big) {
-		this.big = big;
+	public void setcategorybig(String categorybig) {
+		this.categorybig = categorybig;
 	}
-	public String getSmall() {
-		return small;
+	public String getcategorysmall() {
+		return categorysmall;
 	}
-	public void setSmall(String small) {
-		this.small = small;
+	public void setcategorysmall(String categorysmall) {
+		this.categorysmall = categorysmall;
 	}
 	
 	

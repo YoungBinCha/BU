@@ -4,15 +4,15 @@ import java.sql.Timestamp;
 
 public class jangDTO {
 
-	private int jangnum;
+	private int cartnumber;
 	private String nickname;
-	private int pronum;
+	private int productnumber;
 	Timestamp curtime;
 	
-	public jangDTO(int jangnum,String nickname,int pronum,Timestamp curtime){
-		this.jangnum = jangnum;
+	public jangDTO(int cartnumber,String nickname,int productnumber,Timestamp curtime){
+		this.cartnumber = cartnumber;
 		this.nickname = nickname;
-		this.pronum = pronum;
+		this.productnumber = productnumber;
 		this.curtime = curtime;
 	}
 	
@@ -27,11 +27,11 @@ public class jangDTO {
 	}
 
 
-	public int getJangnum() {
-		return jangnum;
+	public int getcartnumber() {
+		return cartnumber;
 	}
-	public void setJangnum(int jangnum) {
-		this.jangnum = jangnum;
+	public void setcartnumber(int cartnumber) {
+		this.cartnumber = cartnumber;
 	}
 	public String getNickname() {
 		return nickname;
@@ -39,11 +39,11 @@ public class jangDTO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public int getPronum() {
-		return pronum;
+	public int getproductnumber() {
+		return productnumber;
 	}
-	public void setPronum(int pronum) {
-		this.pronum = pronum;
+	public void setproductnumber(int productnumber) {
+		this.productnumber = productnumber;
 	}
 	
 }

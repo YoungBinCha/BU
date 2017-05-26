@@ -29,66 +29,22 @@ public class registDAO {
 		}
 	}
 
-	public boolean insertSaleProduct(registDTO dto) {
-		String query = "insert into product (nickname, catnum, title, proinfo, procondition, traway, tratype, salprice) values (?, ?, ?, ?, ?, ?, ?, ?);";
-		boolean check = false;
-		try {
-
-			PreparedStatement pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, dto.getNickname());
-			pstmt.setInt(2, dto.getCatnum());
-			pstmt.setString(3, dto.getTitle());
-			pstmt.setString(4, dto.getProinfo());
-			pstmt.setString(5, dto.getProcondition());
-			//
-			String traway = "";
-			for(int i = 0 ; i<dto.getTraway().length ; i++){
-				traway+=dto.getTraway()[i];
-				if(i==0)
-					traway+=",";
-			}
-			
-			pstmt.setString(6, traway);
-			
-			//
-			pstmt.setString(7, dto.getTratype());
-			pstmt.setInt(8, dto.getSalprice());
-
-			pstmt.executeUpdate(); // UPDATE, DELETE 할 때 사용
-			check = true;
-			pstmt.close();
-		} catch (SQLException ex) {
-			System.out.println("SQL insertSaleProduct() 오류  : " + ex.getLocalizedMessage());
-		}
-		return check;
-	}
 
 	public boolean insertRentProduct(registDTO dto) {
-		String query = "insert into product (nickname, catnum, title, proinfo, procondition, traway, tratype, renprice, deposit, renday) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String query = "insert into product (nickname, categorynumber, title, productinformation, location, productstate, rentprice, rentdeposite, rentunit) values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		boolean check = false;
 		try {
 
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, dto.getNickname());
-			pstmt.setInt(2, dto.getCatnum());
+			pstmt.setInt(2, dto.getcategorynumber());
 			pstmt.setString(3, dto.getTitle());
-			pstmt.setString(4, dto.getProinfo());
-			pstmt.setString(5, dto.getProcondition());
-			//
-			String traway = "";
-			for(int i = 0 ; i<dto.getTraway().length ; i++){
-				traway+=dto.getTraway()[i];
-				if(i==0)
-					traway+=",";
-			}
-			
-			pstmt.setString(6, traway);
-			
-			//
-			pstmt.setString(7, dto.getTratype());
-			pstmt.setInt(8, dto.getRenprice());
-			pstmt.setInt(9, dto.getDeposit());
-			pstmt.setInt(10, dto.getRenday());
+			pstmt.setString(4, dto.getproductinformation());
+			pstmt.setString(5, dto.getlocation());		
+			pstmt.setString(6, dto.getproductstate());
+			pstmt.setInt(7, dto.getrentprice());
+			pstmt.setInt(8, dto.getrentdeposite());
+			pstmt.setInt(9, dto.getrentunit());
 
 			pstmt.executeUpdate();
 			check = true;
@@ -99,62 +55,62 @@ public class registDAO {
 		return check;
 	}
 
-	public int selectCatnum(String catname) {
-		String query = "SELECT catnum FROM category WHERE small = " + "'" + catname + "'";
-		int catnum = 0;
+	public int selectcategorynumber(String catname) {
+		String query = "SELECT categorynumber FROM category WHERE categorysmall = " + "'" + catname + "'";
+		int categorynumber = 0;
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			
 			rs.next();
-			catnum = Integer.parseInt(rs.getString("catnum"));
+			categorynumber = Integer.parseInt(rs.getString("categorynumber"));
 
 			stmt.close();
 		} catch (SQLException ex) {
-			System.out.println("SQL selectCatnum() 오류 : " + ex.getLocalizedMessage());
+			System.out.println("SQL selectcategorynumber() 오류 : " + ex.getLocalizedMessage());
 		}
-		return catnum;
+		return categorynumber;
 	}
 
 	public ArrayList<String> selectCategory() {
-		String query = "SELECT DISTINCT big FROM category"; // DISTINCT 중복 제거
-		ArrayList<String> big = new ArrayList<String>();
+		String query = "SELECT DISTINCT categorybig FROM category"; // DISTINCT 중복 제거
+		ArrayList<String> categorybig = new ArrayList<String>();
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
-				big.add(rs.getString("big"));
+				categorybig.add(rs.getString("categorybig"));
 			}
 
 			stmt.close();
 		} catch (SQLException ex) {
 			System.out.println("SQL selectCategory() 오류 : " + ex.getLocalizedMessage());
 		}
-		return big;
+		return categorybig;
 	}
 	
 	public ArrayList<String> selectCategory2(String cate) {
-		String query = "SELECT  small FROM category where big='"+cate+"'"; // DISTINCT 중복 제거
-		ArrayList<String> small = new ArrayList<String>();
+		String query = "SELECT  categorysmall FROM category where categorybig='"+cate+"'"; // DISTINCT 중복 제거
+		ArrayList<String> categorysmall = new ArrayList<String>();
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
-				small.add(rs.getString("small"));
+				categorysmall.add(rs.getString("categorysmall"));
 			}
 
 			stmt.close();
 		} catch (SQLException ex) {
 			System.out.println("SQL selectCategory() 오류 : " + ex.getLocalizedMessage());
 		}
-		return small;
+		return categorysmall;
 	}
 	
 
-	public ArrayList<String> selectProduct(int pronum) {
-		String query = "SELECT * FROM product where pronum=" + pronum + "";
+	public ArrayList<String> selectProduct(int productnumber) {
+		String query = "SELECT * FROM product where productnumber=" + productnumber + "";
 		ArrayList<String> al = new ArrayList<String>();
 		try {
 			Statement stmt = conn.createStatement();
@@ -162,16 +118,15 @@ public class registDAO {
 
 			rs.last();
 
+			al.add(rs.getString("categorynumber"));
 			al.add(rs.getString("title"));
-			al.add(rs.getString("proinfo"));
-			al.add(rs.getString("procondition"));
-			al.add(rs.getString("traway"));
-			al.add(rs.getString("tratype"));
-			al.add(rs.getString("renprice"));
-			al.add(rs.getString("renday"));
-			al.add(rs.getString("deposit"));
-			al.add(rs.getString("salprice"));
-			al.add(rs.getString("catnum"));
+			al.add(rs.getString("productinformation"));
+			al.add(rs.getString("location"));
+			al.add(rs.getString("productstate"));
+			al.add(rs.getString("rentprice"));
+			al.add(rs.getString("rentunit"));
+			al.add(rs.getString("rentdeposite"));
+			
 
 			stmt.close();
 		} catch (SQLException ex) {
@@ -181,15 +136,15 @@ public class registDAO {
 	}
 
 	// insert image
-	public boolean insertImage(registDTO dto, int pronum) {
+	public boolean insertImage(registDTO dto, int productnumber) {
 
 		String query = "insert into image values (?, ?, ?, ?, ?);";
 		boolean check = false;
 		try {
 
 			PreparedStatement pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, pronum);
-			pstmt.setString(2, "resources/img/" + dto.getImg());
+			pstmt.setInt(1, productnumber);
+			pstmt.setString(2, "resources/img/" + dto.getImg1());
 			pstmt.setString(3, "resources/img/" + dto.getImg4());
 			pstmt.setString(4, "resources/img/" + dto.getImg3());
 			pstmt.setString(5, "resources/img/" + dto.getImg2()); 
@@ -202,11 +157,11 @@ public class registDAO {
 		}
 		return check;
 	}
-
-	public boolean updateImage(registDTO dto, int pronum) {
-		String address = "resources/img/" + dto.getImg();
+	//메인사진을 넣지않고 서브 사진만 넣으면 사진이 안나와!!!
+	public boolean updateImage(registDTO dto, int productnumber) {
+		String address = "resources/img/" + dto.getImg1();
 		
-		String query = "update product set img='"+address+"' where pronum = "+pronum+" ;";
+		String query = "update product set img='"+address+"' where productnumber = "+productnumber+" ;";
 		boolean check = false;
 		try {
 			Statement stmt = conn.createStatement();
@@ -222,24 +177,24 @@ public class registDAO {
 
 	}
 
-	public int selectPronum() {
+	public int selectproductnumber() {
 		String query = "SELECT * FROM product";
-		int pronum = 0;
+		int productnumber = 0;
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			rs.last();
-			pronum = Integer.parseInt(rs.getString("pronum"));
+			productnumber = Integer.parseInt(rs.getString("productnumber"));
 
 			stmt.close();
 		} catch (SQLException ex) {
-			System.out.println("SQL selectPronum() 오류 : " + ex.getLocalizedMessage());
+			System.out.println("SQL selectproductnumber() 오류 : " + ex.getLocalizedMessage());
 		}
-		return pronum;
+		return productnumber;
 	}
 	
-	public String receiveImage(int pronum){
-		String query = "SELECT img FROM product where pronum = "+pronum+" ;";
+	public String receiveImage(int productnumber){
+		String query = "SELECT img FROM product where productnumber = "+productnumber+" ;";
 		String image = "";
 		try {
 			Statement stmt = conn.createStatement();
@@ -249,13 +204,13 @@ public class registDAO {
 
 			stmt.close();
 		} catch (SQLException ex) {
-			System.out.println("SQL selectPronum() 오류 : " + ex.getLocalizedMessage());
+			System.out.println("SQL selectproductnumber() 오류 : " + ex.getLocalizedMessage());
 		}
 		return image;
 	}
 
-	public ArrayList<String> selectImage(int pronum) {
-		String query = "SELECT * FROM image where pronum = "+pronum+";";
+	public ArrayList<String> selectImage(int productnumber) {
+		String query = "SELECT * FROM image where productnumber = "+productnumber+";";
 		ArrayList<String> arrayListImage = new ArrayList<String>();
 		try {
 			Statement stmt = conn.createStatement();
@@ -263,7 +218,7 @@ public class registDAO {
 
 			rs.next();
 
-			arrayListImage.add(rs.getString("img"));
+			arrayListImage.add(rs.getString("img1"));
 			arrayListImage.add(rs.getString("img2"));
 			arrayListImage.add(rs.getString("img3"));
 			arrayListImage.add(rs.getString("img4"));
@@ -282,7 +237,7 @@ public class registDAO {
 				conn = null;
 			}
 		} catch (SQLException ex) {
-			System.out.println("SQL ����(close) : " + ex.getLocalizedMessage());
+			System.out.println("SQL 오류(close) : " + ex.getLocalizedMessage());
 		}
 
 	}

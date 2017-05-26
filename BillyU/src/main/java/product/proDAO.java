@@ -48,26 +48,23 @@ public class proDAO {
 	public ArrayList<proDTO> pro_list(){
 		try{
 			connect();
-			String sql = "select * from product order by pronum desc";
+			String sql = "select * from product order by productnumber desc";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int pronum = rs.getInt("pronum");
+				int productnumber = rs.getInt("productnumber");
 				String nickname = rs.getString("nickname");
-				int catnum = rs.getInt("catnum");
+				int categorynumber = rs.getInt("categorynumber");
 				String title = rs.getString("title");
-				String proinfo = rs.getString("proinfo");
-				String procondition = rs.getString("procondition");
-				String traway = rs.getString("traway");
-				String tratype = rs.getString("tratype");
-				int renprice = rs.getInt("renprice");
-				int renday = rs.getInt("renday");
-				int deposit = rs.getInt("deposit");
-				int salprice = rs.getInt("salprice");
+				String productinformation = rs.getString("productinformation");
+				String location = rs.getString("location");
+				String productstate = rs.getString("productstate");
+				int rentprice = rs.getInt("rentprice");
+				int rentunit = rs.getInt("rentunit");
+				int rentdeposite = rs.getInt("rentdeposite");
 				String img = rs.getString("img");
 				Timestamp curtime = rs.getTimestamp("curtime");
-
-				dto = new proDTO(pronum,nickname,catnum,title,proinfo,procondition,traway,tratype,renprice,renday,deposit,salprice,img,curtime);
+				dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentprice, rentunit, rentdeposite, img, curtime);
 				pro_list.add(dto);
 			}
 			
@@ -81,26 +78,23 @@ public class proDAO {
 	public ArrayList<proDTO> MyPage(Object id){
 		try{
 			connect();
-			String sql = "select * from product where nickname='"+id+"' order by pronum desc";
+			String sql = "select * from product where nickname='"+id+"' order by productnumber desc";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int pronum = rs.getInt("pronum");
+				int productnumber = rs.getInt("productnumber");
 				String nickname = rs.getString("nickname");
-				int catnum = rs.getInt("catnum");
+				int categorynumber = rs.getInt("categorynumber");
 				String title = rs.getString("title");
-				String proinfo = rs.getString("proinfo");
-				String procondition = rs.getString("procondition");
-				String traway = rs.getString("traway");
-				String tratype = rs.getString("tratype");
-				int renprice = rs.getInt("renprice");
-				int renday = rs.getInt("renday");
-				int deposit = rs.getInt("deposit");
-				int salprice = rs.getInt("salprice");
+				String productinformation = rs.getString("productinformation");
+				String location = rs.getString("location");
+				String productstate = rs.getString("productstate");
+				int rentprice = rs.getInt("rentprice");
+				int rentunit = rs.getInt("rentunit");
+				int rentdeposite = rs.getInt("rentdeposite");
 				String img = rs.getString("img");
 				Timestamp curtime = rs.getTimestamp("curtime");
-
-				dto = new proDTO(pronum,nickname,catnum,title,proinfo,procondition,traway,tratype,renprice,renday,deposit,salprice,img,curtime);
+				dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentprice, rentunit, rentdeposite, img, curtime);
 				pro_mylist.add(dto);
 			}
 			
@@ -114,26 +108,23 @@ public class proDAO {
 	public ArrayList<proDTO> MyJang(int pro){
 		try{
 			connect();
-			String sql = "select * from product where pronum='"+pro+"'";
+			String sql = "select * from product where productnumber='"+pro+"'";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int pronum = rs.getInt("pronum");
+				int productnumber = rs.getInt("productnumber");
 				String nickname = rs.getString("nickname");
-				int catnum = rs.getInt("catnum");
+				int categorynumber = rs.getInt("categorynumber");
 				String title = rs.getString("title");
-				String proinfo = rs.getString("proinfo");
-				String procondition = rs.getString("procondition");
-				String traway = rs.getString("traway");
-				String tratype = rs.getString("tratype");
-				int renprice = rs.getInt("renprice");
-				int renday = rs.getInt("renday");
-				int deposit = rs.getInt("deposit");
-				int salprice = rs.getInt("salprice");
+				String productinformation = rs.getString("productinformation");
+				String location = rs.getString("location");
+				String productstate = rs.getString("productstate");
+				int rentprice = rs.getInt("rentprice");
+				int rentunit = rs.getInt("rentunit");
+				int rentdeposite = rs.getInt("rentdeposite");
 				String img = rs.getString("img");
 				Timestamp curtime = rs.getTimestamp("curtime");
-
-				dto = new proDTO(pronum,nickname,catnum,title,proinfo,procondition,traway,tratype,renprice,renday,deposit,salprice,img,curtime);
+				dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentprice, rentunit, rentdeposite, img, curtime);
 				jang_mylist.add(dto);
 			}
 			
@@ -144,10 +135,10 @@ public class proDAO {
 		return jang_mylist;
 	}
 	
-	public void delete_product(String pronum){
+	public void delete_product(String productnumber){
 		try {
 			connect();
-			String sql="delete from product where pronum='"+pronum+"'";
+			String sql="delete from product where productnumber='"+productnumber+"'";
 			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -161,22 +152,19 @@ public class proDAO {
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int pronum = rs.getInt("pronum");
+				int productnumber = rs.getInt("productnumber");
 				String nickname = rs.getString("nickname");
-				int catnum = rs.getInt("catnum");
+				int categorynumber = rs.getInt("categorynumber");
 				String title = rs.getString("title");
-				String proinfo = rs.getString("proinfo");
-				String procondition = rs.getString("procondition");
-				String traway = rs.getString("traway");
-				String tratype = rs.getString("tratype");
-				int renprice = rs.getInt("renprice");
-				int renday = rs.getInt("renday");
-				int deposit = rs.getInt("deposit");
-				int salprice = rs.getInt("salprice");
+				String productinformation = rs.getString("productinformation");
+				String location = rs.getString("location");
+				String productstate = rs.getString("productstate");
+				int rentprice = rs.getInt("rentprice");
+				int rentunit = rs.getInt("rentunit");
+				int rentdeposite = rs.getInt("rentdeposite");
 				String img = rs.getString("img");
 				Timestamp curtime = rs.getTimestamp("curtime");
-
-				dto = new proDTO(pronum,nickname,catnum,title,proinfo,procondition,traway,tratype,renprice,renday,deposit,salprice,img,curtime);
+				dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentprice, rentunit, rentdeposite, img, curtime);
 				search_list.add(dto);
 			}
 			
@@ -187,29 +175,26 @@ public class proDAO {
 		return search_list;
 	}
 	
-	public ArrayList<proDTO> Select_Pronum(int product_number){
+	public ArrayList<proDTO> Select_productnumber(int product_number){
 		try{
 			connect();
-			String sql = "select * from product where pronum = '"+product_number+"'";
+			String sql = "select * from product where productnumber = '"+product_number+"'";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int pronum = rs.getInt("pronum");
+				int productnumber = rs.getInt("productnumber");
 				String nickname = rs.getString("nickname");
-				int catnum = rs.getInt("catnum");
+				int categorynumber = rs.getInt("categorynumber");
 				String title = rs.getString("title");
-				String proinfo = rs.getString("proinfo");
-				String procondition = rs.getString("procondition");
-				String traway = rs.getString("traway");
-				String tratype = rs.getString("tratype");
-				int renprice = rs.getInt("renprice");
-				int renday = rs.getInt("renday");
-				int deposit = rs.getInt("deposit");
-				int salprice = rs.getInt("salprice");
+				String productinformation = rs.getString("productinformation");
+				String location = rs.getString("location");
+				String productstate = rs.getString("productstate");
+				int rentprice = rs.getInt("rentprice");
+				int rentunit = rs.getInt("rentunit");
+				int rentdeposite = rs.getInt("rentdeposite");
 				String img = rs.getString("img");
 				Timestamp curtime = rs.getTimestamp("curtime");
-
-				dto = new proDTO(pronum,nickname,catnum,title,proinfo,procondition,traway,tratype,renprice,renday,deposit,salprice,img,curtime);
+				dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentprice, rentunit, rentdeposite, img, curtime);
 				search_list2.add(dto);
 			}
 			
@@ -227,22 +212,19 @@ public class proDAO {
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int pronum = rs.getInt("pronum");
+				int productnumber = rs.getInt("productnumber");
 				String nickname = rs.getString("nickname");
-				int catnum = rs.getInt("catnum");
+				int categorynumber = rs.getInt("categorynumber");
 				String title = rs.getString("title");
-				String proinfo = rs.getString("proinfo");
-				String procondition = rs.getString("procondition");
-				String traway = rs.getString("traway");
-				String tratype = rs.getString("tratype");
-				int renprice = rs.getInt("renprice");
-				int renday = rs.getInt("renday");
-				int deposit = rs.getInt("deposit");
-				int salprice = rs.getInt("salprice");
+				String productinformation = rs.getString("productinformation");
+				String location = rs.getString("location");
+				String productstate = rs.getString("productstate");
+				int rentprice = rs.getInt("rentprice");
+				int rentunit = rs.getInt("rentunit");
+				int rentdeposite = rs.getInt("rentdeposite");
 				String img = rs.getString("img");
 				Timestamp curtime = rs.getTimestamp("curtime");
-
-				dto = new proDTO(pronum,nickname,catnum,title,proinfo,procondition,traway,tratype,renprice,renday,deposit,salprice,img,curtime);
+				dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentprice, rentunit, rentdeposite, img, curtime);
 				search_list3.add(dto);
 			}
 			
@@ -253,29 +235,26 @@ public class proDAO {
 		return search_list3;
 	}
 	
-	public ArrayList<proDTO> Select_Catnum(String small){
+	public ArrayList<proDTO> Select_categorynumber(String categorysmall){
 		try{
 			connect();
-			String sql = "select * from product p,category c where p.catnum = c.catnum and c.small='"+small+"'";
+			String sql = "select * from product p,category c where p.categorynumber = c.categorynumber and c.categorysmall='"+categorysmall+"'";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int pronum = rs.getInt("pronum");
+				int productnumber = rs.getInt("productnumber");
 				String nickname = rs.getString("nickname");
-				int catnum = rs.getInt("catnum");
+				int categorynumber = rs.getInt("categorynumber");
 				String title = rs.getString("title");
-				String proinfo = rs.getString("proinfo");
-				String procondition = rs.getString("procondition");
-				String traway = rs.getString("traway");
-				String tratype = rs.getString("tratype");
-				int renprice = rs.getInt("renprice");
-				int renday = rs.getInt("renday");
-				int deposit = rs.getInt("deposit");
-				int salprice = rs.getInt("salprice");
+				String productinformation = rs.getString("productinformation");
+				String location = rs.getString("location");
+				String productstate = rs.getString("productstate");
+				int rentprice = rs.getInt("rentprice");
+				int rentunit = rs.getInt("rentunit");
+				int rentdeposite = rs.getInt("rentdeposite");
 				String img = rs.getString("img");
 				Timestamp curtime = rs.getTimestamp("curtime");
-
-				dto = new proDTO(pronum,nickname,catnum,title,proinfo,procondition,traway,tratype,renprice,renday,deposit,salprice,img,curtime);
+				dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentprice, rentunit, rentdeposite, img, curtime);
 				search_all_cate.add(dto);
 			}
 			
