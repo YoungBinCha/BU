@@ -65,7 +65,7 @@ height:150px;
 <!-- 사이트 설명 시작 -->
 <center>
 <div class="container" style="height:600px;">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -131,7 +131,7 @@ height:150px;
 	String Y_Category="";
 	String cate_name="";
 	
-	for(int i=0;i<pro_list.size();i++){
+	for(int i=0;i<10;i++){
 		proDTO dto = pro_list.get(i);
 		int productnumber = dto.getProductnumber();
 		String img = dto.getImg();
@@ -209,10 +209,12 @@ height:150px;
 		
 	}
 %>
+<div id="here"></div>
     <br />
   </div>
 </div>
 <br />
+
 <script>
 $(document).ready(function() {
     $('.toggles button').click(function(){
@@ -238,7 +240,32 @@ $(document).ready(function() {
         getcurrent.show(500);
     })
 }); 
-
     </script>
+    <script type="text/javascript">
+// Add contents for max height
+$(document).ready(function () {
+$(document).scroll(function() {
+var maxHeight = $(document).height();
+var currentScroll = $(window).scrollTop() + $(window).height();
+var page=1;
+if (maxHeight <= currentScroll) {
+$.ajax({
+	type : "POST",
+	url : "./Y_Scroll",
+	success : WhenSuccess,
+	error : WhenError	
+});
+}
+})
+function WhenSuccess(resdata){
+	$('#here').html(resdata);
+}
+
+function WhenError(){
+	alert('error');
+}
+
+});
+</script>
 </body>
 </html>

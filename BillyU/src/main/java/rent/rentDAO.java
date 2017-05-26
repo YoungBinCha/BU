@@ -34,6 +34,7 @@ public class rentDAO {
 		if(conn != null){try{conn.close();}catch(Exception e){e.printStackTrace();}}
 	}
 	
+
 	public void insert_rent(String productguest,int productnumber,String message,String way,int startdate,int enddate,int totalprice){
 		connect();
 		try{
@@ -78,12 +79,14 @@ public class rentDAO {
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
+
 				int rentnumber = rs.getInt("rentnumber");
 				String producthost = rs.getString("producthost");
 				String productguest = rs.getString("productguest");
 				int productnumber = rs.getInt("productnumber");
 				int startdate = rs.getInt("startdate");
 				int enddate = rs.getInt("enddate");
+
 				String message = rs.getString("message");
 				int totalprice = rs.getInt("totalprice");
 				Timestamp curtime = rs.getTimestamp("curtime");
@@ -106,12 +109,14 @@ public class rentDAO {
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
+
 				int rentnumber = rs.getInt("rentnumber");
 				String producthost = rs.getString("producthost");
 				String productguest = rs.getString("productguest");
 				int productnumber = rs.getInt("productnumber");
 				int startdate = rs.getInt("startdate");
 				int enddate = rs.getInt("enddate");
+
 				String message = rs.getString("message");
 				int totalprice = rs.getInt("totalprice");
 				Timestamp curtime = rs.getTimestamp("curtime");

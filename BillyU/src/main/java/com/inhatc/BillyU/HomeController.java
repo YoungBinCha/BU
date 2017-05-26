@@ -172,7 +172,10 @@ public class HomeController {
 	public String Y_Search_Result(){
 		return "Y_Search_Result";
 	}
-	
+	@RequestMapping(value = "/Y_Scroll")
+	public String Y_Scroll(){
+		return "Y_Scroll";
+	}
 	@RequestMapping(value = "/Y_Reply",method = RequestMethod.POST)
 	public String Y_Reply(HttpServletRequest request,HttpSession session,Model model,HttpServletResponse response){
 		mypage_replyDAO replyDAO = new mypage_replyDAO();
