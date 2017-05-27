@@ -124,7 +124,7 @@ public class registDAO {
 			al.add(rs.getString("location"));
 			al.add(rs.getString("productstate"));
 			al.add(rs.getString("rentprice"));
-			al.add(rs.getString("rentunit"));
+			al.add(rs.getString("rentmaxdate"));
 			al.add(rs.getString("rentdeposite"));
 			
 

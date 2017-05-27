@@ -12,12 +12,12 @@ public class proDTO {
 	String location;
 	String productstate;
 	int rentprice;
-	int rentunit;
+	int rentmaxdate;
 	int rentdeposite;
 	String img;
 	Timestamp curtime;
 
-	public proDTO(int productnumber,String nickname,int categorynumber,String title, String location,String productinformation,String productstate,int rentprice,int rentunit,int rentdeposite,String img,Timestamp curtime){
+	public proDTO(int productnumber,String nickname,int categorynumber,String title, String location,String productinformation,String productstate,int rentprice,int rentmaxdate,int rentdeposite,String img,Timestamp curtime){
 		this.productnumber = productnumber;
 		this.nickname = nickname;
 		this.categorynumber = categorynumber;
@@ -26,7 +26,7 @@ public class proDTO {
 		this.location = location;
 		this.productstate = productstate;
 		this.rentprice = rentprice;
-		this.rentunit = rentunit;
+		this.rentmaxdate = rentmaxdate;
 		this.rentdeposite = rentdeposite;
 		this.img = img;
 		this.curtime = curtime;
@@ -96,12 +96,12 @@ public class proDTO {
 		this.rentprice = rentprice;
 	}
 
-	public int getRentunit() {
-		return rentunit;
+	public int getRentmaxdate() {
+		return rentmaxdate;
 	}
 
-	public void setRentunit(int rentunit) {
-		this.rentunit = rentunit;
+	public void setRentmaxdate(int rentmaxdate) {
+		this.rentmaxdate = rentmaxdate;
 	}
 
 	public int getRentdeposite() {

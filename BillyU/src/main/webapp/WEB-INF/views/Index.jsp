@@ -61,7 +61,7 @@ height:150px;
 </style>
 </head>
 <body>
-<jsp:include page="Navigation/Y_NavBar.jsp" />
+<jsp:include page="Navigation/NavigationBar.jsp" />
 <!-- 사이트 설명 시작 -->
 <center>
 <div class="container" style="height:600px;">
@@ -120,8 +120,10 @@ height:150px;
 <center>
 <div style="width:1000px" class="way">
 <h2 id="Y_result" style="float:left;display:inline-block;">최근등록상품</h2>
+<!-- 판매 대여 나눴던 부분인데 안쓸듯
 <div style="background:#428bca;width:20px;height:20px;display:inline-block;float:right"> </div><a value="대여" id="rent" style="display:inline-block;float:right">대여</a>
 <div style="background:#ebcccc;width:20px;height:20px;display:inline-block;float:right"> </div><a value="판매" id="sale" style="display:inline-block;float:right">판매</a>
+-->
 </div>
 </center>
 
@@ -138,7 +140,7 @@ height:150px;
 		String title = dto.getTitle();
 		int rentprice = dto.getRentprice();
 		int rentdeposite = dto.getRentdeposite();
-		int rentunit = dto.getRentunit();
+		int rentmaxdate = dto.getRentmaxdate();
 		int categorynumber = dto.getCategorynumber();
 		String productinformation = dto.getProductinformation();
 		Timestamp curtime = dto.getCurtime();
@@ -198,11 +200,11 @@ height:150px;
 	<div class="panel panel-primary <%=Y_Category%> post rent">
       <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=productnumber %>)</span><span style="text-align:center;">대여상품(<%=cate_name %>)</span><span style="float:right;color:white"><%=curtime %></span></div>
       <div class="panel-body">
-      <div class="col-xs-3 col-md-3"><a href="K_view?productnumber=<%=productnumber %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
-      <div class="col-xs-6 col-md-3"><a href="K_view?productnumber=<%=productnumber %>"><%=title %></a></div>
+      <div class="col-xs-3 col-md-3"><a href="ProductViewPage?productnumber=<%=productnumber %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
+      <div class="col-xs-6 col-md-3"><a href="ProductViewPage?productnumber=<%=productnumber %>"><%=title %></a></div>
       <div class="col-xs-1 col-md-2">대여료(원)<br /><br /><%=rentprice %></div>
       <div class="col-xs-1 col-md-2">보증금(원)<br /><br /><%=rentdeposite %></div>
-      <div class="col-xs-1 col-md-2">대여기간(일)<br /><br /><%=rentunit %></div>
+      <div class="col-xs-1 col-md-2">대여기간(일)<br /><br /><%=rentmaxdate %></div>
       </div>
     </div>
 			<%
@@ -240,9 +242,7 @@ $(document).ready(function() {
         getcurrent.show(500);
     })
 }); 
-    </script>
-    <script type="text/javascript">
-// Add contents for max height
+
 $(document).ready(function () {
 $(document).scroll(function() {
 var maxHeight = $(document).height();
@@ -251,7 +251,7 @@ var page=1;
 if (maxHeight <= currentScroll) {
 $.ajax({
 	type : "POST",
-	url : "./Y_Scroll",
+	url : "./IndexScrollPage",
 	success : WhenSuccess,
 	error : WhenError	
 });

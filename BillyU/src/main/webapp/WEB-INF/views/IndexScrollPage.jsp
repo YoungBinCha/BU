@@ -29,16 +29,18 @@
 	
 	for(int i=10;i<pro_list.size();i++){
 		proDTO dto = pro_list.get(i);
-		int pronum = dto.getPronum();
-		String img = dto.getImg();
+		
+		int pronum = dto.getProductnumber();
+		int catnum = dto.getCategorynumber();
+		String nickname = dto.getNickname();
 		String title = dto.getTitle();
-		int renprice = dto.getRenprice();
-		int deposite = dto.getDeposit();
-		int renday = dto.getRenday();
-		String tratype = dto.getTratype();
-		int salprice = dto.getSalprice();
-		int catnum = dto.getCatnum();
-		String proinfo = dto.getProinfo();
+		String productinformation = dto.getProductinformation();
+		String location = dto.getLocation();
+		String productstate = dto.getProductstate();
+		int rentprice = dto.getRentprice();
+		int rentmaxdate = dto.getRentmaxdate();
+		int rentdeposite = dto.getRentdeposite();
+		String img = dto.getImg();
 		Timestamp curtime = dto.getCurtime();
 		
 		if(catnum<200 && catnum>100){
@@ -89,38 +91,18 @@
 		}else if(catnum<1700 && catnum>1600){
 			Y_Category="cate16";
 			cate_name="티켓";
-		}
-		
-		if(tratype.equals("대여"))
-		{
-			%>
+		}%>
 	<div class="panel panel-primary <%=Y_Category%> post rent">
       <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=pronum %>)</span><span style="text-align:center;">대여상품(<%=cate_name %>)</span><span style="float:right;color:white"><%=curtime %></span></div>
       <div class="panel-body">
-      <div class="col-xs-3 col-md-3"><a href="K_view?pronum=<%=pronum %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
-      <div class="col-xs-6 col-md-3"><a href="K_view?pronum=<%=pronum %>"><%=title %></a></div>
-      <div class="col-xs-1 col-md-2">대여료(원)<br /><br /><%=renprice %></div>
-      <div class="col-xs-1 col-md-2">보증금(원)<br /><br /><%=deposite %></div>
-      <div class="col-xs-1 col-md-2">대여기간(일)<br /><br /><%=renday %></div>
+      <div class="col-xs-3 col-md-3"><a href="ProductViewPage?pronum=<%=pronum %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
+      <div class="col-xs-6 col-md-3"><a href="ProductViewPage?pronum=<%=pronum %>"><%=title %></a></div>
+      <div class="col-xs-1 col-md-2">대여료(원)<br /><br /><%=rentprice %></div>
+      <div class="col-xs-1 col-md-2">보증금(원)<br /><br /><%=rentdeposite %></div>
+      <div class="col-xs-1 col-md-2">대여기간(일)<br /><br /><%=rentmaxdate %></div>
       </div>
     </div>
-			<%
-		}else{
-			%>
-	<div class="panel panel-danger <%=Y_Category%> post sale">
-      <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=pronum %>)</span><span style="text-align:center;">판매상품(<%=cate_name %>)</span><span style="float:right;color:white"><%=curtime %></span></div>
-      <div class="panel-body">
-      <div class="col-xs-3 col-md-3"><a href="K_view?pronum=<%=pronum %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
-      <div class="col-xs-6 col-md-3"><a href="K_view?pronum=<%=pronum %>"><%=title %></a></div>
-      <div class="col-xs-1 col-md-2"><br /><br /></div>
-      <div class="col-xs-1 col-md-2">물품상태<br /><br /><%=proinfo %></div>
-      <div class="col-xs-1 col-md-2">판매가격<br /><br /><%=salprice %></div>
-      </div>
-    </div>
-			<%
-		}
-	}
-%>
+	<%}%>
     <br />
     <div id="here"></div>
   </div>

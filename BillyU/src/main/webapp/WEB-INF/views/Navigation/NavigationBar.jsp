@@ -465,7 +465,7 @@
 </td>
 <td class="Y_NavBlank"> </td>
 
-<form action="Y_Search_Result" method="post">
+<form action="NavigationSearchResult" method="post">
 <td class="Y_NavSearch">
   <input class="Y_SearchBar" type="text" name="search" placeholder="검색어를 입력해 주세요.">
 </td>
@@ -503,8 +503,8 @@
 </div>
 <div class="collapse navbar-collapse" id="myNavbar">
 <ul class="nav navbar-nav navbar-right">
-<li><a id="Y_NavContent_Right" href="Y_Jang"><span class="glyphicon glyphicon-shopping-cart"></span>관심상품</a></li>
-<li><a id="Y_NavContent_Right" href="Y_MyPage"><span class="glyphicon glyphicon-user"></span>마이페이지</a></li>
+<li><a id="Y_NavContent_Right" href="CartViewMyJangPage"><span class="glyphicon glyphicon-shopping-cart"></span>관심상품</a></li>
+<li><a id="Y_NavContent_Right" href="MypageMainForm"><span class="glyphicon glyphicon-user"></span>마이페이지</a></li>
 <li><a id="Y_NavContent_Right" data-toggle="modal" data-target="#myModal">
          <span class="glyphicon glyphicon-log-in"></span>
           <%
@@ -517,8 +517,8 @@
           %>
           
           </a></li>
-<li><a id="Y_NavContent_Right" href="Y_JoinForm"><span class="glyphicon glyphicon-check"></span>회원가입</a></li>
-<li><a id="Y_NavContent_Right" href="K_product"><span class="glyphicon glyphicon-plus"></span>상품등록</a></li>
+<li><a id="Y_NavContent_Right" href="UserJoinForm"><span class="glyphicon glyphicon-check"></span>회원가입</a></li>
+<li><a id="Y_NavContent_Right" href="ProductRegistPage"><span class="glyphicon glyphicon-plus"></span>상품등록</a></li>
 </ul>
 </div>
 </div>
@@ -594,16 +594,16 @@
                     <a data-toggle="modal" data-target="#myModal"><i class="fa fa-fw fa-home"></i> 로그인</a>
                 </li>
                 <li>
-                    <a href="Y_JoinForm"><i class="fa fa-fw fa-folder"></i> 회원가입</a>
+                    <a href="UserJoinForm"><i class="fa fa-fw fa-folder"></i> 회원가입</a>
                 </li>
                 <li>
-                    <a href="Y_MyPage"><i class="fa fa-fw fa-file-o"></i> 마이페이지</a>
+                    <a href="MypageMainForm.jsp"><i class="fa fa-fw fa-file-o"></i> 마이페이지</a>
                 </li>
                 <li>
-                    <a href="K_product"><i class="fa fa-fw fa-cog"></i> 상품등록</a>
+                    <a href="ProductRegistPage"><i class="fa fa-fw fa-cog"></i> 상품등록</a>
                 </li>
                 <li>
-                    <a href="Y_Jang"><i class="fa fa-fw fa-bank"></i> 찜바구니</a>
+                    <a href="CartViewMyJangPage.jsp"><i class="fa fa-fw fa-bank"></i> 찜바구니</a>
                 </li>
                 <li>
                     <a href="Y_Introduce"><i class="fa fa-fw fa-dropbox"></i> 사이트소개</a>
@@ -660,7 +660,7 @@ $(document).ready(function () {
 <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><center><h4 class="modal-title">카카오톡 로그인</h4></center></div>
         <center>
         <div class="modal-body">
-          <form action="Y_Login_OK" id="login" method="post">
+          <form action="UserLoginSuccess" id="login" method="post">
 			<a id="kakao-login-btn"></a><p>
 			<a href="Y_Logout">로그아웃</a>
 			<input type="hidden" name="login" id="check" />
