@@ -25,7 +25,7 @@ try{
 	e.printStackTrace();
 }
 session.setAttribute("id", nickname);
-response.sendRedirect("Y_Main");
+response.sendRedirect("Index");
 %>
 </body>
 </html>
