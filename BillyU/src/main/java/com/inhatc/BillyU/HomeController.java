@@ -142,19 +142,19 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/CartInsertJang")
 	public String CartInsertJang(){
-		return "CartInsertJang";
+		return "Cart/CartInsertJang";
 	}
 	@RequestMapping(value = "/CartViewMyJangPage")
 	public String CartViewMyJangPage(){
-		return "CartViewMyJangPage";
+		return "Cart/CartViewMyJangPage";
 	}
 	@RequestMapping(value = "/CartDeleteMyJang")
 	public String CartDeleteMyJang(){
-		return "CartDeleteMyJang";
+		return "Cart/CartDeleteMyJang";
 	}
 	@RequestMapping(value = "/CartLeftbarJang")
 	public String CartLeftbarJang(){
-		return "CartLeftbarJang";
+		return "Cart/CartLeftbarJang";
 	}
 	@RequestMapping(value = "/Y_Introduce")
 	public String Y_Introduce(){
