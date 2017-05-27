@@ -55,7 +55,7 @@ response.sendRedirect("Y_Login");}
 <div id="here" style="width:80%">
 <jsp:include page="CartViewMyJangPage.jsp" />
 </div>
-</center>
+</center> 
 </div>
 </div>
 </body>
