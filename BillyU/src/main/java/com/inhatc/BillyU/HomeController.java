@@ -68,9 +68,9 @@ public class HomeController {
 	public String Y_Login(){
 		return "Y_Login";
 	}
-	@RequestMapping(value="/K_view")
+	@RequestMapping(value="/ProductViewPage")
 	public String K_view(){
-		return "K_view";
+		return "Product/ProductViewPage";
 	}
 	@RequestMapping(value="/Y_All_Category")
 	public String Y_All_Category(){
@@ -128,9 +128,9 @@ public class HomeController {
 	public String Y_Rent(){
 		return "Y_Rent";
 	}
-	@RequestMapping(value = "/K_product")
+	@RequestMapping(value = "/ProductRegistPage")
 	public String K_product(){
-		return "K_product";
+		return "Product/ProductRegistPage";
 	}
 	@RequestMapping(value = "/Y_Submit_Sale")
 	public String Y_Submit_Sale(){
@@ -261,11 +261,11 @@ public class HomeController {
 		
 //		RequestDispatcher view = req.getRequestDispatcher("K_addImg.jsp");
 //		view.forward(req, resp);
-		return "K_addImg";
+		return "Product/ProductAddImage";
 	}
-	@RequestMapping(value = "/K_addImg")
+	@RequestMapping(value = "/ProductAddImage")
 	public String K_addImg(){
-		return "K_addImg";
+		return "Product/ProductAddImage";
 	}
 	//상품사진등록 Mapping
 	@RequestMapping(value = "/regist.ro", method = RequestMethod.POST)
@@ -320,6 +320,7 @@ public class HomeController {
 //		RequestDispatcher view = req.getRequestDispatcher("K_view.jsp");
 //		view.forward(req, resp);
 		
-		return "Y_MyPage";
+		return "MyPage/MypageMainForm";
 	}
 }
+
