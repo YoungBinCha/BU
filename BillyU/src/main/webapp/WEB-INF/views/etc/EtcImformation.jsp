@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="Y_NavBar.jsp" />
+<jsp:include page="../Navigation/NavigationBar.jsp" />
 <center><h1>게시판</h1></center>
 </body>
 </html>
