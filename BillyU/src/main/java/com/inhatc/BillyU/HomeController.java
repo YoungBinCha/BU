@@ -132,14 +132,6 @@ public class HomeController {
 	public String K_product(){
 		return "Product/ProductRegistPage";
 	}
-	@RequestMapping(value = "/Y_Submit_Sale")
-	public String Y_Submit_Sale(){
-		return "Y_Submit_Sale";
-	}
-	@RequestMapping(value = "/Y_Sale")
-	public String Y_Sale(){
-		return "Y_Sale";
-	}
 	@RequestMapping(value = "/CartInsertJang")
 	public String CartInsertJang(){
 		return "Cart/CartInsertJang";
@@ -155,14 +147,6 @@ public class HomeController {
 	@RequestMapping(value = "/CartLeftbarJang")
 	public String CartLeftbarJang(){
 		return "Cart/CartLeftbarJang";
-	}
-	@RequestMapping(value = "/Y_Introduce")
-	public String Y_Introduce(){
-		return "Y_Introduce";
-	}
-	@RequestMapping(value = "/Y_Information")
-	public String Y_Information(){
-		return "Y_Information";
 	}
 	@RequestMapping(value = "/Y_ReturnCategory")
 	public String Y_ReturnCategory(){
