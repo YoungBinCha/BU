@@ -48,7 +48,7 @@
 </style>
 </head>
 <body>
-	<jsp:include page="Y_NavBar.jsp"></jsp:include>
+	<jsp:include page="../Navigation/NavigationBar.jsp"></jsp:include>
 	<br />
 	<div class="container-fluid">
 		<div class="row">
