@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="Y_NavBar.jsp" />
+<jsp:include page="../Navigation/NavigationBar.jsp" />
 </body>
 </html>
