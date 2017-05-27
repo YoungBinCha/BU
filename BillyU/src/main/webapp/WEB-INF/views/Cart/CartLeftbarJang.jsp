@@ -45,7 +45,7 @@ width:100%;
 if(session.getAttribute("id") == null){
 response.sendRedirect("Y_Login");}
 %>  
-<jsp:include page="Y_NavBar.jsp" />
+<jsp:include page="../Navigation/NavigationBar.jsp" />
 <br />
 <br />
 
@@ -53,7 +53,7 @@ response.sendRedirect("Y_Login");}
 <center>
 <div id="product-container">
 <div id="here" style="width:80%">
-<jsp:include page="Y_MyJang.jsp" />
+<jsp:include page="CartViewMyJangPage.jsp" />
 </div>
 </center>
 </div>

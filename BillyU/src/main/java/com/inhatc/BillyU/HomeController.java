@@ -140,21 +140,21 @@ public class HomeController {
 	public String Y_Sale(){
 		return "Y_Sale";
 	}
-	@RequestMapping(value = "/Y_Submit_Jang")
-	public String Y_Submit_Jang(){
-		return "Y_Submit_Jang";
+	@RequestMapping(value = "/CartInsertJang")
+	public String CartInsertJang(){
+		return "CartInsertJang";
 	}
-	@RequestMapping(value = "/Y_MyJang")
-	public String Y_MyJang(){
-		return "Y_MyJang";
+	@RequestMapping(value = "/CartViewMyJangPage")
+	public String CartViewMyJangPage(){
+		return "CartViewMyJangPage";
 	}
-	@RequestMapping(value = "/Y_Delete_MyJang")
-	public String Y_Delete_MyJang(){
-		return "Y_Delete_MyJang";
+	@RequestMapping(value = "/CartDeleteMyJang")
+	public String CartDeleteMyJang(){
+		return "CartDeleteMyJang";
 	}
-	@RequestMapping(value = "/Y_Jang")
-	public String Y_Jang(){
-		return "Y_Jang";
+	@RequestMapping(value = "/CartLeftbarJang")
+	public String CartLeftbarJang(){
+		return "CartLeftbarJang";
 	}
 	@RequestMapping(value = "/Y_Introduce")
 	public String Y_Introduce(){
