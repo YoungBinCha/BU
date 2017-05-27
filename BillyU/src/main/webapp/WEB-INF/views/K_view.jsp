@@ -48,19 +48,30 @@
 	%>
 	<jsp:include page="Y_NavBar.jsp"></jsp:include>
 	<%
-		int y_pronum = Integer.parseInt(request.getParameter("pronum"));
+		int y_productnumber = Integer.parseInt(request.getParameter("productnumber"));
 	%>
 	<jsp:useBean id="category" class="category.cateDAO"></jsp:useBean>
 	<jsp:useBean id="sel" class="regist.registDAO"></jsp:useBean>
 	<%
-		ArrayList<String> al = sel.selectProduct(y_pronum);
-		String type = al.get(4);
+		ArrayList<String> al = sel.selectProduct(y_productnumber);
+		String categorynumber = al.get(0);
+		String title = al.get(1);
+		String productinformation = al.get(2);
+		String location = al.get(3);
+		String productstate = al.get(4);
+		String rentprice_s = al.get(5);
+		String rentunit_s = al.get(6);
+		String rentdeposite_s = al.get(7);
 		
-		String categorySmall = category.receiveSmall(Integer.parseInt(al.get(9)));
+		int rentprice = Integer.parseInt(rentprice_s);
+		int rentdeposite = Integer.parseInt(rentdeposite_s);
+		int rentunit = Integer.parseInt(rentunit_s);
+
+		String categorySmall = category.receivecategorysmall(Integer.parseInt(categorynumber));
 		//img 한개일 때 사용하던 코드
-		String img = sel.receiveImage(y_pronum);
+		String img = sel.receiveImage(y_productnumber);
 		//img 여러개 일 때 사용하는 코드
-		ArrayList<String> arrayListImg = sel.selectImage(y_pronum);
+		ArrayList<String> arrayListImg = sel.selectImage(y_productnumber);
 	%>
 	<br />
 	<div class="container">
@@ -70,12 +81,12 @@
 				<h3><%= categorySmall %></h3>
 			</div>
 			<div class="col-lg-3">
-				<mark>거래형식</mark>
-				<h3><%= type %></h3>
+				<mark>위치</mark>
+				<h3>빈칸</h3>
 			</div>
 			<div class="col-lg-6">
 				<mark>제목</mark>
-				<h3><%= al.get(0) %></h3>
+				<h3><%= title %></h3>
 			</div>
 		</div>
 		<br> <br>
@@ -149,25 +160,21 @@
 			<!-- 이미지 끝나는 라인 -->
 			<div class="col-lg-4">
 				<%
-			if(type.equals("대여")){
 			%>
 				<div class="panel panel-default panel-rent" data-spy="affix"
 					data-offset-top="360">
 					<div class="panel-heading">
-						<%
-						int renprice = Integer.parseInt(al.get(5));
-						int deposit = Integer.parseInt(al.get(7));
-					%>
-						<h1 class="text-center" id="title_cost"><%= (renprice+deposit) +"원" %></h1>
+						
+						<h1 class="text-center" id="title_cost"><%= (rentprice+rentdeposite) +"원" %></h1>
 						<br>
 						<p class="text-center">
-							<small> 대여비 <%= renprice %>(1주) + 보증금 <%=deposit %>
+							<small> 대여비 <%= rentprice %>(<%= rentunit %>일) + 보증금 <%=rentdeposite %>
 							</small>
 						</p>
 					</div>
 					<div class="panel-body">
 						<form id="form" action="Y_Submit_Product" method="post">
-							<input type="hidden" name="pronum" value="<%=y_pronum %>" /> <input
+							<input type="hidden" name="productnumber" value="<%=y_productnumber %>" /> <input
 								type="hidden" name="apple"
 								value="<%=session.getAttribute("id")%>">
 							<div class="form-group">
@@ -182,20 +189,20 @@
 										<tr>
 											<td><label for="fee">대여료 : </label></td>
 											<td><input type="hidden" id="rent_cost"
-												value="<%= al.get(5) %>" /><%= al.get(5) %><small>/1주</small></td>
+												value="<%= rentprice %>" /><%= al.get(5) %><small>/1주</small></td>
 										</tr>
 										<tr>
 											<td><label for="deposit">보증금 : </label></td>
 											<td><input type="hidden" id="bo_cost"
-												value="<%= al.get(7) %>" /><%= al.get(7) %></td>
+												value="<%= rentdeposite %>" /><%= al.get(7) %></td>
 										</tr>
 										<tr>
-											<td><label for="possibleDay">대여가능 일수 : </label></td>
-											<td><%= al.get(6) %></td>
+											<td><label for="possibleDay">대여료 단위 : </label></td>
+											<td><%= rentunit %></td>
 										</tr>
 										<tr>
 											<td><label for="possibleDay">대여시작 날짜 : </label></td>
-											<td><input id="start" type="text" name="startdate"
+											<td><input id="start" type="date" name="startdate"
 												placeholder="ex)20170516" /></td>
 										</tr>
 										<tr>
@@ -208,30 +215,6 @@
 											<input type="hidden" id="hidden_total" name="total" />
 										</tr>
 										<tr>
-											<td><label for="tradeWay">거래방식: </label></td>
-											<td>
-											<!--   -->
-											<%
-												String traway = al.get(3);
-												String[] arrayTraway = traway.split(",");
-												
-												for(int i = 0 ; i< arrayTraway.length; i++){
-													if(arrayTraway[i].equals("직거래")){
-														%>
-															<label class="radio-inline"><input
-															checked type="radio" name="wayRadio" value="직거래">직거래</label>
-														<%
-													}else if(arrayTraway[i].equals("택배")){
-														%>
-														<label class="radio-inline"><input type="radio" value="택배"
-														checked name="wayRadio">택배</label>
-														<%
-													}
-												}
-											%>
-											</td>
-										</tr>
-										<tr>
 											<td><label for="possibleDay">메세지 : </label></td>
 											<td><textarea id="message" name="message" cols="21" rows="5"></textarea></td>
 										</tr>
@@ -242,7 +225,7 @@
 									value="신청하기">
 						</form>
 						<form action="Y_Submit_Jang" method="POST">
-							<input type="hidden" name="pronum" value="<%=y_pronum %>" /> <input
+							<input type="hidden" name="productnumber" value="<%=y_productnumber %>" /> <input
 								type="hidden" name="apple"
 								value="<%=session.getAttribute("id")%>"> <input
 								type="submit" class="btn btn-default btn-lg btn-block"
@@ -250,96 +233,12 @@
 						</form>
 					</div>
 
-					<!-- form �� �� -->
 
 				</div>
 			</div>
 			<%
-		}else if(type.equals("판매")){
-			%>
-			<div class="panel panel-default panel-sale" data-spy="affix"
-				data-offset-top="360">
-				<div class="panel-heading">
-					<%
-						int salprice = Integer.parseInt(al.get(8));
-					%>
-					<h1 class="text-center"><%= (salprice) +"원" %></h1>
-					<br>
-					<p class="text-center">
-						<small> 판매금액 <%= salprice %></small>
-					</p>
-				</div>
-				<div class="panel-body">
-					<div class="form-group">
-						<form id="form" action="Y_Submit_Sale" method="POST">
-							<input type="hidden" name="pronum" value="<%=y_pronum %>" /> <input
-								type="hidden" name="apple"
-								value="<%=session.getAttribute("id")%>"> <input
-								type="hidden" name="total" value="<%= al.get(8) %>">
-
-
-							<table class="table table-hover">
-								<thead>
-									<tr>
-										<th>요소</th>
-										<th>내용</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><label for="fee">판매금액 : </label></td>
-										<td><%= al.get(8) %></td>
-									</tr>
-									<tr>
-										<td><label for="possibleDay">메세지 : </label></td>
-										<td><textarea id="message" name="message" cols="21" rows="5"></textarea></td>
-									</tr>
-									<tr>
-										<td><label for="tradeWay">거래방식 : </label></td>
-										<!-- <td><label class="radio-inline"><input
-												type="radio" name="wayRadio" value="직거래">직거래</label> <label
-											class="radio-inline"><input type="radio"
-												name="wayRadio" value="택배">택배</label></td> -->
-										<td>
-											<!--   -->
-											<%
-												String traway = al.get(3);
-												String[] arrayTraway = traway.split(",");
-												
-												for(int i = 0 ; i< arrayTraway.length; i++){
-													if(arrayTraway[i].equals("직거래")){
-														%>
-															<label class="radio-inline"><input
-															type="radio" checked name="wayRadio" value="직거래">직거래</label>
-														<%
-													}else if(arrayTraway[i].equals("택배")){
-														%>
-														<label class="radio-inline"><input type="radio" value="택배"
-														checked name="wayRadio">택배</label>
-														<%
-													}
-												}
-											%>
-											</td>
-									</tr>
-								</tbody>
-							</table>
-							<input type="submit" class="btn btn-primary btn-lg btn-block"
-								value="신청하기">
-						</form>
-						<form action="Y_Submit_Jang" method="POST">
-							<input type="submit" class="btn btn-default btn-lg btn-block"
-								value="찜하기"> <input type="hidden" name="pronum"
-								value="<%=y_pronum %>" /> <input type="hidden" name="apple"
-								value="<%=session.getAttribute("id")%>">
-						</form>
-					</div>
-					<!-- form 문 끝-->
-
-				</div>
-			</div>
-			<%
-		}%>
+		
+		%>
 
 			<!-- 판매패널 -->
 
@@ -362,12 +261,16 @@
 						</thead>
 						<tbody>
 							<tr>
+								<td>위치 :</td>
+								<td><%= location %></td>
+							</tr>
+							<tr>
 								<td>물품상태 :</td>
-								<td><%= al.get(2) %></td>
+								<td><%= productstate %></td>
 							</tr>
 							<tr>
 								<td>상품설명 :</td>
-								<td><%= al.get(1) %></td>
+								<td><%= productinformation %></td>
 							</tr>
 						</tbody>
 					</table>

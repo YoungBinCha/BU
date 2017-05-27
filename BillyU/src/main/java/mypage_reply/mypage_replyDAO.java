@@ -43,10 +43,10 @@ public class mypage_replyDAO {
 		if(pstmt != null){try{conn.close();}catch(Exception e){e.printStackTrace();}}
 	}
 	
-	public void insert_reply(int pronum,String hoster,String guest,String message){
+	public void insert_reply(int productnumber,String producthost,String productguest,String message){
 		connect();
 		try{
-			String sql="insert into mypage_reply(pronum,hoster,guest,message) values("+pronum+",'"+hoster+"','"+guest+"','"+message+"')";
+			String sql="insert into mypage_reply(productnumber,producthost,productguest,message) values("+productnumber+",'"+producthost+"','"+productguest+"','"+message+"')";
 			stmt.executeUpdate(sql);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -56,17 +56,17 @@ public class mypage_replyDAO {
 	public ArrayList<mypage_replyDTO> reply_list(String host){
 		try{
 			connect();
-			String sql = "select * from mypage_reply where guest='"+host+"' order by curtime desc";
+			String sql = "select * from mypage_reply where productguest='"+host+"' order by curtime desc";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int pronum = rs.getInt("pronum");
-				String hoster = rs.getString("hoster");
-				String guest = rs.getString("guest");
+				int productnumber = rs.getInt("productnumber");
+				String producthost = rs.getString("producthost");
+				String productguest = rs.getString("productguest");
 				String message = rs.getString("message");
 				Timestamp curtime = rs.getTimestamp("curtime");
 
-				dto = new mypage_replyDTO(hoster, guest, message, curtime, pronum);
+				dto = new mypage_replyDTO(producthost, productguest, message, curtime, productnumber);
 				reply_list.add(dto);
 			}
 			
@@ -80,17 +80,17 @@ public class mypage_replyDAO {
 	public ArrayList<mypage_replyDTO> reply_list2(String host){
 		try{
 			connect();
-			String sql = "select * from mypage_reply where hoster='"+host+"' order by curtime desc";
+			String sql = "select * from mypage_reply where producthost='"+host+"' order by curtime desc";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int pronum = rs.getInt("pronum");
-				String hoster = rs.getString("hoster");
-				String guest = rs.getString("guest");
+				int productnumber = rs.getInt("productnumber");
+				String producthost = rs.getString("producthost");
+				String productguest = rs.getString("productguest");
 				String message = rs.getString("message");
 				Timestamp curtime = rs.getTimestamp("curtime");
 
-				dto = new mypage_replyDTO(hoster, guest, message, curtime, pronum);
+				dto = new mypage_replyDTO(producthost, productguest, message, curtime, productnumber);
 				reply_list2.add(dto);
 			}
 			

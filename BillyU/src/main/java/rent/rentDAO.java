@@ -34,21 +34,22 @@ public class rentDAO {
 		if(conn != null){try{conn.close();}catch(Exception e){e.printStackTrace();}}
 	}
 	
-	public void insert_rent(String guest,int pronum,String message,String way,int startdate,int rentday,int total){
+
+	public void insert_rent(String productguest,int productnumber,String message,String way,int startdate,int enddate,int totalprice){
 		connect();
 		try{
-			String sql="insert into rent(guest,pronum,message,way,startdate,rentday,total) values('"+guest+"',"+pronum+",'"+message+"','"+way+"',"+startdate+","+rentday+","+total+")";
+			String sql="insert into rent(productguest,productnumber,message,startdate,enddate,totalprice) values('"+productguest+"',"+productnumber+",'"+message+"',"+startdate+","+enddate+","+totalprice+")";
 			stmt.executeUpdate(sql);
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{disconnect();}
 	}
 	
-	public String select_rent(int pronum){
+	public String select_rent(int productnumber){
 		connect();
 		String nickname="";
 		try{
-			String sql="select nickname from product where pronum='"+pronum+"'";
+			String sql="select nickname from product where productnumber='"+productnumber+"'";
 			rs = stmt.executeQuery(sql);
 			while(rs.next())
 			{
@@ -61,10 +62,10 @@ public class rentDAO {
 		return nickname;
 	}
 	
-	public void insert_nickname(String nickname,String guest,int pronum){
+	public void insert_nickname(String nickname,String productguest,int productnumber){
 		connect();
 		try{
-			String sql="update rent set hoster='"+nickname+"' where guest='"+guest+"' and pronum="+pronum+"";
+			String sql="update rent set producthost='"+nickname+"' where productguest='"+productguest+"' and productnumber="+productnumber+"";
 			stmt.executeUpdate(sql);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -74,22 +75,23 @@ public class rentDAO {
 	public ArrayList<rentDTO> rent_list(String nickname){
 		try{
 			connect();
-			String sql = "select * from rent where hoster='"+nickname+"' order by rentnum desc";
+			String sql = "select * from rent where producthost='"+nickname+"' order by rentnumber desc";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int rentnum = rs.getInt("rentnum");
-				String hoster = rs.getString("hoster");
-				String guest = rs.getString("guest");
-				int pronum = rs.getInt("pronum");
-				String way = rs.getString("way");
+
+				int rentnumber = rs.getInt("rentnumber");
+				String producthost = rs.getString("producthost");
+				String productguest = rs.getString("productguest");
+				int productnumber = rs.getInt("productnumber");
 				int startdate = rs.getInt("startdate");
-				int rentday = rs.getInt("rentday");
+				int enddate = rs.getInt("enddate");
+
 				String message = rs.getString("message");
-				int total = rs.getInt("total");
+				int totalprice = rs.getInt("totalprice");
 				Timestamp curtime = rs.getTimestamp("curtime");
 
-				dto = new rentDTO(rentnum, hoster, guest, pronum, way, startdate, rentday, message, total,curtime);
+				dto = new rentDTO(rentnumber, producthost, productguest, productnumber, startdate, enddate, message, totalprice,curtime);
 				rent_list.add(dto);
 			}
 			
@@ -99,26 +101,27 @@ public class rentDAO {
 		
 		return rent_list;
 	}
-	//���� hoster �Ʒ��� guest
+	
 	public ArrayList<rentDTO> rent_list2(String nickname){
 		try{
 			connect();
-			String sql = "select * from rent where guest='"+nickname+"' order by rentnum desc";
+			String sql = "select * from rent where productguest='"+nickname+"' order by rentnumber desc";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int rentnum = rs.getInt("rentnum");
-				String hoster = rs.getString("hoster");
-				String guest = rs.getString("guest");
-				int pronum = rs.getInt("pronum");
-				String way = rs.getString("way");
+
+				int rentnumber = rs.getInt("rentnumber");
+				String producthost = rs.getString("producthost");
+				String productguest = rs.getString("productguest");
+				int productnumber = rs.getInt("productnumber");
 				int startdate = rs.getInt("startdate");
-				int rentday = rs.getInt("rentday");
+				int enddate = rs.getInt("enddate");
+
 				String message = rs.getString("message");
-				int total = rs.getInt("total");
+				int totalprice = rs.getInt("totalprice");
 				Timestamp curtime = rs.getTimestamp("curtime");
 
-				dto = new rentDTO(rentnum, hoster, guest, pronum, way, startdate, rentday, message, total,curtime);
+				dto = new rentDTO(rentnumber, producthost, productguest, productnumber, startdate, enddate, message, totalprice,curtime);
 				rent_list2.add(dto);
 			}
 			
@@ -128,10 +131,10 @@ public class rentDAO {
 		
 		return rent_list2;
 	}
-	public void delete_rent(int rentnum){
+	public void delete_rent(int rentnumber){
 		connect();
 		try{
-			String sql="delete from rent where rentnum="+rentnum+"";
+			String sql="delete from rent where rentnumber="+rentnumber+"";
 			stmt.executeUpdate(sql);
 		}catch(Exception e){
 			e.printStackTrace();

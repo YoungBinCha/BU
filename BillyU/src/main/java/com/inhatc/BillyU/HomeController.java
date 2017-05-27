@@ -172,7 +172,10 @@ public class HomeController {
 	public String Y_Search_Result(){
 		return "Y_Search_Result";
 	}
-	
+	@RequestMapping(value = "/Y_Scroll")
+	public String Y_Scroll(){
+		return "Y_Scroll";
+	}
 	@RequestMapping(value = "/Y_Reply",method = RequestMethod.POST)
 	public String Y_Reply(HttpServletRequest request,HttpSession session,Model model,HttpServletResponse response){
 		mypage_replyDAO replyDAO = new mypage_replyDAO();
@@ -180,9 +183,9 @@ public class HomeController {
 		String hoster = host.toString();
 		String guest = request.getParameter("guest");
 		String message = request.getParameter("content");
-		String pro = request.getParameter("pronum");
-		int pronum = Integer.parseInt(pro);
-		replyDAO.insert_reply(pronum,hoster, guest, message);
+		String pro = request.getParameter("productnumber");
+		int productnumber = Integer.parseInt(pro);
+		replyDAO.insert_reply(productnumber,hoster, guest, message);
 		try {
 			response.sendRedirect("Y_Main");
 		} catch (IOException e) {
@@ -233,47 +236,34 @@ public class HomeController {
 
 		registDAO dao = new registDAO();
 		String category = req.getParameter("category"); 
-		int catnum = dao.selectCatnum(category); 
+		int categorynumber = dao.selectcategorynumber(category); 
 		String title = req.getParameter("title");
-		String productinfo = req.getParameter("productinfo");
-		String productcondition = req.getParameter("procondition");
-		String tratype = req.getParameter("tratype");			//판매냐 대여냐
-		
-	//	String traway = req.getParameter("traway");				//직거래냐 택배냐
-		
-		String[] traway = req.getParameterValues("traway");
-		
-		String salprice_s = req.getParameter("salprice");
-		String renprice_s = req.getParameter("renprice");
-		String deposit_s = req.getParameter("deposit");
-		String renday_s = req.getParameter("renday");
-		
-		if(salprice_s == ""){
-			salprice_s = "0";
-		}else if(renprice_s == ""){
-			renprice_s ="0";
-			deposit_s = "0";
-			renday_s = "0";
-		}
-		
-		int salprice = Integer.parseInt(salprice_s);
+		String productinformation = req.getParameter("productinformation");
+		String location = req.getParameter("location");
+		String productstate = req.getParameter("productstate");			//판매냐 대여냐
 
-	
-		int renprice = Integer.parseInt(renprice_s);
-		int deposit = Integer.parseInt(deposit_s);
-		int renday = Integer.parseInt(renday_s);
+		String rentprice_s = req.getParameter("rentprice");
+		String rentdeposite_s = req.getParameter("rentdeposite");
+		String rentunit_s = req.getParameter("rentunit");
+		
+	/*	if(rentprice_s == ""){
+			rentprice_s ="0";
+			rentdeposite_s = "0";
+			rentunit_s = "0";
+		}
+*/
+		int rentprice = Integer.parseInt(rentprice_s);
+		int rentdeposite = Integer.parseInt(rentdeposite_s);
+		int rentunit = Integer.parseInt(rentunit_s);
 		
 		HttpSession ses = req.getSession();
 		String nickname = (String)ses.getAttribute("id");
 		ses.setAttribute("checkId", nickname);
 		
-		registDTO dto = new registDTO(nickname, catnum, title, productinfo, productcondition, tratype, traway, salprice, renprice, deposit, renday);
+		registDTO dto = new registDTO(nickname, categorynumber, title, productinformation, location, productstate, rentprice, rentdeposite, rentunit);
 
-		if (dto.getTratype().equals("대여")) {
 			dao.insertRentProduct(dto); 
-		} else if (dto.getTratype().equals("판매")) {
-			dao.insertSaleProduct(dto); 
-		}
+		
 		
 //		RequestDispatcher view = req.getRequestDispatcher("K_addImg.jsp");
 //		view.forward(req, resp);
@@ -298,7 +288,7 @@ public class HomeController {
 		String savePath = "C:/Bro/BillyU/src/main/webapp/resources/img";
 		
 		int sizeLimit = 10 * 1024 * 1024; 
-		String img = "";
+		String img1 = "";
 		String img2 = "";
 		String img3 = "";
 		String img4 = "";
@@ -307,7 +297,7 @@ public class HomeController {
 		Enumeration files = multi.getFileNames(); 
 
 		String file = (String) files.nextElement();
-		img = multi.getOriginalFileName(file);
+		img1 = multi.getOriginalFileName(file);
 		String file2 = (String) files.nextElement();
 		img2 = multi.getOriginalFileName(file2);
 		String file3 = (String) files.nextElement();
@@ -316,21 +306,23 @@ public class HomeController {
 		img4 = multi.getOriginalFileName(file4);
 		
 		registDAO dao = new registDAO();
-		registDTO dto = new registDTO(img, img2, img3, img4);
+		registDTO dto = new registDTO(img1, img2, img3, img4);
 		
-		int pronum = dao.selectPronum();
+		int productnumber = dao.selectproductnumber();
 		
 		HttpSession ses = req.getSession();
 		String id = (String)ses.getAttribute("id");
 		String checkId = (String)ses.getAttribute("checkId");
-		
+		/*
 		if(id.equals(checkId)){
-			dao.insertImage(dto, pronum);
-			dao.updateImage(dto, pronum);
+			dao.insertImage(dto, productnumber);
+			dao.updateImage(dto, productnumber);
 		}else{
 			System.out.println("로그인한 id와 상품등록한 id가 다릅니다.");
-		}
+		}*/
 		
+		dao.insertImage(dto, productnumber);
+		dao.updateImage(dto, productnumber);
 //		RequestDispatcher view = req.getRequestDispatcher("K_view.jsp");
 //		view.forward(req, resp);
 		

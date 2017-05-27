@@ -37,8 +37,11 @@
 #here{
 width:100%;
 }
+.img-rounded{
+width:200px;
+height:150px;
+}
 </style>
-  </style>
 </head>
 <body>
 <%

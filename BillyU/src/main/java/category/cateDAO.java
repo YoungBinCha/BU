@@ -8,8 +8,8 @@ public class cateDAO {
 	Statement stmt = null;
 	ResultSet rs = null;
 	cateDTO dto;
-	ArrayList<cateDTO> big_list = new ArrayList<cateDTO>();
-	ArrayList<cateDTO> small_list = new ArrayList<cateDTO>();
+	ArrayList<cateDTO> categorybig_list = new ArrayList<cateDTO>();
+	ArrayList<cateDTO> categorysmall_list = new ArrayList<cateDTO>();
 	int cat;
 	
 	public cateDAO(){
@@ -33,60 +33,60 @@ public class cateDAO {
 		if(conn != null){try{conn.close();}catch(Exception e){e.printStackTrace();}}
 	}
 	
-	public ArrayList<cateDTO> big_list(){
+	public ArrayList<cateDTO> categorybig_list(){
 		try{
 			connect();
-			String sql = "select distinct big from category";
+			String sql = "select distinct categorybig from category";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				String big = rs.getString("big");
+				String categorybig = rs.getString("categorybig");
 				
-				dto = new cateDTO(big);
-				big_list.add(dto);
+				dto = new cateDTO(categorybig);
+				categorybig_list.add(dto);
 			}
 			
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{disconnect();}
 		
-		return big_list;
+		return categorybig_list;
 	}
 	
-	public ArrayList<cateDTO> small_list(){
+	public ArrayList<cateDTO> categorysmall_list(){
 		try{
 			connect();
 			String sql = "select * from category";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				String big = rs.getString("big");
-				String small = rs.getString("small");
+				String categorybig = rs.getString("categorybig");
+				String categorysmall = rs.getString("categorysmall");
 				
-				dto = new cateDTO(big,small);
-				small_list.add(dto);
+				dto = new cateDTO(categorybig,categorysmall);
+				categorysmall_list.add(dto);
 			}
 			
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{disconnect();}
 		 
-		return small_list;
+		return categorysmall_list;
 	}
 	
-	public String receiveSmall(int catnum){
-		String small = "";
+	public String receivecategorysmall(int categorynumber){
+		String categorysmall = "";
 		try{
 			connect();
-			String sql = "select small from category where catnum = "+catnum+";";
+			String sql = "select categorysmall from category where categorynumber = "+categorynumber+";";
 			rs = stmt.executeQuery(sql);
 			rs.next();
-			small = rs.getString("small");
+			categorysmall = rs.getString("categorysmall");
 			
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{disconnect();}
 		
-		return small;
+		return categorysmall;
 	}
 }
