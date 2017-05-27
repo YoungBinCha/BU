@@ -45,12 +45,12 @@ background-color:#f3f3f3;
 <table class="Y_NavCategory_Table table table-bordered">
 <tr class="Y_Nav_TopMenu">
 <%
-	ArrayList<cateDTO> big_list = DAO.big_list();
-	ArrayList<cateDTO> small_list = DAO.small_list();
+	ArrayList<cateDTO> categorybig_list = DAO.categorybig_list();
+	ArrayList<cateDTO> categorysmall_list = DAO.categorysmall_list();
 	
-	for(int i=0;i<big_list.size();i++){
-		cateDTO dto = big_list.get(i);
-		String big = dto.getBig();
+	for(int i=0;i<categorybig_list.size();i++){
+		cateDTO dto = categorybig_list.get(i);
+		String categorybig = dto.getcategorybig();
 		
 	}
 

@@ -46,7 +46,7 @@
 		response.sendRedirect("Y_Login");
 	}
 	%>
-	<jsp:include page="Y_NavBar.jsp"></jsp:include>
+	<jsp:include page="../Navigation/NavigationBar.jsp"></jsp:include>
 	<%
 		int y_productnumber = Integer.parseInt(request.getParameter("productnumber"));
 	%>
