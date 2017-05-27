@@ -60,13 +60,13 @@ public class HomeController {
 		
 		return "home";
 	}
-	@RequestMapping(value="/Y_Main")
-	public String Y_Main(){
-		return "Y_Main";
+	@RequestMapping(value="/Index")
+	public String Index(){
+		return "Index";
 	}
-	@RequestMapping(value="/Y_Login")
-	public String Y_Login(){
-		return "Y_Login";
+	@RequestMapping(value="/UserLoginForm")
+	public String UserLoginForm(){
+		return "User/UserLoginForm";
 	}
 	@RequestMapping(value="/ProductViewPage")
 	public String K_view(){
@@ -80,49 +80,49 @@ public class HomeController {
 	public String Y_Submit_Product(){
 		return "Y_Submit_Product";
 	}
-	@RequestMapping(value="/Y_Login_OK")
-	public String Y_Login_OK(){
-		return "Y_Login_OK";
+	@RequestMapping(value="/UserLoginSuccess")
+	public String UserLoginSuccess(){
+		return "User/UserLoginSuccess";
 	}
-	@RequestMapping(value="/Y_ID_Check")
-	public String Y_ID_Check(){
-		return "Y_ID_Check";
+	@RequestMapping(value="/UserCheckID")
+	public String UserCheckID(){
+		return "User/UserCheckID";
 	}
-	@RequestMapping(value="/Y_Join_NickName")
-	public String Y_Join_NickName(){
-		return "Y_Join_NickName";
+	@RequestMapping(value="/UserNicknameForm")
+	public String UserNicknameForm(){
+		return "User/UserNicknameForm";
 	}
-	@RequestMapping(value="/Y_Join_OK")
-	public String Y_Join_OK(){
-		return "Y_Join_OK";
+	@RequestMapping(value="/UserJoinSuccess")
+	public String UserJoinSuccess(){
+		return "User/UserJoinSuccess";
 	}
-	@RequestMapping(value="/Y_JoinForm")
-	public String Y_JoinForm(){
-		return "Y_JoinForm";
+	@RequestMapping(value="/UserJoinForm")
+	public String UserJoinForm(){
+		return "User/UserJoinForm";
 	}
-	@RequestMapping(value="/Y_MyPage")
-	public String Y_MyPage(){
-		return "Y_MyPage";
+	@RequestMapping(value="/MypageMainForm")
+	public String MypageMainForm(){
+		return "MyPage/MypageMainForm";
 	}
-	@RequestMapping(value="/Y_MyProduct")
-	public String Y_MyProduct(){
-		return "Y_MyProduct";
+	@RequestMapping(value="/MypageEnrollProduct")
+	public String MypageEnrollProduct(){
+		return "MyPage/MypageEnrollProduct";
 	}
-	@RequestMapping(value="/Y_MyMail")
-	public String Y_MyMail(){
-		return "Y_MyMail";
+	@RequestMapping(value="/MypageReceiveMessage")
+	public String MypageReceiveMessage(){
+		return "MyPage/MypageReceiveMessage";
 	}
-	@RequestMapping(value="/Y_MyPerson")
-	public String Y_MyPerson(){
-		return "Y_MyPerson";
+	@RequestMapping(value="/MypagePrivacyInformation")
+	public String MypagePrivacyInformation(){
+		return "MyPage/MypagePrivacyInformation";
 	}
-	@RequestMapping(value="/Y_MyWait")
-	public String Y_MyWait(){
-		return "Y_MyWait";
+	@RequestMapping(value="/MypageSendMessage")
+	public String MypageSendMessage(){
+		return "MyPage/MypageSendMessage";
 	}
-	@RequestMapping(value="/Y_Delete_MyProduct")
-	public String Y_Delete_MyProduct(){
-		return "Y_Delete_MyProduct";
+	@RequestMapping(value="/MypageDeleteProduct")
+	public String MypageDeleteProduct(){
+		return "MyPage/MypageDeleteProduct";
 	}
 	@RequestMapping(value="/Y_Rent")
 	public String Y_Rent(){
@@ -320,7 +320,9 @@ public class HomeController {
 //		RequestDispatcher view = req.getRequestDispatcher("K_view.jsp");
 //		view.forward(req, resp);
 		
+
 		return "MyPage/MypageMainForm";
+
 	}
 }
 

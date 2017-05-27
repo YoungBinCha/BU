@@ -14,40 +14,17 @@
 </style>
 </head>
 <body>
+<jsp:useBean id="user" class="user.userDAO" />
 <h1>닉네임 1글자 이상 10글자 이하로 만들어 주세요!</h1>
 <%
 	String kakao = request.getParameter("kakaoid");
+	boolean check_kakao = user.kakaoid_check(kakao);
 
-	Connection conn = null;
-	Statement stmt = null;
-	ResultSet rs = null;
-	
-	Class.forName("com.mysql.jdbc.Driver");
-	try{
-		conn = DriverManager.getConnection(
-				"jdbc:mysql://localhost/billyu",
-				"root",
-				"1234"
-				);
-		stmt = conn.createStatement();
-		String sql="select * from user";
-		rs = stmt.executeQuery(sql);
-		while(rs.next())
-		{
-			if(kakao.equals(rs.getString("usernumber")))
-			{
-				response.sendRedirect("Y_Login");
-			}
-		}
-	}catch(Exception e){
-		e.printStackTrace();
-	}finally{
-		rs.close();
-		stmt.close();
-		conn.close();
+	if(check_kakao == false){
+		response.sendRedirect("UserLoginForm");
 	}
 %>
-<form method="post" action="Y_Join_OK" name="name" id="form_check">
+<form method="post" action="UserJoinSuccess" name="name" id="form_check">
 닉네임 : <input type="text" name="nickname" id="nick" placeholder="1글자 이상 10글자 이하" />
 <input type="hidden" name="kakaoid" value="<%=kakao %>"/>
 <input type="button" value="회원가입" id="sub" onclick="check()"/><p>
@@ -79,7 +56,7 @@ $('#nick').keyup(function(){
 
 	$.ajax({
 		type:"POST",
-		url:"./Y_ID_Check",
+		url:"./UserCheckID",
 		data : {nickname : $('#nick').val() },
 		success:WhenSuccess,
 		error:WhenError

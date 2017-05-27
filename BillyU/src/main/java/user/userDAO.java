@@ -13,6 +13,8 @@ public class userDAO {
 	Statement stmt = null;
 	ResultSet rs = null;
 	
+	boolean check_kakaoid = true;
+	
 	public userDAO(){
 		try{Class.forName("com.mysql.jdbc.Driver");}
 		catch(Exception e){e.printStackTrace();}
@@ -43,5 +45,20 @@ public class userDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{disconnect();}
+	}
+	
+	public boolean kakaoid_check(String kakaoid){
+		connect();
+		try{
+			String sql="select * from user where usernumber = '"+kakaoid+"'";
+			rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				check_kakaoid = false;
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
+		return check_kakaoid;
 	}
 }

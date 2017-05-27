@@ -12,7 +12,7 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
-<form action="Y_Join_NickName" method="post" id="Y_ID">
+<form action="UserNicknameForm" method="post" id="Y_ID">
 <a id="kakao-login-btn"></a>
 <input type="hidden" name="kakaoid" id="kakaoid" />
 </form>
