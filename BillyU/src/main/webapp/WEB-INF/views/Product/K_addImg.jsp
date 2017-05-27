@@ -91,27 +91,7 @@ h3{
     						 	</div>
     						</div>
     					</div>
-    				        				
-    				        				<!-- <br>
-    				        				<div id="J_image_box" style="display: none;">
-    						<div class= "row">
-    							<div class="col-lg-4">
-    								<div id="J_image_2" style=" width: 100px; height: 100px; float: left;">
-    									
-    								</div>
-    							</div>
-    							<div class="col-lg-4">
-    								<div id="J_image_3" style=" width: 100px; height: 100px; float: left; ">
-    									
-    								</div>
-    							</div>
-    							<div class="col-lg-4">
-    								<div id="J_image_4" style=" width: 100px; height: 100px; float: left; ">
-    									
-    								</div>
-    							</div>
-    						</div>
-    					</div> -->
+    				     
     				
     				</br>
     				<input type="submit" class="btn btn-primary" value="등록" style="width: 400px;" onclick="test()">

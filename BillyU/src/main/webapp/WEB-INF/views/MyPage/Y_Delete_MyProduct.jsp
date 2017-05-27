@@ -9,8 +9,8 @@
 <body>
 <jsp:useBean id="product" class="product.proDAO" />
 <%
-String pronum = request.getParameter("pronum");
-product.delete_product(pronum);
+String productnumber = request.getParameter("productnumber");
+product.delete_product(productnumber);
 response.sendRedirect("Y_MyPage");
 %>
 </body>

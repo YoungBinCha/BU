@@ -61,7 +61,7 @@ height:150px;
 </style>
 </head>
 <body>
-<jsp:include page="Y_NavBar.jsp" />
+<jsp:include page="Navigation/Y_NavBar.jsp" />
 <!-- 사이트 설명 시작 -->
 <center>
 <div class="container" style="height:600px;">

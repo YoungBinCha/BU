@@ -107,31 +107,30 @@
 								</script>
 							</div>
 							<div class="form-group">
-								<label for="procondition">상품상태 :</label> <label
+								<label for="productstate">상품상태 :</label> <label
 									class="radio-inline"> <input type="radio"
-									name="procondition" value="s급">S급
+									name="productstate" value="s급">S급
 								</label> <label class="radio-inline"> <input type="radio"
-									name="procondition" value="a급">A급
+									name="productstate" value="a급">A급
 								</label> <label class="radio-inline"> <input type="radio"
-									name="procondition" value="b급">B급
+									name="productstate" value="b급">B급
 								</label>
 							</div>
 							<div class="form-group">
+								<label for="location">위치: </label> <input type="text"
+									class="form-control" id="location" name="location"
+									placeholder="Enter location">
+							</div>
+							<div class="form-group">
 								<!--  이건 text가 아니라 다른 형식으로받는건 어떨까? -->
-								<label for="proinfo">상품설명</label>
-								<textarea class="form-control" rows="5" id="proinfo"
-									placeholder="Input info" name="productinfo"></textarea>
+								<label for="productinformation">상품설명</label>
+								<textarea class="form-control" rows="5" id="productinformation"
+									placeholder="Input info" name="productinformation"></textarea>
 							</div>
 
 						</div>
 						<!-- 여기부턴 대여 정보 입력 -->
 						<div class="K_trade">
-							<ul class="nav nav-tabs">
-								<li class="active"><a data-toggle="tab" href="#rent">대여</a></li>
-								<li><a data-toggle="tab" href="#sale">판매</a></li>
-							</ul>
-
-							<div class="tab-content">
 								<div class="form-group">
 									<input class="tratype" type="hidden" name="tratype" value="대여" />
 								</div>
@@ -139,46 +138,21 @@
 									<h3>대여</h3>
 
 									<div class="form-group">
-										<label for="renprice">대여금액 : </label> <input type="text"
-											class="form-control" id="renprice" name="renprice"
+										<label for="rentprice">대여금액 : </label> <input type="text"
+											class="form-control" id="rentprice" name="rentprice"
 											placeholder="Enter rentalFee">
 									</div>
 									<div class="form-group">
-										<label for="deposit">보증금 :</label> <input type="text"
-											class="form-control" id="deposit" name="deposit"
-											placeholder="Enter deposit">
+										<label for="rentdeposite">보증금 :</label> <input type="text"
+											class="form-control" id="rentdeposit" name="rentdeposite"
+											placeholder="Enter rentdeposit">
 									</div>
 									<div class="form-group">
-										<label for="renday">대여가능일수 :</label> <input type="text"
-											class="form-control" id="renday" name="renday"
-											placeholder="Enter renday">
-									</div>
-									<div class="form-group">
-										<label for="traway">거래방법 : </label> <label
-											class="checkbox-inline"> <input type="checkbox"
-											name="traway" value="택배">택배
-										</label> <label class="checkbox-inline"> <input type="checkbox"
-											name="traway" value="직거래">직거래
-										</label>
+										<label for="rentunit">대여가능일수 :</label> <input type="text"
+											class="form-control" id="rentunit" name="rentunit"
+											placeholder="Enter rentunit">
 									</div>
 									<button type="submit" class="submit btn btn-default btn-block">Submit</button>
-								</div>
-								<div id="sale" class="sa tab-pane fade">
-									<h3>판매</h3>
-									<div class="form-group">
-										<label for="salprice">판매금액 : </label> <input type="text"
-											class="form-control" id="salprice" name="salprice"
-											placeholder="Enter salprice">
-									</div>
-									<div class="form-group">
-										<label for="traway">거래방법 : </label> <label
-											class="checkbox-inline"> <input type="checkbox"
-											name="traway" value="택배">택배
-										</label> <label class="checkbox-inline"> <input type="checkbox"
-											name="traway" value="직거래">직거래
-										</label>
-									</div>
-									<button type="submit" class="submit btn btn-default btn-block" >등록하기</button>
 								</div>
 							</div>
 							<!-- 거래 형식을 '판매'를 선택했을 때 -->		
@@ -186,7 +160,6 @@
 					</form>
 					<button type="button" class="input btn btn-primary btn-block">다음</button>
 				</div>
-				
 			</div>
 			<div class="col-lg-3"></div>
 			
