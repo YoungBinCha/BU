@@ -31,7 +31,7 @@ public class registDAO {
 
 
 	public boolean insertRentProduct(registDTO dto) {
-		String query = "insert into product (nickname, categorynumber, title, productinformation, location, productstate, rentprice, rentdeposite, rentunit) values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String query = "insert into product (nickname, categorynumber, title, productinformation, location, productstate, rentprice, rentdeposite, rentmaxdate) values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		boolean check = false;
 		try {
 
@@ -44,7 +44,7 @@ public class registDAO {
 			pstmt.setString(6, dto.getproductstate());
 			pstmt.setInt(7, dto.getrentprice());
 			pstmt.setInt(8, dto.getrentdeposite());
-			pstmt.setInt(9, dto.getrentunit());
+			pstmt.setInt(9, dto.getrentmaxdate());
 
 			pstmt.executeUpdate();
 			check = true;
@@ -157,7 +157,7 @@ public class registDAO {
 		}
 		return check;
 	}
-	//메인사진을 넣지않고 서브 사진만 넣으면 사진이 안나와!!!
+	//메인사진을 넣지않고 서브 사진만 넣으면 사진이 안나와!!! 주영 : ok!!
 	public boolean updateImage(registDTO dto, int productnumber) {
 		String address = "resources/img/" + dto.getImg1();
 		

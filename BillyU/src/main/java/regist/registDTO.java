@@ -12,7 +12,7 @@ public class registDTO {
 
 	private int rentprice;
 	private int rentdeposite;
-	private int rentunit;			
+	private int rentmaxdate;			
 	
 	
 	private String img1;
@@ -20,7 +20,7 @@ public class registDTO {
 	private String img3;
 	private String img4;
 	
-	public registDTO(String nickname, int categorynumber, String title, String productinformation, String location, String productstate, int rentprice, int rentdeposite, int rentunit){
+	public registDTO(String nickname, int categorynumber, String title, String productinformation, String location, String productstate, int rentprice, int rentdeposite, int rentmaxdate){
 		this.nickname = nickname;
 		this.categorynumber = categorynumber;
 		this.title = title;
@@ -29,7 +29,7 @@ public class registDTO {
 		this.productstate = productstate;
 		this.rentprice = rentprice;
 		this.rentdeposite = rentdeposite;
-		this.rentunit = rentunit;
+		this.rentmaxdate = rentmaxdate;
 	}
 	
 	public registDTO(String img1, String img2, String img3, String img4){
@@ -76,11 +76,11 @@ public class registDTO {
 	public void setrentdeposite(int rentdeposite) {
 		this.rentdeposite = rentdeposite;
 	}
-	public int getrentunit() {
-		return rentunit;
+	public int getrentmaxdate() {
+		return rentmaxdate;
 	}
-	public void setrentunit(int rentunit) {
-		this.rentunit = rentunit;
+	public void setrentmaxdate(int rentmaxdate) {
+		this.rentmaxdate = rentmaxdate;
 	}
 	public int getcategorynumber() {
 		return categorynumber;

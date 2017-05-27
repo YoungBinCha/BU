@@ -47,7 +47,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -59,8 +59,8 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate ); 
 		
 		return "home";
-	}
-	@RequestMapping(value="/Index")
+	}*/
+	@RequestMapping(value="/")
 	public String Index(){
 		return "Index";
 	}
@@ -222,23 +222,23 @@ public class HomeController {
 
 		String rentprice_s = req.getParameter("rentprice");
 		String rentdeposite_s = req.getParameter("rentdeposite");
-		String rentunit_s = req.getParameter("rentunit");
+		String rentmaxdate_s = req.getParameter("rentmaxdate");
 		
 	/*	if(rentprice_s == ""){
 			rentprice_s ="0";
 			rentdeposite_s = "0";
-			rentunit_s = "0";
+			rentmaxdate_s = "0";
 		}
 */
 		int rentprice = Integer.parseInt(rentprice_s);
 		int rentdeposite = Integer.parseInt(rentdeposite_s);
-		int rentunit = Integer.parseInt(rentunit_s);
+		int rentmaxdate = Integer.parseInt(rentmaxdate_s);
 		
 		HttpSession ses = req.getSession();
 		String nickname = (String)ses.getAttribute("id");
 		ses.setAttribute("checkId", nickname);
 		
-		registDTO dto = new registDTO(nickname, categorynumber, title, productinformation, location, productstate, rentprice, rentdeposite, rentunit);
+		registDTO dto = new registDTO(nickname, categorynumber, title, productinformation, location, productstate, rentprice, rentdeposite, rentmaxdate);
 
 			dao.insertRentProduct(dto); 
 		

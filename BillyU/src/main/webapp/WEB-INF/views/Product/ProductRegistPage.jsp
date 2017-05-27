@@ -90,7 +90,7 @@
 								$('#category').change(function(){
 									$.ajax({
 										type : "POST",
-										url : "./Y_ReturnCategory",
+										url : "./ProductSmallAccoddingtoBig",
 										data : {cate : $('#category').val()},
 										success : WhenSuccess,
 										error : WhenError
@@ -148,24 +148,24 @@
 											placeholder="Enter rentdeposit">
 									</div>
 									<div class="form-group">
-										<label for="rentunit">대여가능일수 :</label> <input type="text"
-											class="form-control" id="rentunit" name="rentunit"
-											placeholder="Enter rentunit">
+										<label for="rentmaxdate">대여가능일수 :</label> <input type="text"
+											class="form-control" id="rentmaxdate" name="rentmaxdate"
+											placeholder="Enter rentmaxdate">
 									</div>
 									<button type="submit" class="submit btn btn-default btn-block">Submit</button>
 								</div>
-							</div>
-							<!-- 거래 형식을 '판매'를 선택했을 때 -->		
 						</div>
+							<!-- 거래 형식을 '판매'를 선택했을 때 -->		
+						
 					</form>
-					<button type="button" class="input btn btn-primary btn-block">다음</button>
+					
 				</div>
+					<button type="button" class="input btn btn-primary btn-block">다음</button>
 			</div>
-			<div class="col-lg-3"></div>
-			
 		</div>
+			<div class="col-lg-3"></div>
 	</div>
-	</div>
+
 	<br />
 	<br />
 	<br />
