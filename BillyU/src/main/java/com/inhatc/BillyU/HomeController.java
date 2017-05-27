@@ -321,5 +321,6 @@ public class HomeController {
 //		view.forward(req, resp);
 		
 		return "Y_MyPage";
+		
 	}
 }
