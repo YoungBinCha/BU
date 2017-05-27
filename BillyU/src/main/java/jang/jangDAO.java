@@ -17,7 +17,7 @@ public class jangDAO {
 	jangDTO dto;
 	ArrayList<jangDTO> jang_list = new ArrayList<jangDTO>();
 	
-	int pron;//상품번호 가져오는거
+	int pron;
 	public jangDAO(){
 		try{Class.forName("com.mysql.jdbc.Driver");}
 		catch(Exception e){e.printStackTrace();}
@@ -39,10 +39,10 @@ public class jangDAO {
 		if(conn != null){try{conn.close();}catch(Exception e){e.printStackTrace();}}
 	}
 	
-	public void insert_jang(String nickname,int pronum){
+	public void insert_jang(String nickname,int productnumber){
 		connect();
 		try{
-			String sql="insert into jang(nickname,pronum) values('"+nickname+"',"+pronum+")";
+			String sql="insert into jang(nickname,productnumber) values('"+nickname+"',"+productnumber+")";
 			stmt.executeUpdate(sql);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -52,16 +52,16 @@ public class jangDAO {
 	public ArrayList<jangDTO> select_jang(Object nickname){
 		try{
 			connect();
-			String sql = "select * from jang where nickname='"+nickname+"' order by jangnum desc";
+			String sql = "select * from jang where nickname='"+nickname+"' order by cartnumber desc";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int jangnum = rs.getInt("jangnum");
-				int pronum = rs.getInt("pronum");
+				int cartnumber = rs.getInt("cartnumber");
+				int productnumber = rs.getInt("productnumber");
 				String nick = rs.getString("nickname");
 				Timestamp curtime = rs.getTimestamp("curtime");
 
-				dto = new jangDTO(jangnum, nick, pronum, curtime);
+				dto = new jangDTO(cartnumber, nick, productnumber, curtime);
 				jang_list.add(dto);
 			}
 			
@@ -72,10 +72,10 @@ public class jangDAO {
 		return jang_list;
 	}
 	
-	public void delete_jang(String pronum){
+	public void delete_jang(String productnumber){
 		try {
 			connect();
-			String sql="delete from jang where pronum='"+pronum+"'";
+			String sql="delete from jang where productnumber='"+productnumber+"'";
 			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();

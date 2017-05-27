@@ -4,42 +4,42 @@ import java.sql.Timestamp;
 
 public class mypage_replyDTO {
 
-	private int pronum;
-	private String hoster;
-	private String guest;
+	private int productnumber;
+	private String producthost;
+	private String productguest;
 	private String message;
 	private Timestamp curtime;
 	
-	public mypage_replyDTO(String hoster,String guest,String message,Timestamp curtime,int pronum){
-		this.hoster = hoster;
-		this.guest = guest;
+	public mypage_replyDTO(String producthost,String productguest,String message,Timestamp curtime,int productnumber){
+		this.producthost = producthost;
+		this.productguest = productguest;
 		this.message = message;
 		this.curtime = curtime;
-		this.pronum = pronum;
+		this.productnumber = productnumber;
 	}
 
-	public int getPronum() {
-		return pronum;
+	public int getproductnumber() {
+		return productnumber;
 	}
 
-	public void setPronum(int pronum) {
-		this.pronum = pronum;
+	public void setproductnumber(int productnumber) {
+		this.productnumber = productnumber;
 	}
 
-	public String getHoster() {
-		return hoster;
+	public String getproducthost() {
+		return producthost;
 	}
 
-	public void setHoster(String hoster) {
-		this.hoster = hoster;
+	public void setproducthost(String producthost) {
+		this.producthost = producthost;
 	}
 
-	public String getGuest() {
-		return guest;
+	public String getproductguest() {
+		return productguest;
 	}
 
-	public void setGuest(String guest) {
-		this.guest = guest;
+	public void setproductguest(String productguest) {
+		this.productguest = productguest;
 	}
 
 	public String getMessage() {
