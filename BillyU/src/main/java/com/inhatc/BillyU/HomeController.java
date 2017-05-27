@@ -69,16 +69,12 @@ public class HomeController {
 		return "User/UserLoginForm";
 	}
 	@RequestMapping(value="/ProductViewPage")
-	public String K_view(){
+	public String ProductViewPage(){
 		return "Product/ProductViewPage";
 	}
-	@RequestMapping(value="/Y_All_Category")
-	public String Y_All_Category(){
-		return "Y_All_Category";
-	}
-	@RequestMapping(value="/Y_Submit_Product")
-	public String Y_Submit_Product(){
-		return "Y_Submit_Product";
+	@RequestMapping(value="/NavigationAllKindView")
+	public String NavigationAllKindView(){
+		return "Navigation/NavigationAllKindView";
 	}
 	@RequestMapping(value="/UserLoginSuccess")
 	public String UserLoginSuccess(){
@@ -124,12 +120,16 @@ public class HomeController {
 	public String MypageDeleteProduct(){
 		return "MyPage/MypageDeleteProduct";
 	}
-	@RequestMapping(value="/Y_Rent")
-	public String Y_Rent(){
-		return "Y_Rent";
+	@RequestMapping(value="/RentInsertHost")
+	public String RentInsertHost(){
+		return "Rent/RentInsertHost.jsp";
+	}
+	@RequestMapping(value="/RentInsertGuest")
+	public String RentInsertGuest(){
+		return "Rent/RentInsertGuest";
 	}
 	@RequestMapping(value = "/ProductRegistPage")
-	public String K_product(){
+	public String ProductRegistPage(){
 		return "Product/ProductRegistPage";
 	}
 	@RequestMapping(value = "/CartInsertJang")
@@ -148,17 +148,17 @@ public class HomeController {
 	public String CartLeftbarJang(){
 		return "Cart/CartLeftbarJang";
 	}
-	@RequestMapping(value = "/Y_ReturnCategory")
-	public String Y_ReturnCategory(){
-		return "Y_ReturnCategory";
+	@RequestMapping(value = "/ProductSmallAccoddingtoBig")
+	public String ProductSmallAccoddingtoBig(){
+		return "Product/ProductSmallAccoddingtoBig";
 	}
-	@RequestMapping(value = "/Y_Search_Result")
-	public String Y_Search_Result(){
-		return "Y_Search_Result";
+	@RequestMapping(value = "/NavigationSearchResult")
+	public String NavigationSearchResult(){
+		return "Navigation/NavigationSearchResult";
 	}
-	@RequestMapping(value = "/Y_Scroll")
-	public String Y_Scroll(){
-		return "Y_Scroll";
+	@RequestMapping(value = "/IndexScrollPage")
+	public String IndexScrollPage(){
+		return "IndexScrollPage";
 	}
 	@RequestMapping(value = "/Y_Reply",method = RequestMethod.POST)
 	public String Y_Reply(HttpServletRequest request,HttpSession session,Model model,HttpServletResponse response){
@@ -171,16 +171,16 @@ public class HomeController {
 		int productnumber = Integer.parseInt(pro);
 		replyDAO.insert_reply(productnumber,hoster, guest, message);
 		try {
-			response.sendRedirect("Y_Main");
+			response.sendRedirect("Index");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return "Y_Main";
+		return "Index";
 	}
 	@RequestMapping(value = "/Y_Logout")
 	public String Y_Logout(HttpSession session){
 		session.invalidate();
-		return "Y_Main";
+		return "Index";
 	}
 	@RequestMapping(value = "/Y_Delete_User")
 	public String Y_Delete_User(HttpServletRequest request,HttpSession session,HttpServletResponse response){
@@ -189,7 +189,7 @@ public class HomeController {
 		String nickname = user.toString();
 		userDAO.delete_user(nickname);
 		session.invalidate();
-		return "Y_Main";
+		return "Index";
 	}
 	@RequestMapping(value = "/Y_Delete_toMail")
 	public String Y_Delete_toMail(HttpServletRequest request,HttpSession session,HttpServletResponse response){
@@ -199,7 +199,7 @@ public class HomeController {
 			int rentnum = Integer.parseInt(rent);
 			rentDAO.delete_rent(rentnum);
 		}
-		return "Y_MyPage";
+		return "MyPage/MypageMainForm";
 	}
 	//상품등록정보 입력 Mapping
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
