@@ -48,7 +48,7 @@ width:100%;
 if(session.getAttribute("id") == null){
 response.sendRedirect("Y_Login");}
 %>  
-<jsp:include page="Y_NavBar.jsp" />
+<jsp:include page="../Navigation/Y_NavBar.jsp" />
 
 <div class="container">
   <div class="btn-group btn-group-justified nav-pills">

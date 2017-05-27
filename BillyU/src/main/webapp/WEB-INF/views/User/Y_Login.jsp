@@ -167,6 +167,7 @@ body {
 .login-btn:hover:after, .login-btn:focus:after, .login-btn:active:after {
   border-left-color: orange;
 }
+
 </style>
 </head>
 <body>
@@ -178,7 +179,7 @@ body {
 <input type="hidden" name="login" id="check" />
 </form>
 <script type='text/javascript'>
- 
+  //<![CDATA[
     // 사용할 앱의 JavaScript 키를 설정해 주세요.
     Kakao.init('1d1cd1a86fd52a7561f2eb46bdb10615');
     // 카카오 로그인 버튼을 생성합니다.
@@ -208,7 +209,7 @@ body {
         alert(JSON.stringify(err));
       }
     });
-  
+  //]]>
   $(document).ready(function(){
 	  
   });

@@ -9,9 +9,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-<!-- 로그인창 팝업 뛰우기 위함 -->
-
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <style>
 @media screen and (max-width: 1200px) {
@@ -675,7 +672,7 @@ $(document).ready(function () {
 </div></div></div>
 </body>
 <script type='text/javascript'>
-  
+  //<![CDATA[
     // 사용할 앱의 JavaScript 키를 설정해 주세요.
     Kakao.init('1d1cd1a86fd52a7561f2eb46bdb10615');
     // 카카오 로그인 버튼을 생성합니다.
@@ -705,7 +702,7 @@ $(document).ready(function () {
         alert(JSON.stringify(err));
       }
     });
-  
+  //]]>
   $(document).ready(function(){
 	  
   });

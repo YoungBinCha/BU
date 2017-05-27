@@ -7,20 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:useBean id="product" class="product.proDAO" />
 <%
-Class.forName("com.mysql.jdbc.Driver");
-try{
-	Connection conn = DriverManager.getConnection(
-			"jdbc:mysql://localhost/billyu",
-			"root",
-			"1234"
-			);
-	Statement stmt = conn.createStatement();
-	String sql="insert into a(a) values('a')";
-	stmt.executeUpdate(sql);
-}catch(Exception e){
-	e.printStackTrace();
-}
+String pronum = request.getParameter("pronum");
+product.delete_product(pronum);
+response.sendRedirect("Y_MyPage");
 %>
 </body>
 </html>
