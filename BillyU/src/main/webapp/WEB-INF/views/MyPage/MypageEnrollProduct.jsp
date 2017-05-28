@@ -140,8 +140,8 @@ height:150px;
 	<div class="panel panel-primary <%=Y_Category%> post rent">
       <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=productnumber %>)</span><span style="text-align:center;">대여상품(<%=cate_name %>)</span><span style="float:right"><a style="color:white" href="Y_Delete_MyProduct?productnumber=<%=productnumber%>">X</a></span></div>
       <div class="panel-body">
-      <div class="col-xs-3 col-md-3"><a href="K_view?productnumber=<%=productnumber %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
-      <div class="col-xs-6 col-md-3"><a href="K_view?productnumber=<%=productnumber %>"><%=title %></a></div>
+      <div class="col-xs-3 col-md-3"><a href="ProductViewPage?productnumber=<%=productnumber %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
+      <div class="col-xs-6 col-md-3"><a href="ProductViewPage?productnumber=<%=productnumber %>"><%=title %></a></div>
       <div class="col-xs-1 col-md-2">대여료(원)<br /><br /><%=rentprice %></div>
       <div class="col-xs-1 col-md-2">보증금(원)<br /><br /><%=rentdeposite %></div>
       <div class="col-xs-1 col-md-2">대여기간(일)<br /><br /><%=rentmaxdate %></div>

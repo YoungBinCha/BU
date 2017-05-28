@@ -48,6 +48,9 @@
 </style>
 </head>
 <body>
+<% if(session.getAttribute("id") == null){
+	response.sendRedirect("UserLoginForm");
+} %>
 	<jsp:include page="../Navigation/NavigationBar.jsp"></jsp:include>
 	<br />
 	<div class="container-fluid">

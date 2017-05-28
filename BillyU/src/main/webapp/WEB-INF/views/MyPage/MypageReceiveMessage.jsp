@@ -1,5 +1,7 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*" import="java.sql.*" %>
+    pageEncoding="UTF-8" import="java.util.*" import="java.sql.*" import="java.lang.*" %>
     <%@ page import="rent.rentDAO" %>
     <%@ page import="rent.rentDTO" %>
     <%@ page import="mypage_reply.mypage_replyDAO" %>
@@ -20,15 +22,14 @@
 <body>
 <h2>내가 올린 상품에 대한 메세지</h2>
 <div class="container">          
-<h3>대여</h3>  
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>상품번호</th>
         <th>대여번호</th>
+        <th>상품번호</th>
         <th>수여자</th>
-        <th>거래방식</th>
         <th>시작일</th>
+        <th>반납일</th>
         <th>대여기간</th>
         <th>메세지</th>
         <th>총액</th>
@@ -57,13 +58,23 @@
 		int totalprice = dto.getTotalprice();
 		Timestamp curtime = dto.getCurtime();
 		
+		try {
+	        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+	        Date beginDate = formatter.parse(startdate);
+	        Date endDate = formatter.parse(enddate);
+	         
+	        // 시간차이를 시간,분,초를 곱한 값으로 나누면 하루 단위가 나옴
+	        long diff = endDate.getTime() - beginDate.getTime();
+	        long diffDays = diff / (24 * 60 * 60 * 1000) +1;
+		
 %>
     <tr id="tr">
+    	<td style="width:8%"><%=rentnumber %></td>
         <td style="width:8%"><a href="ProductViewPage?productnumber=<%=productnumber %>"><%=productnumber %></a></td>
-        <td style="width:8%"><%=rentnumber %></td>
         <td style="width:8%"><%=productguest %></td>
         <td style="width:10%"><%=startdate %>부터</td>
-        <td style="width:10%"><%=enddate %>일 동안</td>
+        <td style="width:10%"><%=enddate %>까지</td>
+        <td><%=diffDays%>일동안</td>
         <td style="width:40%"><%=message %></td>
         <td style="width:10%"><%=totalprice %>원</td>
         <td style="width:10%"><%=curtime %></td>
@@ -79,7 +90,10 @@
         </td>
         <td><a href="Y_Delete_fromMail">X</a></td>
     </tr>
-    <%} %>
+    <%} catch (Exception e) {
+        e.printStackTrace();
+    }
+    } %>
     </tbody>
   </table>
   <br />
