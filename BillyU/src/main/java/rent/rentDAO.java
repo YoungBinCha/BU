@@ -35,10 +35,10 @@ public class rentDAO {
 	}
 	
 
-	public void insert_rent(String productguest,int productnumber,String message,String way,int startdate,int enddate,int totalprice){
+	public void insert_rent(String productguest,int productnumber,String message,String startdate,String enddate,int totalprice){
 		connect();
 		try{
-			String sql="insert into rent(productguest,productnumber,message,startdate,enddate,totalprice) values('"+productguest+"',"+productnumber+",'"+message+"',"+startdate+","+enddate+","+totalprice+")";
+			String sql="insert into rent(productguest,productnumber,message,startdate,enddate,totalprice) values('"+productguest+"',"+productnumber+",'"+message+"','"+startdate+"','"+enddate+"',"+totalprice+")";
 			stmt.executeUpdate(sql);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -84,8 +84,8 @@ public class rentDAO {
 				String producthost = rs.getString("producthost");
 				String productguest = rs.getString("productguest");
 				int productnumber = rs.getInt("productnumber");
-				int startdate = rs.getInt("startdate");
-				int enddate = rs.getInt("enddate");
+				String startdate = rs.getString("startdate");
+				String enddate = rs.getString("enddate");
 
 				String message = rs.getString("message");
 				int totalprice = rs.getInt("totalprice");
@@ -114,8 +114,8 @@ public class rentDAO {
 				String producthost = rs.getString("producthost");
 				String productguest = rs.getString("productguest");
 				int productnumber = rs.getInt("productnumber");
-				int startdate = rs.getInt("startdate");
-				int enddate = rs.getInt("enddate");
+				String startdate = rs.getString("startdate");
+				String enddate = rs.getString("enddate");
 
 				String message = rs.getString("message");
 				int totalprice = rs.getInt("totalprice");

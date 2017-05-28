@@ -9,15 +9,15 @@ public class rentDTO {
 	private String producthost;
 	private String productguest;
 	private int productnumber;
-	private int startdate;
-	private int enddate;
+	private String startdate;
+	private String enddate;
 
 	private String message;
 	private int totalprice;
 	Timestamp curtime;
 	
 
-	public rentDTO(int rentnumber,String producthost,String productguest,int productnumber,int startdate,int enddate,String message,int totalprice,Timestamp curtime){
+	public rentDTO(int rentnumber,String producthost,String productguest,int productnumber,String startdate,String enddate,String message,int totalprice,Timestamp curtime){
 		this.rentnumber = rentnumber;
 		this.producthost = producthost;
 		this.productguest = productguest;
@@ -70,23 +70,22 @@ public class rentDTO {
 		this.productnumber = productnumber;
 	}
 
-
-	public int getStartdate() {
+	public String getStartdate() {
 		return startdate;
 	}
 
 
-	public void setStartdate(int startdate) {
+	public void setStartdate(String startdate) {
 		this.startdate = startdate;
 	}
 
 
-	public int getEnddate() {
+	public String getEnddate() {
 		return enddate;
 	}
 
 
-	public void setEnddate(int enddate) {
+	public void setEnddate(String enddate) {
 		this.enddate = enddate;
 	}
 

@@ -15,7 +15,7 @@
 <%
 	session.invalidate();
 %>
-<form action="Y_Login_OK" id="login" method="post">
+<form action="UserLoginSuccess" id="login" method="post">
 <a id="kakao-login-btn"></a>
 <input type="hidden" name="login" id="check" />
 </form>

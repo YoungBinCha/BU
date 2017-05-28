@@ -2,12 +2,9 @@
     pageEncoding="UTF-8" import="java.util.*" import="java.sql.*" %>
     <%@ page import="rent.rentDAO" %>
     <%@ page import="rent.rentDTO" %>
-    <%@ page import="sale.saleDAO" %>
-    <%@ page import="sale.saleDTO" %>
     <%@ page import="mypage_reply.mypage_replyDAO" %>
     <%@ page import="mypage_reply.mypage_replyDTO" %>
     <jsp:useBean id="rent" class="rent.rentDAO" />
-    <jsp:useBean id="sale" class="sale.saleDAO" />
     <jsp:useBean id="reply" class="mypage_reply.mypage_replyDAO" />
     <%request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -48,34 +45,34 @@
 	
 	for(int i=0;i<rent_list.size();i++){
 		rentDTO dto = rent_list.get(i);
-		int rentnum = dto.getRentnum();
-		String hoster = dto.getHoster();
-		String guest = dto.getGuest();
-		int pronum = dto.getPronum();
-		String way = dto.getWay();
+		
+		int rentnumber = dto.getRentnumber();
+		String producthost = dto.getProducthost();
+		String productguest = dto.getProductguest();
+		int productnumber = dto.getProductnumber();
 		String startdate = dto.getStartdate();
-		int rentday = dto.getRentday();
+		String enddate = dto.getEnddate();
+
 		String message = dto.getMessage();
-		int total = dto.getTotal();
+		int totalprice = dto.getTotalprice();
 		Timestamp curtime = dto.getCurtime();
 		
 %>
     <tr id="tr">
-        <td style="width:8%"><a href="K_view?pronum=<%=pronum %>"><%=pronum %></a></td>
-        <td style="width:8%"><%=rentnum %></td>
-        <td style="width:8%"><%=guest %></td>
-        <td style="width:10%"><%=way %></td>
+        <td style="width:8%"><a href="ProductViewPage?productnumber=<%=productnumber %>"><%=productnumber %></a></td>
+        <td style="width:8%"><%=rentnumber %></td>
+        <td style="width:8%"><%=productguest %></td>
         <td style="width:10%"><%=startdate %>부터</td>
-        <td style="width:10%"><%=rentday %>일 동안</td>
+        <td style="width:10%"><%=enddate %>일 동안</td>
         <td style="width:40%"><%=message %></td>
-        <td style="width:10%"><%=total %>원</td>
+        <td style="width:10%"><%=totalprice %>원</td>
         <td style="width:10%"><%=curtime %></td>
         <td style="width:10%"><p id="reply">답변</p>
         <div id="hidden_reply">
         <form action="Y_Reply" method="post">
         <textarea name="content" id="" cols="30" rows="10"></textarea>
-        <input type="hidden" name="guest" value="<%=guest %>"/>
-        <input type="hidden" name="pronum" value="<%=pronum %>"/>
+        <input type="hidden" name="guest" value="<%=productguest %>"/>
+        <input type="hidden" name="pronum" value="<%=productnumber %>"/>
         <input type="submit" value="보내기" />
         </form>
         </div>
@@ -87,61 +84,6 @@
   </table>
   <br />
 </div>
-<div class="container">          
-<h3>판매</h3>  
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>상품번호</th>
-        <th>판매번호</th>
-        <th>수여자</th>
-        <th>거래방식</th>
-        <th>메세지</th>
-        <th>총액</th>
-        <th>날짜</th>
-        <th> </th>
-      </tr>
-    </thead>
-    <tbody>
-    <%
-	ArrayList<saleDTO> sale_list = sale.sale_list(nickname);
-	
-	for(int i=0;i<sale_list.size();i++){
-		saleDTO dto = sale_list.get(i);
-		int salenum = dto.getSalenum();
-		String hoster = dto.getHoster();
-		String guest = dto.getGuest();
-		int pronum = dto.getPronum();
-		String way = dto.getWay();
-		String message = dto.getMessage();
-		int total = dto.getTotal();
-		Timestamp curtime = dto.getCurtime();
-%>
-    <tr id="tr">
-        <td style="width:8%"><a href="K_view?pronum=<%=pronum %>"><%=pronum %></a></td>
-        <td style="width:8%"><%=salenum %></td>
-        <td style="width:8%"><%=guest %></td>
-        <td style="width:10%"><%=way %></td>
-        <td style="width:40%"><%=message %></td>
-        <td style="width:10%"><%=total %>원</td>
-        <td style="width:10%"><%=curtime %></td>
-        <td style="width:10%"><p id="reply">답변</p>
-        <div id="hidden_reply">
-        <form action="Y_Reply" method="post">
-        <textarea name="content" id="" cols="30" rows="10"></textarea>
-        <input type="hidden" name="guest" value="<%=guest %>"/>
-        <input type="hidden" name="pronum" value="<%=pronum %>"/>
-        <input type="submit" value="보내기" />
-        </form>
-        </div>
-        </td>
-        <td><a href="Y_Delete_fromMail">X</a></td>
-    </tr>
-    
-    <%} %>
-    </tbody>
-  </table>
-  </div>
   <br />
   <div class="container">          
 	<h3>답변 메세지</h3>  
@@ -162,24 +104,25 @@
 	
 	for(int i=0;i<reply_list.size();i++){
 		mypage_replyDTO dto = reply_list.get(i);
-		int pronum = dto.getPronum();
-		String hoster = dto.getHoster();
-		String guest = dto.getGuest();
+		
+		int productnumber = dto.getproductnumber();
+		String producthost = dto.getproducthost();
+		String productguest = dto.getproductguest();
 		String message = dto.getMessage();
 		Timestamp curtime = dto.getCurtime();
 %>
     <tr id="tr">
-        <td style="width:8%"><a href="K_view?pronum=<%=pronum %>"><%=pronum %></a></td>
-        <td style="width:8%"><%=guest %></td>
-        <td style="width:8%"><%=hoster %></td>
+        <td style="width:8%"><a href="K_view?pronum=<%=productnumber %>"><%=productnumber %></a></td>
+        <td style="width:8%"><%=productguest %></td>
+        <td style="width:8%"><%=producthost %></td>
         <td style="width:40%"><%=message %></td>
         <td style="width:10%"><%=curtime %></td>
         <td style="width:10%"><p id="reply">답변</p>
         <div id="hidden_reply">
         <form action="Y_Reply" method="post">
         <textarea name="content" id="" cols="30" rows="10"></textarea>
-        <input type="hidden" name="guest" value="<%=guest %>"/>
-        <input type="hidden" name="pronum" value="<%=pronum %>"/>
+        <input type="hidden" name="guest" value="<%=productguest %>"/>
+        <input type="hidden" name="pronum" value="<%=productnumber %>"/>
         <input type="submit" value="보내기" />
         </form>
         </div>

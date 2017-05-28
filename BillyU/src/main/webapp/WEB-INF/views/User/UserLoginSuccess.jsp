@@ -24,7 +24,7 @@ try{
 	{
 		String nickname = rs.getString("nickname");
 		session.setAttribute("id", nickname);
-		response.sendRedirect("Y_Main");
+		response.sendRedirect("Index");
 	}
 	
 }catch(Exception e){

@@ -173,7 +173,7 @@
 						</p>
 					</div>
 					<div class="panel-body">
-						<form id="form" action="Y_Submit_Product" method="post">
+						<form id="form" action="RentInsertGuest" method="post">
 							<input type="hidden" name="productnumber" value="<%=y_productnumber %>" /> <input
 								type="hidden" name="apple"
 								value="<%=session.getAttribute("id")%>">
@@ -206,8 +206,8 @@
 												placeholder="ex)20170516" /></td>
 										</tr>
 										<tr>
-											<td><label for="possibleDay">신청할 일수 : </label></td>
-											<td><input type="text" id="ren" name="ren" onkeyPress="if ((event.keyCode<48) || (event.keyCode>57)) event.returnValue=false;" /></td>
+											<td><label for="possibleDay">반납 날짜 : </label></td>
+											<td><input type="date" id="ren" name="enddate" onkeyPress="if ((event.keyCode<48) || (event.keyCode>57)) event.returnValue=false;" /></td>
 										</tr>
 										<tr>
 											<td><label for="possibleDay">총 액 : </label></td>

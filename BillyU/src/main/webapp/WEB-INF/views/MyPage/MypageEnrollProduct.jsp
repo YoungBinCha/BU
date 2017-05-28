@@ -80,7 +80,7 @@ height:150px;
 		String title = dto.getTitle();
 		int rentprice = dto.getRentprice();
 		int rentdeposite = dto.getRentdeposite();
-		int rentunit = dto.getRentunit();
+		int rentmaxdate = dto.getRentmaxdate();
 		int categorynumber = dto.getCategorynumber();
 		String productinformation = dto.getProductinformation();
 		
@@ -142,7 +142,7 @@ height:150px;
       <div class="col-xs-6 col-md-3"><a href="K_view?productnumber=<%=productnumber %>"><%=title %></a></div>
       <div class="col-xs-1 col-md-2">대여료(원)<br /><br /><%=rentprice %></div>
       <div class="col-xs-1 col-md-2">보증금(원)<br /><br /><%=rentdeposite %></div>
-      <div class="col-xs-1 col-md-2">대여기간(일)<br /><br /><%=rentunit %></div>
+      <div class="col-xs-1 col-md-2">대여기간(일)<br /><br /><%=rentmaxdate %></div>
       </div>
     </div>
 			<%

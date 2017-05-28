@@ -48,7 +48,7 @@ width:100%;
 if(session.getAttribute("id") == null){
 response.sendRedirect("Y_Login");}
 %>  
-<jsp:include page="../Navigation/Y_NavBar.jsp" />
+<jsp:include page="../Navigation/NavigationBar.jsp" />
 
 <div class="container">
   <div class="btn-group btn-group-justified nav-pills">
@@ -64,7 +64,7 @@ response.sendRedirect("Y_Login");}
 <center>
 <div id="product-container">
 <div id="here" style="width:80%">
-<jsp:include page="Y_MyProduct.jsp" />
+<jsp:include page="../MyPage/MypageEnrollProduct.jsp" />
 </div>
 </center>
 </div>

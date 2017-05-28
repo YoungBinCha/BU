@@ -12,17 +12,16 @@
 <jsp:useBean id="rent" class="rent.rentDAO" />
 <%
 Object apple = request.getParameter("apple");
-String guest = apple.toString();
+String productguest = apple.toString();
 
-int pronum = Integer.parseInt(request.getParameter("pronum"));
-String way = request.getParameter("wayRadio");
+int productnumber = Integer.parseInt(request.getParameter("productnumber"));
 String message = request.getParameter("message");
 String startdate=request.getParameter("startdate");
-int rentday=Integer.parseInt(request.getParameter("ren"));
-int total=Integer.parseInt(request.getParameter("total"));
+String enddate = request.getParameter("enddate");
+int totalprice=Integer.parseInt(request.getParameter("total"));
 
-rent.insert_rent(guest, pronum, message, way, startdate, rentday, total);
-response.sendRedirect("Y_Rent?pronum="+pronum+"");
+rent.insert_rent(productguest, productnumber, message, startdate, enddate, totalprice);
+response.sendRedirect("RentInsertHost?pronum="+productnumber+"");
 %>
 </body>
 </html>
