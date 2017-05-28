@@ -185,7 +185,7 @@
 						<h1 class="text-center" id="title_cost"><%= (rentprice+rentdeposite) +"원" %></h1>
 						<br>
 						<p class="text-center">
-							<small> 대여비 <%= rentprice %>(<%= rentunit %>일) + 보증금 <%=rentdeposite %>
+							<small> 대여비 <%= rentprice %>(1일) + 보증금 <%=rentdeposite %>
 							</small>
 						</p>
 					</div>
@@ -206,7 +206,7 @@
 										<tr>
 											<td><label for="fee">대여료 : </label></td>
 											<td><input type="hidden" id="rent_cost"
-												value="<%= rentprice %>" /><%= al.get(5) %><small>/1주</small></td>
+												value="<%= rentprice %>" /><%= al.get(5) %><small>/1일</small></td>
 										</tr>
 										<tr>
 											<td><label for="deposit">보증금 : </label></td>
@@ -214,11 +214,11 @@
 												value="<%= rentdeposite %>" /><%= al.get(7) %></td>
 										</tr>
 										<tr>
-											<td><label for="possibleDay">대여료 단위 : </label></td>
+											<td><label for="possibleDay">최대 일수 : </label></td>
 											<td><%= rentunit %></td>
 										</tr>
 										<tr>
-											<td><label for="possibleDay">대여시작 날짜 : </label></td>
+											<td><label for="possibleDay">시작 날짜 : </label></td>
 											<td><input id="start" type="date" name="startdate"
 												placeholder="ex)20170516" /></td>
 										</tr>
@@ -344,15 +344,37 @@
 		var rent =  Number($('#rent_cost').val());
 		var bo =  Number($('#bo_cost').val());
 		var total =  Math.floor(Number(to*(rent/7)+bo));
-		
+
 		$('#hidden_total').val(total);
 		$('#total_money').text(total+'원');
 		$('#title_cost').html(total+'원');
 	});
+	$('#ren').blur(function(){
+		$.ajax({
+			type:"POST",
+			url:"./ProductReturnTotalMoney",
+			data : {
+				start : $('#start').val(),
+				end : $('#ren').val(),
+				rent : $('#rent_cost').val(),
+				depo : $('#bo_cost').val()
+				},
+			success:WhenSuccess,
+			error:WhenError
+		});
+	})
+function WhenSuccess(resdata){
+		$('#total_money').html(resdata);
+		$('#title_cost').html(resdata+"원");
+}
+function WhenError(){
+	alert('error');
+}
 	
 	$('#form').submit(function(){
 		if($('#message').val().length == 0){
 			alert('비어있음');
+			alert($('#total_money').trim().text())
 			$('#message').focus();
 			return false;
 		}

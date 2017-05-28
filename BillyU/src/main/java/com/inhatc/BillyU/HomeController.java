@@ -172,6 +172,10 @@ public class HomeController {
 	public String ProductReverse(){
 		return "Product/ProductReverse";
 	}
+	@RequestMapping(value = "/ProductReturnTotalMoney")
+	public String ProductReturnTotalMoney(){
+		return "Product/ProductReturnTotalMoney";
+	}
 	@RequestMapping(value = "/Y_Reply",method = RequestMethod.POST)
 	public String Y_Reply(HttpServletRequest request,HttpSession session,Model model,HttpServletResponse response){
 		mypage_replyDAO replyDAO = new mypage_replyDAO();
