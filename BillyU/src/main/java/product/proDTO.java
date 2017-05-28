@@ -16,8 +16,10 @@ public class proDTO {
 	int rentdeposite;
 	String img;
 	Timestamp curtime;
+	String kakaotalkid;
+	String phone;
 
-	public proDTO(int productnumber,String nickname,int categorynumber,String title, String location,String productinformation,String productstate,int rentprice,int rentmaxdate,int rentdeposite,String img,Timestamp curtime){
+	public proDTO(int productnumber,String nickname,int categorynumber,String title, String location,String productinformation,String productstate,int rentprice,int rentmaxdate,int rentdeposite,String img,Timestamp curtime,String kakaotalkid,String phone){
 		this.productnumber = productnumber;
 		this.nickname = nickname;
 		this.categorynumber = categorynumber;
@@ -30,6 +32,24 @@ public class proDTO {
 		this.rentdeposite = rentdeposite;
 		this.img = img;
 		this.curtime = curtime;
+		this.kakaotalkid = kakaotalkid;
+		this.phone = phone;
+	}
+
+	public String getKakaotalkid() {
+		return kakaotalkid;
+	}
+
+	public void setKakaotalkid(String kakaotalkid) {
+		this.kakaotalkid = kakaotalkid;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public int getProductnumber() {

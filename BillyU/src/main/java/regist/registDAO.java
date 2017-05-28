@@ -31,7 +31,7 @@ public class registDAO {
 
 
 	public boolean insertRentProduct(registDTO dto) {
-		String query = "insert into product (nickname, categorynumber, title, productinformation, location, productstate, rentprice, rentdeposite, rentmaxdate) values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String query = "insert into product (nickname, categorynumber, title, productinformation, location, productstate, rentprice, rentdeposite, rentmaxdate,kakaotalkid,phone) values (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);";
 		boolean check = false;
 		try {
 
@@ -45,6 +45,8 @@ public class registDAO {
 			pstmt.setInt(7, dto.getrentprice());
 			pstmt.setInt(8, dto.getrentdeposite());
 			pstmt.setInt(9, dto.getrentmaxdate());
+			pstmt.setString(10, dto.getKakaotalkid());
+			pstmt.setString(11, dto.getPhone());
 
 			pstmt.executeUpdate();
 			check = true;
@@ -126,7 +128,9 @@ public class registDAO {
 			al.add(rs.getString("rentprice"));
 			al.add(rs.getString("rentmaxdate"));
 			al.add(rs.getString("rentdeposite"));
-			
+			al.add(rs.getString("nickname"));
+			al.add(rs.getString("kakaotalkid"));
+			al.add(rs.getString("phone"));
 
 			stmt.close();
 		} catch (SQLException ex) {

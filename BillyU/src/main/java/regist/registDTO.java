@@ -9,18 +9,19 @@ public class registDTO {
 	private String location;
 	private String productstate;
 
-
 	private int rentprice;
 	private int rentdeposite;
 	private int rentmaxdate;			
-	
+
+	private String kakaotalkid;
+	private String phone;
 	
 	private String img1;
 	private String img2;
 	private String img3;
 	private String img4;
 	
-	public registDTO(String nickname, int categorynumber, String title, String productinformation, String location, String productstate, int rentprice, int rentdeposite, int rentmaxdate){
+	public registDTO(String nickname, int categorynumber, String title, String productinformation, String location, String productstate, int rentprice, int rentdeposite, int rentmaxdate,String kakaotalkid,String phone){
 		this.nickname = nickname;
 		this.categorynumber = categorynumber;
 		this.title = title;
@@ -30,6 +31,8 @@ public class registDTO {
 		this.rentprice = rentprice;
 		this.rentdeposite = rentdeposite;
 		this.rentmaxdate = rentmaxdate;
+		this.kakaotalkid = kakaotalkid;
+		this.phone = phone;
 	}
 	
 	public registDTO(String img1, String img2, String img3, String img4){
@@ -120,4 +123,21 @@ public class registDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+	public String getKakaotalkid() {
+		return kakaotalkid;
+	}
+
+	public void setKakaotalkid(String kakaotalkid) {
+		this.kakaotalkid = kakaotalkid;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	
 }

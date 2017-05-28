@@ -69,6 +69,16 @@
 		String rentprice_s = al.get(5);
 		String rentunit_s = al.get(6);
 		String rentdeposite_s = al.get(7);
+		String nickname = al.get(8);
+		String kakaotalkid = al.get(9);
+		String phone = al.get(10);
+		
+		if(kakaotalkid == null){
+			kakaotalkid = "입력안함";
+		}
+		if(phone == null){
+			phone = "입력안함";
+		}
 		
 		int rentprice = Integer.parseInt(rentprice_s);
 		int rentdeposite = Integer.parseInt(rentdeposite_s);
@@ -88,8 +98,8 @@
 				<h3><%= categorySmall %></h3>
 			</div>
 			<div class="col-lg-3">
-				<mark>위치</mark>
-				<h3>빈칸</h3>
+				<mark>공여자</mark>
+				<h3><%=nickname %></h3>
 			</div>
 			<div class="col-lg-6">
 				<mark>제목</mark>
@@ -229,7 +239,7 @@
 								</table>
 
 								<input type="submit" class="btn btn-primary btn-lg btn-block"
-									value="신청하기">
+									value="메시지 보내기">
 						</form>
 						<form action="CartInsertJang" method="POST">
 							<input type="hidden" name="productnumber" value="<%=y_productnumber %>" /> <input
@@ -297,6 +307,14 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD216mf70yKOSqZLC_KUiIPvhnXv_O7_5E&callback=initMap">
     </script>
 								</td>
+							</tr>
+							<tr>
+								<td>카카오톡 ID :</td>
+								<td><%= kakaotalkid %></td>
+							</tr>
+							<tr>
+								<td>연락처 :</td>
+								<td><%= phone %></td>
 							</tr>
 							<tr>
 								<td>물품상태 :</td>

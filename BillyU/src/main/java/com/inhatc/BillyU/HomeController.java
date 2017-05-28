@@ -259,6 +259,9 @@ public class HomeController {
 		String rentdeposite_s = req.getParameter("rentdeposite");
 		String rentmaxdate_s = req.getParameter("rentmaxdate");
 		
+		String kakaotalkid = req.getParameter("kakaotalkid");
+		String phone = req.getParameter("phone");
+		
 	/*	if(rentprice_s == ""){
 			rentprice_s ="0";
 			rentdeposite_s = "0";
@@ -273,7 +276,7 @@ public class HomeController {
 		String nickname = (String)ses.getAttribute("id");
 		ses.setAttribute("checkId", nickname);
 		
-		registDTO dto = new registDTO(nickname, categorynumber, title, productinformation, location, productstate, rentprice, rentdeposite, rentmaxdate);
+		registDTO dto = new registDTO(nickname, categorynumber, title, productinformation, location, productstate, rentprice, rentdeposite, rentmaxdate, kakaotalkid, phone);
 
 			dao.insertRentProduct(dto); 
 		

@@ -45,6 +45,10 @@
 #page-content-wrapper{
 		padding-top: 20px !important;
 	}
+	#require{
+	color:red;
+	}
+
 </style>
 </head>
 <body>
@@ -58,16 +62,17 @@
 			<div class="col-lg-3"></div>
 			<div class="col-lg-6">
 				<div class="K_productRegist">
-					<center><h1>상품 정보 입력</h1></center><br />
+					<center><h1>상품 정보 입력</h1></center><hr /><br />
+					<p><span id="require">*</span> 는 반드시 작성해 주세요.</p><br />
 					<form action="regist.do" method="post">
 						<div class="product">
 							<div class="form-group">
-								<label for="title">제목 : </label> <input type="text"
+								<label for="title"><span id="require">*</span> 제목 : </label> <input type="text"
 									class="form-control" id="title" name="title"
-									placeholder="Enter title">
-							</div>
+									placeholder="50글자 이내로 작성해주세요!">
+							</div><br />
 							<div class="form-group">
-								<label for="category">대분류:</label> <select class="form-control"
+								<label for="category"><span id="require">*</span> 대분류:</label> <select class="form-control"
 									id="category">
 									 <%-- <jsp:useBean id="sel"
 										class="com.openmarket.Capstone_productDAO"></jsp:useBean>  --%>
@@ -85,7 +90,7 @@
 									%>
 								</select>
 								<br />
-								<label for="category">소분류:</label>
+								<label for="category"><span id="require">*</span> 소분류:</label>
 								 <select class="form-control" id="category2" name="category">
 									<option value="">대분류를 선택해주세요</option>
 								</select>
@@ -108,28 +113,41 @@
 								}
 								
 								</script>
-							</div>
-							<div class="form-group">
-								<label for="productstate">상품상태 :</label> <label
+							</div><br />
+							<div class="form-group container" >
+								<label for="productstate"><span id="require">*</span> 상품상태 :</label> <label
 									class="radio-inline"> <input type="radio"
 									name="productstate" value="s급">S급
 								</label> <label class="radio-inline"> <input type="radio"
 									name="productstate" value="a급">A급
 								</label> <label class="radio-inline"> <input type="radio"
-									name="productstate" value="b급">B급
+									name="productstate" value="b급" checked >B급
 								</label>
-							</div>
+								<a href="#" data-toggle="tooltip" data-placement="right" 
+							title="S급 :!!!! A급 :@@@@ B급 : ####">상품상태기준</a>
+							</div><hr /><br />
 							<div class="form-group">
-								<label for="location">위치: </label> <input type="text"
-									class="form-control" id="location" name="location"
-									placeholder="Enter location">
+								<label for="kakaotalkid">카카오톡ID : </label> <input type="text"
+									class="form-control" id="kakaotalkid" name="kakaotalkid"
+									placeholder="카카오톡ID를 입력해 주세요!">
 							</div>
+							<div class="container">
+							<a href="#" data-toggle="tooltip" data-placement="right" 
+							title="어딜 이러쿵 저러쿵 들어가서 슝슝">
+							카카오톡 아이디 확인방법</a>
+							</div>
+							<br />
+							<div class="form-group">
+								<label for="phone">연락처 : </label> <input type="text"
+									class="form-control" id="phone" name="phone"
+									placeholder="전화번호를 '-' 없이 입력해주세요">
+							</div><br />
 							<div class="form-group">
 								<!--  이건 text가 아니라 다른 형식으로받는건 어떨까? -->
-								<label for="productinformation">상품설명</label>
+								<label for="productinformation">특이사항</label>
 								<textarea class="form-control" rows="5" id="productinformation"
-									placeholder="Input info" name="productinformation"></textarea>
-							</div>
+									placeholder="100자 이내로 작성해 주세요" name="productinformation"></textarea>
+							</div><hr />
 
 						</div>
 						<!-- 여기부턴 대여 정보 입력 -->
@@ -138,24 +156,23 @@
 									<input class="tratype" type="hidden" name="tratype" value="대여" />
 								</div>
 								<div id="rent" class="re tab-pane fade in active">
-									<h3>대여</h3>
-
 									<div class="form-group">
-										<label for="rentprice">대여금액 : </label> <input type="text"
+										<label for="rentprice"><span id="require">*</span> 대여금액 : </label> <input type="text"
 											class="form-control" id="rentprice" name="rentprice"
-											placeholder="Enter rentalFee">
-									</div>
+											placeholder="1일 기준입니다">
+									</div><br />
 									<div class="form-group">
-										<label for="rentdeposite">보증금 :</label> <input type="text"
+										<label for="rentdeposite"><span id="require">*</span> 보증금 :</label> <input type="text"
 											class="form-control" id="rentdeposit" name="rentdeposite"
-											placeholder="Enter rentdeposit">
-									</div>
+											placeholder="보증금은 정해진 기준이 없습니다">
+									</div><br />
 									<div class="form-group">
-										<label for="rentmaxdate">대여가능일수 :</label> <input type="text"
+										<label for="rentmaxdate"><span id="require">*</span> 대여가능일수 :</label> <input type="text"
 											class="form-control" id="rentmaxdate" name="rentmaxdate"
-											placeholder="Enter rentmaxdate">
-									</div>
-									<button type="submit" class="submit btn btn-default btn-block">Submit</button>
+											placeholder="최대 대여일수 '일'은 제외하고 숫자만 입력하세요 ex)100 ">
+									</div><hr /><br />
+									<button type="submit" class="submit btn btn-default btn-block">다음</button>
+									<br />
 								</div>
 						</div>
 							<!-- 거래 형식을 '판매'를 선택했을 때 -->		
@@ -172,5 +189,14 @@
 	<br />
 	<br />
 	<br />
+<script>
+$(document).ready(function(){
+$('[data-toggle="popover"]').popover();   
+});
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
 </body>
 </html>

@@ -503,7 +503,7 @@
 </div>
 <div class="collapse navbar-collapse" id="myNavbar">
 <ul class="nav navbar-nav navbar-right">
-<li><a id="Y_NavContent_Right" href="CartViewMyJangPage"><span class="glyphicon glyphicon-shopping-cart"></span>관심상품</a></li>
+<li><a id="Y_NavContent_Right" href="CartLeftbarJang"><span class="glyphicon glyphicon-shopping-cart"></span>찜바구니</a></li>
 <li><a id="Y_NavContent_Right" href="MypageMainForm"><span class="glyphicon glyphicon-user"></span>마이페이지</a></li>
 <li><a id="Y_NavContent_Right" data-toggle="modal" data-target="#myModal">
          <span class="glyphicon glyphicon-log-in"></span>

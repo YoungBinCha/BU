@@ -59,7 +59,9 @@ public class proDAO {
 			int rentdeposite = rs.getInt("rentdeposite");
 			String img = rs.getString("img");
 			Timestamp curtime = rs.getTimestamp("curtime");
-			dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentmaxdate, rentmaxdate, rentdeposite, img, curtime);
+			String kakaotalkid = rs.getString("kakaotalkid");
+			String phone = rs.getString("phone");
+			dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentmaxdate, rentmaxdate, rentdeposite, img, curtime,kakaotalkid,phone);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
