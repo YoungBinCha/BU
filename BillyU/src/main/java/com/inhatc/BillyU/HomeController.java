@@ -64,6 +64,10 @@ public class HomeController {
 	public String Index(){
 		return "Index";
 	}
+	@RequestMapping(value="/Index")
+	public String Index2(){
+		return "Index";
+	}
 	@RequestMapping(value="/UserLoginForm")
 	public String UserLoginForm(){
 		return "User/UserLoginForm";
