@@ -164,6 +164,7 @@ $('.way a').click(function(){
     $('.post').not( getcurrent ).hide(500);
     getcurrent.show(500);
 })
+
 </script>
 </body>
 </html>

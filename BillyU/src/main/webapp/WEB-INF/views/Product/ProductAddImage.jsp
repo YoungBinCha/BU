@@ -183,5 +183,25 @@ function resetFormElement(e) {
     e.wrap('<form>').closest('form').get(0).reset(); 
     e.unwrap();
 }
+
+//이미지 순서대로 넣을때 이벤트
+$(document).ready(function() {
+	$("#J_image_2").hide(); 
+	$("#J_image_3").hide();
+	$("#J_image_4").hide();
+
+	$("#image_preview").click(function() {
+		$("#J_image_2").toggle(1000);
+	});
+	$("#J_image_2").click(function() {
+		$("#J_image_3").toggle(1000);
+		
+	});
+	$("#J_image_3").click(function() {
+		
+		$("#J_image_4").toggle(1000);
+		
+	});
+});
 </script>
 </html>

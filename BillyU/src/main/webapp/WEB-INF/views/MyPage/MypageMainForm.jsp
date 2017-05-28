@@ -115,9 +115,7 @@ function WhenSuccess(resdata){
 function WhenError(){
 	alert('error');
 }
-
 });
-
 
 </script>
 </body>
