@@ -224,7 +224,7 @@
 								<input type="submit" class="btn btn-primary btn-lg btn-block"
 									value="신청하기">
 						</form>
-						<form action="Y_Submit_Jang" method="POST">
+						<form action="CartInsertJang" method="POST">
 							<input type="hidden" name="productnumber" value="<%=y_productnumber %>" /> <input
 								type="hidden" name="apple"
 								value="<%=session.getAttribute("id")%>"> <input

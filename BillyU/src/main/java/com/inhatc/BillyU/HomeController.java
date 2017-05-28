@@ -126,7 +126,7 @@ public class HomeController {
 	}
 	@RequestMapping(value="/RentInsertHost")
 	public String RentInsertHost(){
-		return "Rent/RentInsertHost.jsp";
+		return "Rent/RentInsertHost";
 	}
 	@RequestMapping(value="/RentInsertGuest")
 	public String RentInsertGuest(){

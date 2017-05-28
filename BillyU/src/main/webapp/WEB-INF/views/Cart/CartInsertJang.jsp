@@ -14,10 +14,10 @@
 Object apple = request.getParameter("apple");
 String guest = apple.toString();
 
-int pronum = Integer.parseInt(request.getParameter("pronum"));
+int pronum = Integer.parseInt(request.getParameter("productnumber"));
  
 jang.insert_jang(guest, pronum);
-response.sendRedirect("Y_Jang");
+response.sendRedirect("CartLeftbarJang");
 %>
 </body>
 </html>

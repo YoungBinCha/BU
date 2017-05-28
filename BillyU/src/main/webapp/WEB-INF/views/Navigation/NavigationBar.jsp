@@ -461,7 +461,7 @@
 <table class="Y_NavTable">
 <tr>
 <td class="Y_NavLogo">
-<a href="Y_Main"><img src="resources/img/BillyU_Logo.png" alt="로고" width="100%" height="80%" /></a>
+<a href="Index"><img src="resources/img/BillyU_Logo.png" alt="로고" width="100%" height="80%" /></a>
 </td>
 <td class="Y_NavBlank"> </td>
 
@@ -546,7 +546,7 @@
         	$('#Y_NavContent_Left_Up').css('display','block');
         	$.ajax({
         		type : "POST",
-        		url : "./Y_All_Category",
+        		url : "./NavigationAllKindView",
         		success:WhenSuccess,
         		error:WhenError
         	});
@@ -597,13 +597,13 @@
                     <a href="UserJoinForm"><i class="fa fa-fw fa-folder"></i> 회원가입</a>
                 </li>
                 <li>
-                    <a href="MypageMainForm.jsp"><i class="fa fa-fw fa-file-o"></i> 마이페이지</a>
+                    <a href="MypageMainForm"><i class="fa fa-fw fa-file-o"></i> 마이페이지</a>
                 </li>
                 <li>
                     <a href="ProductRegistPage"><i class="fa fa-fw fa-cog"></i> 상품등록</a>
                 </li>
                 <li>
-                    <a href="CartViewMyJangPage.jsp"><i class="fa fa-fw fa-bank"></i> 찜바구니</a>
+                    <a href="CartViewMyJangPage"><i class="fa fa-fw fa-bank"></i> 찜바구니</a>
                 </li>
                 <li>
                     <a href="Y_Introduce"><i class="fa fa-fw fa-dropbox"></i> 사이트소개</a>

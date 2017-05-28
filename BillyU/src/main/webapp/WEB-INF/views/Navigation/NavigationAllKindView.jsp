@@ -189,7 +189,7 @@ background-color:#f3f3f3;
 <script>
 $('a').click(function(){
 	var th = $(this).text();
-	$('a').attr('href','Y_Search_Result?category=all&search='+th+'');
+	$('a').attr('href','NavigationSearchResult?category=all&search='+th+'');
 })
 </script>
 </table>

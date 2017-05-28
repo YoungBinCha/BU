@@ -18,7 +18,8 @@ int productnumber = Integer.parseInt(request.getParameter("productnumber"));
 String message = request.getParameter("message");
 String startdate=request.getParameter("startdate");
 String enddate = request.getParameter("enddate");
-int totalprice=Integer.parseInt(request.getParameter("total"));
+//int totalprice=Integer.parseInt(request.getParameter("total"));
+int totalprice = 1000;
 
 rent.insert_rent(productguest, productnumber, message, startdate, enddate, totalprice);
 response.sendRedirect("RentInsertHost?pronum="+productnumber+"");

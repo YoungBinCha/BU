@@ -59,7 +59,7 @@ public class proDAO {
 			int rentdeposite = rs.getInt("rentdeposite");
 			String img = rs.getString("img");
 			Timestamp curtime = rs.getTimestamp("curtime");
-			dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentprice, rentmaxdate, rentdeposite, img, curtime);
+			dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentmaxdate, rentmaxdate, rentdeposite, img, curtime);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -111,19 +111,7 @@ public class proDAO {
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int productnumber = rs.getInt("productnumber");
-				String nickname = rs.getString("nickname");
-				int categorynumber = rs.getInt("categorynumber");
-				String title = rs.getString("title");
-				String productinformation = rs.getString("productinformation");
-				String location = rs.getString("location");
-				String productstate = rs.getString("productstate");
-				int rentprice = rs.getInt("rentprice");
-				int rentmaxdate = rs.getInt("rentmaxdate");
-				int rentdeposite = rs.getInt("rentdeposite");
-				String img = rs.getString("img");
-				Timestamp curtime = rs.getTimestamp("curtime");
-				dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentprice, rentmaxdate, rentdeposite, img, curtime);
+				select();
 				jang_mylist.add(dto);
 			}
 			
@@ -151,19 +139,7 @@ public class proDAO {
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int productnumber = rs.getInt("productnumber");
-				String nickname = rs.getString("nickname");
-				int categorynumber = rs.getInt("categorynumber");
-				String title = rs.getString("title");
-				String productinformation = rs.getString("productinformation");
-				String location = rs.getString("location");
-				String productstate = rs.getString("productstate");
-				int rentmaxdate = rs.getInt("rentmaxdate");
-				int rentunit = rs.getInt("rentunit");
-				int rentdeposite = rs.getInt("rentdeposite");
-				String img = rs.getString("img");
-				Timestamp curtime = rs.getTimestamp("curtime");
-				dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentmaxdate, rentunit, rentdeposite, img, curtime);
+				select();
 				search_list.add(dto);
 			}
 			
@@ -181,19 +157,7 @@ public class proDAO {
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int productnumber = rs.getInt("productnumber");
-				String nickname = rs.getString("nickname");
-				int categorynumber = rs.getInt("categorynumber");
-				String title = rs.getString("title");
-				String productinformation = rs.getString("productinformation");
-				String location = rs.getString("location");
-				String productstate = rs.getString("productstate");
-				int rentprice = rs.getInt("rentprice");
-				int rentmaxdate = rs.getInt("rentmaxdate");
-				int rentdeposite = rs.getInt("rentdeposite");
-				String img = rs.getString("img");
-				Timestamp curtime = rs.getTimestamp("curtime");
-				dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentprice, rentmaxdate, rentdeposite, img, curtime);
+				select();
 				search_list2.add(dto);
 			}
 			
@@ -211,19 +175,7 @@ public class proDAO {
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int productnumber = rs.getInt("productnumber");
-				String nickname = rs.getString("nickname");
-				int categorynumber = rs.getInt("categorynumber");
-				String title = rs.getString("title");
-				String productinformation = rs.getString("productinformation");
-				String location = rs.getString("location");
-				String productstate = rs.getString("productstate");
-				int rentprice = rs.getInt("rentprice");
-				int rentmaxdate = rs.getInt("rentmaxdate");
-				int rentdeposite = rs.getInt("rentdeposite");
-				String img = rs.getString("img");
-				Timestamp curtime = rs.getTimestamp("curtime");
-				dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentprice, rentmaxdate, rentdeposite, img, curtime);
+				select();
 				search_list3.add(dto);
 			}
 			
@@ -241,19 +193,7 @@ public class proDAO {
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int productnumber = rs.getInt("productnumber");
-				String nickname = rs.getString("nickname");
-				int categorynumber = rs.getInt("categorynumber");
-				String title = rs.getString("title");
-				String productinformation = rs.getString("productinformation");
-				String location = rs.getString("location");
-				String productstate = rs.getString("productstate");
-				int rentprice = rs.getInt("rentprice");
-				int rentmaxdate = rs.getInt("rentmaxdate");
-				int rentdeposite = rs.getInt("rentdeposite");
-				String img = rs.getString("img");
-				Timestamp curtime = rs.getTimestamp("curtime");
-				dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentprice, rentmaxdate, rentdeposite, img, curtime);
+				select();
 				search_all_cate.add(dto);
 			}
 			
@@ -263,11 +203,5 @@ public class proDAO {
 		
 		return search_all_cate;
 	}
-	/*
-	 * 여기부터 상품등록할 때 사용하는 메소드 -- Capstone_prodctDAO에서 온 것들
-	 */
-	
-	
-
 }
 

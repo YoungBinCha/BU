@@ -42,7 +42,7 @@ public class jangDAO {
 	public void insert_jang(String nickname,int productnumber){
 		connect();
 		try{
-			String sql="insert into jang(nickname,productnumber) values('"+nickname+"',"+productnumber+")";
+			String sql="insert into cart(nickname,productnumber) values('"+nickname+"',"+productnumber+")";
 			stmt.executeUpdate(sql);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -52,7 +52,7 @@ public class jangDAO {
 	public ArrayList<jangDTO> select_jang(Object nickname){
 		try{
 			connect();
-			String sql = "select * from jang where nickname='"+nickname+"' order by cartnumber desc";
+			String sql = "select * from cart where nickname='"+nickname+"' order by cartnumber desc";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
@@ -75,7 +75,7 @@ public class jangDAO {
 	public void delete_jang(String productnumber){
 		try {
 			connect();
-			String sql="delete from jang where productnumber='"+productnumber+"'";
+			String sql="delete from cart where productnumber='"+productnumber+"'";
 			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
