@@ -176,7 +176,25 @@ public class registDAO {
 		return check;
 
 	}
+	
+		public boolean updateLocation(registDTO dto, int productnumber) {
+			String location = dto.getlocation();
+			
+			String query = "update product set location='"+location+"' where productnumber = "+productnumber+" ;";
+			boolean check = false;
+			try {
+				Statement stmt = conn.createStatement();
+				stmt.executeUpdate(query);
 
+				check = true;
+				stmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println("SQL updateLocation() 오류 : " + e.getLocalizedMessage());
+			}
+			return check;
+
+		}
 	public int selectproductnumber() {
 		String query = "SELECT * FROM product";
 		int productnumber = 0;
@@ -229,6 +247,8 @@ public class registDAO {
 		}
 		return arrayListImage;
 	}
+	
+	
 
 	public void close() {
 		try {

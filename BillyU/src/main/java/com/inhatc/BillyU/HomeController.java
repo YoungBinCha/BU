@@ -164,6 +164,14 @@ public class HomeController {
 	public String IndexScrollPage(){
 		return "IndexScrollPage";
 	}
+	@RequestMapping(value = "/ProductAddLocation")
+	public String ProductAddLocation(){
+		return "Product/ProductAddLocation";
+	}
+	@RequestMapping(value = "/ProductReverse")
+	public String ProductReverse(){
+		return "Product/ProductReverse";
+	}
 	@RequestMapping(value = "/Y_Reply",method = RequestMethod.POST)
 	public String Y_Reply(HttpServletRequest request,HttpSession session,Model model,HttpServletResponse response){
 		mypage_replyDAO replyDAO = new mypage_replyDAO();
@@ -204,6 +212,29 @@ public class HomeController {
 			rentDAO.delete_rent(rentnum);
 		}
 		return "MyPage/MypageMainForm";
+	}
+	//상품 정보 입력 받고 상품 위치(location) 입력 
+	@RequestMapping(value = "/regist.lo", method = RequestMethod.POST)
+	public String registlo(HttpServletRequest request,HttpSession session,HttpServletResponse response){
+		rentDAO rentDAO = new rentDAO();
+		String rent = request.getParameter("rentnum");
+		if(rent != null){
+			int rentnum = Integer.parseInt(rent);
+			rentDAO.delete_rent(rentnum);
+		}
+		
+		registDAO dao = new registDAO();
+		String lat = request.getParameter("lat");	//위도
+		String lng = request.getParameter("lng");	//경도
+		String combine = lat+","+lng;
+		
+		registDTO dto = new registDTO(combine);
+		
+		int productnumber = dao.selectproductnumber();
+		
+		dao.updateLocation(dto, productnumber);
+		
+		return "Product/ProductAddImage";
 	}
 	//상품등록정보 입력 Mapping
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
@@ -249,7 +280,7 @@ public class HomeController {
 		
 //		RequestDispatcher view = req.getRequestDispatcher("K_addImg.jsp");
 //		view.forward(req, resp);
-		return "Product/ProductAddImage";
+		return "Product/ProductAddLocation";
 	}
 	@RequestMapping(value = "/ProductAddImage")
 	public String K_addImg(){

@@ -38,7 +38,9 @@ public class registDTO {
 		this.img3 = img3;
 		this.img4 = img4;
 	}
-	
+	public registDTO(String location){
+		this.location = location;
+	}
 	
 	public String getImg1() {
 		return img1;
