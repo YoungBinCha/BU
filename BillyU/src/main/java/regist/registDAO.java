@@ -248,7 +248,22 @@ public class registDAO {
 		return arrayListImage;
 	}
 	
-	
+	public String selectLocation(int productnumber) {
+		String query = "SELECT * FROM product where productnumber = "+productnumber+";";
+		String location ="";
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			
+			rs.next();
+			location  = rs.getString("location");
+
+			stmt.close();
+		} catch (SQLException ex) {
+			System.out.println("SQL selectImage() 오류 : " + ex.getLocalizedMessage());
+		}
+		return location;
+	}
 
 	public void close() {
 		try {

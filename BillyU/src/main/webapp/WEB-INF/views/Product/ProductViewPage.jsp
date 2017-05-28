@@ -33,6 +33,13 @@
 	width: 360px;
 }
 
+#map {
+        height: 400px;
+        width: 100%;
+       }
+       tr > td:first-child{
+       	width: 100px;
+       }
 </style>
 
 <!-- resources/css 밑에있는 cssFile 사용하기 위한 코드-->
@@ -248,7 +255,7 @@
 	<div class="row">
 		<br> <br>
 
-		<div class="col-lg-7">
+		<div class="col-lg-8">
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<h1>상세내역</h1>
@@ -262,7 +269,34 @@
 						<tbody>
 							<tr>
 								<td>위치 :</td>
-								<td><%= location %></td>
+								<td>
+								
+								<%
+									String loc = sel.selectLocation(y_productnumber);
+									String[] locArr = loc.split(",");
+									String lat = locArr[0];
+									String lng = locArr[1];
+								%>
+					
+   
+    <div id="map"></div>
+    <script>
+      function initMap() {
+          var uluru = {lat: <%= lat%>, lng: <%= lng%>};
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: uluru
+          });
+          var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+          });
+        }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD216mf70yKOSqZLC_KUiIPvhnXv_O7_5E&callback=initMap">
+    </script>
+								</td>
 							</tr>
 							<tr>
 								<td>물품상태 :</td>
