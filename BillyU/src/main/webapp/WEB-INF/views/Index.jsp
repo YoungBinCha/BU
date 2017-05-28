@@ -133,7 +133,7 @@ height:150px;
 	String Y_Category="";
 	String cate_name="";
 	
-	for(int i=0;i<10;i++){
+	for(int i=0;i<pro_list.size();i++){
 		proDTO dto = pro_list.get(i);
 		int productnumber = dto.getProductnumber();
 		String img = dto.getImg();
@@ -194,8 +194,6 @@ height:150px;
 			Y_Category="cate16";
 			cate_name="티켓";
 		}
-		
-
 			%>
 	<div class="panel panel-primary <%=Y_Category%> post rent">
       <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=productnumber %>)</span><span style="text-align:center;">대여상품(<%=cate_name %>)</span><span style="float:right;color:white"><%=curtime %></span></div>
@@ -208,7 +206,6 @@ height:150px;
       </div>
     </div>
 			<%
-		
 	}
 %>
 <div id="here"></div>
@@ -217,7 +214,7 @@ height:150px;
 </div>
 <br />
 
-<script>
+<script type="text/javascript">
 $(document).ready(function() {
     $('.toggles button').click(function(){
       var get_id = this.id;
@@ -248,7 +245,7 @@ $(document).scroll(function() {
 var maxHeight = $(document).height();
 var currentScroll = $(window).scrollTop() + $(window).height();
 var page=1;
-if (maxHeight <= currentScroll) {
+if (maxHeight <= currentScroll+100) {
 $.ajax({
 	type : "POST",
 	url : "./IndexScrollPage",
