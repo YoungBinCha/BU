@@ -22,8 +22,8 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-      	width: 80%;
-        height: 80%;
+      	width: 60%;
+        height: 58%;
         z-index: 999;
     	margin: auto;
       }
@@ -34,7 +34,7 @@
         padding: 0;
       }
       #floating-panel {
-     	
+    
         z-index: 5;
         background-color: #fff;
         padding: 5px;
@@ -44,22 +44,29 @@
         line-height: 30px;
         padding-left: 10px;
       }
+      #inputPanel{
+      	width: 500px;
+      	height : 100px;
+      	text-align: center;
+      	font-family: 'Roboto','sans-serif';
+      	line-height: 40px;
+      	font-size: 25px;
+      	margin: auto;
+      }
     </style>
     
   </head>
   <body>
   <jsp:include page="../Navigation/NavigationBar.jsp"></jsp:include>
-	<br />
-	<br /><br /><br /><br /><br /><br />
 	
-    <div id="floating-panel">
+    <div id="inputPanel">
       <input id="address" type="textbox" value="송내역">
-      <input id="submit" type="button" value="Geocode">
+      <input id="submit" type="button" value="검색">
       <div id="latlngform">
       <form action="regist.lo" method="post">
-      <input id="at" name="lat" type="text" >
-      <input id="ng" name="lng" type="text" >
-      <input id="sub" type="submit" value="submit">
+      <input id="sub" type="submit" value="등록">
+      <input id="at" name="lat" type="hidden" >
+      <input id="ng" name="lng" type="hidden" >
       </form>
       </div>
     </div>
