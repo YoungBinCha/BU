@@ -542,8 +542,10 @@
         } );
         
         $('#Y_NavContent_Left_Down').click(function() {
-        	$('#Y_NavContent_Left_Down').css('display','none');
-        	$('#Y_NavContent_Left_Up').css('display','block');
+        	//$('#Y_NavContent_Left_Down').css('display','none');
+        	//$('#Y_NavContent_Left_Up').css('display','block');
+        	$('#Y_NavContent_Left_Down').hide();
+        	$('#Y_NavContent_Left_Up').show();
         	$.ajax({
         		type : "POST",
         		url : "./NavigationAllKindView",
@@ -552,13 +554,16 @@
         	});
         });
         $('#Y_NavContent_Left_Up').click(function() {
-        	$('#Y_NavContent_Left_Down').css('display','block');
-        	$('#Y_NavContent_Left_Up').css('display','none');
-        	$('#Y_All_Back').css('display','none');
+        	//$('#Y_NavContent_Left_Down').css('display','block');
+        	//$('#Y_NavContent_Left_Up').css('display','none');
+        	//$('#Y_All_Back').css('display','none');
+        	$('#Y_NavContent_Left_Down').show();
+        	$('#Y_NavContent_Left_Up').hide();
+        	$('#Y_All_Back').hide(500);
         });
         
         function WhenSuccess(resdata){
-        	$('#Y_All_Back').css('display','block').html(resdata);
+        	$('#Y_All_Back').show(500).html(resdata);
         }
 
         function WhenError(){
