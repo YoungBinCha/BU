@@ -188,7 +188,7 @@ height:150px;
 	<div class="panel panel-primary <%=Y_Category%> post rent">
       <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=productnumber %>)</span><span style="text-align:center;"><%=listbig %>(<%=listsmall %>)</span><span style="float:right;color:white"><%=curtime %></span></div>
       <div class="panel-body">
-      <div class="col-xs-3 col-md-3"><a href="ProductViewPage?productnumber=<%=productnumber %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
+      <div class="col-xs-3 col-md-3"><a href="ProductViewPage?productnumber=<%=productnumber %>"><img class="img-rounded" src="<%=img %>" onerror="this.src='resources/img/noimage.jpg'" alt="사진없음" /></a></div>
       <div class="col-xs-6 col-md-3"><a href="ProductViewPage?productnumber=<%=productnumber %>"><%=title %></a></div>
       <div class="col-xs-1 col-md-2">대여료(원)/1일<br /><br /><%=rentprice %></div>
       <div class="col-xs-1 col-md-2">보증금(원)<br /><br /><%=rentdeposite %></div>
