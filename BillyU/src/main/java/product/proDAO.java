@@ -61,7 +61,7 @@ public class proDAO {
 			Timestamp curtime = rs.getTimestamp("curtime");
 			String kakaotalkid = rs.getString("kakaotalkid");
 			String phone = rs.getString("phone");
-			dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentmaxdate, rentmaxdate, rentdeposite, img, curtime,kakaotalkid,phone);
+			dto = new proDTO(productnumber, nickname, categorynumber, title, location, productinformation, productstate, rentprice, rentmaxdate, rentdeposite, img, curtime,kakaotalkid,phone);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

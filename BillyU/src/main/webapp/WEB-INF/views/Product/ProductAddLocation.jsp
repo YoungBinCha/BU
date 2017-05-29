@@ -58,7 +58,9 @@
   </head>
   <body>
   <jsp:include page="../Navigation/NavigationBar.jsp"></jsp:include>
-	
+	<center>
+	<h1>내 위치 입력하기</h1>
+	</center>
     <div id="inputPanel">
       <input id="address" type="textbox" value="송내역">
       <input id="submit" type="button" value="검색">
@@ -121,6 +123,6 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD216mf70yKOSqZLC_KUiIPvhnXv_O7_5E&callback=initMap">
     </script>
-    
+    <br /><br /><br />
   </body>
 </html>

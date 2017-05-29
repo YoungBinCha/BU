@@ -4,6 +4,9 @@
 <%@ page import="product.proDTO" %>
 <%@ page import="java.util.*" %>
 <jsp:useBean id="product_list" class="product.proDAO" />
+<jsp:useBean id="category_list" class="category.cateDAO" />
+<%@ page import="category.cateDTO" %>
+<%@ page import="category.cateDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,6 +75,7 @@ height:150px;
 <div class="panel-group posts" style="clear:both">
 <%
 	ArrayList<proDTO> pro_mylist = product_list.MyPage(session.getAttribute("id"));
+	ArrayList<cateDTO> categorynumber_list = new ArrayList<cateDTO>();
 	String Y_Category="";
 	String cate_name="";
 	
@@ -85,6 +89,11 @@ height:150px;
 		int rentmaxdate = dto.getRentmaxdate();
 		int categorynumber = dto.getCategorynumber();
 		String productinformation = dto.getProductinformation();
+		
+		categorynumber_list = category_list.categorynumber(categorynumber);
+		cateDTO cdto = categorynumber_list.get(i);
+		String listsmall = cdto.getcategorysmall();
+		String listbig = cdto.getcategorybig();
 		
 		if(categorynumber<200 && categorynumber>100){
 			Y_Category="cate1";
@@ -138,7 +147,7 @@ height:150px;
 		
 			%>
 	<div class="panel panel-primary <%=Y_Category%> post rent">
-      <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=productnumber %>)</span><span style="text-align:center;">대여상품(<%=cate_name %>)</span><span style="float:right"><a style="color:white" href="Y_Delete_MyProduct?productnumber=<%=productnumber%>">X</a></span></div>
+      <div class="panel-heading" style="height:32px"><span style="float:left">상품번호(<%=productnumber %>)</span><span style="text-align:center;"><%=listbig %>(<%=listsmall %>)</span><span style="float:right"><a style="color:white" href="MypageDeleteProduct?productnumber=<%=productnumber%>">X</a></span></div>
       <div class="panel-body">
       <div class="col-xs-3 col-md-3"><a href="ProductViewPage?productnumber=<%=productnumber %>"><img class="img-rounded" src="<%=img %>" alt="사진없음" /></a></div>
       <div class="col-xs-6 col-md-3"><a href="ProductViewPage?productnumber=<%=productnumber %>"><%=title %></a></div>

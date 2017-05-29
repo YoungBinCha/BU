@@ -10,6 +10,8 @@ public class cateDAO {
 	cateDTO dto;
 	ArrayList<cateDTO> categorybig_list = new ArrayList<cateDTO>();
 	ArrayList<cateDTO> categorysmall_list = new ArrayList<cateDTO>();
+	ArrayList<cateDTO> categorynumber_list = new ArrayList<cateDTO>();
+	
 	int cat;
 	
 	public cateDAO(){
@@ -72,6 +74,27 @@ public class cateDAO {
 		}finally{disconnect();}
 		 
 		return categorysmall_list;
+	}
+	
+	public ArrayList<cateDTO> categorynumber(int categorynumber){
+		try{
+			connect();
+			String sql = "select * from category where categorynumber = "+categorynumber+"";
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				String categorybig = rs.getString("categorybig");
+				String categorysmall = rs.getString("categorysmall");
+				
+				dto = new cateDTO(categorybig,categorysmall);
+				categorynumber_list.add(dto);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
+		 
+		return categorynumber_list;
 	}
 	
 	public String receivecategorysmall(int categorynumber){

@@ -11,7 +11,7 @@
 <%
 String productnumber = request.getParameter("productnumber");
 product.delete_product(productnumber);
-response.sendRedirect("Y_MyPage");
+response.sendRedirect("MypageMainForm");
 %>
 </body>
 </html>

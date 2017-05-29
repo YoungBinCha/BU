@@ -64,11 +64,11 @@
 		String categorynumber = al.get(0);
 		String title = al.get(1);
 		String productinformation = al.get(2);
-		String location = al.get(3);
-		String productstate = al.get(4);
-		String rentprice_s = al.get(5);
-		String rentunit_s = al.get(6);
-		String rentdeposite_s = al.get(7);
+		String location = al.get(3); //위치
+		String productstate = al.get(4); //상품상태(s급)
+		String rentprice_s = al.get(5); //대여비
+		String rentunit_s = al.get(6); //??
+		String rentdeposite_s = al.get(7); //보증금
 		String nickname = al.get(8);
 		String kakaotalkid = al.get(9);
 		String phone = al.get(10);
@@ -194,6 +194,8 @@
 							<input type="hidden" name="productnumber" value="<%=y_productnumber %>" /> <input
 								type="hidden" name="apple"
 								value="<%=session.getAttribute("id")%>">
+								<input type="hidden" name="rentprice" value="<%=rentprice %>"/>
+								<input type="hidden" name="rentdeposite" value="<%=rentdeposite %>"/>
 							<div class="form-group">
 								<table class="table table-hover">
 									<thead>
@@ -374,7 +376,6 @@ function WhenError(){
 	$('#form').submit(function(){
 		if($('#message').val().length == 0){
 			alert('비어있음');
-			alert($('#total_money').trim().text())
 			$('#message').focus();
 			return false;
 		}

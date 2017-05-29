@@ -65,6 +65,7 @@
 					<center><h1>상품 정보 입력</h1></center><hr /><br />
 					<p><span id="require">*</span> 는 반드시 작성해 주세요.</p><br />
 					<form action="regist.do" method="post">
+						<!-- 처음 상품 입력화면 -->
 						<div class="product">
 							<div class="form-group">
 								<label for="title"><span id="require">*</span> 제목 : </label> <input type="text"
@@ -150,7 +151,8 @@
 							</div><hr />
 
 						</div>
-						<!-- 여기부턴 대여 정보 입력 -->
+						<!-- 처음화면 입력화면 끝 -->
+						<!-- 2번째 화면 시작 대여상품작성 -->
 						<div class="K_trade">
 								<div class="form-group">
 									<input class="tratype" type="hidden" name="tratype" value="대여" />
@@ -175,8 +177,13 @@
 									<br />
 								</div>
 						</div>
-							<!-- 거래 형식을 '판매'를 선택했을 때 -->		
+						<!-- 2번째 화면 끝 -->
 						
+						<!-- 위치등록 -->
+						<div></div>
+						
+						<!-- 이미지등록 -->
+						<div></div>						
 					</form>
 					
 				</div>

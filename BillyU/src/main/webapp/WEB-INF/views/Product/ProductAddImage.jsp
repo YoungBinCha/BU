@@ -57,6 +57,7 @@ h3{
 				-->
 				<form action="regist.ro" enctype="multipart/form-data" method="post">	
 					<h1>상품 이미지 입력</h1>
+					<hr />
 					<!-- 큰틀 -->
 					<input type="file" name="upfile" id="image" style="display: none;">
        				<input type="file" name="upfile2" id="image2" style="display: none;">
@@ -65,7 +66,7 @@ h3{
     				
     					<div class="row">
     						<div class="col-lg-9">
-    							<h3>메인사진</h3>
+    							<h2>메인사진</h2>
     							<div class="row">
     								<div class="col-lg-12" id="image_preview">
     									<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 80%; height: 450px;" border="0" onclick="document.all.upfile.click(); ">
@@ -73,7 +74,7 @@ h3{
     							</div>
     						</div>
     						 <div class="col-lg-3">
-    						 	<h3>서브사진</h3>
+    						 	<h2>서브사진</h2>
     						 	<div class="row">
     						 		<div class="col-lg-12" id="J_image_2">
     						 			<img src="resources/img/noimage.jpg " style="border: 1px solid black; width: 100%; height: 150px;" border="0" onclick="document.all.upfile2.click(); ">
@@ -91,8 +92,7 @@ h3{
     						 	</div>
     						</div>
     					</div>
-    				     
-    				
+					<br />    				     
     				</br>
     				<input type="submit" class="btn btn-primary" value="등록" style="width: 400px;" onclick="test()">
 				</form>
@@ -100,6 +100,7 @@ h3{
 			<div class="col-lg-1"></div>
 		</div>
 	</div>
+	<br /><br /><br />
 </body>
 <script type="text/javascript">
 
