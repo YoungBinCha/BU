@@ -199,8 +199,8 @@ public class registDAO {
 			return check;
 
 		}
-	public int selectproductnumber() {
-		String query = "SELECT * FROM product";
+	public int selectproductnumber(String nickname) {
+		String query = "SELECT * FROM product where nickname = '"+nickname+"'";
 		int productnumber = 0;
 		try {
 			Statement stmt = conn.createStatement();
@@ -280,4 +280,5 @@ public class registDAO {
 		}
 
 	}
+	
 }

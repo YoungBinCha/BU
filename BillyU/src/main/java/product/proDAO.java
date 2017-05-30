@@ -205,5 +205,39 @@ public class proDAO {
 		
 		return search_all_cate;
 	}
+	
+	public void insert_product(
+	String nickname,
+	int categorynumber,
+	String title,
+	String productinformation,
+	String location,
+	String productstate,
+	int rentprice,
+	int rentmaxdate,
+	int rentdeposite,
+	String img,
+	String kakaotalkid,
+	String phone){
+		try{
+			connect();
+			String sql="insert into product(nickname,categorynumber,title,productinformation,location,productstate,rentprice,rentmaxdate,rentdeposite,img,kakaotalkid,phone) values('"+nickname+"',"+categorynumber+",'"+title+"','"+productinformation+"','"+location+"','"+productstate+"',"+rentprice+","+rentmaxdate+","+rentdeposite+",'"+img+"','"+kakaotalkid+"','"+phone+"')";
+			stmt.executeUpdate(sql);
+		}catch(Exception e){e.printStackTrace();}finally{disconnect();}
+	}
+	public void update_image(int pronum,String img1,String img2,String img3,String img4){
+		try{
+			connect();
+			String sql="insert into image values("+pronum+",'"+img1+"','"+img2+"','"+img3+"','"+img4+"') ";
+			stmt.executeUpdate(sql);
+		}catch(Exception e){e.printStackTrace();}finally{disconnect();}
+	}
+	public void update_productimg(int pronum,String img1){
+		try{
+			connect();
+			String sql="update product set img = '"+img1+"' where productnumber="+pronum+"";
+			stmt.executeUpdate(sql);
+		}catch(Exception e){e.printStackTrace();}finally{disconnect();}
+	}
 }
 

@@ -124,5 +124,19 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD216mf70yKOSqZLC_KUiIPvhnXv_O7_5E&callback=initMap">
     </script>
     <br /><br /><br />
+    <%
+    out.println(session.getAttribute("category"));
+    out.println(session.getAttribute("categorynumber"));
+    out.println(session.getAttribute("title"));
+    out.println(session.getAttribute("productinformation"));
+    out.println(session.getAttribute("location"));
+    out.println(session.getAttribute("productstate"));
+    out.println(session.getAttribute("rentprice"));
+    out.println(session.getAttribute("rentdeposite"));
+    out.println(session.getAttribute("rentmaxdate"));
+    out.println(session.getAttribute("kakaotalkid"));
+    out.println(session.getAttribute("phone"));
+    %>
+    
   </body>
 </html>

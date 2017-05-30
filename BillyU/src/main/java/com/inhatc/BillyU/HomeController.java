@@ -228,21 +228,38 @@ public class HomeController {
 		}
 		
 		registDAO dao = new registDAO();
+		proDAO pdao = new proDAO();
 		String lat = request.getParameter("lat");	//위도
 		String lng = request.getParameter("lng");	//경도
 		String combine = lat+","+lng;
 		
-		registDTO dto = new registDTO(combine);
+		//registDTO dto = new registDTO(combine);
 		
-		int productnumber = dao.selectproductnumber();
+		//int productnumber = dao.selectproductnumber();
 		
-		dao.updateLocation(dto, productnumber);
+		//dao.updateLocation(dto, productnumber);
+		//session.setAttribute("location", combine);
+		String pnickname = session.getAttribute("id").toString();
+		int pcategorynumber = Integer.parseInt(session.getAttribute("categorynumber").toString());
+		String ptitle = session.getAttribute("title").toString();
+		String pproductinformation = session.getAttribute("productinformation").toString();
+		
+		String pproductstate = session.getAttribute("productstate").toString();
+		int prentprice = Integer.parseInt(session.getAttribute("rentprice").toString());
+		int prentdeposite = Integer.parseInt(session.getAttribute("rentdeposite").toString());
+		int prentmaxdate = Integer.parseInt(session.getAttribute("rentmaxdate").toString());
+		String pkakaotalkid = session.getAttribute("kakaotalkid").toString();
+		String pphone = session.getAttribute("phone").toString();
+		
+		pdao.insert_product(pnickname, pcategorynumber, ptitle, pproductinformation, combine, pproductstate, prentprice, prentmaxdate, prentdeposite, null, pkakaotalkid, pphone);
+
+		//String plocation = session.getAttribute("location").toString();
 		
 		return "Product/ProductAddImage";
 	}
 	//상품등록정보 입력 Mapping
 	@RequestMapping(value = "/regist.do", method = RequestMethod.POST)
-	public String registdo(HttpServletRequest req, Model model){
+	public String registdo(HttpServletRequest req, Model model,HttpSession session){
 		//DB 한글깨짐 방지 
 		try {
 			req.setCharacterEncoding("UTF-8");
@@ -252,37 +269,47 @@ public class HomeController {
 		}
 
 		registDAO dao = new registDAO();
+		
 		String category = req.getParameter("category"); 
 		int categorynumber = dao.selectcategorynumber(category); 
 		String title = req.getParameter("title");
 		String productinformation = req.getParameter("productinformation");
 		String location = req.getParameter("location");
-		String productstate = req.getParameter("productstate");			//판매냐 대여냐
-
+		String productstate = req.getParameter("productstate");			
 		String rentprice_s = req.getParameter("rentprice");
 		String rentdeposite_s = req.getParameter("rentdeposite");
 		String rentmaxdate_s = req.getParameter("rentmaxdate");
-		
 		String kakaotalkid = req.getParameter("kakaotalkid");
 		String phone = req.getParameter("phone");
+		
+		int rentprice = Integer.parseInt(rentprice_s);
+		int rentdeposite = Integer.parseInt(rentdeposite_s);
+		int rentmaxdate = Integer.parseInt(rentmaxdate_s);
+		
+		session.setAttribute("category", category);
+		session.setAttribute("categorynumber", categorynumber);
+		session.setAttribute("title", title);
+		session.setAttribute("productinformation",productinformation );
+		
+		session.setAttribute("productstate",productstate );
+		session.setAttribute("rentprice",rentprice );
+		session.setAttribute("rentdeposite",rentdeposite );
+		session.setAttribute("rentmaxdate",rentmaxdate );
+		session.setAttribute("kakaotalkid",kakaotalkid );
+		session.setAttribute("phone",phone );
 		
 	/*	if(rentprice_s == ""){
 			rentprice_s ="0";
 			rentdeposite_s = "0";
 			rentmaxdate_s = "0";
-		}
-*/
-		int rentprice = Integer.parseInt(rentprice_s);
-		int rentdeposite = Integer.parseInt(rentdeposite_s);
-		int rentmaxdate = Integer.parseInt(rentmaxdate_s);
+		}*/
 		
 		HttpSession ses = req.getSession();
 		String nickname = (String)ses.getAttribute("id");
 		ses.setAttribute("checkId", nickname);
 		
-		registDTO dto = new registDTO(nickname, categorynumber, title, productinformation, location, productstate, rentprice, rentdeposite, rentmaxdate, kakaotalkid, phone);
-
-			dao.insertRentProduct(dto); 
+		//registDTO dto = new registDTO(nickname, categorynumber, title, productinformation, location, productstate, rentprice, rentdeposite, rentmaxdate, kakaotalkid, phone);
+		//dao.insertRentProduct(dto); 
 		
 		
 //		RequestDispatcher view = req.getRequestDispatcher("K_addImg.jsp");
@@ -295,7 +322,7 @@ public class HomeController {
 	}
 	//상품사진등록 Mapping
 	@RequestMapping(value = "/regist.ro", method = RequestMethod.POST)
-	public String registro(HttpServletRequest req, Model model) throws IOException{
+	public String registro(HttpSession session,HttpServletRequest req, Model model) throws IOException{
 		
 		//DB 한글깨짐 방지 
 		try {
@@ -326,13 +353,17 @@ public class HomeController {
 		img4 = multi.getOriginalFileName(file4);
 		
 		registDAO dao = new registDAO();
-		registDTO dto = new registDTO(img1, img2, img3, img4);
+		//registDTO dto = new registDTO(img1, img2, img3, img4);
 		
-		int productnumber = dao.selectproductnumber();
+		proDAO pdao = new proDAO();
+		
+		
 		
 		HttpSession ses = req.getSession();
-		String id = (String)ses.getAttribute("id");
+		String id = ses.getAttribute("id").toString();
 		String checkId = (String)ses.getAttribute("checkId");
+		
+		int productnumber = dao.selectproductnumber(id);
 		/*
 		if(id.equals(checkId)){
 			dao.insertImage(dto, productnumber);
@@ -340,13 +371,39 @@ public class HomeController {
 		}else{
 			System.out.println("로그인한 id와 상품등록한 id가 다릅니다.");
 		}*/
+		if(img1 == null){
+			img1="resources/img/";
+		}
+		if(img2 == null){
+			img2="resources/img/";
+		}
+		if(img3 == null){
+			img3="resources/img/";
+		}
+		if(img4 == null){
+			img4="resources/img/";
+		}
 		
-		dao.insertImage(dto, productnumber);
-		dao.updateImage(dto, productnumber);
+		//session.setAttribute("img1", img1);
+		//session.setAttribute("img2", img2);
+		//session.setAttribute("img3", img3);
+		//session.setAttribute("img4", img4);
+		
+		//dao.insertImage(dto, productnumber);
+		
+		
+		//dao.updateImage(dto, productnumber);
 //		RequestDispatcher view = req.getRequestDispatcher("K_view.jsp");
 //		view.forward(req, resp);
+		String image1 = "resources/img/"+img1;
+		String image2 = "resources/img/"+img2;
+		String image3 = "resources/img/"+img3;
+		String image4 = "resources/img/"+img4;
 		
-
+		
+		pdao.update_image(productnumber,image1, image2, image3, image4);
+		pdao.update_productimg(productnumber, image1);
+		
 		return "MyPage/MypageMainForm";
 
 	}
