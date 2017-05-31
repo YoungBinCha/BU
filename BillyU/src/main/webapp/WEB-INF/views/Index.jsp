@@ -133,8 +133,14 @@ height:150px;
 	ArrayList<cateDTO> categorynumber_list = new ArrayList<cateDTO>();
 	String Y_Category="";
 	String cate_name="";
+	int maxsize = 0;
+	if(pro_list.size() <= 10){
+		maxsize = pro_list.size();
+	}else{
+		maxsize=10;
+	}
 	
-	for(int i=0;i<pro_list.size();i++){
+	for(int i=0;i<maxsize;i++){
 		proDTO dto = pro_list.get(i);
 		int productnumber = dto.getProductnumber();
 		String img = dto.getImg();
