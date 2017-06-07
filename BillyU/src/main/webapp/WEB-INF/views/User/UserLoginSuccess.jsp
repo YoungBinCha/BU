@@ -20,20 +20,29 @@ try{
 	Statement stmt = conn.createStatement();
 	String sql="select nickname from user where usernumber = '"+login+"'";
 	ResultSet rs = stmt.executeQuery(sql);
-	while(rs.next())
+	if(rs.next())
 	{
 		String nickname = rs.getString("nickname");
 		session.setAttribute("id", nickname);
-		response.sendRedirect("Index");
+		//response.sendRedirect("Index");
+		%>
+		<script>
+			history.go(-2);
+		</script>
+	<%
+	}else{
+		%>
+		<script>
+			alert('회원가입후 이용해 주세요!');
+			history.go(-1);
+		</script>
+	<%
 	}
 	
 }catch(Exception e){
 	e.printStackTrace();
 }
 %>
-<script>
-alert('회원가입후 이용해 주세요!');
-history.go(-1);
-</script>
+
 </body>
 </html>

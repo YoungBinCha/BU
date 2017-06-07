@@ -13,6 +13,7 @@
 </head>
 <body>
 <jsp:useBean id="rent" class="rent.rentDAO" />
+
 <%
 Object apple = request.getParameter("apple");
 String productguest = apple.toString();

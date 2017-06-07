@@ -48,11 +48,7 @@
 
 </head>
 <body>
-	<%
-	if(session.getAttribute("id") == null){
-		response.sendRedirect("Y_Login");
-	}
-	%>
+	
 	<jsp:include page="../Navigation/NavigationBar.jsp"></jsp:include>
 	<%
 		int y_productnumber = Integer.parseInt(request.getParameter("productnumber"));
@@ -239,9 +235,18 @@
 										</tr>
 									</tbody>
 								</table>
-
+								<%
+								if(session.getAttribute("id") == null){
+									%>
+									<input type="button" class="btn btn-primary btn-lg btn-block"
+									value="메시지 보내기" onclick="alert('로그인후 이용해 주세요')">
+									<%
+								}
+								else{
+								%>
 								<input type="submit" class="btn btn-primary btn-lg btn-block"
 									value="메시지 보내기">
+								<%} %>
 						</form>
 						<form action="CartInsertJang" method="POST">
 							<input type="hidden" name="productnumber" value="<%=y_productnumber %>" /> <input
@@ -324,7 +329,7 @@
 							</tr>
 							<tr>
 								<td>상품설명 :</td>
-								<td><%= productinformation %></td>
+								<td><%=productinformation %></td>
 							</tr>
 						</tbody>
 					</table>
@@ -399,7 +404,13 @@ function WhenError(){
 			return true;
 		}
 	})
-	
+	var counts = 0;
+	if(counts == 0){
+	$(document).ready(function(){
+		history.go(0);
+		counts = 1;
+	});
+	}
 	</script>
 </body>
 </html>

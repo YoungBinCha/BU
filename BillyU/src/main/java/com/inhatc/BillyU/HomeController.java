@@ -372,16 +372,16 @@ public class HomeController {
 			System.out.println("로그인한 id와 상품등록한 id가 다릅니다.");
 		}*/
 		if(img1 == null){
-			img1="resources/img/";
+			img1="null";
 		}
 		if(img2 == null){
-			img2="resources/img/";
+			img2="null";
 		}
 		if(img3 == null){
-			img3="resources/img/";
+			img3="null";
 		}
 		if(img4 == null){
-			img4="resources/img/";
+			img4="null";
 		}
 		
 		//session.setAttribute("img1", img1);

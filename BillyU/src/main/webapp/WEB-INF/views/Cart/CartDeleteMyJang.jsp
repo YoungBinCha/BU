@@ -11,7 +11,7 @@
 <%
 String productnumber  = request.getParameter("productnumber");
 jang.delete_jang(productnumber);
-response.sendRedirect("Y_MyPage");
+response.sendRedirect("CartLeftbarJang");
 %>
 </body>
 </html>

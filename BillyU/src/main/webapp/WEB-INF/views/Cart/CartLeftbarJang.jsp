@@ -43,7 +43,13 @@ width:100%;
 <body>
 <%
 if(session.getAttribute("id") == null){
-response.sendRedirect("Y_Login");}
+%>
+<script>
+alert('로그인후 이용해 주세요!');
+history.go(-1);
+</script>
+<%
+}
 %>  
 <jsp:include page="../Navigation/NavigationBar.jsp" />
 <br />
