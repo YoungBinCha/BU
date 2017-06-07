@@ -57,6 +57,7 @@
 		String message = dto.getMessage();
 		int totalprice = dto.getTotalprice();
 		Timestamp curtime = dto.getCurtime();
+		String flag = dto.getFlag();
 		
 		try {
 	        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -75,7 +76,7 @@
         <td style="width:10%"><%=startdate %>부터</td>
         <td style="width:10%"><%=enddate %>까지</td>
         <td><%=diffDays%>일동안</td>
-        <td style="width:40%"><%=message %></td>
+        <td style="width:40%"><a href="ReadMessage?rentnumber=<%=rentnumber%>"><%=message %></a></td>
         <td style="width:10%"><%=totalprice %>원</td>
         <td style="width:10%"><%=curtime %></td>
         <td style="width:10%"><p id="reply">답변</p>
@@ -88,6 +89,7 @@
         </form>
         </div>
         </td>
+        <td><%=flag %></td>
         <td><a href="Y_Delete_fromMail">X</a></td>
     </tr>
     <%} catch (Exception e) {

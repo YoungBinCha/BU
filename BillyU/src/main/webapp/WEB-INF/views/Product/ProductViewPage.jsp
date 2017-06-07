@@ -407,7 +407,8 @@ function WhenError(){
 	var counts = 0;
 	if(counts == 0){
 	$(document).ready(function(){
-		history.go(0);
+		//history.go(0);
+		//location.href();
 		counts = 1;
 	});
 	}

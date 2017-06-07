@@ -176,6 +176,15 @@ public class HomeController {
 	public String ProductReturnTotalMoney(){
 		return "Product/ProductReturnTotalMoney";
 	}
+	
+	@RequestMapping(value = "/ReadMessage")
+	public String ReadMessage(HttpServletRequest request){
+		rentDAO flag_rent = new rentDAO();
+		String rentnum = request.getParameter("rentnumber");
+		int rentnumber = Integer.parseInt(rentnum);
+		flag_rent.update_flag(rentnumber);
+		return "MyPage/MypageMainForm";
+	}
 	@RequestMapping(value = "/Y_Reply",method = RequestMethod.POST)
 	public String Y_Reply(HttpServletRequest request,HttpSession session,Model model,HttpServletResponse response){
 		mypage_replyDAO replyDAO = new mypage_replyDAO();

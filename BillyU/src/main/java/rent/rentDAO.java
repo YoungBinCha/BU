@@ -12,7 +12,7 @@ public class rentDAO {
 	rentDTO dto;
 	ArrayList<rentDTO> rent_list = new ArrayList<rentDTO>();
 	ArrayList<rentDTO> rent_list2 = new ArrayList<rentDTO>();
-	
+	int count=0;
 	public rentDAO(){
 		try{Class.forName("com.mysql.jdbc.Driver");}
 		catch(Exception e){e.printStackTrace();}
@@ -90,8 +90,9 @@ public class rentDAO {
 				String message = rs.getString("message");
 				int totalprice = rs.getInt("totalprice");
 				Timestamp curtime = rs.getTimestamp("curtime");
+				String flag = rs.getString("flag");
 
-				dto = new rentDTO(rentnumber, producthost, productguest, productnumber, startdate, enddate, message, totalprice,curtime);
+				dto = new rentDTO(rentnumber, producthost, productguest, productnumber, startdate, enddate, message, totalprice,curtime,flag);
 				rent_list.add(dto);
 			}
 			
@@ -120,8 +121,9 @@ public class rentDAO {
 				String message = rs.getString("message");
 				int totalprice = rs.getInt("totalprice");
 				Timestamp curtime = rs.getTimestamp("curtime");
+				String flag = rs.getString("flag");
 
-				dto = new rentDTO(rentnumber, producthost, productguest, productnumber, startdate, enddate, message, totalprice,curtime);
+				dto = new rentDTO(rentnumber, producthost, productguest, productnumber, startdate, enddate, message, totalprice,curtime,flag);
 				rent_list2.add(dto);
 			}
 			
@@ -135,6 +137,32 @@ public class rentDAO {
 		connect();
 		try{
 			String sql="delete from rent where rentnumber="+rentnumber+"";
+			stmt.executeUpdate(sql);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
+	}
+	
+	public int count_flag(String id){
+		connect();
+		try{
+			String sql="select count(flag) from rent where producthost='"+id+"' and flag='no'";
+			rs = stmt.executeQuery(sql);
+			while(rs.next())
+			{
+				count=rs.getInt(1);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
+		return count;
+	}
+	
+	public void update_flag(int rentnumber){
+		connect();
+		try{
+			String sql="update rent set flag='yes' where rentnumber ="+rentnumber+"";
 			stmt.executeUpdate(sql);
 		}catch(Exception e){
 			e.printStackTrace();

@@ -15,9 +15,10 @@ public class rentDTO {
 	private String message;
 	private int totalprice;
 	Timestamp curtime;
+	private String flag;
 	
 
-	public rentDTO(int rentnumber,String producthost,String productguest,int productnumber,String startdate,String enddate,String message,int totalprice,Timestamp curtime){
+	public rentDTO(int rentnumber,String producthost,String productguest,int productnumber,String startdate,String enddate,String message,int totalprice,Timestamp curtime,String flag){
 		this.rentnumber = rentnumber;
 		this.producthost = producthost;
 		this.productguest = productguest;
@@ -28,6 +29,18 @@ public class rentDTO {
 		this.message = message;
 		this.totalprice = totalprice;
 		this.curtime = curtime;
+		
+		this.flag = flag;
+	}
+
+
+	public String getFlag() {
+		return flag;
+	}
+
+
+	public void setFlag(String flag) {
+		this.flag = flag;
 	}
 
 
