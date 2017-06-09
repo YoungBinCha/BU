@@ -506,10 +506,15 @@
 <li><a id="Y_NavContent_Right" href="CartLeftbarJang"><span class="glyphicon glyphicon-shopping-cart"></span>찜바구니</a></li>
 <jsp:useBean id="rent" class="rent.rentDAO" />
 <%
+	String oid = "";
+	if(session.getAttribute("id") != null){
 	Object sid = session.getAttribute("id");
-	String oid = sid.toString();
+	oid = sid.toString();
+	}
 	int count_flag = 0;
+	if(!oid.equals("")){
 	count_flag = rent.count_flag(oid);
+	}
 %>
 <li><a id="Y_NavContent_Right" href="MypageMainForm"><span class="glyphicon glyphicon-user"></span>마이페이지(<%=count_flag %>)</a></li>
 <li><a id="Y_NavContent_Right" data-toggle="modal" data-target="#myModal">

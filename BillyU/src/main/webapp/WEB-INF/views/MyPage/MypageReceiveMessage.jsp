@@ -76,7 +76,13 @@
         <td style="width:10%"><%=startdate %>부터</td>
         <td style="width:10%"><%=enddate %>까지</td>
         <td><%=diffDays%>일동안</td>
-        <td style="width:40%"><a href="ReadMessage?rentnumber=<%=rentnumber%>"><%=message %></a></td>
+        <td style="width:40%">
+        <%if(flag.equals("yes")){ %>
+        <a style="text-decoration:none;color:black" href="ReadMessage?rentnumber=<%=rentnumber%>"><%=message %></a>
+        <%}else{ %>
+        <a href="ReadMessage?rentnumber=<%=rentnumber%>"><%=message %></a>
+        <%} %>
+        </td>
         <td style="width:10%"><%=totalprice %>원</td>
         <td style="width:10%"><%=curtime %></td>
         <td style="width:10%"><p id="reply">답변</p>

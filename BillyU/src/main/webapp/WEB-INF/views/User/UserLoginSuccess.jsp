@@ -24,12 +24,8 @@ try{
 	{
 		String nickname = rs.getString("nickname");
 		session.setAttribute("id", nickname);
-		//response.sendRedirect("Index");
-		%>
-		<script>
-			history.go(-2);
-		</script>
-	<%
+		response.sendRedirect("Index");
+
 	}else{
 		%>
 		<script>
