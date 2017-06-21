@@ -13,6 +13,7 @@ public class rentDAO {
 	ArrayList<rentDTO> rent_list = new ArrayList<rentDTO>();
 	ArrayList<rentDTO> rent_list2 = new ArrayList<rentDTO>();
 	int count=0;
+	String msg="";
 	public rentDAO(){
 		try{Class.forName("com.mysql.jdbc.Driver");}
 		catch(Exception e){e.printStackTrace();}
@@ -167,5 +168,21 @@ public class rentDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{disconnect();}
+	}
+	
+	public String message_view(int rentnumber){
+		connect();
+		try{
+			String sql="select message from rent where rentnumber="+rentnumber+"";
+			rs = stmt.executeQuery(sql);
+			while(rs.next())
+			{
+				msg=rs.getString(1);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{disconnect();}
+		return msg;
 	}
 }

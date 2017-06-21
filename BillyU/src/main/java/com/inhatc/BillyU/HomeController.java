@@ -178,12 +178,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/ReadMessage")
-	public String ReadMessage(HttpServletRequest request){
+	public String ReadMessage(HttpServletRequest request,Model model){
 		rentDAO flag_rent = new rentDAO();
 		String rentnum = request.getParameter("rentnumber");
 		int rentnumber = Integer.parseInt(rentnum);
 		flag_rent.update_flag(rentnumber);
-		return "MyPage/MypageMainForm";
+		String msg = flag_rent.message_view(rentnumber);
+		model.addAttribute("msg", msg);
+		return "MyPage/ReadMessage";
 	}
 	@RequestMapping(value = "/Y_Reply",method = RequestMethod.POST)
 	public String Y_Reply(HttpServletRequest request,HttpSession session,Model model,HttpServletResponse response){

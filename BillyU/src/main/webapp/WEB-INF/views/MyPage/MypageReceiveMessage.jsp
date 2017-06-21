@@ -41,9 +41,8 @@
     <%
 	Object id = session.getAttribute("id");
 	String nickname = id.toString();
-
+	ArrayList<Character> msg_ten = new ArrayList<Character>();
 	ArrayList<rentDTO> rent_list = rent.rent_list(nickname);
-	
 	for(int i=0;i<rent_list.size();i++){
 		rentDTO dto = rent_list.get(i);
 		
@@ -55,6 +54,12 @@
 		String enddate = dto.getEnddate();
 
 		String message = dto.getMessage();
+		//if(message.length()>10){
+		//	for(int j=0;j<message.length();j++){
+		//		msg_ten.add(j, message.charAt(j));
+		//		message += msg_ten.get(j);
+		//	}
+		//}
 		int totalprice = dto.getTotalprice();
 		Timestamp curtime = dto.getCurtime();
 		String flag = dto.getFlag();
@@ -75,12 +80,12 @@
         <td style="width:8%"><%=productguest %></td>
         <td style="width:10%"><%=startdate %>부터</td>
         <td style="width:10%"><%=enddate %>까지</td>
-        <td><%=diffDays%>일동안</td>
-        <td style="width:40%">
+        <td style="width:15%"><%=diffDays%>일동안</td>
+        <td style="width:30%">
         <%if(flag.equals("yes")){ %>
-        <a style="text-decoration:none;color:black" href="ReadMessage?rentnumber=<%=rentnumber%>"><%=message %></a>
+        <a style="text-decoration:none;color:black" onClick="window.open('ReadMessage?rentnumber=<%=rentnumber%>', '', 'width=400, height=430');""><%=message %></a>
         <%}else{ %>
-        <a href="ReadMessage?rentnumber=<%=rentnumber%>"><%=message %></a>
+        <a onClick="window.open('ReadMessage?rentnumber=<%=rentnumber%>', '', 'width=400, height=430');"><%=message %></a>
         <%} %>
         </td>
         <td style="width:10%"><%=totalprice %>원</td>
@@ -96,7 +101,7 @@
         </div>
         </td>
         <td><%=flag %></td>
-        <td><a href="Y_Delete_fromMail">X</a></td>
+        <td><a href="Y_Delete_toMail?rentnum=<%=rentnumber%>">X</a></td>
     </tr>
     <%} catch (Exception e) {
         e.printStackTrace();
@@ -152,7 +157,7 @@
         <td><a href="Y_Delete_fromMail">X</a></td>
     </tr>
     
-    <%} %>
+    <%  } %>
     </tbody>
   </table>
   </div>
@@ -163,6 +168,9 @@ $('#tr #hidden_reply').hide();
 $('#reply').click(function(){
 	$('#tr #hidden_reply').toggle();
 });
+</script>
+<script>
+//function popupOpen(){var popUrl = ".html";	//팝업창에 출력될 페이지 URLvar popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)window.open(popUrl,"",popOption);}
 </script>
 </body>
 </html>

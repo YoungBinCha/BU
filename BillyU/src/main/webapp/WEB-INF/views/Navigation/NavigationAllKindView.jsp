@@ -187,7 +187,7 @@ background-color:#f3f3f3;
 <td><a href="#">등산</a></td>
 </tr>
 <script>
-$('a').click(function(){
+$('.Y_Nav_Menu_Content a').click(function(){
 	var th = $(this).text();
 	$('a').attr('href','NavigationSearchResult?category=all&search='+th+'');
 })
