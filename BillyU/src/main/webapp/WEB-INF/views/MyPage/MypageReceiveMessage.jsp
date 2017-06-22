@@ -87,6 +87,7 @@
         <%}else{ %>
         <a onClick="window.open('ReadMessage?rentnumber=<%=rentnumber%>', '', 'width=400, height=430');"><%=message %></a>
         <%} %>
+        
         </td>
         <td style="width:10%"><%=totalprice %>원</td>
         <td style="width:10%"><%=curtime %></td>

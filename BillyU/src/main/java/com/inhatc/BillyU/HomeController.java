@@ -187,6 +187,7 @@ public class HomeController {
 		model.addAttribute("msg", msg);
 		return "MyPage/ReadMessage";
 	}
+	
 	@RequestMapping(value = "/Y_Reply",method = RequestMethod.POST)
 	public String Y_Reply(HttpServletRequest request,HttpSession session,Model model,HttpServletResponse response){
 		mypage_replyDAO replyDAO = new mypage_replyDAO();
