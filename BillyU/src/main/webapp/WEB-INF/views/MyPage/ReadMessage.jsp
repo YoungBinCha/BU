@@ -9,6 +9,5 @@
 <body>
 전체 메세지 : <p>
 ${msg}
-
 </body>
 </html>
