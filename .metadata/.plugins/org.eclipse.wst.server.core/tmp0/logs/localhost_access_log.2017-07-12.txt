@@ -1,0 +1,8 @@
+127.0.0.1 - - [12/Jul/2017:09:57:18 +0900] "GET / HTTP/1.1" 404 1081
+0:0:0:0:0:0:0:1 - - [12/Jul/2017:09:57:23 +0900] "GET /BillyU/ HTTP/1.1" 200 26174
+0:0:0:0:0:0:0:1 - - [12/Jul/2017:09:57:24 +0900] "GET /BillyU/resources/img/BillyU_Logo.png HTTP/1.1" 200 1485
+0:0:0:0:0:0:0:1 - - [12/Jul/2017:09:57:25 +0900] "GET /BillyU/resources/img/bird.jpg HTTP/1.1" 200 61875
+0:0:0:0:0:0:0:1 - - [12/Jul/2017:09:57:25 +0900] "GET /BillyU/resources/img/flower.jpg HTTP/1.1" 200 118122
+0:0:0:0:0:0:0:1 - - [12/Jul/2017:09:57:25 +0900] "GET /BillyU/resources/img/arin.jpg HTTP/1.1" 200 370050
+0:0:0:0:0:0:0:1 - - [12/Jul/2017:09:57:25 +0900] "GET /BillyU/resources/img/4%EB%B2%88%EC%A7%B8.PNG HTTP/1.1" 200 48454
+0:0:0:0:0:0:0:1 - - [12/Jul/2017:09:57:25 +0900] "GET /BillyU/resources/img/1%EB%B2%88%EC%A7%B8.PNG HTTP/1.1" 200 36852
